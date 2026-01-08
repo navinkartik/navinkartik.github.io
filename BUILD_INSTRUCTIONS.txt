@@ -1,0 +1,578 @@
+================================================================================
+                    WEBSITE BUILD INSTRUCTIONS
+                       Navin Kartik's Academic Website
+================================================================================
+
+TABLE OF CONTENTS
+-----------------
+1. Overview
+2. Quick Reference
+3. Files Explained
+4. Adding a New Unpublished Paper
+5. Adding a New Published Paper
+6. Moving a Paper from Unpublished to Published
+7. Updating an Existing Paper
+8. Removing a Paper
+9. Working with Coauthors
+10. PhD Students on Job Market
+11. Changing the Footer Date
+12. Papers with Special Formatting
+13. Complete Field Reference
+14. YAML Syntax Tips
+15. Troubleshooting
+16. Examples
+
+
+================================================================================
+1. OVERVIEW
+================================================================================
+
+This website uses a simple build system:
+
+    YAML data files  --->  build.py  --->  HTML files
+
+You edit the YAML files (human-readable data), run the build script, and it
+generates the HTML files. This means:
+
+  - You only edit papers in ONE place (papers.yaml)
+  - All three pages (index.html, published.html, unpublished.html) stay in sync
+  - Coauthor URLs are consistent everywhere
+
+
+================================================================================
+2. QUICK REFERENCE
+================================================================================
+
+After ANY change to papers.yaml, coauthors.yaml, or build.py:
+
+    python3 build.py
+
+Then commit and push:
+
+    git add -A
+    git commit -m "Description of change"
+    git push
+
+
+================================================================================
+3. FILES EXPLAINED
+================================================================================
+
+SOURCE FILES (edit these):
+--------------------------
+papers.yaml         All papers with their metadata
+coauthors.yaml      Coauthor names mapped to their URLs
+build.py            The build script (also contains PhD students and footer date)
+
+GENERATED FILES (don't edit directly - they get overwritten):
+-------------------------------------------------------------
+index.html          Main homepage
+published.html      Mobile-only page for published papers
+unpublished.html    Mobile-only page for unpublished papers
+
+OTHER FILES:
+------------
+mystyles.css        Stylesheet (edit directly if needed)
+bio.html            Biography page (edit directly)
+teaching.html       Teaching page (edit directly)
+students.html       PhD students page (edit directly)
+Papers/             Folder containing PDF files
+Slides/             Folder containing slide PDFs
+Images/             Folder containing images
+CV/                 Folder containing CV
+
+
+================================================================================
+4. ADDING A NEW UNPUBLISHED PAPER
+================================================================================
+
+STEP 1: Check if coauthors exist in coauthors.yaml
+--------------------------------------------------
+Open coauthors.yaml and check if all coauthors are listed. If someone is
+missing, add them:
+
+    Jane Smith: https://janesmith.com
+
+Names must match EXACTLY when you use them in papers.yaml.
+
+
+STEP 2: Add the paper to papers.yaml
+------------------------------------
+Open papers.yaml and find the "UNPUBLISHED PAPERS" section. Add your new
+paper at the TOP of that section (newest first):
+
+    - title: "My New Paper Title"
+      pdf: Papers/MyNewPaper.pdf
+      coauthors: [Jane Smith, Alex Frankel]
+      date: "January 2026"
+      status: unpublished
+
+Optional fields you can add:
+    slides: Slides/MyNewPaper-slides.pdf
+    links:
+      - label: "Supplementary Appendix"
+        url: Papers/MyNewPaper-appendix.pdf
+
+
+STEP 3: Add the actual PDF file
+-------------------------------
+Copy your PDF to the Papers/ folder with the filename you specified.
+If you have slides, copy them to the Slides/ folder.
+
+
+STEP 4: Build and verify
+------------------------
+    python3 build.py
+    open index.html          # Preview in browser
+
+Check that:
+  - Paper appears in the Unpublished section
+  - Title links to the correct PDF
+  - Coauthor names link to correct websites
+  - Slides link works (if applicable)
+
+
+STEP 5: Commit and push
+-----------------------
+    git add -A
+    git commit -m "Add new paper: My New Paper Title"
+    git push
+
+
+================================================================================
+5. ADDING A NEW PUBLISHED PAPER
+================================================================================
+
+Same as unpublished, but with additional required fields.
+
+STEP 1: Check coauthors (same as above)
+
+STEP 2: Add to papers.yaml in the "PUBLISHED PAPERS" section
+------------------------------------------------------------
+Add at the TOP of the published section (newest first):
+
+    - title: "My Published Paper"
+      pdf: Papers/MyPublishedPaper.pdf
+      coauthors: [Alex Frankel]
+      journal: "American Economic Review"
+      journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.xxxxx
+      pub_date: "March 2026"
+      status: published
+
+For forthcoming papers, use:
+      pub_date: "forthcoming"
+
+Optional fields:
+      slides: Slides/MyPublishedPaper-slides.pdf
+      links:
+        - label: "VoxEU column"
+          url: https://cepr.org/voxeu/columns/my-article
+        - label: "Supplementary Appendix"
+          url: Papers/MyPublishedPaper-appendix.pdf
+
+STEPS 3-5: Same as unpublished
+
+
+================================================================================
+6. MOVING A PAPER FROM UNPUBLISHED TO PUBLISHED
+================================================================================
+
+When a paper gets accepted:
+
+STEP 1: Find the paper in papers.yaml (in the UNPUBLISHED section)
+
+STEP 2: Change status and add journal info
+------------------------------------------
+Before:
+    - title: "My Paper"
+      pdf: Papers/MyPaper.pdf
+      coauthors: [Alex Frankel]
+      date: "revised January 2026"
+      status: unpublished
+
+After:
+    - title: "My Paper"
+      pdf: Papers/MyPaper.pdf
+      coauthors: [Alex Frankel]
+      journal: "Econometrica"
+      journal_url: https://doi.org/10.3982/ECTA12345
+      pub_date: "forthcoming"
+      status: published
+
+STEP 3: Move the entry
+----------------------
+Cut the entire entry and paste it at the TOP of the PUBLISHED section.
+(The order in the file determines the display order.)
+
+STEP 4: Build, verify, commit, push
+
+
+================================================================================
+7. UPDATING AN EXISTING PAPER
+================================================================================
+
+To update any aspect of a paper:
+
+1. Find the paper in papers.yaml
+2. Change the relevant field(s)
+3. Run: python3 build.py
+4. Commit and push
+
+Common updates:
+- Change "forthcoming" to actual publication date
+- Update PDF with new version
+- Add slides
+- Fix a typo in the title
+
+
+================================================================================
+8. REMOVING A PAPER
+================================================================================
+
+To remove a paper entirely:
+
+1. Find the paper in papers.yaml
+2. Delete the ENTIRE entry (from the "- title:" line to just before the next
+   "- title:" line)
+3. Run: python3 build.py
+4. Optionally delete the PDF from Papers/ folder
+5. Commit and push
+
+
+================================================================================
+9. WORKING WITH COAUTHORS
+================================================================================
+
+ADDING A NEW COAUTHOR
+---------------------
+Edit coauthors.yaml and add a line:
+
+    New Person Name: https://their-website.com
+
+The name you use here must EXACTLY match what you put in papers.yaml.
+
+
+UPDATING A COAUTHOR'S URL
+-------------------------
+If a coauthor changes their website:
+
+1. Edit coauthors.yaml - find their name and change the URL
+2. Run: python3 build.py
+
+That's it! All papers with that coauthor will automatically use the new URL.
+
+
+COAUTHOR NAME FORMATTING
+------------------------
+The name in coauthors.yaml is exactly what appears on the website.
+
+    Alex Frankel: https://...           # Displays as "Alex Frankel"
+    Frances Xu Lee: https://...         # Displays as "Frances Xu Lee"
+
+For names with special characters, use HTML entities:
+    "S&eacute;bastien Turban": https://...    # Displays as "Sébastien Turban"
+
+
+SOLO PAPERS (NO COAUTHORS)
+--------------------------
+For papers with no coauthors, use an empty list:
+
+    coauthors: []
+
+Or simply omit the coauthors field entirely.
+
+
+================================================================================
+10. PHD STUDENTS ON JOB MARKET
+================================================================================
+
+The PhD students section is controlled in build.py (not papers.yaml).
+
+ADDING/UPDATING STUDENTS
+------------------------
+Edit build.py and find this section near the top:
+
+    PHD_STUDENTS_ON_MARKET = [
+        {"name": "Tianhao Liu", "url": "https://sites.google.com/view/tianhaoliuecon"},
+        {"name": "Yangfan Zhou", "url": "https://sites.google.com/view/yangfanzhou/"},
+    ]
+
+To add a student:
+    {"name": "New Student", "url": "https://their-website.com"},
+
+To remove a student:
+    Delete their entire line (including the comma)
+
+
+REMOVING THE SECTION ENTIRELY
+-----------------------------
+When you have no students on the market, make the list empty:
+
+    PHD_STUDENTS_ON_MARKET = []
+
+This will completely hide the "PhD Students on the job market" section
+from the homepage. When you have students again, just add them back.
+
+
+================================================================================
+11. CHANGING THE FOOTER DATE
+================================================================================
+
+Edit build.py and find this line near the top:
+
+    FOOTER_DATE = "December 2025"
+
+Change it to the new date:
+
+    FOOTER_DATE = "January 2026"
+
+Then run: python3 build.py
+
+
+================================================================================
+12. PAPERS WITH SPECIAL FORMATTING
+================================================================================
+
+LONG COAUTHOR LISTS
+-------------------
+For papers with many coauthors, put them on a separate line:
+
+    - title: "Paper with Many Authors"
+      pdf: Papers/ManyAuthors.pdf
+      coauthors: [Person One, Person Two, Person Three, Person Four]
+      coauthors_on_next_line: true
+      ...
+
+This displays as:
+    Paper Title
+      with Person One, Person Two, Person Three, and Person Four
+
+
+PAPER NOTES
+-----------
+For additional information below a paper (earlier versions, related notes):
+
+    notes: "An earlier version was circulated under a different title"
+
+For notes with links, use HTML:
+
+    notes: |
+      An earlier version: <a class="papertitle" href="Papers/OldVersion.pdf">Old Title</a>
+
+The | character allows multi-line text.
+
+
+EXTRA LINKS (beyond slides)
+---------------------------
+    links:
+      - label: "VoxEU column"
+        url: https://cepr.org/voxeu/columns/my-article
+      - label: "Supplementary Appendix"
+        url: Papers/MyPaper-appendix.pdf
+      - label: "Replication code"
+        url: https://github.com/...
+
+
+================================================================================
+13. COMPLETE FIELD REFERENCE
+================================================================================
+
+REQUIRED FOR ALL PAPERS:
+------------------------
+title           Paper title (in quotes if it contains colons)
+status          "published" or "unpublished"
+
+REQUIRED FOR UNPUBLISHED:
+-------------------------
+date            e.g., "January 2026" or "revised January 2026"
+
+REQUIRED FOR PUBLISHED:
+-----------------------
+journal         Journal name
+journal_url     URL to the journal article page
+pub_date        e.g., "March 2026" or "forthcoming"
+
+OPTIONAL FOR ALL:
+-----------------
+pdf                     Path to PDF file (e.g., Papers/MyPaper.pdf)
+coauthors               List of coauthor names: [Name One, Name Two]
+slides                  Path to slides PDF
+links                   List of {label, url} pairs for extra links
+notes                   Additional text/HTML below the paper
+coauthors_on_next_line  true/false - put coauthors on separate line
+
+OPTIONAL FOR PUBLISHED:
+-----------------------
+notes_inside_journal_div    true - puts notes inside the journal div
+notes_in_div                true - wraps notes in <div> instead of <span>
+
+
+================================================================================
+14. YAML SYNTAX TIPS
+================================================================================
+
+QUOTES
+------
+Use quotes around titles containing colons:
+    title: "Information Design: A Survey"
+
+Use quotes around URLs with special characters:
+    journal_url: "https://example.com?id=123&type=article"
+
+
+LISTS
+-----
+Two formats work:
+
+Inline (good for short lists):
+    coauthors: [Alex Frankel, Wouter Dessein]
+
+Multi-line (good for long lists or links):
+    coauthors:
+      - Alex Frankel
+      - Wouter Dessein
+
+    links:
+      - label: "Appendix"
+        url: Papers/appendix.pdf
+
+
+MULTI-LINE TEXT
+---------------
+Use | for multi-line notes:
+
+    notes: |
+      First line of notes.
+      Second line of notes.
+      <a href="...">A link</a>
+
+
+INDENTATION
+-----------
+YAML is indentation-sensitive. Use 2 spaces (not tabs) for each level:
+
+    - title: "Paper"
+      pdf: Papers/paper.pdf
+      coauthors: [Name]
+      links:
+        - label: "Link"
+          url: https://...
+
+
+================================================================================
+15. TROUBLESHOOTING
+================================================================================
+
+"No module named 'yaml'" error
+------------------------------
+Install PyYAML:
+    pip3 install pyyaml
+
+
+"yaml.scanner.ScannerError" or parsing errors
+---------------------------------------------
+- Check for missing colons after field names
+- Check for proper indentation (2 spaces)
+- Put titles with colons in quotes
+- Make sure lists use proper format: [item1, item2] or - item
+
+
+Coauthor link not appearing
+---------------------------
+- Check that the name in papers.yaml EXACTLY matches coauthors.yaml
+- Names are case-sensitive
+- Check for extra spaces
+
+
+Paper not showing up
+--------------------
+- Check status is "published" or "unpublished" (spelled correctly)
+- Check YAML syntax - a syntax error can cause papers to be skipped
+
+
+PDF link broken
+---------------
+- Check the path in papers.yaml matches the actual file location
+- Paths are relative to the website root (e.g., Papers/file.pdf, not
+  /Users/.../Papers/file.pdf)
+
+
+================================================================================
+16. EXAMPLES
+================================================================================
+
+MINIMAL UNPUBLISHED PAPER:
+--------------------------
+    - title: "Simple Paper"
+      pdf: Papers/Simple.pdf
+      coauthors: [Alex Frankel]
+      date: "January 2026"
+      status: unpublished
+
+
+MINIMAL PUBLISHED PAPER:
+------------------------
+    - title: "Simple Published Paper"
+      pdf: Papers/SimplePublished.pdf
+      coauthors: [Alex Frankel]
+      journal: "Econometrica"
+      journal_url: https://doi.org/10.3982/ECTA12345
+      pub_date: "March 2026"
+      status: published
+
+
+SOLO PAPER (NO COAUTHORS):
+--------------------------
+    - title: "Solo Paper"
+      pdf: Papers/Solo.pdf
+      coauthors: []
+      journal: "Journal of Economic Theory"
+      journal_url: https://doi.org/...
+      pub_date: "May 2026"
+      status: published
+
+
+PAPER WITH EVERYTHING:
+----------------------
+    - title: "Paper with All Options"
+      pdf: Papers/Everything.pdf
+      coauthors: [Alex Frankel, Wouter Dessein, Andreas Kleiner]
+      coauthors_on_next_line: true
+      journal: "American Economic Review"
+      journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.xxxxx
+      pub_date: "September 2025"
+      slides: Slides/Everything-slides.pdf
+      links:
+        - label: "VoxEU column"
+          url: https://cepr.org/voxeu/columns/my-article
+        - label: "Supplementary Appendix"
+          url: Papers/Everything-appendix.pdf
+        - label: "Replication code"
+          url: https://github.com/user/repo
+      notes: |
+        A related note: <a class="papertitle" href="Papers/Related.pdf">Related Paper Title</a>, with <a class="coauthor" href="https://coauthor.com">Coauthor Name</a>, October 2023
+      status: published
+
+
+FORTHCOMING PAPER:
+------------------
+    - title: "Forthcoming Paper"
+      pdf: Papers/Forthcoming.pdf
+      coauthors: [Alex Frankel]
+      journal: "Theoretical Economics"
+      journal_url: https://econtheory.org
+      pub_date: "forthcoming"
+      status: published
+
+
+PAPER WITHOUT PDF YET:
+----------------------
+    - title: "Coming Soon Paper"
+      coauthors: [New Coauthor]
+      date: "coming soon"
+      status: unpublished
+
+
+================================================================================
+                              END OF INSTRUCTIONS
+================================================================================

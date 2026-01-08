@@ -1,0 +1,408 @@
+# Papers data - edit here to update all pages
+# Run: python build.py after making changes
+
+# =============================================================================
+# UNPUBLISHED PAPERS
+# =============================================================================
+
+- title: "Replacement and Reputation"
+  pdf: Papers/KLP-replacement.pdf
+  coauthors: [Elliot Lipnowski, Harry Pei]
+  date: "December 2025"
+  slides: Slides/KLP-Replacement-slides.pdf
+  status: unpublished
+
+- title: "Convex Choice"
+  pdf: Papers/KK-ConvexChoice.pdf
+  coauthors: [Andreas Kleiner]
+  date: "revised February 2025"
+  slides: Slides/KK-ConvexChoice-slides.pdf
+  status: unpublished
+
+- title: "Effective Communication in Cheap-Talk Games"
+  pdf: Papers/GKLOS-EffectiveCommunication.pdf
+  coauthors: [Sidartha Gordon, Melody Pei-yu Lo, Wojciech Olszewski, Joel Sobel]
+  coauthors_on_next_line: true
+  date: "revised October 2023"
+  links:
+    - label: "Supplementary Excel file"
+      url: Papers/GKLOS-EffectiveCommunication-Supplement.xlsx
+  status: unpublished
+
+- title: "Information Revelation in Constant-Sum Games: Elections and Beyond"
+  pdf: Papers/KST-InfoRev.pdf
+  coauthors: [Francesco Squintani, Katrin Tinn]
+  coauthors_on_next_line: true
+  date: "revised December 2025"
+  slides: Slides/KST-slides-May2013.pdf
+  notes: |
+    Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a>
+  status: unpublished
+
+- title: "A Note on Mixed-Nash Implementation"
+  pdf: Papers/Mixed-Nash.pdf
+  coauthors: [Olivier Tercieux]
+  date: "January 2012"
+  status: unpublished
+
+- title: "On Optimal Voting Rules under Homogeneous Preferences"
+  pdf: Papers/jurydesign.pdf
+  coauthors: [Arnaud Costinot]
+  date: "revised August 2007"
+  status: unpublished
+
+# =============================================================================
+# PUBLISHED PAPERS
+# =============================================================================
+
+- title: "Lemonade from Lemons: Information Design and Adverse Selection"
+  pdf: Papers/KZ-Lemonade.pdf
+  coauthors: [Weijie Zhong]
+  journal: "Theoretical Economics"
+  journal_url: https://econtheory.org
+  pub_date: "forthcoming"
+  slides: Slides/KZ-Lemonade-slides.pdf
+  status: published
+
+- title: "Test-Optional Admissions"
+  pdf: Papers/DFK-TestOptional.pdf
+  coauthors: [Wouter Dessein, Alex Frankel]
+  journal: "American Economic Review"
+  journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.20231407
+  pub_date: "September 2025"
+  slides: Slides/DFK-TestOptional-slides.pdf
+  links:
+    - label: "VoxEU column"
+      url: https://cepr.org/voxeu/columns/test-optional-admissions-diversity-and-social-pressure
+  notes: |
+    A related note: <a class="papertitle" href="Papers/FK-Deterministic.pdf">A Result on Optimal Deterministic Allocation Rules</a>, with <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>, October 2023
+  status: published
+
+- title: "The Test-Optional Puzzle"
+  pdf: Papers/DFK-TestOptionalPuzzle.pdf
+  coauthors: [Wouter Dessein, Alex Frankel]
+  journal: "AEA Papers and Proceedings"
+  journal_url: https://www.aeaweb.org/articles?id=10.1257/pandp.20251055
+  pub_date: "May 2025"
+  slides: Slides/DFK-TestOptionalPuzzle-slides.pdf
+  status: published
+
+- title: "Single-Crossing Differences in Convex Environments"
+  pdf: Papers/KLR-SCDstar.pdf
+  coauthors: [SangMok Lee, Daniel Rappoport]
+  journal: "Review of Economic Studies"
+  journal_url: https://academic.oup.com/restud/article-abstract/91/5/2981/7330557
+  pub_date: "October 2024"
+  notes: |
+    An earlier incarnation: <a class="papertitle" href="Papers/KLR-sced.pdf">Single-Crossing Differences on Distributions</a>
+    <span class="paper-links-inline" style="font-style: normal;">
+      <a class="slidestitle" href="Slides/KLR-SCED-slides.pdf">Slides</a>
+    </span>
+  status: published
+
+- title: "Beyond Unbounded Beliefs: How Preferences and Information Interplay in Social Learning"
+  pdf: Papers/KLLR-BUB.pdf
+  coauthors: [SangMok Lee, Tianhao Liu, Daniel Rappoport]
+  coauthors_on_next_line: true
+  journal: "Econometrica"
+  journal_url: https://doi.org/10.3982/ECTA21470
+  pub_date: "July 2024"
+  slides: Slides/KLLR-ObsLearning-slides.pdf
+  status: published
+
+- title: "Sequential Veto Bargaining with Incomplete Information"
+  pdf: Papers/AKK-svb.pdf
+  coauthors: [Nageeb Ali, Andreas Kleiner]
+  journal: "Econometrica"
+  journal_url: https://onlinelibrary.wiley.com/doi/10.3982/ECTA20658
+  pub_date: "July 2023"
+  slides: Slides/AKK-svb-slides.pdf
+  status: published
+
+- title: "Improving Information from Manipulable Data"
+  pdf: Papers/FK-ImprovingInfo.pdf
+  coauthors: [Alex Frankel]
+  journal: "Journal of the European Economic Association"
+  journal_url: https://doi.org/10.1093/jeea/jvab017
+  pub_date: "February 2022"
+  slides: Slides/FK-improvinginfo-slides.pdf
+  status: published
+
+- title: "Delegation in Veto Bargaining"
+  pdf: Papers/KKvW-veto.pdf
+  coauthors: [Andreas Kleiner, Richard Van Weelden]
+  journal: "American Economic Review"
+  journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.20201817
+  pub_date: "December 2021"
+  slides: Slides/KKvW-veto-slides.pdf
+  status: published
+
+- title: "Information Validates the Prior: A Theorem on Bayesian Updating and Applications"
+  pdf: Papers/KLS-IVP.pdf
+  coauthors: [Frances Xu Lee, Wing Suen]
+  journal: "American Economic Review: Insights"
+  journal_url: https://www.aeaweb.org/articles?id=10.1257/aeri.20200284
+  pub_date: "June 2021"
+  notes: |
+    An earlier version with a different emphasis and leading application:
+    <div style="margin-top: .3em;">
+      <a class="papertitle" href="Papers/KLS-disclosure.pdf">A Theorem on Bayesian Updating and Applications to Communication Games</a>
+    </div>
+  notes_in_div: true
+  status: published
+
+- title: "Muddled Information"
+  pdf: Papers/FK-MudInf.pdf
+  coauthors: [Alex Frankel]
+  journal: "Journal of Political Economy"
+  journal_url: https://doi.org/10.1086/701604
+  pub_date: "August 2019"
+  slides: Slides/FK-mudinf-slides.pdf
+  status: published
+
+- title: "Reputation Effects and Incumbency (Dis)Advantage"
+  pdf: Papers/KvW-incumbency.pdf
+  coauthors: [Richard Van Weelden]
+  journal: "Quarterly Journal of Political Science"
+  journal_url: https://dx.doi.org/10.1561/100.00016057
+  pub_date: "2019"
+  slides: Slides/KvW-reputation-slides.pdf
+  status: published
+
+- title: "Informative Cheap Talk in Elections"
+  pdf: Papers/KvW-communication.pdf
+  coauthors: [Richard Van Weelden]
+  journal: "Review of Economic Studies"
+  journal_url: https://doi.org/10.1093/restud/rdy009
+  pub_date: "March 2019"
+  slides: Slides/KvW-communication-slides.pdf
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/KvW-communication-webappendix.pdf
+  status: published
+
+- title: "What Kind of Central Bank Competence?"
+  pdf: Papers/FK-Competence.pdf
+  coauthors: [Alex Frankel]
+  journal: "Theoretical Economics"
+  journal_url: https://econtheory.org/ojs/index.php/te/article/view/20180697
+  pub_date: "May 2018"
+  notes: |
+    An earlier version with a different focus was circulated under the title
+    <a class="papertitle" href="Papers/FK-Transparency.pdf">What Kind of Transparency?</a>
+  status: published
+
+- title: "Communication in Context: Interpreting Promises in an Experiment on Competition and Trust"
+  pdf: Papers/CKST-context-earlyedition.pdf
+  coauthors: [Alessandra Casella, Luis Sanchez, "S&eacute;bastien Turban"]
+  coauthors_on_next_line: true
+  journal: "Proceedings of the National Academy of Sciences"
+  journal_url: https://doi.org/10.1073/pnas.1714171115
+  pub_date: "January 2018"
+  notes: "Supplementary Appendix is contained in the above early-edition version"
+  status: published
+
+- title: "Electoral Ambiguity and Political Representation"
+  pdf: Papers/KVWW-ambiguity.pdf
+  coauthors: [Richard Van Weelden, Stephane Wolton]
+  journal: "American Journal of Political Science"
+  journal_url: https://dx.doi.org/10.1111/ajps.12310
+  pub_date: "October 2017"
+  slides: Slides/KVWW-ambiguity-slides.pdf
+  notes: "Supplementary Appendix is contained in the above pre-publication version"
+  status: published
+
+- title: "Contests for Experimentation"
+  pdf: Papers/HKL_contests.pdf
+  coauthors: [Marina Halac, Qingmin Liu]
+  journal: "Journal of Political Economy"
+  journal_url: https://doi.org/10.1086/693040
+  pub_date: "October 2017"
+  slides: Slides/HKL-contests-slides.pdf
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/HKL_contests_OnlineAppendix.pdf
+  status: published
+
+- title: "Investment in Concealable Information by Biased Experts"
+  pdf: Papers/KLS-acquisition.pdf
+  coauthors: [Frances Xu Lee, Wing Suen]
+  journal: "RAND Journal of Economics"
+  journal_url: https://dx.doi.org/10.1111/1756-2171.12166
+  pub_date: "Spring 2017"
+  status: published
+
+- title: "Optimal Contracts for Experimentation"
+  pdf: Papers/HKL_contracts_experimentation.pdf
+  coauthors: [Marina Halac, Qingmin Liu]
+  journal: "Review of Economic Studies"
+  journal_url: https://dx.doi.org/10.1093/restud/rdw013
+  pub_date: "July 2016"
+  slides: Slides/HKL-contracts-slides.pdf
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/HKL_contracts_OnlineAppendix.pdf
+    - label: "Clarifications"
+      url: Papers/HKL_contracts_clarification.pdf
+  status: published
+
+- title: "Congested Observational Learning"
+  pdf: Papers/EGKR-congestion.pdf
+  coauthors: [Erik Eyster, Andrea Galeotti, Matthew Rabin]
+  journal: "Games and Economic Behavior"
+  journal_url: https://dx.doi.org/10.1016/j.geb.2014.06.006
+  pub_date: "September 2014"
+  status: published
+
+- title: "Candidates, Character, and Corruption"
+  pdf: Papers/BernheimKartik-Character.pdf
+  coauthors: [Doug Bernheim]
+  journal: "American Economic Journal: Microeconomics"
+  journal_url: http://www.aeaweb.org/articles.php?doi=10.1257/mic.6.2.205
+  pub_date: "May 2014"
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/BernheimKartik-Character-SuppApp.pdf
+  notes: 'An earlier version was circulated under the title "Of Candidates and Character"'
+  notes_inside_journal_div: true
+  status: published
+
+- title: "Simple Mechanisms and Preferences for Honesty"
+  pdf: Papers/HKT_implementation_honesty.pdf
+  coauthors: [Richard Holden, Olivier Tercieux]
+  journal: "Games and Economic Behavior"
+  journal_url: https://dx.doi.org/10.1016/j.geb.2013.11.011
+  pub_date: "January 2014"
+  status: published
+
+- title: "Pandering to Persuade"
+  pdf: Papers/cdk-pandering.pdf
+  coauthors: [Yeon-Koo Che, Wouter Dessein]
+  journal: "American Economic Review"
+  journal_url: http://www.aeaweb.org/articles.php?doi=10.1257/aer.103.1.47
+  pub_date: "February 2013"
+  slides: Slides/CDK-slides.pdf
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/cdk-pandering-webappendix.pdf
+  status: published
+
+- title: "Herding with Collective Preferences"
+  pdf: Papers/herding_collective_prefs.pdf
+  coauthors: [Nageeb Ali]
+  journal: "Economic Theory"
+  journal_url: https://dx.doi.org/10.1007/s00199-011-0609-7
+  pub_date: "November 2012"
+  notes: |
+    Supersedes an earlier working paper "Social Learning in Elections"
+    <span class="paper-links-inline" style="font-style: normal;">
+      <a class="slidestitle" href="Slides/AK-herds-slides.pdf">Slides</a>
+    </span>
+  notes_inside_journal_div: true
+  status: published
+
+- title: "Implementation with Evidence"
+  pdf: Papers/implementation_evidence.pdf
+  coauthors: [Olivier Tercieux]
+  journal: "Theoretical Economics"
+  journal_url: https://dx.doi.org/10.3982/TE723
+  pub_date: "May 2012"
+  links:
+    - label: "Slides v1"
+      url: Slides/KT-evidence-slides1.pdf
+    - label: "Slides v2"
+      url: Slides/KT-evidence-slides2.pdf
+  status: published
+
+- title: "A Note on Undominated Bertrand Equilibria"
+  pdf: Papers/Published/bertrand_undominated.pdf
+  coauthors: []
+  journal: "Economics Letters"
+  journal_url: https://dx.doi.org/10.1016/j.econlet.2011.01.013
+  pub_date: "May 2011"
+  status: published
+
+- title: "Opinions as Incentives"
+  pdf: Papers/opinions.pdf
+  coauthors: [Yeon-Koo Che]
+  journal: "Journal of Political Economy"
+  journal_url: https://dx.doi.org/10.1086/648432
+  pub_date: "October 2009"
+  slides: Slides/CK-opinions-slides.pdf
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/Opinions-SupplementaryAppendix.pdf
+  status: published
+
+- title: "Strategic Communication with Lying Costs"
+  pdf: Papers/sclc.pdf
+  coauthors: []
+  journal: "Review of Economic Studies"
+  journal_url: https://dx.doi.org/10.1111/j.1467-937X.2009.00559.x
+  pub_date: "October 2009"
+  slides: Slides/Kartik-lyingcosts-slides.pdf
+  notes: 'Subsumes portions of an earlier working paper "Information Transmission with Almost-Cheap Talk",<br>the other portions of which are subsumed by "Selecting Cheap-Talk Equilibria"'
+  notes_inside_journal_div: true
+  status: published
+
+- title: "Would I Lie to You? On Social Preferences and Lying Aversion"
+  pdf: Papers/would_i_lie.pdf
+  coauthors: [Sjaak Hurkens]
+  journal: "Experimental Economics"
+  journal_url: https://dx.doi.org/10.1007/s10683-008-9208-2
+  pub_date: "June 2009"
+  links:
+    - label: "Appendix 1"
+      url: Papers/would_i_lie_appendix1.pdf
+    - label: "Appendix 2"
+      url: Papers/would_i_lie_Instructions.pdf
+  status: published
+
+- title: "Information Aggregation in Standing and Ad Hoc Committees"
+  pdf: Papers/Published/infoagg_adhocstanding.pdf
+  coauthors: [Nageeb Ali, Jacob Goeree, Thomas Palfrey]
+  journal: "American Economic Review: Papers and Proceedings"
+  journal_url: https://dx.doi.org/10.1257/aer.98.2.181
+  pub_date: "May 2008"
+  status: published
+
+- title: "Selecting Cheap-Talk Equilibria"
+  pdf: Papers/Published/nits.pdf
+  coauthors: [Ying Chen, Joel Sobel]
+  journal: "Econometrica"
+  journal_url: https://dx.doi.org/10.1111/j.0012-9682.2008.00819.x
+  pub_date: "January 2008"
+  status: published
+
+- title: "A Note on Cheap Talk and Burned Money"
+  pdf: Papers/burned_note.pdf
+  coauthors: []
+  journal: "Journal of Economic Theory"
+  journal_url: https://dx.doi.org/10.1016/j.jet.2006.07.001
+  pub_date: "September 2007"
+  notes: |
+    An earlier version, <a class="papertitle" href="Papers/burned.pdf">On Cheap Talk and Burned Money</a>, contains additional results
+  notes_inside_journal_div: true
+  status: published
+
+- title: "Signaling Character in Electoral Competition"
+  pdf: Papers/Published/character.pdf
+  coauthors: [Preston McAfee]
+  journal: "American Economic Review"
+  journal_url: https://dx.doi.org/10.1257/aer.97.3.852
+  pub_date: "June 2007"
+  slides: Slides/KM-character-slides.pdf
+  links:
+    - label: "Supplementary Appendix"
+      url: Papers/integrity_webappendix.pdf
+    - label: "Dilbert cartoon"
+      url: Images/dilbert_character.gif
+  status: published
+
+- title: "Credulity, Lies, and Costly Talk"
+  pdf: Papers/Published/clct.pdf
+  coauthors: [Marco Ottaviani, Francesco Squintani]
+  journal: "Journal of Economic Theory"
+  journal_url: https://dx.doi.org/10.1016/j.jet.2006.04.003
+  pub_date: "May 2007"
+  status: published
