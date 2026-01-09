@@ -13,14 +13,15 @@ TABLE OF CONTENTS
 6. Moving a Paper from Unpublished to Published
 7. Updating an Existing Paper
 8. Removing a Paper
-9. Working with Coauthors
-10. PhD Students on Job Market
-11. Changing the Footer Date
-12. Papers with Special Formatting
-13. Complete Field Reference
-14. YAML Syntax Tips
-15. Troubleshooting
-16. Examples
+9. Hiding a Paper (Draft/Private)
+10. Working with Coauthors
+11. PhD Students on Job Market
+12. Changing the Footer Date
+13. Papers with Special Formatting
+14. Complete Field Reference
+15. YAML Syntax Tips
+16. Troubleshooting
+17. Examples
 
 
 ================================================================================
@@ -235,7 +236,38 @@ To remove a paper entirely:
 
 
 ================================================================================
-9. WORKING WITH COAUTHORS
+9. HIDING A PAPER (DRAFT/PRIVATE)
+================================================================================
+
+To keep a paper in papers.yml without displaying it on the website, use any
+status value other than "published" or "unpublished":
+
+    - title: "My Draft Paper"
+      pdf: Papers/Draft.pdf
+      coauthors: [Someone]
+      date: "January 2026"
+      status: draft
+
+The paper stays in the data file with all its metadata, but won't appear on
+any page. When you're ready to make it public, just change the status:
+
+    status: unpublished     (to show in unpublished section)
+    status: published       (to show in published section)
+
+You can use any status name you like:
+    status: draft
+    status: private
+    status: hidden
+    status: wip
+
+This is useful for:
+- Papers in progress that you want to track
+- Papers you want to keep links to but not display yet
+- Temporarily hiding a paper without deleting it
+
+
+================================================================================
+10. WORKING WITH COAUTHORS
 ================================================================================
 
 ADDING A NEW COAUTHOR
@@ -278,7 +310,7 @@ Or simply omit the coauthors field entirely.
 
 
 ================================================================================
-10. PHD STUDENTS ON JOB MARKET
+11. PHD STUDENTS ON JOB MARKET
 ================================================================================
 
 The PhD students section is directly in index.html (not in the data files).
@@ -309,7 +341,7 @@ When you have students again, add it back.
 
 
 ================================================================================
-11. CHANGING THE FOOTER DATE
+12. CHANGING THE FOOTER DATE
 ================================================================================
 
 The footer date is directly in each HTML file. Edit:
@@ -322,7 +354,7 @@ Change to the new date and commit/push.
 
 
 ================================================================================
-12. PAPERS WITH SPECIAL FORMATTING
+13. PAPERS WITH SPECIAL FORMATTING
 ================================================================================
 
 LONG COAUTHOR LISTS
@@ -377,7 +409,7 @@ EXTRA LINKS (beyond slides)
 
 
 ================================================================================
-13. COMPLETE FIELD REFERENCE
+14. COMPLETE FIELD REFERENCE
 ================================================================================
 
 REQUIRED FOR ALL PAPERS:
@@ -411,7 +443,7 @@ notes_in_div                true - wraps notes in <div> instead of <span>
 
 
 ================================================================================
-14. YAML SYNTAX TIPS
+15. YAML SYNTAX TIPS
 ================================================================================
 
 QUOTES
@@ -463,7 +495,7 @@ YAML is indentation-sensitive. Use 2 spaces (not tabs) for each level:
 
 
 ================================================================================
-15. TROUBLESHOOTING
+16. TROUBLESHOOTING
 ================================================================================
 
 Site not updating after push
@@ -496,7 +528,7 @@ PDF link broken
 
 
 ================================================================================
-16. EXAMPLES
+17. EXAMPLES
 ================================================================================
 
 MINIMAL UNPUBLISHED PAPER:
