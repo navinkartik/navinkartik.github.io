@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,29 +60,17 @@
 </center>
 
 <ul class="papers">
-  <li><a class="papertitle" href="Papers/KLP-replacement.pdf">Replacement and Reputation</a>, with <a class="coauthor" href="https://elliotlipnowski.com">Elliot Lipnowski</a> and <a class="coauthor" href="https://sites.northwestern.edu/harrypei/">Harry Pei</a>, December 2025 <span class="paper-links-inline"><a href="Slides/KLP-Replacement-slides.pdf">Slides</a></span></li>
-
-  <li><a class="papertitle" href="Papers/KK-ConvexChoice.pdf">Convex Choice</a>, with <a class="coauthor" href="https://www.sites.google.com/site/andykleiner">Andreas Kleiner</a>, revised February 2025 <span class="paper-links-inline"><a href="Slides/KK-ConvexChoice-slides.pdf">Slides</a></span></li>
-
-  <li><a class="papertitle" href="Papers/GKLOS-EffectiveCommunication.pdf">Effective Communication in Cheap-Talk Games</a>, revised October 2023 <span class="paper-links-inline"><a class="slidestitle" href="Papers/GKLOS-EffectiveCommunication-Supplement.xlsx">Supplementary Excel file</a></span>
+{% for paper in site.data.papers %}{% if paper.status == "unpublished" %}
+  <li>{% if paper.pdf %}<a class="papertitle" href="{{ paper.pdf }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}{% if paper.coauthors.size > 0 and paper.coauthors_on_next_line != true %}{% assign coauth_size = paper.coauthors | size %}{% assign second_last_idx = coauth_size | minus: 2 %}, with {% for coauthor in paper.coauthors %}{% assign url = site.data.coauthors[coauthor] %}<a class="coauthor" href="{{ url }}">{{ coauthor }}</a>{% unless forloop.last %}{% if forloop.index0 == second_last_idx %} and {% else %}, {% endif %}{% endunless %}{% endfor %}{% endif %}{% if paper.date %}, {{ paper.date }}{% endif %}{% if paper.slides or paper.links %} <span class="paper-links-inline">{% if paper.slides %}<a href="{{ paper.slides }}">Slides</a>{% endif %}{% for link in paper.links %}<a class="slidestitle" href="{{ link.url }}">{{ link.label }}</a>{% endfor %}</span>{% endif %}{% if paper.coauthors.size > 0 and paper.coauthors_on_next_line %}
     <div class="coauthor-next-line">
-      with <a class="coauthor" href="https://sites.google.com/site/sidarthagordon/">Sidartha Gordon</a>, <a class="coauthor" href="https://peiyulo.weebly.com">Melody Pei-yu Lo</a>, <a class="coauthor" href="https://sites.northwestern.edu/wol737/">Wojciech Olszewski</a>, and <a class="coauthor" href="http://weber.ucsd.edu/~jsobel/">Joel Sobel</a>
-    </div></li>
-
-  <li><a class="papertitle" href="Papers/KST-InfoRev.pdf">Information Revelation in Constant-Sum Games: Elections and Beyond</a>, revised December 2025 <span class="paper-links-inline"><a href="Slides/KST-slides-May2013.pdf">Slides</a></span>
-    <div class="coauthor-next-line">
-      with <a class="coauthor" href="https://profiles.warwick.ac.uk/ecskad-francesco-squintani">Francesco Squintani</a> and <a class="coauthor" href="https://www.mcgill.ca/desautels/katrin-tinn">Katrin Tinn</a>
-    </div>
+      with {% assign coauth_size = paper.coauthors | size %}{% assign second_last_idx = coauth_size | minus: 2 %}{% for coauthor in paper.coauthors %}{% assign url = site.data.coauthors[coauthor] %}<a class="coauthor" href="{{ url }}">{{ coauthor }}</a>{% unless forloop.last %}{% if forloop.index0 == second_last_idx %}, and {% else %}, {% endif %}{% endunless %}{% endfor %}
+    </div>{% endif %}{% if paper.notes %}
     <div class="paper-notes">
       <span>
-        Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a>
+        {{ paper.notes }}
       </span>
-    </div></li>
-
-  <li><a class="papertitle" href="Papers/Mixed-Nash.pdf">A Note on Mixed-Nash Implementation</a>, with <a class="coauthor" href="https://sites.google.com/site/otercieux/home">Olivier Tercieux</a>, January 2012</li>
-
-  <li><a class="papertitle" href="Papers/jurydesign.pdf">On Optimal Voting Rules under Homogeneous Preferences</a>, with <a class="coauthor" href="https://economics.mit.edu/people/faculty/arnaud-costinot">Arnaud Costinot</a>, revised August 2007</li>
-
+    </div>{% endif %}</li>
+{% endif %}{% endfor %}
 </ul>
 
 <p class="footer">December 2025</p>

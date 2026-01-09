@@ -1,0 +1,18 @@
+# Jekyll configuration for Navin Kartik's academic website
+# GitHub Pages automatically builds this site with Jekyll
+
+title: Navin Kartik
+description: Professor of Economics, Yale University
+
+# Build settings
+markdown: kramdown
+
+# Exclude files from processing
+exclude:
+  - build.py
+  - papers.yaml
+  - coauthors.yaml
+  - BUILD_INSTRUCTIONS.txt
+  - README.md
+  - Gemfile
+  - Gemfile.lock

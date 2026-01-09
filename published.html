@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,322 +60,29 @@
 </center>
 
 <ol reversed class="papers">
-  <li><a class="papertitle" href="Papers/KZ-Lemonade.pdf">Lemonade from Lemons: Information Design and Adverse Selection</a>, with <a class="coauthor" href="https://wjzhong.com">Weijie Zhong</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://econtheory.org"><i>Theoretical Economics</i></a>, forthcoming
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KZ-Lemonade-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/DFK-TestOptional.pdf">Test-Optional Admissions</a>, with <a class="coauthor" href="http://www0.gsb.columbia.edu/faculty/wdessein/">Wouter Dessein</a> and <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://www.aeaweb.org/articles?id=10.1257/aer.20231407"><i>American Economic Review</i></a>, September 2025
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/DFK-TestOptional-slides.pdf">Slides</a> <a href="https://cepr.org/voxeu/columns/test-optional-admissions-diversity-and-social-pressure">VoxEU column</a>
-      </span>
-    </div>
-    <div class="paper-notes">
-      <span>
-        A related note: <a class="papertitle" href="Papers/FK-Deterministic.pdf">A Result on Optimal Deterministic Allocation Rules</a>, with <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>, October 2023
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/DFK-TestOptionalPuzzle.pdf">The Test-Optional Puzzle</a>, with <a class="coauthor" href="http://www0.gsb.columbia.edu/faculty/wdessein/">Wouter Dessein</a> and <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://www.aeaweb.org/articles?id=10.1257/pandp.20251055"><i>AEA Papers and Proceedings</i></a>, May 2025
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/DFK-TestOptionalPuzzle-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KLR-SCDstar.pdf">Single-Crossing Differences in Convex Environments</a>, with <a class="coauthor" href="http://sangmok81.github.io/website/">SangMok Lee</a> and <a class="coauthor" href="http://www.danielrappoport.com">Daniel Rappoport</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://academic.oup.com/restud/article-abstract/91/5/2981/7330557"><i>Review of Economic Studies</i></a>, October 2024
-    </div>
-    <div class="paper-notes">
-      <span>
-        An earlier incarnation: <a class="papertitle" href="Papers/KLR-sced.pdf">Single-Crossing Differences on Distributions</a>
-<span class="paper-links-inline" style="font-style: normal;">
-  <a class="slidestitle" href="Slides/KLR-SCED-slides.pdf">Slides</a>
-</span>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KLLR-BUB.pdf">Beyond Unbounded Beliefs: How Preferences and Information Interplay in Social Learning</a>
+{% for paper in site.data.papers %}{% if paper.status == "published" %}
+  <li>{% if paper.pdf %}<a class="papertitle" href="{{ paper.pdf }}">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}{% if paper.coauthors.size > 0 and paper.coauthors_on_next_line != true %}{% assign coauth_size = paper.coauthors | size %}{% assign second_last_idx = coauth_size | minus: 2 %}, with {% for coauthor in paper.coauthors %}{% assign url = site.data.coauthors[coauthor] %}<a class="coauthor" href="{{ url }}">{{ coauthor }}</a>{% unless forloop.last %}{% if forloop.index0 == second_last_idx %} and {% else %}, {% endif %}{% endunless %}{% endfor %}{% endif %}{% if paper.coauthors.size > 0 and paper.coauthors_on_next_line %}
     <div class="coauthor-next-line">
-      with <a class="coauthor" href="http://sangmok81.github.io/website/">SangMok Lee</a>, <a class="coauthor" href="https://sites.google.com/view/tianhaoliuecon">Tianhao Liu</a>, and <a class="coauthor" href="http://www.danielrappoport.com">Daniel Rappoport</a>
-    </div>
+      with {% assign coauth_size = paper.coauthors | size %}{% assign second_last_idx = coauth_size | minus: 2 %}{% for coauthor in paper.coauthors %}{% assign url = site.data.coauthors[coauthor] %}<a class="coauthor" href="{{ url }}">{{ coauthor }}</a>{% unless forloop.last %}{% if forloop.index0 == second_last_idx %}, and {% else %}, {% endif %}{% endunless %}{% endfor %}
+    </div>{% endif %}
     <div class="journal-and-links">
-      <a class="journal" href="https://doi.org/10.3982/ECTA21470"><i>Econometrica</i></a>, July 2024
+      <a class="journal" href="{{ paper.journal_url }}"><i>{{ paper.journal }}</i></a>, {{ paper.pub_date }}{% if paper.slides or paper.links %}
       <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KLLR-ObsLearning-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/AKK-svb.pdf">Sequential Veto Bargaining with Incomplete Information</a>, with <a class="coauthor" href="https://sites.google.com/site/nageeb/">Nageeb Ali</a> and <a class="coauthor" href="https://www.sites.google.com/site/andykleiner">Andreas Kleiner</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://onlinelibrary.wiley.com/doi/10.3982/ECTA20658"><i>Econometrica</i></a>, July 2023
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/AKK-svb-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/FK-ImprovingInfo.pdf">Improving Information from Manipulable Data</a>, with <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://doi.org/10.1093/jeea/jvab017"><i>Journal of the European Economic Association</i></a>, February 2022
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/FK-improvinginfo-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KKvW-veto.pdf">Delegation in Veto Bargaining</a>, with <a class="coauthor" href="https://www.sites.google.com/site/andykleiner">Andreas Kleiner</a> and <a class="coauthor" href="https://www.sites.google.com/site/richvanweelden">Richard Van Weelden</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://www.aeaweb.org/articles?id=10.1257/aer.20201817"><i>American Economic Review</i></a>, December 2021
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KKvW-veto-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KLS-IVP.pdf">Information Validates the Prior: A Theorem on Bayesian Updating and Applications</a>, with <a class="coauthor" href="https://sites.google.com/site/researchoffrancesxu/">Frances Xu Lee</a> and <a class="coauthor" href="https://www4.fbe.hku.hk/~wsuen/">Wing Suen</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://www.aeaweb.org/articles?id=10.1257/aeri.20200284"><i>American Economic Review: Insights</i></a>, June 2021
-    </div>
-    <div class="paper-notes">
-      <div>
-        An earlier version with a different emphasis and leading application:
-<div style="margin-top: .3em;">
-  <a class="papertitle" href="Papers/KLS-disclosure.pdf">A Theorem on Bayesian Updating and Applications to Communication Games</a>
-</div>
-      </div>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/FK-MudInf.pdf">Muddled Information</a>, with <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://doi.org/10.1086/701604"><i>Journal of Political Economy</i></a>, August 2019
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/FK-mudinf-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KvW-incumbency.pdf">Reputation Effects and Incumbency (Dis)Advantage</a>, with <a class="coauthor" href="https://www.sites.google.com/site/richvanweelden">Richard Van Weelden</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1561/100.00016057"><i>Quarterly Journal of Political Science</i></a>, 2019
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KvW-reputation-slides.pdf">Slides</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KvW-communication.pdf">Informative Cheap Talk in Elections</a>, with <a class="coauthor" href="https://www.sites.google.com/site/richvanweelden">Richard Van Weelden</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://doi.org/10.1093/restud/rdy009"><i>Review of Economic Studies</i></a>, March 2019
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KvW-communication-slides.pdf">Slides</a> <a href="Papers/KvW-communication-webappendix.pdf">Supplementary Appendix</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/FK-Competence.pdf">What Kind of Central Bank Competence?</a>, with <a class="coauthor" href="https://faculty.chicagobooth.edu/alexander-frankel">Alex Frankel</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://econtheory.org/ojs/index.php/te/article/view/20180697"><i>Theoretical Economics</i></a>, May 2018
-    </div>
-    <div class="paper-notes">
-      <span>
-        An earlier version with a different focus was circulated under the title
-<a class="papertitle" href="Papers/FK-Transparency.pdf">What Kind of Transparency?</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/CKST-context-earlyedition.pdf">Communication in Context: Interpreting Promises in an Experiment on Competition and Trust</a>
-    <div class="coauthor-next-line">
-      with <a class="coauthor" href="http://econ.columbia.edu/alessandra-casella">Alessandra Casella</a>, <a class="coauthor" href="http://economics.cornell.edu/luis-sanchez">Luis Sanchez</a>, and <a class="coauthor" href="https://sites.google.com/site/sebastienturban/">S&eacute;bastien Turban</a>
-    </div>
-    <div class="journal-and-links">
-      <a class="journal" href="https://doi.org/10.1073/pnas.1714171115"><i>Proceedings of the National Academy of Sciences</i></a>, January 2018
-    </div>
-    <div class="paper-notes">
-      <span>
-        Supplementary Appendix is contained in the above early-edition version
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KVWW-ambiguity.pdf">Electoral Ambiguity and Political Representation</a>, with <a class="coauthor" href="https://www.sites.google.com/site/richvanweelden">Richard Van Weelden</a> and <a class="coauthor" href="http://stephanewolton.com">Stephane Wolton</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1111/ajps.12310"><i>American Journal of Political Science</i></a>, October 2017
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KVWW-ambiguity-slides.pdf">Slides</a>
-      </span>
-    </div>
-    <div class="paper-notes">
-      <span>
-        Supplementary Appendix is contained in the above pre-publication version
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/HKL_contests.pdf">Contests for Experimentation</a>, with <a class="coauthor" href="https://sites.google.com/view/marinahalac">Marina Halac</a> and <a class="coauthor" href="https://sites.google.com/site/qingmin/">Qingmin Liu</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://doi.org/10.1086/693040"><i>Journal of Political Economy</i></a>, October 2017
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/HKL-contests-slides.pdf">Slides</a> <a href="Papers/HKL_contests_OnlineAppendix.pdf">Supplementary Appendix</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/KLS-acquisition.pdf">Investment in Concealable Information by Biased Experts</a>, with <a class="coauthor" href="https://sites.google.com/site/researchoffrancesxu/">Frances Xu Lee</a> and <a class="coauthor" href="https://www4.fbe.hku.hk/~wsuen/">Wing Suen</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1111/1756-2171.12166"><i>RAND Journal of Economics</i></a>, Spring 2017
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/HKL_contracts_experimentation.pdf">Optimal Contracts for Experimentation</a>, with <a class="coauthor" href="https://sites.google.com/view/marinahalac">Marina Halac</a> and <a class="coauthor" href="https://sites.google.com/site/qingmin/">Qingmin Liu</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1093/restud/rdw013"><i>Review of Economic Studies</i></a>, July 2016
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/HKL-contracts-slides.pdf">Slides</a> <a href="Papers/HKL_contracts_OnlineAppendix.pdf">Supplementary Appendix</a> <a href="Papers/HKL_contracts_clarification.pdf">Clarifications</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/EGKR-congestion.pdf">Congested Observational Learning</a>, with <a class="coauthor" href="https://econ.ucsb.edu/people/faculty/erik-eyster">Erik Eyster</a>, <a class="coauthor" href="https://andreagaleottiblog.wordpress.com">Andrea Galeotti</a>, and <a class="coauthor" href="http://scholar.harvard.edu/rabin/home">Matthew Rabin</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1016/j.geb.2014.06.006"><i>Games and Economic Behavior</i></a>, September 2014
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/BernheimKartik-Character.pdf">Candidates, Character, and Corruption</a>, with <a class="coauthor" href="http://www.stanford.edu/~bernheim">Doug Bernheim</a>
-    <div class="journal-and-links">
-      <a class="journal" href="http://www.aeaweb.org/articles.php?doi=10.1257/mic.6.2.205"><i>American Economic Journal: Microeconomics</i></a>, May 2014
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Papers/BernheimKartik-Character-SuppApp.pdf">Supplementary Appendix</a>
-      </span>
+        {% if paper.slides %}<a href="{{ paper.slides }}">Slides</a>{% endif %}{% for link in paper.links %} <a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}
+      </span>{% endif %}{% if paper.notes and paper.notes_inside_journal_div %}
       <div class="paper-notes">
-        An earlier version was circulated under the title "Of Candidates and Character"
-      </div>
-    </div>
+        {{ paper.notes }}
+      </div>{% endif %}
+    </div>{% if paper.notes and paper.notes_inside_journal_div != true %}
+    <div class="paper-notes">
+      {% if paper.notes_in_div %}<div>
+        {{ paper.notes }}
+      </div>{% else %}<span>
+        {{ paper.notes }}
+      </span>{% endif %}
+    </div>{% endif %}
   </li>
-
-  <li><a class="papertitle" href="Papers/HKT_implementation_honesty.pdf">Simple Mechanisms and Preferences for Honesty</a>, with <a class="coauthor" href="http://www.asb.unsw.edu.au/schools/Pages/richardholden.aspx">Richard Holden</a> and <a class="coauthor" href="https://sites.google.com/site/otercieux/home">Olivier Tercieux</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1016/j.geb.2013.11.011"><i>Games and Economic Behavior</i></a>, January 2014
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/cdk-pandering.pdf">Pandering to Persuade</a>, with <a class="coauthor" href="https://www.yeonkooche.com/">Yeon-Koo Che</a> and <a class="coauthor" href="http://www0.gsb.columbia.edu/faculty/wdessein/">Wouter Dessein</a>
-    <div class="journal-and-links">
-      <a class="journal" href="http://www.aeaweb.org/articles.php?doi=10.1257/aer.103.1.47"><i>American Economic Review</i></a>, February 2013
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/CDK-slides.pdf">Slides</a> <a href="Papers/cdk-pandering-webappendix.pdf">Supplementary Appendix</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/herding_collective_prefs.pdf">Herding with Collective Preferences</a>, with <a class="coauthor" href="https://sites.google.com/site/nageeb/">Nageeb Ali</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1007/s00199-011-0609-7"><i>Economic Theory</i></a>, November 2012
-      <div class="paper-notes">
-        Supersedes an earlier working paper "Social Learning in Elections"
-<span class="paper-links-inline" style="font-style: normal;">
-  <a class="slidestitle" href="Slides/AK-herds-slides.pdf">Slides</a>
-</span>
-      </div>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/implementation_evidence.pdf">Implementation with Evidence</a>, with <a class="coauthor" href="https://sites.google.com/site/otercieux/home">Olivier Tercieux</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.3982/TE723"><i>Theoretical Economics</i></a>, May 2012
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KT-evidence-slides1.pdf">Slides v1</a> <a href="Slides/KT-evidence-slides2.pdf">Slides v2</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/Published/bertrand_undominated.pdf">A Note on Undominated Bertrand Equilibria</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1016/j.econlet.2011.01.013"><i>Economics Letters</i></a>, May 2011
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/opinions.pdf">Opinions as Incentives</a>, with <a class="coauthor" href="https://www.yeonkooche.com/">Yeon-Koo Che</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1086/648432"><i>Journal of Political Economy</i></a>, October 2009
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/CK-opinions-slides.pdf">Slides</a> <a href="Papers/Opinions-SupplementaryAppendix.pdf">Supplementary Appendix</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/sclc.pdf">Strategic Communication with Lying Costs</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1111/j.1467-937X.2009.00559.x"><i>Review of Economic Studies</i></a>, October 2009
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/Kartik-lyingcosts-slides.pdf">Slides</a>
-      </span>
-      <div class="paper-notes">
-        Subsumes portions of an earlier working paper "Information Transmission with Almost-Cheap Talk",<br>the other portions of which are subsumed by "Selecting Cheap-Talk Equilibria"
-      </div>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/would_i_lie.pdf">Would I Lie to You? On Social Preferences and Lying Aversion</a>, with <a class="coauthor" href="http://hurkens.iae-csic.org/">Sjaak Hurkens</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1007/s10683-008-9208-2"><i>Experimental Economics</i></a>, June 2009
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Papers/would_i_lie_appendix1.pdf">Appendix 1</a> <a href="Papers/would_i_lie_Instructions.pdf">Appendix 2</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/Published/infoagg_adhocstanding.pdf">Information Aggregation in Standing and Ad Hoc Committees</a>, with <a class="coauthor" href="https://sites.google.com/site/nageeb/">Nageeb Ali</a>, <a class="coauthor" href="https://www.unsw.edu.au/staff/jacob-goeree">Jacob Goeree</a>, and <a class="coauthor" href="http://www.hss.caltech.edu/~trp/">Thomas Palfrey</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1257/aer.98.2.181"><i>American Economic Review: Papers and Proceedings</i></a>, May 2008
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/Published/nits.pdf">Selecting Cheap-Talk Equilibria</a>, with <a class="coauthor" href="https://sites.google.com/site/yingchenpage/">Ying Chen</a> and <a class="coauthor" href="http://weber.ucsd.edu/~jsobel/">Joel Sobel</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1111/j.0012-9682.2008.00819.x"><i>Econometrica</i></a>, January 2008
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/burned_note.pdf">A Note on Cheap Talk and Burned Money</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1016/j.jet.2006.07.001"><i>Journal of Economic Theory</i></a>, September 2007
-      <div class="paper-notes">
-        An earlier version, <a class="papertitle" href="Papers/burned.pdf">On Cheap Talk and Burned Money</a>, contains additional results
-      </div>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/Published/character.pdf">Signaling Character in Electoral Competition</a>, with <a class="coauthor" href="http://mcafee.cc">Preston McAfee</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1257/aer.97.3.852"><i>American Economic Review</i></a>, June 2007
-      <span class="paper-links-inline" style="margin-left: 1rem;">
-        <a href="Slides/KM-character-slides.pdf">Slides</a> <a href="Papers/integrity_webappendix.pdf">Supplementary Appendix</a> <a href="Images/dilbert_character.gif">Dilbert cartoon</a>
-      </span>
-    </div>
-  </li>
-
-  <li><a class="papertitle" href="Papers/Published/clct.pdf">Credulity, Lies, and Costly Talk</a>, with <a class="coauthor" href="http://didattica.unibocconi.eu/mypage/index.php?IdUte=48832&amp;cognome=OTTAVIANI&amp;nome=MARCO%20M.&amp;urlBackMy=">Marco Ottaviani</a> and <a class="coauthor" href="https://profiles.warwick.ac.uk/ecskad-francesco-squintani">Francesco Squintani</a>
-    <div class="journal-and-links">
-      <a class="journal" href="https://dx.doi.org/10.1016/j.jet.2006.04.003"><i>Journal of Economic Theory</i></a>, May 2007
-    </div>
-  </li>
-
+{% endif %}{% endfor %}
 </ol>
 
 <p class="footer">December 2025</p>

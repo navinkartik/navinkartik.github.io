@@ -27,79 +27,85 @@ TABLE OF CONTENTS
 1. OVERVIEW
 ================================================================================
 
-This website uses a simple build system:
+This website uses Jekyll (GitHub Pages' built-in static site generator):
 
-    YAML data files  --->  build.py  --->  HTML files
+    YAML data files  --->  Jekyll (GitHub Pages)  --->  Generated HTML
 
-You edit the YAML files (human-readable data), run the build script, and it
-generates the HTML files. This means:
+You edit the YAML files (human-readable data), commit and push, and GitHub
+Pages automatically generates the HTML. This means:
 
-  - You only edit papers in ONE place (papers.yaml)
+  - You only edit papers in ONE place (_data/papers.yml)
   - All three pages (index.html, published.html, unpublished.html) stay in sync
   - Coauthor URLs are consistent everywhere
+  - You can still directly edit other parts of the HTML files (header, footer,
+    teaching, contact info, etc.)
 
 
 ================================================================================
 2. QUICK REFERENCE
 ================================================================================
 
-After ANY change to papers.yaml, coauthors.yaml, or build.py:
-
-    python3 build.py
-
-Then commit and push:
+After ANY change to _data/papers.yml or _data/coauthors.yml:
 
     git add -A
     git commit -m "Description of change"
     git push
+
+GitHub Pages will automatically rebuild the site (usually within 1-2 minutes).
 
 
 ================================================================================
 3. FILES EXPLAINED
 ================================================================================
 
-SOURCE FILES (edit these):
---------------------------
-papers.yaml         All papers with their metadata
-coauthors.yaml      Coauthor names mapped to their URLs
-build.py            The build script (also contains PhD students and footer date)
+DATA FILES (edit these to update papers):
+-----------------------------------------
+_data/papers.yml      All papers with their metadata
+_data/coauthors.yml   Coauthor names mapped to their URLs
 
-GENERATED FILES (don't edit directly - they get overwritten):
--------------------------------------------------------------
-index.html          Main homepage
+HTML FILES (directly editable, pull papers from data files):
+------------------------------------------------------------
+index.html          Main homepage (header, contact, papers, teaching)
 published.html      Mobile-only page for published papers
 unpublished.html    Mobile-only page for unpublished papers
 
-OTHER FILES:
-------------
-mystyles.css        Stylesheet (edit directly if needed)
-bio.html            Biography page (edit directly)
-teaching.html       Teaching page (edit directly)
-students.html       PhD students page (edit directly)
+The papers sections use Jekyll Liquid templating ({% for paper in ... %}) to
+loop through the data. Everything else (header, footer, teaching) is directly
+editable HTML.
+
+CONFIGURATION:
+--------------
+_config.yml         Jekyll settings
+
+OTHER FILES (edit directly):
+----------------------------
+mystyles.css        Stylesheet
+bio.html            Biography page
+teaching.html       Teaching page
+students.html       PhD students page
 Papers/             Folder containing PDF files
 Slides/             Folder containing slide PDFs
 Images/             Folder containing images
 CV/                 Folder containing CV
 
-
 ================================================================================
 4. ADDING A NEW UNPUBLISHED PAPER
 ================================================================================
 
-STEP 1: Check if coauthors exist in coauthors.yaml
---------------------------------------------------
-Open coauthors.yaml and check if all coauthors are listed. If someone is
+STEP 1: Check if coauthors exist in _data/coauthors.yml
+-------------------------------------------------------
+Open _data/coauthors.yml and check if all coauthors are listed. If someone is
 missing, add them:
 
     Jane Smith: https://janesmith.com
 
-Names must match EXACTLY when you use them in papers.yaml.
+Names must match EXACTLY when you use them in _data/papers.yml.
 
 
-STEP 2: Add the paper to papers.yaml
-------------------------------------
-Open papers.yaml and find the "UNPUBLISHED PAPERS" section. Add your new
-paper at the TOP of that section (newest first):
+STEP 2: Add the paper to _data/papers.yml
+-----------------------------------------
+Open _data/papers.yml and add your new paper at the TOP of the file
+(newest first):
 
     - title: "My New Paper Title"
       pdf: Papers/MyNewPaper.pdf
@@ -120,23 +126,14 @@ Copy your PDF to the Papers/ folder with the filename you specified.
 If you have slides, copy them to the Slides/ folder.
 
 
-STEP 4: Build and verify
-------------------------
-    python3 build.py
-    open index.html          # Preview in browser
-
-Check that:
-  - Paper appears in the Unpublished section
-  - Title links to the correct PDF
-  - Coauthor names link to correct websites
-  - Slides link works (if applicable)
-
-
-STEP 5: Commit and push
+STEP 4: Commit and push
 -----------------------
     git add -A
     git commit -m "Add new paper: My New Paper Title"
     git push
+
+GitHub Pages will rebuild the site automatically. Check your website in
+1-2 minutes to verify the paper appears correctly.
 
 
 ================================================================================
@@ -147,9 +144,9 @@ Same as unpublished, but with additional required fields.
 
 STEP 1: Check coauthors (same as above)
 
-STEP 2: Add to papers.yaml in the "PUBLISHED PAPERS" section
-------------------------------------------------------------
-Add at the TOP of the published section (newest first):
+STEP 2: Add to _data/papers.yml
+-------------------------------
+Add at the TOP of the published section (after unpublished papers):
 
     - title: "My Published Paper"
       pdf: Papers/MyPublishedPaper.pdf
@@ -170,7 +167,7 @@ Optional fields:
         - label: "Supplementary Appendix"
           url: Papers/MyPublishedPaper-appendix.pdf
 
-STEPS 3-5: Same as unpublished
+STEPS 3-4: Same as unpublished
 
 
 ================================================================================
@@ -179,7 +176,7 @@ STEPS 3-5: Same as unpublished
 
 When a paper gets accepted:
 
-STEP 1: Find the paper in papers.yaml (in the UNPUBLISHED section)
+STEP 1: Find the paper in _data/papers.yml
 
 STEP 2: Change status and add journal info
 ------------------------------------------
@@ -201,10 +198,10 @@ After:
 
 STEP 3: Move the entry
 ----------------------
-Cut the entire entry and paste it at the TOP of the PUBLISHED section.
-(The order in the file determines the display order.)
+Cut the entire entry and paste it at the TOP of the published papers section
+(after the last unpublished paper). The order in the file determines display.
 
-STEP 4: Build, verify, commit, push
+STEP 4: Commit and push
 
 
 ================================================================================
@@ -213,10 +210,9 @@ STEP 4: Build, verify, commit, push
 
 To update any aspect of a paper:
 
-1. Find the paper in papers.yaml
+1. Find the paper in _data/papers.yml
 2. Change the relevant field(s)
-3. Run: python3 build.py
-4. Commit and push
+3. Commit and push
 
 Common updates:
 - Change "forthcoming" to actual publication date
@@ -231,12 +227,11 @@ Common updates:
 
 To remove a paper entirely:
 
-1. Find the paper in papers.yaml
+1. Find the paper in _data/papers.yml
 2. Delete the ENTIRE entry (from the "- title:" line to just before the next
    "- title:" line)
-3. Run: python3 build.py
-4. Optionally delete the PDF from Papers/ folder
-5. Commit and push
+3. Optionally delete the PDF from Papers/ folder
+4. Commit and push
 
 
 ================================================================================
@@ -245,32 +240,32 @@ To remove a paper entirely:
 
 ADDING A NEW COAUTHOR
 ---------------------
-Edit coauthors.yaml and add a line:
+Edit _data/coauthors.yml and add a line:
 
     New Person Name: https://their-website.com
 
-The name you use here must EXACTLY match what you put in papers.yaml.
+The name you use here must EXACTLY match what you put in _data/papers.yml.
 
 
 UPDATING A COAUTHOR'S URL
 -------------------------
 If a coauthor changes their website:
 
-1. Edit coauthors.yaml - find their name and change the URL
-2. Run: python3 build.py
+1. Edit _data/coauthors.yml - find their name and change the URL
+2. Commit and push
 
 That's it! All papers with that coauthor will automatically use the new URL.
 
 
 COAUTHOR NAME FORMATTING
 ------------------------
-The name in coauthors.yaml is exactly what appears on the website.
+The name in coauthors.yml is exactly what appears on the website.
 
     Alex Frankel: https://...           # Displays as "Alex Frankel"
     Frances Xu Lee: https://...         # Displays as "Frances Xu Lee"
 
 For names with special characters, use HTML entities:
-    "S&eacute;bastien Turban": https://...    # Displays as "Sébastien Turban"
+    "S&eacute;bastien Turban": https://...    # Displays as "Sebastien Turban"
 
 
 SOLO PAPERS (NO COAUTHORS)
@@ -286,47 +281,44 @@ Or simply omit the coauthors field entirely.
 10. PHD STUDENTS ON JOB MARKET
 ================================================================================
 
-The PhD students section is controlled in build.py (not papers.yaml).
+The PhD students section is directly in index.html (not in the data files).
 
 ADDING/UPDATING STUDENTS
 ------------------------
-Edit build.py and find this section near the top:
+Edit index.html and find this section:
 
-    PHD_STUDENTS_ON_MARKET = [
-        {"name": "Tianhao Liu", "url": "https://sites.google.com/view/tianhaoliuecon"},
-        {"name": "Yangfan Zhou", "url": "https://sites.google.com/view/yangfanzhou/"},
-    ]
+    <h2>PhD Students on the job market</h2>
+    <ul class="Papers">
+    <li><a href="https://sites.google.com/view/tianhaoliuecon">Tianhao Liu</a>
+    <li><a href="https://sites.google.com/view/yangfanzhou/">Yangfan Zhou</a>
+    </ul>
 
 To add a student:
-    {"name": "New Student", "url": "https://their-website.com"},
+    <li><a href="https://their-website.com">Student Name</a>
 
 To remove a student:
-    Delete their entire line (including the comma)
+    Delete their entire <li> line
 
 
 REMOVING THE SECTION ENTIRELY
 -----------------------------
-When you have no students on the market, make the list empty:
+When you have no students on the market, delete the entire section from
+<h2>PhD Students... through </ul>
 
-    PHD_STUDENTS_ON_MARKET = []
-
-This will completely hide the "PhD Students on the job market" section
-from the homepage. When you have students again, just add them back.
+When you have students again, add it back.
 
 
 ================================================================================
 11. CHANGING THE FOOTER DATE
 ================================================================================
 
-Edit build.py and find this line near the top:
+The footer date is directly in each HTML file. Edit:
 
-    FOOTER_DATE = "December 2025"
+- index.html (near the bottom): <p class="footer">December 2025</p>
+- published.html: <p class="footer">December 2025</p>
+- unpublished.html: <p class="footer">December 2025</p>
 
-Change it to the new date:
-
-    FOOTER_DATE = "January 2026"
-
-Then run: python3 build.py
+Change to the new date and commit/push.
 
 
 ================================================================================
@@ -360,6 +352,17 @@ For notes with links, use HTML:
       An earlier version: <a class="papertitle" href="Papers/OldVersion.pdf">Old Title</a>
 
 The | character allows multi-line text.
+
+
+NOTES INSIDE JOURNAL DIV (for published papers)
+-----------------------------------------------
+Some papers have notes that should appear inside the journal section:
+
+    notes_inside_journal_div: true
+
+NOTES IN DIV (instead of span)
+------------------------------
+    notes_in_div: true
 
 
 EXTRA LINKS (beyond slides)
@@ -463,38 +466,33 @@ YAML is indentation-sensitive. Use 2 spaces (not tabs) for each level:
 15. TROUBLESHOOTING
 ================================================================================
 
-"No module named 'yaml'" error
-------------------------------
-Install PyYAML:
-    pip3 install pyyaml
+Site not updating after push
+----------------------------
+- Wait 1-2 minutes for GitHub Pages to rebuild
+- Check the Actions tab on GitHub for build errors
+- Verify you pushed to the correct branch
 
-
-"yaml.scanner.ScannerError" or parsing errors
----------------------------------------------
-- Check for missing colons after field names
-- Check for proper indentation (2 spaces)
-- Put titles with colons in quotes
-- Make sure lists use proper format: [item1, item2] or - item
-
+"Page build failure" email from GitHub
+--------------------------------------
+- Check YAML syntax (missing colons, bad indentation)
+- Check Liquid syntax in HTML files (unclosed {% %} tags)
+- View the Actions tab for detailed error messages
 
 Coauthor link not appearing
 ---------------------------
-- Check that the name in papers.yaml EXACTLY matches coauthors.yaml
+- Check that the name in papers.yml EXACTLY matches coauthors.yml
 - Names are case-sensitive
 - Check for extra spaces
-
 
 Paper not showing up
 --------------------
 - Check status is "published" or "unpublished" (spelled correctly)
 - Check YAML syntax - a syntax error can cause papers to be skipped
 
-
 PDF link broken
 ---------------
-- Check the path in papers.yaml matches the actual file location
-- Paths are relative to the website root (e.g., Papers/file.pdf, not
-  /Users/.../Papers/file.pdf)
+- Check the path in papers.yml matches the actual file location
+- Paths are relative to the website root (e.g., Papers/file.pdf)
 
 
 ================================================================================
