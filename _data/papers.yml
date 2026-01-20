@@ -9,7 +9,7 @@
   pdf: Papers/FK-Waste.pdf
   coauthors: [Alex Frankel]
   date: "January 2026"
-  status: draft
+  status: unpublished
 
 - title: "Multi-Sender Disclosure with Costs"
   pdf: Papers/KLS-disclosure-costs.pdf
