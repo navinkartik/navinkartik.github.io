@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open -a \"MiKTeX Console\")",
+      "Bash(open:*)",
+      "Bash(unzip:*)",
+      "Bash(for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19)",
+      "Bash(do echo \"=== SLIDE $i ===\" unzip -p \"/Users/navin.kartik/Library/CloudStorage/Dropbox/Teaching/Yale - Undergrad PE Seminar/Lectures/Slides2 - full.pptx\" \"ppt/slides/slide$i.xml\")",
+      "Bash(fold:*)",
+      "Bash(done)",
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)"
+    ]
+  }
+}
