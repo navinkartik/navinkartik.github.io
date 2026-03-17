@@ -36,9 +36,6 @@
   coauthors: [Sidartha Gordon, Melody Pei-yu Lo, Wojciech Olszewski, Joel Sobel]
   coauthors_on_next_line: true
   date: "revised March 2026"
-  links:
-    - label: "Supplementary Excel file"
-      url: Papers/GKLOS-EffectiveCommunication-Supplement.xlsx
   status: unpublished
 
 - title: "Information Revelation in Constant-Sum Games: Elections and Beyond"
