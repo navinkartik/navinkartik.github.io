@@ -9,7 +9,18 @@
       "Bash(fold:*)",
       "Bash(done)",
       "WebSearch",
-      "WebFetch(domain:en.wikipedia.org)"
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(pdftotext:*)",
+      "Bash(brew list:*)",
+      "Bash(# Find most recent MudInf tex file ls -lt \"\"/Users/navin.kartik/Dropbox/Research/Frankel Kartik/\"\"*.tex)",
+      "Bash(# Search for SCDstar and AKK papers find ~/Dropbox/Research -maxdepth 3 -name \"\"*.tex\"\" -type f | xargs ls -lt)",
+      "Bash(xargs:*)",
+      "Bash(for a in coder coder-critic data-engineer explorer explorer-critic methods-referee strategist strategist-critic storyteller storyteller-critic)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pdflatex:*)"
     ]
   }
 }
