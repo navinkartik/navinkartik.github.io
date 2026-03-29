@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>On Optimal Voting Rules under Homogeneous Preferences</title>
+<!--Generated on Sat Mar 28 21:19:19 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on August 2007.-->
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper.css?v=1774750293" rel="stylesheet" type="text/css"/>
+<script>
+MathJax = {
+  options: { skipHtmlTags: ["script","noscript","style","textarea","pre"] },
+  startup: { typeset: true }
+};
+</script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
+<script defer="" src="paper.js?v=1774750293"></script>
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">On Optimal Voting Rules under Homogeneous Preferences</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Arnaud Costinot and Navin Kartik 
+<br class="ltx_break"/>University of California, San Diego
+</span><span class="ltx_author_notes"><span class="ltx_text ltx_font_sansserif">costinot@ucsd.edu</span>
+and <span class="ltx_text ltx_font_sansserif">nkartik@ucsd.edu</span> respectively.  Address: Department of
+Economics, 9500 Gilman Drive, La Jolla, CA 92093-0508.  We thank Nageeb
+Ali, Vince Crawford, Wiola Dziuda, Tom Palfrey, and Joel Sobel for helpful
+comments.</span></span>
+</div>
+<div class="ltx_dates">August 2007</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+<p class="ltx_p">This paper analyzes the choice of optimal voting rules under various
+theories of voting behavior: strategic voting, informative or
+sincere voting, level-k or cognitive hierarchy voting, and mixtures
+among all of these.  We show that if preferences are homogeneous,
+then the choice of the optimal voting rule is independent of which
+of these assumptions is made on voters’ behavior.</p>
+</div>
+<div class="ltx_para" id="p1">
+<br class="ltx_break"/>
+</div>
+<div class="ltx_para" id="p2">
+<table class="ltx_tabular ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">
+<span class="ltx_text ltx_font_bold">Keywords</span>:</td>
+<td class="ltx_td ltx_align_left">Pivotal voting, Strategic Voting, Informative Voting,</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td"></td>
+<td class="ltx_td ltx_align_left">Naive Voting, Optimal Voting Rules, Homogeneous Preferences</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="ltx_para" id="p3">
+<br class="ltx_break"/>
+</div>
+<div class="ltx_para" id="p4">
+<table class="ltx_tabular ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">
+<span class="ltx_text ltx_font_bold">J.E.L. Classification</span>: C7, D7</td>
+<td class="ltx_td"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">A fundamental role of voting is to aggregate private information.  The
+“Jury Theorem” first proposed by
+Condorcet (1785) illustrates this idea.  Consider a society which needs to
+select one of two mutually exclusive alternatives.  All members of the
+society share the same preferences, but have different information regarding
+which of the two alternatives is better.  The Jury Theorem states that
+under majority rule, groups of voters are more likely to take the correct
+decision than any single individual; moreover, as the number of voters
+grows, the probability of the collective decision being correct approaches
+one.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">In its original statistical formulation, this result and subsequent
+extensions (e.g. Berg 1993; Ladha, 1992) implicitly rely on one important
+behavioral assumption: voters will mechanically reveal their private
+information through their vote.  This has come to be known as <em class="ltx_emph ltx_font_italic">informative voting</em>.  More recently, starting with the seminal work of
+Austen-Smith and Banks (1996), Feddersen and Pesendorfer, (1996), and
+Myerson (1998), scholars have argued that such behavior may be inconsistent
+with Nash Equilibrium behavior, or <em class="ltx_emph ltx_font_italic">strategic voting</em>.  In particular,
+a rational voter should condition on being pivotal, i.e. vote under the
+presumption that her vote actually matters in deciding the outcome of the
+election, taking into full account any information that this hypothesis
+reveals.  Under general conditions, mechanically revealing one’s
+information—informative voting—is inconsistent with pivotal or strategic
+voting.</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">This suggests that different assumptions on voting behavior can lead to very
+different conclusions.  Indeed, Feddersen and Pesendorfer (1998) show how
+strategic voting may have surprising implications.  In the context of jury
+procedures, the authors find that, contrary to the standard intuition,
+unanimity rule for conviction may not be the optimal way of protecting the
+innocent.  They prove the following result: when voters behave
+strategically and use symmetric strategies, if a jury is large enough, then
+a unanimous verdict requirement will be worse than some other voting rules
+with regards to both the probability of acquitting a guilty defendant and
+convicting an innocent one.  Therefore, the authors suggest that in order
+to avoid “the terrible consequences of convicting an
+innocent […], it would be better to combine a supermajority rule with a
+larger jury”(Feddersen and Pesendorfer, 1998, p. 31).</p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">The main objective of our paper is to offer a new perspective on the
+previous results.  Following the above literature, we focus on situations
+where all voters have <em class="ltx_emph ltx_font_italic">homogeneous preferences</em> under complete
+information; hence, the only role of voting is to aggregate information.  Our point of departure is to assume that prior to the voting game, a
+fictitious social planner or mechanism designer has to select an aggregation
+rule for a given group of voters.  The designer’s goal is to maximize the
+expected welfare of the voters, or more generally, society.  The question
+we are interested in is: would different voting rules be chosen depending on
+the (ex-ante) beliefs about how voters would behave under each rule?  In
+other words, do different assumptions about voters’ behavior imply different
+optimal voting rules?</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">We address this question in a framework that generalizes the canonical model
+of the literature.  Specifically, while we maintain a simple structure with
+a binary state of the world (Guilt or Innocence in the jury context) and
+binary private signals, we permit signals to be conditionally correlated
+across voters, and for voters to be informationally asymmetric in the sense
+that some voters could have more precise information than others.<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Other extensions, such as relaxing the binary structure of private
+information (even to a continuum, as in Duggan and Martinelli, 2001), also
+are possible; we discuss these in the conclusion.</span></span></span>  In this setting, we
+show that for a variety of assumptions regarding how voters
+behave—including the aforementioned polar cases where either all voters
+vote strategically or all voters vote informatively—<em class="ltx_emph ltx_font_italic">a benevolent
+mechanism designer would (uniquely) choose the same voting rule</em>.  In
+particular, this demonstrates that even though strategic voting can
+dramatically affect voters’ behavior under an arbitrarily chosen voting
+rule, it does not generate different implications for institutional design
+relative to the traditional presumption of informative voting.</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">The logic behind our result is simple.  It is well-known that there
+are no direct incentive conflicts in a setting with homogeneous
+preferences (McLennan, 1998).  Thus, if voting informatively under
+some voting rule achieves full information aggregation—i.e. for
+every profile of private information, the outcome is the same as
+what would be optimal under complete information—it is an
+equilibrium for all voters to vote informatively in a voting game
+where all voters are fully strategic and the designer has chosen the
+above voting rule (Austen-Smith and Banks, 1996).</p>
+</div>
+<div class="ltx_para" id="S1.p7">
+<p class="ltx_p">We build on this insight by making three observations.  First, full
+information aggregation is feasible in the environments usually considered.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>In general, what this requires is that the vote space for each voter
+be at least as large as her signal space; as already noted, the
+focus of literature is on a binary signal and vote space.</span></span></span>  Second,
+while previous authors have focussed on the cases where either all
+voters are naive or there is common knowledge of strategic voting,
+these polar cases are unnecessarily restrictive.  In particular, we
+allow for a range of uncertainty, both on the part of the mechanism
+designer and the voters themselves, about whether any voter is
+non-strategic or strategic, and also consider the possibility of
+bounded-rationality in the form of <em class="ltx_emph ltx_font_italic">level-k</em> thinkers of
+heterogeneous sophistication (Stahl and Wilson, 1995; Nagel, 1995).
+ Finally, we show that in our informational environment, the
+<em class="ltx_emph ltx_font_italic">only</em> way full information aggregation is achieved is if the
+designer chooses a unique voting rule and all voters vote
+informatively—without one or the other, full information
+aggregation fails.  Our results directly follow from these
+observations.</p>
+</div>
+<div class="ltx_para" id="S1.p8">
+<p class="ltx_p">To sum up, the main contribution of this paper is to offer a new
+perspective on the importance of strategic considerations in voting.
+ By taking a mechanism design approach, we show that, under the
+prevalent assumption of homogeneous preferences, differences between
+various assumptions on voting behavior are irrelevant.  The proof
+of the result is technically simple: it merely consists of
+recognizing that, under quite general conditions, there is a unique
+way to obtain full information aggregation.  Nevertheless, it has
+the strong implication that for game-theoretic insights to have
+interesting implications for the design of optimal voting rules,
+heterogeneous and/or uncertain preferences are key (e.g., Chwe,
+1999; Gerardi, 2001).</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Theoretical Framework</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">For expositional purposes, we maintain the terminology of jury decision
+making, although it should be clear that the model has applications to
+various committees, boards, and other group decision problems where voting
+is the means of aggregating private information.</p>
+</div>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">Voting Environment.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px1.p1">
+<p class="ltx_p">There is a set <math alttext="\mathcal{N}=\{1,\ldots,N\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m1"><mrow><mi class="ltx_font_mathcaligraphic">𝒩</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>N</mi><mo stretchy="false">}</mo></mrow></mrow></math> of <math alttext="N\geq 1" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m2"><mrow><mi>N</mi><mo>≥</mo><mn>1</mn></mrow></math> jurors who must
+decide to either acquit or convict a defendant.  The defendant is either
+guilty (<math alttext="G" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m3"><mi>G</mi></math>) or innocent (<math alttext="I" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m4"><mi>I</mi></math>).  Jurors are unsure whether the defendant is
+guilty or not: the true state of the world <math alttext="\omega\in\left\{G,I\right\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m5"><mrow><mi>ω</mi><mo>∈</mo><mrow><mo>{</mo><mi>G</mi><mo>,</mo><mi>I</mi><mo>}</mo></mrow></mrow></math>
+is unobservable.  There is a common prior over the states.  Each juror
+gets a private signal that may reveal some information about the true state.
+ Specifically, a juror <math alttext="j" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m6"><mi>j</mi></math> gets a binary signal, <math alttext="s_{j}\in\{i,g\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m7"><mrow><msub><mi>s</mi><mi>j</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo>,</mo><mi>g</mi><mo stretchy="false">}</mo></mrow></mrow></math>, where <math alttext="i" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m8"><mi>i</mi></math> indicates a signal for innocence and <math alttext="g" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m9"><mi>g</mi></math> indicates a signal for guilty.  Denote the profile of signals for all jurors by <math alttext="s=\left(s_{j}\right)_{j=1}^{n}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m10"><mrow><mi>s</mi><mo>=</mo><msubsup><mrow><mo>(</mo><msub><mi>s</mi><mi>j</mi></msub><mo>)</mo></mrow><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup></mrow></math>; as usual, we use <math alttext="s_{-j}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m11"><msub><mi>s</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub></math> to denote the profile of signals for
+all voters except <math alttext="j" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p1.m12"><mi>j</mi></math>.  We assume that the distribution of signals has full
+support, i.e. there is positive probability that each signal profile is
+realized.</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px1.p2">
+<p class="ltx_p">After privately observing her signal, each juror casts a vote to either
+acquit or convict the defendant.  The profile of <math alttext="N" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m1"><mi>N</mi></math> votes determines a
+collective outcome of either conviction (<math alttext="C" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m2"><mi>C</mi></math>) or acquittal (<math alttext="A" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m3"><mi>A</mi></math>), via a
+voting or aggregation rule.  We describe a voting rule, <math alttext="V" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m4"><mi>V</mi></math>, as a
+collection of distinct subsets of <math alttext="\mathcal{N}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m5"><mi class="ltx_font_mathcaligraphic">𝒩</mi></math>, such that the collective
+outcome is <math alttext="C" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m6"><mi>C</mi></math> if and only if the set of voters who vote to convict is some <math alttext="X\in V" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m7"><mrow><mi>X</mi><mo>∈</mo><mi>V</mi></mrow></math>.<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>This precludes aggregation rules that involve randomness given a profile of
+votes.  However, as will be clear from the subsequent analysis, our
+conclusions would not change even if we permitted such rules, because an
+optimal voting rule will never involve randomness in our setting.</span></span></span>  We
+restrict attention to <em class="ltx_emph ltx_font_italic">monotonic voting rules</em>, where if <math alttext="\emptyset\neq X\in V" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m8"><mrow><mi mathvariant="normal">∅</mi><mo>≠</mo><mi>X</mi><mo>∈</mo><mi>V</mi></mrow></math> and <math alttext="X\subseteq Y" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m9"><mrow><mi>X</mi><mo>⊆</mo><mi>Y</mi></mrow></math>, then <math alttext="Y\in V" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m10"><mrow><mi>Y</mi><mo>∈</mo><mi>V</mi></mrow></math>.  Note that a voting rule, <math alttext="V" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m11"><mi>V</mi></math>, need not treat all jurors symmetrically or anonymously.  For example,
+juror <math alttext="1" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m12"><mn>1</mn></math> is a dictator if <math alttext="V=\{X:1\in X\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m13"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>X</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mn>1</mn><mo>∈</mo><mi>X</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.  The simple anonymous majority
+rule is the case of <math alttext="V=\{X:|X|&gt;\frac{N}{2}\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m14"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>X</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo>&gt;</mo><mfrac><mi>N</mi><mn>2</mn></mfrac></mrow><mo stretchy="false">}</mo></mrow></mrow></math>; unanimity rule for conviction
+is the case of <math alttext="V=\{\mathcal{N}\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m15"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi class="ltx_font_mathcaligraphic">𝒩</mi><mo stretchy="false">}</mo></mrow></mrow></math>; <math alttext="V=\emptyset" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px1.p2.m16"><mrow><mi>V</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math> means that regardless of
+the vote profile, the outcome is acquittal; and so forth.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">Preferences.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px2.p1">
+<p class="ltx_p">Our focus is on situations where jurors have <em class="ltx_emph ltx_font_italic">homogeneous preferences</em>
+over the collective outcome and the true state of the world, in the sense
+that were all information about the state public, there would be no
+disagreement among voters about the optimal decision.  Specifically, we
+assume there exists a parameter <math alttext="q\in(0,1)" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m1"><mrow><mi>q</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> such that every voter’s
+preferences can be represented by the following utility function: <math alttext="u(A,I)=u(C,G)=0" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m2"><mrow><mrow><mi>u</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>u</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>; <math alttext="u(C,I)=-q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m3"><mrow><mrow><mi>u</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo>,</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mi>q</mi></mrow></mrow></math>; and <math alttext="u(A,G)=-(1-q)" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m4"><mrow><mrow><mi>u</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>While we assume it for simplicity, it is not important for our results that
+that the parameter <math alttext="q" class="ltx_Math" display="inline" id="footnote4.m1"><mi>q</mi></math> be identical across all votes.  We could permit an
+idiosyncratic <math alttext="q^{j}" class="ltx_Math" display="inline" id="footnote4.m2"><msup><mi>q</mi><mi>j</mi></msup></math> for each voter <math alttext="j" class="ltx_Math" display="inline" id="footnote4.m3"><mi>j</mi></math>, so long as all <math alttext="q^{j}" class="ltx_Math" display="inline" id="footnote4.m4"><msup><mi>q</mi><mi>j</mi></msup></math>’s are
+“sufficiently close”.</span></span></span>  Thus, if a
+guilty defendant is convicted or an innocent defendant is acquitted, the
+payoff to any voter is <math alttext="0" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m5"><mn>0</mn></math>.  The payoffs to the two possible erroneous
+decisions are <math alttext="-q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m6"><mrow><mo>−</mo><mi>q</mi></mrow></math> and <math alttext="-(1-q)" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m7"><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> respectively.  The parameter <math alttext="q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m8"><mi>q</mi></math> can be
+interpreted as a threshold of reasonable doubt: society wants to convict
+(resp. acquit) the defendant if the probability of guilt is greater (resp.
+lower) than <math alttext="q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px2.p1.m9"><mi>q</mi></math>.<span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup><span class="ltx_tag ltx_tag_note">5</span>If the probability of guilt is <math alttext="p" class="ltx_Math" display="inline" id="footnote5.m1"><mi>p</mi></math>, the expected utility from conviction is <math alttext="-q(1-p)" class="ltx_Math" display="inline" id="footnote5.m2"><mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, whereas the expected utility from acquittal is <math alttext="-(1-q)p" class="ltx_Math" display="inline" id="footnote5.m3"><mrow><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>p</mi></mrow></mrow></math>.  Conviction is strictly preferred if <math alttext="-q(1-p)&gt;-(1-q)p" class="ltx_Math" display="inline" id="footnote5.m4"><mrow><mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>&gt;</mo><mrow><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>p</mi></mrow></mrow></mrow></math>, which is equivalent
+to <math alttext="p&gt;q" class="ltx_Math" display="inline" id="footnote5.m5"><mrow><mi>p</mi><mo>&gt;</mo><mi>q</mi></mrow></math>.</span></span></span></p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px3">
+<h3 class="ltx_title ltx_title_paragraph">Information.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px3.p1">
+<p class="ltx_p">To describe the information structure, some notation is helpful.  Let <math alttext="\beta\left(X\right)" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m1"><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mi>X</mi><mo>)</mo></mrow></mrow></math> be the posterior on <math alttext="\omega=G" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m2"><mrow><mi>ω</mi><mo>=</mo><mi>G</mi></mrow></math> when the set <math alttext="X\subseteq\mathcal{N}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m3"><mrow><mi>X</mi><mo>⊆</mo><mi class="ltx_font_mathcaligraphic">𝒩</mi></mrow></math> of voters receive guilty signals, and all voters in <math alttext="\mathcal{N}\setminus X" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m4"><mrow><mi class="ltx_font_mathcaligraphic">𝒩</mi><mo>∖</mo><mi>X</mi></mrow></math> receive innocent signals.  Given a profile of
+signals, <math alttext="s" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m5"><mi>s</mi></math>, let <math alttext="\Gamma\left(s\right)" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m6"><mrow><mi mathvariant="normal">Γ</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow></math> denote the set of voters who
+have guilty signals in <math alttext="s" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m7"><mi>s</mi></math>.  Let <math alttext="D\left(s\right)" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m8"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow></math> denote a socially
+optimal decision if the signal profile is <math alttext="s" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m9"><mi>s</mi></math>, i.e. <math alttext="D\left(s\right)=C" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m10"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow><mo>=</mo><mi>C</mi></mrow></math> if
+<math alttext="\beta\left(\Gamma\left(s\right)\right)&gt;q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m11"><mrow><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mi mathvariant="normal">Γ</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo>&gt;</mo><mi>q</mi></mrow></math> and <math alttext="D\left(s\right)=A" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m12"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow><mo>=</mo><mi>A</mi></mrow></math>
+if <math alttext="\beta\left(\Gamma\left(s\right)\right)&lt;q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p1.m13"><mrow><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mi mathvariant="normal">Γ</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo>&lt;</mo><mi>q</mi></mrow></math>.  We make the following
+minimal assumptions.</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px3.p2">
+<ol class="ltx_enumerate" id="S2.I1">
+<li class="ltx_item" id="S2.I1.ix1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">A1.</span></span>
+<div class="ltx_para" id="S2.I1.ix1.p1">
+<p class="ltx_p">[<em class="ltx_emph ltx_font_italic">Monotonicity</em>] if <math alttext="X\subseteq Y" class="ltx_Math" display="inline" id="S2.I1.ix1.p1.m1"><mrow><mi>X</mi><mo>⊆</mo><mi>Y</mi></mrow></math> then <math alttext="\beta\left(X\right)\leq\beta\left(Y\right)" class="ltx_Math" display="inline" id="S2.I1.ix1.p1.m2"><mrow><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mi>X</mi><mo>)</mo></mrow></mrow><mo>≤</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mi>Y</mi><mo>)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.ix2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">A2.</span></span>
+<div class="ltx_para" id="S2.I1.ix2.p1">
+<p class="ltx_p">[<em class="ltx_emph ltx_font_italic">Non-Degeneracy</em>] <math alttext="\beta\left(\mathcal{N}\right)&gt;q&gt;\beta\left(\emptyset\right)" class="ltx_Math" display="inline" id="S2.I1.ix2.p1.m1"><mrow><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mi class="ltx_font_mathcaligraphic">𝒩</mi><mo>)</mo></mrow></mrow><mo>&gt;</mo><mi>q</mi><mo>&gt;</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mi mathvariant="normal">∅</mi><mo>)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.ix3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">A3.</span></span>
+<div class="ltx_para" id="S2.I1.ix3.p1">
+<p class="ltx_p">[<em class="ltx_emph ltx_font_italic">Genericity</em>] For every <math alttext="X\subseteq\mathcal{N}" class="ltx_Math" display="inline" id="S2.I1.ix3.p1.m1"><mrow><mi>X</mi><mo>⊆</mo><mi class="ltx_font_mathcaligraphic">𝒩</mi></mrow></math>, <math alttext="\beta\left(X\right)\neq q" class="ltx_Math" display="inline" id="S2.I1.ix3.p1.m2"><mrow><mrow><mi>β</mi><mo>⁢</mo><mrow><mo>(</mo><mi>X</mi><mo>)</mo></mrow></mrow><mo>≠</mo><mi>q</mi></mrow></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S2.I1.ix4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">A4.</span></span>
+<div class="ltx_para" id="S2.I1.ix4.p1">
+<p class="ltx_p">[<em class="ltx_emph ltx_font_italic">Relevance</em>] For every <math alttext="j\in\mathcal{N}" class="ltx_Math" display="inline" id="S2.I1.ix4.p1.m1"><mrow><mi>j</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic">𝒩</mi></mrow></math>, there
+exists some <math alttext="s_{-j}" class="ltx_Math" display="inline" id="S2.I1.ix4.p1.m2"><msub><mi>s</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub></math> such that <math alttext="D\left(g,s_{-j}\right)=C" class="ltx_Math" display="inline" id="S2.I1.ix4.p1.m3"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>g</mi><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>)</mo></mrow></mrow><mo>=</mo><mi>C</mi></mrow></math> whereas <math alttext="D\left(i,s_{-j}\right)=A" class="ltx_Math" display="inline" id="S2.I1.ix4.p1.m4"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>i</mi><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>)</mo></mrow></mrow><mo>=</mo><mi>A</mi></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px3.p3">
+<p class="ltx_p">(A1) embodies a natural monotonicity condition: holding all other signals
+constant, if a juror receives a guilty signal rather than an innocent
+signal, the (common) posterior on the defendant’s guilt should not decrease.
+ (A2) simply rules out situations where jurors prefer to always acquit or
+always convict, regardless of the profile of signals; in such cases there is
+no information aggregation problem.  (A3) is a genericity assumption: it
+says that regardless of the profile of signals, the posterior is never
+exactly <math alttext="q" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p3.m1"><mi>q</mi></math>.  Since there are only a finite number of signal profiles, it
+is clear that this must hold for almost all prior/signal distribution
+combinations.  Lastly, (A4) requires that each juror be informationally
+relevant in the sense that for <em class="ltx_emph ltx_font_italic">some</em> profile of signals of the other
+jurors, the collective preference for conviction or acquittal (under
+complete information) should be responsive to her signal.  We find this
+reasonable because a juror who is not relevant in this sense can simply be
+dropped from the jury altogether.</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px3.p4">
+<p class="ltx_p">All of these assumptions are satisfied by Austen-Smith and Banks (1996),
+Feddersen and Pesendorfer (1998), and other papers in the jury literature:
+typically, jurors are ex-ante symmetric and receive signals that are
+independent conditional on the state of the world.  In contrast, we permit
+conditional correlation of signals.  This is appealing because it is often
+reasonable that jurors form their individual opinions having observed at
+least some of the same information.  Moreover, our assumptions allow voters
+to be asymmetric with regards to the precision of their signals: it could be
+that whenever voter <math alttext="1" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p4.m1"><mn>1</mn></math> receives a guilty signal, society’s preferred
+decision no longer depends on the signals of all the remaining <math alttext="N-1" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px3.p4.m2"><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></math> voters.
+ Such asymmetries apply to many committee contexts where, while all members
+have useful information, some members have far greater expertise than
+others, reflected by the precision of their private information.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px4">
+<h3 class="ltx_title ltx_title_paragraph">Behavior.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px4.p1">
+<p class="ltx_p">The traditional, non-game-theoretic approach is to assume that a voter
+simply votes informatively, i.e. votes to convict if she observes <math alttext="s_{j}=g" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p1.m1"><mrow><msub><mi>s</mi><mi>j</mi></msub><mo>=</mo><mi>g</mi></mrow></math>
+and votes to acquit if she observes <math alttext="s_{j}=i" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p1.m2"><mrow><msub><mi>s</mi><mi>j</mi></msub><mo>=</mo><mi>i</mi></mrow></math>.<span class="ltx_note ltx_role_footnote" id="footnote6"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup><span class="ltx_tag ltx_tag_note">6</span>
+Throughout, our focus is on comparing strategic voting with informative
+voting, which we refer to as naive behavior.  A different kind of naivety
+would be to always vote <em class="ltx_emph ltx_font_italic">sincerely</em>, where a juror votes for the best
+alternative conditioning only on her own signal and the prior.  It is
+common to assume that sincere and informative voting coincide, i.e. if there
+were only one juror, then she should convict if she receives a guilty
+signal, and acquit if she receives an acquit signal.  With this assumption,
+all references to informative voting in what follows can be replaced with
+sincere voting.</span></span></span>  The standard game-theoretic alternative is to assume
+common knowledge of fully strategic behavior.  We define a game that spans
+these polar cases.</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px4.p2">
+<p class="ltx_p">After the state of the world <math alttext="\omega" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m1"><mi>ω</mi></math> and private signals <math alttext="s_{j}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m2"><msub><mi>s</mi><mi>j</mi></msub></math> have been
+determined, Nature draws a type for each voter, <math alttext="t_{j}\in T\equiv\{naive,strategic\}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m3"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>∈</mo><mi>T</mi><mo>≡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>, resulting in a profile <math alttext="t=(t_{j})_{j=1}^{n}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m4"><mrow><mi>t</mi><mo>=</mo><msubsup><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup></mrow></math>.  While <math alttext="strategic" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m5"><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow></math> voters aim to maximize their utility taking as given the
+strategy of the other players, <math alttext="naive" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m6"><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow></math> voters simply vote
+informatively, as assumed in the early Condorcet literature.  We
+assume a common prior, <math alttext="\tau" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m7"><mi>τ</mi></math>, of an
+arbitrary probability distribution over the set of profiles, <math alttext="T^{N}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m8"><msup><mi>T</mi><mi>N</mi></msup></math>.<span class="ltx_note ltx_role_footnote" id="footnote7"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup><span class="ltx_tag ltx_tag_note">7</span>As will be clear from the analysis, this can also be weakened quite a bit,
+because beliefs and higher order beliefs about <math alttext="t" class="ltx_Math" display="inline" id="footnote7.m1"><mi>t</mi></math> will play no role in our
+conclusions.</span></span></span>  Each voter <math alttext="j" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m9"><mi>j</mi></math> only observes his type <math alttext="t_{j}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p2.m10"><msub><mi>t</mi><mi>j</mi></msub></math>.</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px4.p3">
+<p class="ltx_p">In this Bayesian game, a (possibly mixed) strategy for a voter <math alttext="j" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m1"><mi>j</mi></math> can be
+represented by a pair of mappings from signals to probability of convicting,
+one for the case her type is <math alttext="t_{j}=naive" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m2"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow></mrow></math> and one for the case her type is <math alttext="t_{j}=strategic" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m3"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></math>.  Because of our interpretation of <math alttext="t_{j}=naive" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m4"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow></mrow></math>, we can
+simplify matters and represent a strategy for voter <math alttext="j" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m5"><mi>j</mi></math> as a single mapping <math alttext="\sigma_{j}:\{i,g\}\rightarrow[0,1]" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m6"><mrow><msub><mi>σ</mi><mi>j</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">{</mo><mi>i</mi><mo>,</mo><mi>g</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, which maps her signal into a
+probability of voting to convict when <math alttext="t_{j}=strategic" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m7"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></math>.  When <math alttext="t_{j}=naive" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m8"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow></mrow></math>, we require the voter to vote informatively, i.e. use the mapping <math alttext="\sigma^{inf}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m9"><msup><mi>σ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>f</mi></mrow></msup></math> where <math alttext="\sigma^{inf}(i)=0" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m10"><mrow><mrow><msup><mi>σ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>f</mi></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> and <math alttext="\sigma^{inf}(g)=1" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m11"><mrow><mrow><msup><mi>σ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>f</mi></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.  Accordingly,
+when referring to a voter’s strategy hereafter, we refer to her play when
+strategic.  A profile of strategies is denoted by <math alttext="\sigma=(\sigma_{j})_{j=1}^{N}" class="ltx_Math" display="inline" id="S2.SS0.SSS0.Px4.p3.m12"><mrow><mi>σ</mi><mo>=</mo><msubsup><mrow><mo stretchy="false">(</mo><msub><mi>σ</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup></mrow></math>.  An equilibrium refers to a Bayesian Nash equilibrium
+(BNE) of this game.  As is common in voting games, there will often by
+multiple equilibria; we will assume below that the best possible BNE
+(maximizing the utility of all players) is played.<span class="ltx_note ltx_role_footnote" id="footnote8"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup><span class="ltx_tag ltx_tag_note">8</span>We use the terminology “the best
+possible” somewhat loosely: if there is more than one BNE
+that maximizes utility, any of them can be considered.</span></span></span> Pareto dominance
+seems a reasonable selection criterion, particularly since preferences are
+homogeneous.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Optimal Voting Rules</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">Suppose that a fictitious mechanism designer is considering the choice of a
+voting rule to maximize ex-ante expected utility (since agents have common
+preferences, the problem is unambiguous).  The question she must consider
+is how the jurors will behave given a chosen voting rule.  We can capture
+this in our framework through the probability distribution <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p1.m1"><mi>τ</mi></math> on the
+set <math alttext="T^{N}" class="ltx_Math" display="inline" id="S3.p1.m2"><msup><mi>T</mi><mi>N</mi></msup></math>.  For example, if the mechanism designer believes that all
+voters are strategic, then he believes that voters will play a game where <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p1.m3"><mi>τ</mi></math> puts all mass on the profile <math alttext="t=\{strategic,\ldots,strategic\}" class="ltx_Math" display="inline" id="S3.p1.m4"><mrow><mi>t</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.  Similarly, if he believes that all voters are naive, this is the case of <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p1.m5"><mi>τ</mi></math> being degenerate on <math alttext="t=\{naive,\ldots,naive\}" class="ltx_Math" display="inline" id="S3.p1.m6"><mrow><mi>t</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>n</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>e</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.  More generally,
+the framework allows for each voter to be naive with some independent
+probability, or even for there to be some correlation in the strategic
+sophistication of (an arbitrary subset of) voters, etc.<span class="ltx_note ltx_role_footnote" id="footnote9"><sup class="ltx_note_mark">9</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">9</sup><span class="ltx_tag ltx_tag_note">9</span>For example, perhaps there is some identifiable characteristic that
+determines strategic sophistication, such as education.</span></span></span></p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">The question we are interested in is: does it matter what beliefs the
+designer has about voters’ behavior?  Formally, we formulate the question
+as follows.  For any type distribution <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p2.m1"><mi>τ</mi></math> and any aggregation rule, <math alttext="V" class="ltx_Math" display="inline" id="S3.p2.m2"><mi>V</mi></math>, let <math alttext="\mathcal{U}(V,\tau)" class="ltx_Math" display="inline" id="S3.p2.m3"><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow></math> denoted the ex-ante expected utility in the
+game defined by <math alttext="V" class="ltx_Math" display="inline" id="S3.p2.m4"><mi>V</mi></math> and <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p2.m5"><mi>τ</mi></math> when voters play an optimal BNE of this
+game.  That is,</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\mathcal{U}(V,\tau)=\max_{\sigma}EU(V,\sigma;\tau)\text{ subject to $\sigma$ %
+being a BNE given }V\text{ and }\tau," class="ltx_Math" display="block" id="S3.Ex1.m1"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><munder><mi>max</mi><mi>σ</mi></munder><mo lspace="0.167em">⁡</mo><mrow><mi>E</mi><mo>⁢</mo><mi>U</mi></mrow></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>σ</mi><mo>;</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> subject to </mtext><mi>σ</mi><mtext> being a BNE given </mtext></mrow><mo>⁢</mo><mi>V</mi><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>τ</mi></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math alttext="EU(V,\sigma;\tau)" class="ltx_Math" display="inline" id="S3.p2.m6"><mrow><mi>E</mi><mo>⁢</mo><mi>U</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>σ</mi><mo>;</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the ex-ante expected utility when the voting
+rule is <math alttext="V" class="ltx_Math" display="inline" id="S3.p2.m7"><mi>V</mi></math>, the type distribution is <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p2.m8"><mi>τ</mi></math>, and voters play the profile <math alttext="\sigma" class="ltx_Math" display="inline" id="S3.p2.m9"><mi>σ</mi></math> (recall, this means that voter <math alttext="j" class="ltx_Math" display="inline" id="S3.p2.m10"><mi>j</mi></math> plays <math alttext="\sigma_{j}" class="ltx_Math" display="inline" id="S3.p2.m11"><msub><mi>σ</mi><mi>j</mi></msub></math> if
+strategic, and votes informatively if not).  Given his belief, <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p2.m12"><mi>τ</mi></math>, the
+mechanism designer’s problem is to choose an aggregation rule, <math alttext="V" class="ltx_Math" display="inline" id="S3.p2.m13"><mi>V</mi></math>, to solve</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\max_{V}\ \mathcal{U}(V,\tau)." class="ltx_Math" display="block" id="S3.E1.m1"><mrow><mrow><mrow><munder><mi>max</mi><mi>V</mi></munder><mo lspace="0.667em">⁡</mo><mi class="ltx_font_mathcaligraphic">𝒰</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Among others, Austen-Smith and Banks (1996) and Feddersen and
+Pesendorfer (1998) have shown that for arbitrary voting rules,
+strategic jurors’ behavior at an (optimal) BNE may be quite
+different from the behavior anticipated by a designer who believes
+that they are all naive.  In our language, their point is that if
+<math alttext="\tau\neq\tau^{\prime}" class="ltx_Math" display="inline" id="S3.p2.m14"><mrow><mi>τ</mi><mo>≠</mo><msup><mi>τ</mi><mo>′</mo></msup></mrow></math>, then for arbitrarily chosen <math alttext="V" class="ltx_Math" display="inline" id="S3.p2.m15"><mi>V</mi></math>,
+<math alttext="\mathcal{U}(V,\tau)\neq\mathcal{U}(V,\tau^{\prime})" class="ltx_Math" display="inline" id="S3.p2.m16"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒰</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><msup><mi>τ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.  Accordingly, the maximization program in (<a class="ltx_ref" href="#S3.E1"><span class="ltx_text ltx_ref_tag">1</span></a>) certainly
+changes as <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p2.m17"><mi>τ</mi></math> is varied.  However, this does not imply that
+designers with different views about <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p2.m18"><mi>τ</mi></math> would select distinct
+voting rules, as we now demonstrate.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_theorem" id="Thmtheorem1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmtheorem1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There exists <math alttext="V^{\ast}" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m1"><msup><mi>V</mi><mo>∗</mo></msup></math> such that, for any <math alttext="\tau" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m2"><mi>τ</mi></math>, the
+unique solution to maximization problem (<a class="ltx_ref" href="#S3.E1"><span class="ltx_text ltx_ref_tag">1</span></a>) is <math alttext="V^{\ast}" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m3"><msup><mi>V</mi><mo>∗</mo></msup></math>.</span></p>
+</div>
+</div>
+<div class="ltx_para" id="S3.p3">
+<p class="ltx_p">The intuition is simple.  First, by choosing the voting rule appropriately,
+full information aggregation can be achieved when all voters vote
+informatively: this defines <math alttext="V^{\ast}" class="ltx_Math" display="inline" id="S3.p3.m1"><msup><mi>V</mi><mo>∗</mo></msup></math>.  Second, if the designer chooses <math alttext="V^{\ast}" class="ltx_Math" display="inline" id="S3.p3.m2"><msup><mi>V</mi><mo>∗</mo></msup></math>, then because naive voters are voting informatively, the unique
+optimal BNE consists of all strategic voters voting informatively as well.  Third, for any <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p3.m3"><mi>τ</mi></math>, no other voting rule can achieve full information
+aggregation, regardless of how voters behavior.</p>
+</div>
+<div class="ltx_para" id="S3.p4">
+<p class="ltx_p">Formally, Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a> is proved by the following three Lemmas.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_lemma" id="Thmlemma1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmlemma1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There exists a unique voting rule, <math alttext="V^{\ast}" class="ltx_Math" display="inline" id="Thmlemma1.p1.m1"><msup><mi>V</mi><mo>∗</mo></msup></math>, such that if
+all signals were public, the socially optimal decision is to convict if and
+only if <math alttext="\Gamma\left(s\right)\in V^{\ast}" class="ltx_Math" display="inline" id="Thmlemma1.p1.m2"><mrow><mrow><mi mathvariant="normal">Γ</mi><mo>⁢</mo><mrow><mo>(</mo><mi>s</mi><mo>)</mo></mrow></mrow><mo>∈</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math>.  Moreover, <math alttext="\emptyset\notin V^{\ast}" class="ltx_Math" display="inline" id="Thmlemma1.p1.m3"><mrow><mi mathvariant="normal">∅</mi><mo>∉</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math> and <math alttext="\mathcal{N}\in V^{\ast}" class="ltx_Math" display="inline" id="Thmlemma1.p1.m4"><mrow><mi class="ltx_font_mathcaligraphic">𝒩</mi><mo>∈</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S3.p5">
+<p class="ltx_p">Immediate consequence of Assumptions (A1)–(A3).
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_theorem ltx_theorem_lemma" id="Thmlemma2">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmlemma2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For any <math alttext="\tau" class="ltx_Math" display="inline" id="Thmlemma2.p1.m1"><mi>τ</mi></math>, if the voting rule is <math alttext="V^{\ast}" class="ltx_Math" display="inline" id="Thmlemma2.p1.m2"><msup><mi>V</mi><mo>∗</mo></msup></math>, it is
+a BNE for all jurors to vote informatively, achieving the first-best outcome
+for every signal profile realization.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S3.p6">
+<p class="ltx_p">By the definition of <math alttext="V^{*}" class="ltx_Math" display="inline" id="S3.p6.m1"><msup><mi>V</mi><mo>∗</mo></msup></math>, if all jurors vote informatively under <math alttext="V^{*}" class="ltx_Math" display="inline" id="S3.p6.m2"><msup><mi>V</mi><mo>∗</mo></msup></math>,
+first-best outcomes are achieved for every signal profile realization.  Since jurors have homogeneous preferences, no juror has a profitable
+deviation given this strategy profile.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_theorem ltx_theorem_lemma" id="Thmlemma3">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmlemma3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Suppose <math alttext="V\neq V^{\ast}" class="ltx_Math" display="inline" id="Thmlemma3.p1.m1"><mrow><mi>V</mi><mo>≠</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math>.  Then, regardless of the
+strategy profile played, there exists a profile of signals that occurs with
+positive probability for which the socially optimal outcome is not attained
+with positive probability.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S3.p7">
+<p class="ltx_p">Fix a <math alttext="V\neq V^{*}" class="ltx_Math" display="inline" id="S3.p7.m1"><mrow><mi>V</mi><mo>≠</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math>, and consider any strategy profile, <math alttext="\sigma" class="ltx_Math" display="inline" id="S3.p7.m2"><mi>σ</mi></math>.  It
+suffices to show that there is a signal profile for which the socially
+optimal outcome is not attained with positive probability, since all signals
+profiles have positive probability of being realized.  There are two cases:</p>
+</div>
+<div class="ltx_para" id="S3.p8">
+<ol class="ltx_enumerate" id="S3.I1">
+<li class="ltx_item" id="S3.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S3.I1.i1.p1">
+<p class="ltx_p">Every strategic voter votes informatively.  Then all voters are
+voting informatively.  There are two possibilities: either there exists an <math alttext="X\in V" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m1"><mrow><mi>X</mi><mo>∈</mo><mi>V</mi></mrow></math> such that <math alttext="X\notin V^{\ast}" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m2"><mrow><mi>X</mi><mo>∉</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math>, or there exists an <math alttext="X\in V^{\ast}" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m3"><mrow><mi>X</mi><mo>∈</mo><msup><mi>V</mi><mo>∗</mo></msup></mrow></math>
+such that <math alttext="X\notin V" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m4"><mrow><mi>X</mi><mo>∉</mo><mi>V</mi></mrow></math>.  In either case, the signal profile <math alttext="s" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m5"><mi>s</mi></math> where <math alttext="\Gamma(s)=X" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m6"><mrow><mrow><mi mathvariant="normal">Γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>X</mi></mrow></math> results in an outcome—conviction in the first case and
+acquittal in the second—that is not socially optimal given <math alttext="s" class="ltx_Math" display="inline" id="S3.I1.i1.p1.m7"><mi>s</mi></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S3.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S3.I1.i2.p1">
+<p class="ltx_p">Not every strategic voter votes informatively.  Let <math alttext="n" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m1"><mi>n</mi></math> be a voter
+who is not voting informatively (when strategic).  Let <math alttext="s_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m2"><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math> be a
+profile such that <math alttext="D\left(g,s_{-n}\right)=C" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m3"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>g</mi><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub><mo>)</mo></mrow></mrow><mo>=</mo><mi>C</mi></mrow></math> and <math alttext="D\left(i,s_{-n}\right)=A" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m4"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo>(</mo><mi>i</mi><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub><mo>)</mo></mrow></mrow><mo>=</mo><mi>A</mi></mrow></math>; this exists by Assumption (A4).  If <math alttext="V" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m5"><mi>V</mi></math> and <math alttext="\sigma_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m6"><msub><mi>σ</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math> are such
+that given <math alttext="s_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m7"><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math>, there is positive probability that the outcome is
+independent of <math alttext="n" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m8"><mi>n</mi></math>’s vote, then since the socially optimal decision given <math alttext="s_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m9"><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math> depends non-trivially on <math alttext="s_{n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m10"><msub><mi>s</mi><mi>n</mi></msub></math>, there is positive probability that
+the socially optimal decision is not achieved for the profile <math alttext="s=(s_{n},s_{-n})" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m11"><mrow><mi>s</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mi>n</mi></msub><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math>, for any <math alttext="s_{n}\in\{i,g\}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m12"><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mi>i</mi><mo>,</mo><mi>g</mi><mo stretchy="false">}</mo></mrow></mrow></math>.  So suppose that <math alttext="V" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m13"><mi>V</mi></math> and <math alttext="\sigma_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m14"><msub><mi>σ</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math> are such that given <math alttext="s_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m15"><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math>, the outcome is determined by <math alttext="n" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m16"><mi>n</mi></math>’s vote with probability 1.  Since the voting mechanism, <math alttext="V" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m17"><mi>V</mi></math>, is monotonic,
+a vote by <math alttext="n" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m18"><mi>n</mi></math> to convict (resp. acquit) must lead to the outcome of
+conviction (resp. acquittal), holding fixed <math alttext="s_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m19"><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math> and <math alttext="\sigma_{-n}" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m20"><msub><mi>σ</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></math>.  But because <math alttext="n" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m21"><mi>n</mi></math> is not voting informatively, either <math alttext="\sigma_{n}(i)&gt;0" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m22"><mrow><mrow><msub><mi>σ</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> or <math alttext="\sigma_{n}(g)&lt;1" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m23"><mrow><mrow><msub><mi>σ</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mn>1</mn></mrow></math>.  In the first (resp. second) case, there is positive
+probability of not achieving the socially optimal outcome when the signal
+profile is <math alttext="s=(i,s_{-n})" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m24"><mrow><mi>s</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> (resp. <math alttext="s=(g,s_{-n})" class="ltx_Math" display="inline" id="S3.I1.i2.p1.m25"><mrow><mi>s</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo>,</mo><msub><mi>s</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math>).   <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="ltx_para" id="S3.p9">
+<p class="ltx_p">Let us relate Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a> to the previous literature.  Both
+Austen-Smith and Banks (1996) and Mclennan (1998) have noted that a
+population of fully strategic voters have no incentive to deviate
+from a strategy profile that attains the first best.  (In our
+notation, this is the case of the distribution <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p9.m1"><mi>τ</mi></math> putting point
+mass on the type profile <math alttext="t=\{strategic,\ldots,strategic\}" class="ltx_Math" display="inline" id="S3.p9.m2"><mrow><mi>t</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.)  Lemma <a class="ltx_ref" href="#Thmlemma2"><span class="ltx_text ltx_ref_tag">2</span></a> extends this logic to arbitrary <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p9.m3"><mi>τ</mi></math>’s.  In addition, Lemma <a class="ltx_ref" href="#Thmlemma3"><span class="ltx_text ltx_ref_tag">3</span></a> shows that full information
+aggregation cannot be achieved unless voters reveal their
+information and the voting rule efficiently aggregates their
+reports, a combination that only be attained under a unique voting
+rule, regardless of <math alttext="\tau" class="ltx_Math" display="inline" id="S3.p9.m4"><mi>τ</mi></math>.</p>
+</div>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">Communication.</h3>
+<div class="ltx_para" id="S3.SS0.SSS0.Px1.p1">
+<p class="ltx_p">At this point, it is appropriate to discuss the role of
+communication—or lack thereof—in our model.  In many contexts,
+such as large elections, communication between all voters may simply
+be infeasible; similarly, communication can be quite costly even in
+small group settings.  Nevertheless, some institutions, such as
+juries, do combine communication and voting.  Coughlan (2000)
+points out that under homogeneous preferences, a round of cheap talk
+prior to voting can insure efficient information aggregation under
+any voting rule, so long as voters are strategic.  This can be
+interpreted as a result about the “irrelevance of
+voting rules” under strategic voting and communication.<span class="ltx_note ltx_role_footnote" id="footnote10"><sup class="ltx_note_mark">10</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">10</sup><span class="ltx_tag ltx_tag_note">10</span>Gerardi and Yariv (2006) prove a rather general result along these lines.</span></span></span>  Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a> says quite the opposite: without communication, it
+establishes uniqueness of optimal voting rule, for a variety of possible
+voting behavior.  One may therefore wonder whether the result unravels once
+communication is introduced.</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px1.p2">
+<p class="ltx_p">While there is a conceptual question of what it means for voter to
+behave naively in the presence of communication, a natural benchmark
+is to suppose that she continues to vote informatively at the voting
+stage.  Then, it is not hard to see that the irrelevance of voting
+rules result is knife-edged because it relies on common knowledge of
+fully strategic behavior.  Formally, regardless of the assumptions
+made on behavior in the communication stage, Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a>
+extends for any <math alttext="\tau" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px1.p2.m1"><mi>τ</mi></math> that does not put probability one on
+<math alttext="t=\{strategic,\ldots,strategic\}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px1.p2.m2"><mrow><mi>t</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.  The reason is that the mere
+possibility of even one voter voting naively suffices for the logic
+behind Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a> (in particular, Lemma 3) to have force,
+regardless of how much information sharing voters engage in during
+communication.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S3.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">Boundedly Rational Voters.</h3>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p1">
+<p class="ltx_p">A burgeoning recent literature on strategic but non-equilibrium
+behavior, step-level reasoning or <em class="ltx_emph ltx_font_italic">level-k</em> models (e.g., Stahl
+and Wilson, 1995; Nagel, 1995; Crawford, 2003), explores the idea
+that players in games belong to one of a hierarchy of decision-rules
+or types.  These types are distinguished by the level of
+sophistication they embody: type <math alttext="Lk" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m1"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math> for <math alttext="k&gt;0" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m2"><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow></math> anchors its beliefs
+in a non-strategic <math alttext="L0" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m3"><mrow><mi>L</mi><mo>⁢</mo><mn>0</mn></mrow></math> type and adjusts them via
+thought-experiments with iterated best responses: <math alttext="L1" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m4"><mrow><mi>L</mi><mo>⁢</mo><mn>1</mn></mrow></math> best responds to <math alttext="L0" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m5"><mrow><mi>L</mi><mo>⁢</mo><mn>0</mn></mrow></math>, <math alttext="L2" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m6"><mrow><mi>L</mi><mo>⁢</mo><mn>2</mn></mrow></math> to <math alttext="L1" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m7"><mrow><mi>L</mi><mo>⁢</mo><mn>1</mn></mrow></math> and so forth.  <math alttext="L1" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m8"><mrow><mi>L</mi><mo>⁢</mo><mn>1</mn></mrow></math> and all higher types are rational in the
+sense that they best respond to their beliefs: the departure from
+equilibrium is that rather than having accurate beliefs about the
+decision-rules of all other players, a <math alttext="Lk" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m9"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math> type (for <math alttext="k&gt;0" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m10"><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow></math>) simply behaves
+as would be optimal when all other players are <math alttext="L(k-1)" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p1.m11"><mrow><mi>L</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> types.</p>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p2">
+<p class="ltx_p">In our context, it is natural to specify the anchoring type, <math alttext="L0" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p2.m1"><mrow><mi>L</mi><mo>⁢</mo><mn>0</mn></mrow></math>, as
+informative voting.<span class="ltx_note ltx_role_footnote" id="footnote11"><sup class="ltx_note_mark">11</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">11</sup><span class="ltx_tag ltx_tag_note">11</span>An alternative specification used in experimental literature is to have the <math alttext="L0" class="ltx_Math" display="inline" id="footnote11.m1"><mrow><mi>L</mi><mo>⁢</mo><mn>0</mn></mrow></math> types play a completely random action.  Our result does not extend to
+such a specification.  However, the choice of how to best specify <math alttext="L0" class="ltx_Math" display="inline" id="footnote11.m2"><mrow><mi>L</mi><mo>⁢</mo><mn>0</mn></mrow></math> is a
+situation-specific matter (see the discussion in Crawford and Iriberri,
+2006), and at this point it is not clear which one of the two specifications
+is more appropriate in voting games.</span></span></span>  Let the vector <math alttext="\{p_{0},p_{1},\ldots,\}" class="ltx_math_unparsed" display="inline" id="S3.SS0.SSS0.Px2.p2.m2"><mrow><mo stretchy="false">{</mo><msub><mi>p</mi><mn>0</mn></msub><mo>,</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mo stretchy="false">}</mo></mrow></math> denote (a designer’s beliefs about) the distribution of <math alttext="Lk" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p2.m3"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math> types in
+the population, i.e. <math alttext="p_{k}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p2.m4"><msub><mi>p</mi><mi>k</mi></msub></math> represents the probability of type <math alttext="Lk" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p2.m5"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math>.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_theorem" id="Thmtheorem2">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmtheorem2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For any <math alttext="Lk" class="ltx_Math" display="inline" id="Thmtheorem2.p1.m1"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math> type distribution, <math alttext="\{p_{0},p_{1},\ldots\}" class="ltx_Math" display="inline" id="Thmtheorem2.p1.m2"><mrow><mo stretchy="false">{</mo><msub><mi>p</mi><mn>0</mn></msub><mo>,</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></math>, the
+unique voting rule that maximizes ex-ante expected utility is <math alttext="V^{*}" class="ltx_Math" display="inline" id="Thmtheorem2.p1.m3"><msup><mi>V</mi><mo>∗</mo></msup></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p3">
+<p class="ltx_p">Fix any <math alttext="\{p_{0},p_{1},\ldots\}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p3.m1"><mrow><mo stretchy="false">{</mo><msub><mi>p</mi><mn>0</mn></msub><mo>,</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></math>.  Observe that under <math alttext="V^{*}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p3.m2"><msup><mi>V</mi><mo>∗</mo></msup></math>, type <math alttext="L1" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p3.m3"><mrow><mi>L</mi><mo>⁢</mo><mn>1</mn></mrow></math> plays
+informatively, since if all other voters are voting informatively, it is a
+unique best response to vote informatively under <math alttext="V^{*}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p3.m4"><msup><mi>V</mi><mo>∗</mo></msup></math>.  By induction, all
+types vote informatively.  Thus, <math alttext="V^{*}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p3.m5"><msup><mi>V</mi><mo>∗</mo></msup></math> achieves full information
+aggregation, and is an optimal voting rule.  That <math alttext="V^{*}" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p3.m6"><msup><mi>V</mi><mo>∗</mo></msup></math> is uniquely optimal
+follows from the same argument as that of uniqueness in Lemma <a class="ltx_ref" href="#Thmlemma3"><span class="ltx_text ltx_ref_tag">3</span></a>.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_para" id="S3.SS0.SSS0.Px2.p4">
+<p class="ltx_p">The proof of the Theorem makes it clear that this result would hold under
+numerous variations.  For example, the same argument works if there are <math alttext="Lk" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p4.m1"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math>
+types who do not simply best respond to a belief that all others are of type
+<math alttext="L(k-1)" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p4.m2"><mrow><mi>L</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>, but rather, best respond to an arbitrary conjecture distribution
+over all <math alttext="L0,...,L(k-1)" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p4.m3"><mrow><mrow><mi>L</mi><mo>⁢</mo><mn>0</mn></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>L</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> types in the population.  This implies that
+Theorem <a class="ltx_ref" href="#Thmtheorem2"><span class="ltx_text ltx_ref_tag">2</span></a> also holds when agents belong to a <em class="ltx_emph ltx_font_italic">cognitive
+hierarchy</em> (Camerer, Ho, and Chung, 2004).  Similarly, a “sophisticated”
+type who best responds to the true population distribution of <math alttext="Lk" class="ltx_Math" display="inline" id="S3.SS0.SSS0.Px2.p4.m4"><mrow><mi>L</mi><mo>⁢</mo><mi>k</mi></mrow></math> types can
+also be accommodated.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>Concluding Remarks</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">Strategic voting may differ from informative voting in complex and
+surprising ways under arbitrary voting mechanisms.  However, our
+results demonstrate that the two notions may not generate different
+implications for the design of optimal voting rules.  If a policy
+maker believes that the voting game satisfies the assumptions of
+Section 2—which subsumes the focus of the previous
+literature—then her recommendation for design will be completely
+unaffected by her knowledge (or ignorance) of game-theoretic
+insights.  In particular, if unanimity rule is the optimal voting
+rule from the point of view of “naive” policy maker, who ignores strategic voting,
+then it is also the optimal voting rule for a “sophisticated”
+designer, who believes that voters will behave strategically.</p>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">Although it may appear that this conclusion contradicts Feddersen
+and Pesendorfer’s (1998, p. 31) finding that “in
+large juries the unanimity rule is inferior to a variety of other
+rules”, this is not the case.  It is crucial to
+recognize that because they assume that the threshold for reasonable
+doubt, <math alttext="q" class="ltx_Math" display="inline" id="S4.p2.m1"><mi>q</mi></math>, is strictly between <math alttext="0" class="ltx_Math" display="inline" id="S4.p2.m2"><mn>0</mn></math> and <math alttext="1" class="ltx_Math" display="inline" id="S4.p2.m3"><mn>1</mn></math>, no institution designer
+will find it optimal to choose unanimity rule when the jury size is
+large enough, regardless of the designer’s beliefs about the
+fraction of naive jurors.  Our result says that for a <em class="ltx_emph ltx_font_italic">given
+jury size</em>, the choice of the optimal voting rule is invariant to
+beliefs about the fraction of naive and strategic jurors.  Since a
+naive designer will not choose unanimity rule for large jury sizes,
+neither will a sophisticated designer.  A useful implication of our
+results is that even when solving the joint problem of choosing both
+an optimal jury size and an optimal voting rule (say, when there is
+a fixed cost of adding an additional juror to the jury), the
+designer can simply assume that jurors behave naively. Given the
+mixed evidence on voters’ actual behavior (e.g. Guarnaschelli,
+McKelvey, and Palfrey, 2000), this is a striking and perhaps
+reassuring result.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">Does the main result of this paper extend to more general
+environments?  As mentioned in the introduction, only one feature
+of the model is crucial: voters have
+homogeneous preferences.<span class="ltx_note ltx_role_footnote" id="footnote12"><sup class="ltx_note_mark">12</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">12</sup><span class="ltx_tag ltx_tag_note">12</span>Recall, however, from fn. <a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">4</span></a> that a little heterogeneity
+in the thresholds of reasonable doubt among voters does nothing to
+upset the arguments presented here.  When discussing
+non-homogeneous preferences, we mean “sufficiently
+heterogeneous” preferences.</span></span></span>  As long as this
+condition holds, our basic insight is robust to various voting
+environments.  In particular, the naive designer still chooses a
+voting rule that is also optimal for the sophisticated designer if
+mistrials are allowed (Coughlan, 2000), or when voters receive more
+than two
+signals (Duggan and Martinelli, 2001).<span class="ltx_note ltx_role_footnote" id="footnote13"><sup class="ltx_note_mark">13</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">13</sup><span class="ltx_tag ltx_tag_note">13</span>In this setting with more than two signals, the appropriate notion is that
+voters choose their vote from a set at least as large as the signal space,
+and that the mechanism designer chooses amongst all possible mappings from
+the profile of votes to final decisions.</span></span></span>  The reason is that in all these
+cases, homogeneous preferences imply that informative voting is a Nash
+equilibrium under the naive designer’s optimal voting rule.  Conversely, it
+is also the case that in any of these generalized settings, any optimal
+voting rule for the sophisticated designer induces the same mapping from
+signal profiles to final decisions as the optimal rule for the naive
+designer does.  Therefore, the main message regarding the equivalence
+between the two designer’s choices continues to apply, albeit in weaker form.</p>
+</div>
+<div class="ltx_para" id="S4.p4">
+<p class="ltx_p">If voters have heterogeneous preferences, then the basic logic underlying
+the main insight of this paper no longer holds.  In such a setting, the
+revelation principle for mechanism design still guarantees that there exists
+an optimal mechanism for the sophisticated designer in which all voters are
+asked to vote informatively—i.e. disclose their signal truthfully—and it
+is a Nash equilibrium for them to do so.  However, this mechanism would in
+general <em class="ltx_emph ltx_font_italic">not</em> map the revealed signals into the ex-post optimal
+decision for the designer.  Accordingly, it will typically be the case that
+a naive designer (incorrectly) expects a higher ex-ante utility under a
+different mechanism, viz. the one that maps revealed signals into the
+ex-post optimal decisions.</p>
+</div>
+<div class="ltx_para" id="S4.p5">
+<p class="ltx_p">We believe that our results demonstrate in a very transparent manner that
+imposing homogeneous preferences, though a common practice in the previous
+literature, is an extremely strong restriction. Once it is imposed,
+fundamental differences in voters’ behavior become irrelevant for the choice
+of optimal voting rules.</p>
+</div>
+<div class="ltx_pagination ltx_role_newpage"></div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist">
+<li class="ltx_bibitem" id="bib.bib1">
+<span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Austen-Smith</span>, D. and J. <span class="ltx_text ltx_font_smallcaps">Banks</span> [1996],
+“Information Aggregation, Rationality, and the Condorcet
+Jury Theorem.” <span class="ltx_text ltx_font_italic">American Political Science Review,</span>
+<span class="ltx_text ltx_font_bold">90-1</span>, pp34-45.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib2">
+<span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Battaglini</span>, M., R. <span class="ltx_text ltx_font_smallcaps">Morton</span>, and T. <span class="ltx_text ltx_font_smallcaps">Palfrey</span> [2005], “The Swing Voter’s Curse in the
+Laboratory.” mimeo, Princeton University.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib3">
+<span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Berg</span>, S. [1993], “Condorcet’s Jury
+Theorem, Dependency among Jurors.” <span class="ltx_text ltx_font_italic">Social Choice
+and Welfare</span>, <span class="ltx_text ltx_font_bold">10-1</span>, pp87-95.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib4">
+<span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Camerer</span>, C. F., T. <span class="ltx_text ltx_font_smallcaps">Ho</span>, and J. <span class="ltx_text ltx_font_smallcaps">Chong</span>
+[2004], “A Cognitive Hierarchy Model of Games
+.” <span class="ltx_text ltx_font_italic">Quarterly Journal of Economics</span>, <span class="ltx_text ltx_font_bold">119-3</span>, pp861-898.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib5">
+<span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Chwe</span>, M. [1999], “Minority Voting
+Rights Can Maximize Majority Welfare.” <span class="ltx_text ltx_font_italic">American
+Political Science Review</span>, <span class="ltx_text ltx_font_bold">93-1</span>, pp85-97.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib6">
+<span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Crawford</span>, V. P. [2003], “Lying for
+Strategic Advantage: Rational and Boundedly Rational Misrepresentation of
+Intentions.” <span class="ltx_text ltx_font_italic">American Economic Review</span>, <span class="ltx_text ltx_font_bold">93</span>, pp133-149.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib7">
+<span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Crawford</span>, V. P. and N. <span class="ltx_text ltx_font_smallcaps">Iribberi</span> [2006],
+“Fatal Attraction: Salience, Naivete, and Sophistication in
+Experimental Hide-and-Seek Games.” mimeo, UCSD.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib8">
+<span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Condorcet</span>, A. [1785], <span class="ltx_text ltx_font_italic">Essai sur l’Application de
+l’Analyse à la Probabilité des Décisions Rendues à la
+Pluralité des Voix</span>. Imprimerie Royale, Paris
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib9">
+<span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Coughlan</span>, P. [2000], “In Defense of
+Unanimous Jury Verdicts: Mistrials, Communication, and Strategic
+Voting.” <span class="ltx_text ltx_font_italic">American Political Science Review,</span>
+<span class="ltx_text ltx_font_bold">94-2</span>, pp375-393.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib10">
+<span class="ltx_tag ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Duggan</span>, J. and C. <span class="ltx_text ltx_font_smallcaps">Martinelli</span> [2001],
+“A Bayesian Model of Voting in Juries.” <span class="ltx_text ltx_font_italic">Games and Economic Behavior</span>, <span class="ltx_text ltx_font_bold">37</span>, pp259-294.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib11">
+<span class="ltx_tag ltx_tag_bibitem">[11]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Feddersen</span>, T. and W. <span class="ltx_text ltx_font_smallcaps">Pesendorfer</span> [1996],
+“The Swing Voter’s Curse.” <span class="ltx_text ltx_font_italic">American Economic Review</span>, <span class="ltx_text ltx_font_bold">86-3</span>, pp408-424.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib12">
+<span class="ltx_tag ltx_tag_bibitem">[12]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Feddersen</span>, T. and W. <span class="ltx_text ltx_font_smallcaps">Pesendorfer</span> [1998],
+“Convicting the Innocent: The Inferiority of Unanimous Jury
+Verdicts under Strategic Voting.” <span class="ltx_text ltx_font_italic">American
+Political Science Review</span>, <span class="ltx_text ltx_font_bold">92-1</span>, pp23-35.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib13">
+<span class="ltx_tag ltx_tag_bibitem">[13]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Gerardi</span> D. [2000], “Jury Verdicts and
+Preference Diversity.” <span class="ltx_text ltx_font_italic">American Political Science
+Review,</span> <span class="ltx_text ltx_font_bold">94-2</span>, pp395-406.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib14">
+<span class="ltx_tag ltx_tag_bibitem">[14]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Gerardi</span> D. and L. <span class="ltx_text ltx_font_smallcaps">Yariv</span> [2006],
+“Deliberative Voting.” <span class="ltx_text ltx_font_italic">Journal of
+Economic Theory,</span> forthcoming.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib15">
+<span class="ltx_tag ltx_tag_bibitem">[15]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Guarnaschelli</span>, S., <span class="ltx_text ltx_font_smallcaps">McKelvey</span>, R. and T. <span class="ltx_text ltx_font_smallcaps">Palfrey</span> [2000], “An Experimental Study of Jury Decision
+Rules.” <span class="ltx_text ltx_font_italic">American Political Science Review</span>,
+<span class="ltx_text ltx_font_bold">94-2</span>, pp407-23.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib16">
+<span class="ltx_tag ltx_tag_bibitem">[16]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Ladha</span>, K. [1992], “The Condorcet Jury
+Theorem, Free Speech, and Correlated Votes.” <span class="ltx_text ltx_font_italic">American Journal of Political Science</span>, <span class="ltx_text ltx_font_bold">36</span>, pp617-634
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib17">
+<span class="ltx_tag ltx_tag_bibitem">[17]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">McLennan</span>, A. [1998], “Consequences of
+the Condorcet Jury Theorem for Beneficial Information Aggregation by
+Rational Agents.” <span class="ltx_text ltx_font_italic">American Political Science Review</span>, <span class="ltx_text ltx_font_bold">92-2</span>, pp413-418.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib18">
+<span class="ltx_tag ltx_tag_bibitem">[18]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Myerson</span>, R. [1998], “Extended Poisson
+Games and the Condorcet Jury Theorem.” <span class="ltx_text ltx_font_italic">Games and
+Economic Behavior</span>, <span class="ltx_text ltx_font_bold">25-1</span>, pp111-131.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib19">
+<span class="ltx_tag ltx_tag_bibitem">[19]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Nagel</span>, R. [1995], “Unravelling in
+Guessing Games: An Experimental Study.” <span class="ltx_text ltx_font_italic">American
+Economic Review</span>, <span class="ltx_text ltx_font_bold">85</span>, pp1313-1326.
+
+</span>
+</li>
+<li class="ltx_bibitem" id="bib.bib20">
+<span class="ltx_tag ltx_tag_bibitem">[20]</span>
+<span class="ltx_bibblock"> <span class="ltx_text ltx_font_smallcaps">Stahl</span>, D. O. and P. W. <span class="ltx_text ltx_font_smallcaps">Wilson</span> [1995],
+“On Players’ Models of Other Players: Theory and
+Experimental Evidence.” <span class="ltx_text ltx_font_italic">Games and Economic Behavior</span>, <span class="ltx_text ltx_font_bold">10-1</span>, pp218-254.
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">HTML version generated from LaTeX source using <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS rendering.</div></footer>
+</div>
+</body>
+</html>

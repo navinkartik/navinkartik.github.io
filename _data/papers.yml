@@ -18,6 +18,7 @@
 
 - title: "Multi-Sender Disclosure with Costs"
   pdf: Papers/KLS-disclosure-costs.pdf
+  html: KLS-disclosure-costs
   coauthors: [Frances Xu Lee, Wing Suen]
   date: "January 2026"
   wp_date: "January 2026"
@@ -25,6 +26,7 @@
 
 - title: "Replacement and Reputation"
   pdf: Papers/KLP-replacement.pdf
+  html: KLP-replacement
   coauthors: [Elliot Lipnowski, Harry Pei]
   date: "December 2025"
   wp_date: "December 2025"
@@ -33,6 +35,7 @@
 
 - title: "Convex Choice"
   pdf: Papers/KK-ConvexChoice.pdf
+  html: KK-ConvexChoice
   coauthors: [Andreas Kleiner]
   date: "revised February 2025"
   wp_date: "February 2025"
@@ -41,6 +44,7 @@
 
 - title: "Effective Communication in Cheap-Talk Games"
   pdf: Papers/GKLOS-EffectiveCommunication.pdf
+  html: GKLOS-EffectiveCommunication
   coauthors: [Sidartha Gordon, Melody Pei-yu Lo, Wojciech Olszewski, Joel Sobel]
   coauthors_on_next_line: true
   date: "revised March 2026"
@@ -49,6 +53,7 @@
 
 - title: "Information Revelation in Constant-Sum Games: Elections and Beyond"
   pdf: Papers/KST-InfoRev.pdf
+  html: KST-InfoRev
   coauthors: [Francesco Squintani, Katrin Tinn]
   coauthors_on_next_line: true
   date: "revised December 2025"
@@ -59,6 +64,7 @@
 
 - title: "A Note on Mixed-Nash Implementation"
   pdf: Papers/Mixed-Nash.pdf
+  html: Mixed-Nash
   coauthors: [Olivier Tercieux]
   date: "January 2012"
   wp_date: "January 2012"
@@ -66,6 +72,7 @@
 
 - title: "On Optimal Voting Rules under Homogeneous Preferences"
   pdf: Papers/jurydesign.pdf
+  html: jurydesign
   coauthors: [Arnaud Costinot]
   date: "revised August 2007"
   wp_date: "August 2007"
