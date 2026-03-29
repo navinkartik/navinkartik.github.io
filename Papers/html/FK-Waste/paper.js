@@ -48,23 +48,54 @@
       const noteEl = creator.querySelector('.ltx_author_notes');
 
       if (nameEl) {
+        // Old papers embed affiliation inside ltx_personname via <br> breaks.
+        // Modern papers put it in ltx_author_notes. Handle both.
+        const breaks = nameEl.querySelectorAll('br.ltx_break');
+        let authorName, affiliationText = null;
+
+        if (breaks.length > 0) {
+          // Split at first <br>: before = name, after = affiliation lines
+          const nameParts = [], affParts = [];
+          let seenBreak = false;
+          for (const node of nameEl.childNodes) {
+            if (node.nodeName === 'BR') { seenBreak = true; continue; }
+            const txt = node.textContent.trim();
+            if (!txt) continue;
+            if (!seenBreak) nameParts.push(txt);
+            else affParts.push(txt);
+          }
+          authorName = nameParts.join(' ').trim();
+          affiliationText = affParts.filter(Boolean).join(', ');
+        } else {
+          authorName = nameEl.textContent.trim();
+        }
+
         // Author name line
         const nameBlock = document.createElement('div');
         nameBlock.style.marginBottom = '0.3rem';
-        nameBlock.textContent = nameEl.textContent.trim();
+        nameBlock.textContent = authorName;
         nameBlock.style.fontWeight = '500';
         nameBlock.style.fontVariant = 'small-caps';
         nameBlock.style.fontSize = '1.05rem';
         container.appendChild(nameBlock);
 
-        // Affiliation line (if present)
-        if (noteEl) {
+        // Affiliation from embedded breaks (old papers)
+        if (affiliationText) {
           const affBlock = document.createElement('div');
-          affBlock.style.marginBottom = '0.8rem';
+          affBlock.style.marginBottom = '0.3rem';
           affBlock.style.fontSize = '0.82rem';
           affBlock.style.color = 'var(--muted)';
-          affBlock.innerHTML = noteEl.innerHTML;
+          affBlock.textContent = affiliationText;
           container.appendChild(affBlock);
+        }
+        // ltx_author_notes: affiliation for modern papers, contact info for old papers — show either way
+        if (noteEl) {
+          const noteBlock = document.createElement('div');
+          noteBlock.style.marginBottom = '0.8rem';
+          noteBlock.style.fontSize = affiliationText ? '0.75rem' : '0.82rem';
+          noteBlock.style.color = 'var(--muted)';
+          noteBlock.innerHTML = noteEl.innerHTML;
+          container.appendChild(noteBlock);
         }
       }
     });
@@ -77,7 +108,39 @@
      theorem appendix proofs, adds a [hide proof] button.
      Content stays in DOM at all times.                           */
   function initProofToggles() {
-    // All proofs are wrapped in div.nk-proof by apply_design.py.
+    // Handle div.ltx_proof (older papers — LaTeXML emits this directly from amsthm)
+    document.querySelectorAll('div.ltx_proof').forEach(function (proof) {
+      const label = proof.querySelector('h6.ltx_title_proof');
+      if (!label) return;
+      const paras = Array.from(proof.children).filter(function (el) {
+        return el.classList.contains('ltx_para');
+      });
+      if (!paras.length) return;
+
+      const body = document.createElement('div');
+      body.className = 'nk-proof-body';
+      paras.forEach(function (p) { body.appendChild(p); });
+      proof.appendChild(body);
+
+      const btn = document.createElement('span');
+      btn.className = 'nk-proof-toggle';
+      btn.textContent = 'hide';
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('aria-expanded', 'true');
+      label.appendChild(btn);
+
+      btn.addEventListener('click', function () {
+        const collapsed = body.classList.toggle('nk-collapsed');
+        btn.textContent = collapsed ? 'show' : 'hide';
+        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      });
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+      });
+    });
+
+    // All nk-proof proofs are wrapped by apply_design.py.
     // Two sub-cases based on structure:
     // - Multi-paragraph: multiple div.ltx_para children → collapse all but the label para
     // - Single-paragraph: one div.ltx_para child (content inside li) → collapse li content
@@ -117,6 +180,55 @@
       btn.setAttribute('tabindex', '0');
       btn.setAttribute('aria-expanded', 'true');
       tag.appendChild(btn);
+
+      btn.addEventListener('click', function () {
+        const collapsed = body.classList.toggle('nk-collapsed');
+        btn.textContent = collapsed ? 'show' : 'hide';
+        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      });
+      btn.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+      });
+    });
+
+    // Pattern B: nk-proof-bold — bold "Proof." span inside p.ltx_p inside div.ltx_para.
+    // Label para is the first child; remaining div.ltx_para children go into nk-proof-body.
+    document.querySelectorAll('div.nk-proof-bold').forEach(function (proof) {
+      const boldSpan = proof.querySelector('.ltx_font_bold');
+      if (!boldSpan || !/^\s*Proof[.\s]/.test(boldSpan.textContent)) return;
+
+      const paras = Array.from(proof.children).filter(function (el) {
+        return el.classList.contains('ltx_para');
+      });
+      if (!paras.length) return;
+
+      const body = document.createElement('div');
+      body.className = 'nk-proof-body';
+
+      if (paras.length >= 2) {
+        // Label para stays; move subsequent paras into body
+        paras.slice(1).forEach(function (para) { body.appendChild(para); });
+        proof.appendChild(body);
+      } else {
+        // All content is in one para — move everything after the bold span into body
+        const labelP = boldSpan.closest('p');
+        const nodesToMove = [];
+        let past = false;
+        Array.from(labelP.childNodes).forEach(function (node) {
+          if (past) { nodesToMove.push(node); }
+          else if (node === boldSpan) { past = true; }
+        });
+        nodesToMove.forEach(function (node) { body.appendChild(node); });
+        labelP.parentNode.appendChild(body);
+      }
+
+      const btn = document.createElement('span');
+      btn.className = 'nk-proof-toggle';
+      btn.textContent = 'hide';
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('aria-expanded', 'true');
+      boldSpan.appendChild(btn);
 
       btn.addEventListener('click', function () {
         const collapsed = body.classList.toggle('nk-collapsed');

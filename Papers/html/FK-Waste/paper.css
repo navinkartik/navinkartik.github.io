@@ -107,11 +107,9 @@ body {
   margin: 2.5rem 0 0.75rem;
 }
 
-/* \thanks inside \title: hide the inline note from display.
-   Text stays in DOM so AI readers can find it. */
-.ltx_title_document .ltx_note {
-  display: none;
-}
+/* \thanks inside \title: styled identically to footnotes (margin note / popup / inline).
+   Hide the "thanks:" type label — it's a LaTeXML artifact. */
+.ltx_note_type { display: none; }
 
 .ltx_authors {
   margin: 0.5rem 0 0.25rem;
@@ -252,6 +250,16 @@ div.nk-proof ul.ltx_itemize > .ltx_item:last-child {
   padding-right: 0.3em;
 }
 
+/* LaTeXML renders amsthm proofs as div.ltx_proof in some older papers */
+div.ltx_proof {
+  margin: 1rem 0;
+  padding: 0.55rem 1rem 0.4rem 1.1rem;
+  background: var(--bg-muted);
+  border-left: 3px solid var(--c-remark);
+  border-radius: 0 3px 3px 0;
+}
+div.ltx_proof *:last-child { margin-bottom: 0; }
+
 /* ── Proof toggle ────────────────────────────────────────────── */
 /* Proofs: show a [hide proof] button; content stays in DOM.
    JS adds the button and .nk-proof-collapsible class.        */
@@ -290,8 +298,11 @@ div.nk-proof ul.ltx_itemize > .ltx_item:last-child {
 
 .ltx_eqn_row { vertical-align: baseline; }
 
-/* Center align-environment column pairs: pad cells absorb slack, content stays tight */
-.ltx_eqn_center_padleft, .ltx_eqn_center_padright { width: 50%; }
+/* Center align-environment column pairs: pad cells absorb slack, content stays tight.
+   Scoped to ltx_eqn_align only — single-equation tables must not have constrained pads
+   or the content cell gets squeezed to zero (breaks image figures in equations). */
+.ltx_eqn_align .ltx_eqn_center_padleft,
+.ltx_eqn_align .ltx_eqn_center_padright { width: 50%; }
 
 .ltx_align_center { text-align: center; }
 
@@ -316,6 +327,10 @@ div.nk-proof ul.ltx_itemize > .ltx_item:last-child {
 .ltx_note_content .ltx_note_mark {
   display: none;
 }
+/* Exception: thanks notes have no ltx_tag_note, so show the mark in the content */
+.ltx_role_thanks .ltx_note_content .ltx_note_mark {
+  display: inline;
+}
 
 /* Show footnote number at start of note content */
 .ltx_note_content .ltx_tag_note {
@@ -326,8 +341,8 @@ div.nk-proof ul.ltx_itemize > .ltx_item:last-child {
   margin-right: 0.15em;
 }
 
-/* ── Mobile: footnotes inline below mark ─────────────────────── */
-@media (max-width: 39.99rem) {
+/* ── Below wide: footnotes inline below mark ─────────────────── */
+@media (max-width: 89.99rem) {
   .ltx_note_outer {
     display: block;
     font-size: 0.83rem;
@@ -339,37 +354,10 @@ div.nk-proof ul.ltx_itemize > .ltx_item:last-child {
   }
 }
 
-/* ── Medium screens: hover popup ────────────────────────────── */
-@media (min-width: 40rem) and (max-width: 89.99rem) {
-  .ltx_note.ltx_role_footnote {
-    position: relative;
-  }
-
-  .ltx_note_outer {
-    display: none;
-    position: absolute;
-    bottom: 1.4rem;
-    left: -1rem;
-    width: min(22rem, 80vw);
-    background: var(--bg);
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    padding: 0.7rem 0.9rem;
-    font-size: 0.83rem;
-    line-height: 1.55;
-    z-index: 200;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-  }
-
-  .ltx_note.ltx_role_footnote:hover .ltx_note_outer,
-  .ltx_note.ltx_role_footnote:focus-within .ltx_note_outer {
-    display: block;
-  }
-}
-
 /* ── Wide screens: margin notes ─────────────────────────────── */
 @media (min-width: 90rem) {
-  .ltx_note.ltx_role_footnote {
+  .ltx_note.ltx_role_footnote,
+  .ltx_note.ltx_role_thanks {
     position: static;
   }
 
@@ -577,6 +565,12 @@ div.nk-proof {
 div.nk-proof > .ltx_para {
   margin: 0;
 }
+/* Multi-para proof li not wrapped in nk-proof (entangled case): switch to block so
+   two ltx_para children don't go side-by-side as flex items */
+ul.ltx_itemize > .ltx_item:has(> .ltx_para + .ltx_para) {
+  display: block;
+}
+
 /* Proof label li: block (not flex) so label sits above content */
 div.nk-proof ul.ltx_itemize > .ltx_item {
   display: block;
@@ -615,6 +609,14 @@ div.nk-proof ul.ltx_itemize > .ltx_item > .ltx_para {
   .ltx_title_document { font-size: 1.4rem; }
   .ltx_theorem { padding: 0.5rem 0.75rem; }
   .ltx_tabular { font-size: 0.85rem; }
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.ltx_page_logo {
+  margin-top: 3rem;
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  text-align: center;
 }
 
 @media print {
