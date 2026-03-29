@@ -1,5 +1,8 @@
 # Papers data - edit here to update all pages
 # Run: python build.py after making changes
+#
+# wp_date: date shown on the working paper PDF (used in HTML version header)
+# pdf_link_to_published: true → pdf field links to the typeset journal version, not a working paper
 
 # =============================================================================
 # UNPUBLISHED PAPERS
@@ -9,18 +12,21 @@
   pdf: Papers/FK-Waste.pdf
   coauthors: [Alex Frankel]
   date: "revised March 2026"
+  wp_date: "March 2026"
   status: unpublished
 
 - title: "Multi-Sender Disclosure with Costs"
   pdf: Papers/KLS-disclosure-costs.pdf
   coauthors: [Frances Xu Lee, Wing Suen]
   date: "January 2026"
+  wp_date: "January 2026"
   status: unpublished
 
 - title: "Replacement and Reputation"
   pdf: Papers/KLP-replacement.pdf
   coauthors: [Elliot Lipnowski, Harry Pei]
   date: "December 2025"
+  wp_date: "December 2025"
   slides: Slides/KLP-Replacement-slides.pdf
   status: unpublished
 
@@ -28,6 +34,7 @@
   pdf: Papers/KK-ConvexChoice.pdf
   coauthors: [Andreas Kleiner]
   date: "revised February 2025"
+  wp_date: "February 2025"
   slides: Slides/KK-ConvexChoice-slides.pdf
   status: unpublished
 
@@ -36,6 +43,7 @@
   coauthors: [Sidartha Gordon, Melody Pei-yu Lo, Wojciech Olszewski, Joel Sobel]
   coauthors_on_next_line: true
   date: "revised March 2026"
+  wp_date: "March 2026"
   status: unpublished
 
 - title: "Information Revelation in Constant-Sum Games: Elections and Beyond"
@@ -43,6 +51,7 @@
   coauthors: [Francesco Squintani, Katrin Tinn]
   coauthors_on_next_line: true
   date: "revised December 2025"
+  wp_date: "December 2025"
   notes: |
     Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a> <span class="paper-links-inline"><a class="slidestitle" href="Slides/KST-slides-May2013.pdf">Slides</a></span>
   status: unpublished
@@ -51,12 +60,14 @@
   pdf: Papers/Mixed-Nash.pdf
   coauthors: [Olivier Tercieux]
   date: "January 2012"
+  wp_date: "January 2012"
   status: unpublished
 
 - title: "On Optimal Voting Rules under Homogeneous Preferences"
   pdf: Papers/jurydesign.pdf
   coauthors: [Arnaud Costinot]
   date: "revised August 2007"
+  wp_date: "August 2007"
   status: unpublished
 
 # =============================================================================
@@ -69,6 +80,7 @@
   journal: "Theoretical Economics"
   journal_url: https://econtheory.org/ojs/index.php/te/article/view/20260281
   pub_date: "January 2026"
+  wp_date: "September 2025"
   slides: Slides/KZ-Lemonade-slides.pdf
   status: published
 
@@ -78,6 +90,7 @@
   journal: "American Economic Review"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.20231407
   pub_date: "September 2025"
+  wp_date: "May 2025"
   slides: Slides/DFK-TestOptional-slides.pdf
   links:
     - label: "VoxEU column"
@@ -92,6 +105,8 @@
   journal: "AEA Papers and Proceedings"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/pandp.20251055
   pub_date: "May 2025"
+  wp_date: "January 2025"
+  wp_html_date: "November 2024"
   slides: Slides/DFK-TestOptionalPuzzle-slides.pdf
   status: published
 
@@ -101,6 +116,7 @@
   journal: "Review of Economic Studies"
   journal_url: https://academic.oup.com/restud/article-abstract/91/5/2981/7330557
   pub_date: "October 2024"
+  wp_date: "June 2023"
   notes: |
     An earlier incarnation: <a class="papertitle" href="Papers/KLR-sced.pdf">Single-Crossing Differences on Distributions</a>
     <span class="paper-links-inline" style="font-style: normal;">
@@ -115,6 +131,7 @@
   journal: "Econometrica"
   journal_url: https://doi.org/10.3982/ECTA21470
   pub_date: "July 2024"
+  wp_date: "April 2024"
   slides: Slides/KLLR-ObsLearning-slides.pdf
   status: published
 
@@ -124,6 +141,7 @@
   journal: "Econometrica"
   journal_url: https://onlinelibrary.wiley.com/doi/10.3982/ECTA20658
   pub_date: "July 2023"
+  wp_date: "May 2023"
   slides: Slides/AKK-svb-slides.pdf
   status: published
 
@@ -133,6 +151,7 @@
   journal: "Journal of the European Economic Association"
   journal_url: https://doi.org/10.1093/jeea/jvab017
   pub_date: "February 2022"
+  wp_date: "February 2021"
   slides: Slides/FK-improvinginfo-slides.pdf
   status: published
 
@@ -142,6 +161,7 @@
   journal: "American Economic Review"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.20201817
   pub_date: "December 2021"
+  wp_date: "July 2021"
   slides: Slides/KKvW-veto-slides.pdf
   status: published
 
@@ -151,6 +171,7 @@
   journal: "American Economic Review: Insights"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/aeri.20200284
   pub_date: "June 2021"
+  wp_date: "July 2020"
   notes: |
     An earlier version with a different emphasis and leading application:
     <div style="margin-top: .3em;">
@@ -165,6 +186,7 @@
   journal: "Journal of Political Economy"
   journal_url: https://doi.org/10.1086/701604
   pub_date: "August 2019"
+  wp_date: "March 2017"
   slides: Slides/FK-mudinf-slides.pdf
   status: published
 
@@ -174,6 +196,7 @@
   journal: "Quarterly Journal of Political Science"
   journal_url: https://dx.doi.org/10.1561/100.00016057
   pub_date: "2019"
+  wp_date: "September 2018"
   slides: Slides/KvW-reputation-slides.pdf
   status: published
 
@@ -183,6 +206,7 @@
   journal: "Review of Economic Studies"
   journal_url: https://doi.org/10.1093/restud/rdy009
   pub_date: "March 2019"
+  wp_date: "October 2017"
   slides: Slides/KvW-communication-slides.pdf
   links:
     - label: "Supplementary Appendix"
@@ -195,6 +219,7 @@
   journal: "Theoretical Economics"
   journal_url: https://econtheory.org/ojs/index.php/te/article/view/20180697
   pub_date: "May 2018"
+  wp_date: "September 2017"
   notes: |
     An earlier version with a different focus was circulated under the title
     <a class="papertitle" href="Papers/FK-Transparency.pdf">What Kind of Transparency?</a>
@@ -207,6 +232,7 @@
   journal: "Proceedings of the National Academy of Sciences"
   journal_url: https://doi.org/10.1073/pnas.1714171115
   pub_date: "January 2018"
+  wp_date: "January 2018"
   notes: "Supplementary Appendix is contained in the above early-edition version"
   status: published
 
@@ -216,6 +242,7 @@
   journal: "American Journal of Political Science"
   journal_url: https://dx.doi.org/10.1111/ajps.12310
   pub_date: "October 2017"
+  wp_date: "April 2017"
   slides: Slides/KVWW-ambiguity-slides.pdf
   notes: "Supplementary Appendix is contained in the above pre-publication version"
   status: published
@@ -226,6 +253,7 @@
   journal: "Journal of Political Economy"
   journal_url: https://doi.org/10.1086/693040
   pub_date: "October 2017"
+  wp_date: "February 2016"
   slides: Slides/HKL-contests-slides.pdf
   links:
     - label: "Supplementary Appendix"
@@ -238,6 +266,7 @@
   journal: "RAND Journal of Economics"
   journal_url: https://dx.doi.org/10.1111/1756-2171.12166
   pub_date: "Spring 2017"
+  wp_date: "May 2016"
   status: published
 
 - title: "Optimal Contracts for Experimentation"
@@ -246,6 +275,8 @@
   journal: "Review of Economic Studies"
   journal_url: https://dx.doi.org/10.1093/restud/rdw013
   pub_date: "July 2016"
+  wp_html_date: "January 2016"
+  pdf_link_to_published: true
   slides: Slides/HKL-contracts-slides.pdf
   links:
     - label: "Supplementary Appendix"
@@ -260,6 +291,7 @@
   journal: "Games and Economic Behavior"
   journal_url: https://dx.doi.org/10.1016/j.geb.2014.06.006
   pub_date: "September 2014"
+  wp_date: "June 2014"
   status: published
 
 - title: "Candidates, Character, and Corruption"
@@ -268,6 +300,7 @@
   journal: "American Economic Journal: Microeconomics"
   journal_url: http://www.aeaweb.org/articles.php?doi=10.1257/mic.6.2.205
   pub_date: "May 2014"
+  wp_date: "February 2013"
   links:
     - label: "Supplementary Appendix"
       url: Papers/BernheimKartik-Character-SuppApp.pdf
@@ -281,6 +314,7 @@
   journal: "Games and Economic Behavior"
   journal_url: https://dx.doi.org/10.1016/j.geb.2013.11.011
   pub_date: "January 2014"
+  wp_date: "November 2013"
   status: published
 
 - title: "Pandering to Persuade"
@@ -289,6 +323,7 @@
   journal: "American Economic Review"
   journal_url: http://www.aeaweb.org/articles.php?doi=10.1257/aer.103.1.47
   pub_date: "February 2013"
+  wp_date: "November 2011"
   slides: Slides/CDK-slides.pdf
   links:
     - label: "Supplementary Appendix"
@@ -301,6 +336,7 @@
   journal: "Economic Theory"
   journal_url: https://dx.doi.org/10.1007/s00199-011-0609-7
   pub_date: "November 2012"
+  wp_date: "February 2011"
   notes: |
     Supersedes an earlier working paper "Social Learning in Elections"
     <span class="paper-links-inline" style="font-style: normal;">
@@ -315,6 +351,7 @@
   journal: "Theoretical Economics"
   journal_url: https://dx.doi.org/10.3982/TE723
   pub_date: "May 2012"
+  wp_date: "July 2011"
   links:
     - label: "Slides v1"
       url: Slides/KT-evidence-slides1.pdf
@@ -328,6 +365,7 @@
   journal: "Economics Letters"
   journal_url: https://dx.doi.org/10.1016/j.econlet.2011.01.013
   pub_date: "May 2011"
+  wp_date: "December 2010"
   status: published
 
 - title: "Opinions as Incentives"
@@ -336,6 +374,7 @@
   journal: "Journal of Political Economy"
   journal_url: https://dx.doi.org/10.1086/648432
   pub_date: "October 2009"
+  wp_date: "August 2009"
   slides: Slides/CK-opinions-slides.pdf
   links:
     - label: "Supplementary Appendix"
@@ -348,6 +387,7 @@
   journal: "Review of Economic Studies"
   journal_url: https://dx.doi.org/10.1111/j.1467-937X.2009.00559.x
   pub_date: "October 2009"
+  wp_date: "December 2008"
   slides: Slides/Kartik-lyingcosts-slides.pdf
   notes: 'Subsumes portions of an earlier working paper "Information Transmission with Almost-Cheap Talk",<br>the other portions of which are subsumed by "Selecting Cheap-Talk Equilibria"'
   notes_inside_journal_div: true
@@ -359,6 +399,7 @@
   journal: "Experimental Economics"
   journal_url: https://dx.doi.org/10.1007/s10683-008-9208-2
   pub_date: "June 2009"
+  wp_date: "July 2008"
   links:
     - label: "Appendix 1"
       url: Papers/would_i_lie_appendix1.pdf
@@ -372,6 +413,7 @@
   journal: "American Economic Review: Papers and Proceedings"
   journal_url: https://dx.doi.org/10.1257/aer.98.2.181
   pub_date: "May 2008"
+  pdf_link_to_published: true
   status: published
 
 - title: "Selecting Cheap-Talk Equilibria"
@@ -380,6 +422,8 @@
   journal: "Econometrica"
   journal_url: https://dx.doi.org/10.1111/j.0012-9682.2008.00819.x
   pub_date: "January 2008"
+  wp_html_date: "September 2007"
+  pdf_link_to_published: true
   status: published
 
 - title: "A Note on Cheap Talk and Burned Money"
@@ -388,6 +432,7 @@
   journal: "Journal of Economic Theory"
   journal_url: https://dx.doi.org/10.1016/j.jet.2006.07.001
   pub_date: "September 2007"
+  wp_date: "July 2006"
   notes: |
     An earlier version, <a class="papertitle" href="Papers/burned.pdf">On Cheap Talk and Burned Money</a>, contains additional results
   notes_inside_journal_div: true
@@ -399,6 +444,8 @@
   journal: "American Economic Review"
   journal_url: https://dx.doi.org/10.1257/aer.97.3.852
   pub_date: "June 2007"
+  wp_html_date: "October 2006"
+  pdf_link_to_published: true
   slides: Slides/KM-character-slides.pdf
   links:
     - label: "Supplementary Appendix"
@@ -413,4 +460,5 @@
   journal: "Journal of Economic Theory"
   journal_url: https://dx.doi.org/10.1016/j.jet.2006.04.003
   pub_date: "May 2007"
+  wp_date: "April 2006"
   status: published
