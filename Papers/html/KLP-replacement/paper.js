@@ -14,6 +14,11 @@
     btn.setAttribute('aria-label', 'Toggle dark mode');
     document.body.appendChild(btn);
 
+    // If the title has an author-chosen inline color, lighten it for dark mode
+    // (preserves hue/saturation, forces lightness to 70% so it reads on dark bg)
+    const titleEl = document.querySelector('.ltx_title_document');
+    const titleOrigColor = titleEl ? titleEl.style.color : null;
+
     const saved = localStorage.getItem('nk-theme');
     if (saved === 'dark') setDark(true);
 
@@ -26,6 +31,29 @@
       document.documentElement.setAttribute('data-theme', on ? 'dark' : 'light');
       btn.textContent = on ? '◑ light' : '◑ dark';
       localStorage.setItem('nk-theme', on ? 'dark' : 'light');
+      if (titleEl && titleOrigColor) {
+        titleEl.style.color = on ? lightenHex(titleOrigColor) : titleOrigColor;
+      }
+    }
+
+    function lightenHex(color) {
+      // Browsers normalize inline colors to rgb(r,g,b) — parse that format
+      const m = color.match(/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/);
+      if (!m) return color;
+      const r = parseInt(m[1])/255;
+      const g = parseInt(m[2])/255;
+      const b = parseInt(m[3])/255;
+      const max = Math.max(r,g,b), min = Math.min(r,g,b), d = max - min;
+      let h = 0, s = 0, l = (max+min)/2;
+      if (d) {
+        s = l > 0.5 ? d/(2-max-min) : d/(max+min);
+        switch (max) {
+          case r: h = ((g-b)/d + (g<b?6:0))/6; break;
+          case g: h = ((b-r)/d + 2)/6; break;
+          case b: h = ((r-g)/d + 4)/6; break;
+        }
+      }
+      return 'hsl('+Math.round(h*360)+','+Math.round(s*100)+'%,70%)';
     }
   }
 
@@ -103,6 +131,27 @@
     authorDiv.after(container);
   }
 
+  /* ── Proof toggle helper ───────────────────────────────────── */
+  /* overflow:visible by default so margin floats escape the proof body.
+     We set overflow:hidden only during the collapse animation, then restore. */
+  function attachProofToggle(body, btn) {
+    btn.addEventListener('click', function () {
+      const collapsed = body.classList.toggle('nk-collapsed');
+      btn.textContent = collapsed ? 'show' : 'hide';
+      btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      if (collapsed) {
+        body.style.overflow = 'hidden';
+      } else {
+        body.addEventListener('transitionend', function () {
+          body.style.overflow = '';
+        }, { once: true });
+      }
+    });
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+    });
+  }
+
   /* ── Proof toggle ──────────────────────────────────────────── */
   /* Finds proof items (ltx_item containing "Proof" tag) and
      theorem appendix proofs, adds a [hide proof] button.
@@ -130,14 +179,11 @@
       btn.setAttribute('aria-expanded', 'true');
       label.appendChild(btn);
 
-      btn.addEventListener('click', function () {
-        const collapsed = body.classList.toggle('nk-collapsed');
-        btn.textContent = collapsed ? 'show' : 'hide';
-        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-      });
-      btn.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-      });
+      attachProofToggle(body, btn);
+      body.classList.add('nk-collapsed');
+      body.style.overflow = 'hidden';
+      btn.textContent = 'show';
+      btn.setAttribute('aria-expanded', 'false');
     });
 
     // All nk-proof proofs are wrapped by apply_design.py.
@@ -181,14 +227,11 @@
       btn.setAttribute('aria-expanded', 'true');
       tag.appendChild(btn);
 
-      btn.addEventListener('click', function () {
-        const collapsed = body.classList.toggle('nk-collapsed');
-        btn.textContent = collapsed ? 'show' : 'hide';
-        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-      });
-      btn.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-      });
+      attachProofToggle(body, btn);
+      body.classList.add('nk-collapsed');
+      body.style.overflow = 'hidden';
+      btn.textContent = 'show';
+      btn.setAttribute('aria-expanded', 'false');
     });
 
     // Pattern B: nk-proof-bold — bold "Proof." span inside p.ltx_p inside div.ltx_para.
@@ -239,14 +282,11 @@
       btn.setAttribute('aria-expanded', 'true');
       boldSpan.appendChild(btn);
 
-      btn.addEventListener('click', function () {
-        const collapsed = body.classList.toggle('nk-collapsed');
-        btn.textContent = collapsed ? 'show' : 'hide';
-        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-      });
-      btn.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-      });
+      attachProofToggle(body, btn);
+      body.classList.add('nk-collapsed');
+      body.style.overflow = 'hidden';
+      btn.textContent = 'show';
+      btn.setAttribute('aria-expanded', 'false');
     });
   }
 
@@ -284,39 +324,118 @@
     });
 
     let activeTimeout;
+    let activeTouchLink = null;  // tracks which link has an open touch tooltip
+
+    function showTooltip(targetId, x, y) {
+      const entry = bibMap[targetId];
+      if (!entry) return false;
+      clearTimeout(activeTimeout);
+      tooltip.innerHTML = entry;
+      placeTooltip(x, y);
+      tooltip.style.display = 'block';
+      return true;
+    }
+
+    function hideTooltip() {
+      tooltip.style.display = 'none';
+      activeTouchLink = null;
+    }
+
+    function placeTooltip(x, y) {
+      const maxX = window.scrollX + window.innerWidth - 400;
+      tooltip.style.left = Math.min(x, maxX) + 'px';
+      tooltip.style.top = y + 'px';
+      tooltip.style.position = 'absolute';
+    }
 
     document.querySelectorAll('.ltx_cite a.ltx_ref').forEach(function (link) {
       const href = link.getAttribute('href');
       if (!href || !href.startsWith('#')) return;
       const targetId = href.slice(1);
 
+      // Desktop: hover
       link.addEventListener('mouseenter', function (e) {
-        const entry = bibMap[targetId];
-        if (!entry) return;
-        clearTimeout(activeTimeout);
-        tooltip.innerHTML = entry;
-        positionTooltip(e);
-        tooltip.style.display = 'block';
+        showTooltip(targetId, e.clientX + window.scrollX + 12, e.clientY + window.scrollY - 10);
       });
 
-      link.addEventListener('mousemove', positionTooltip);
+      link.addEventListener('mousemove', function (e) {
+        placeTooltip(e.clientX + window.scrollX + 12, e.clientY + window.scrollY - 10);
+      });
 
       link.addEventListener('mouseleave', function () {
-        activeTimeout = setTimeout(function () {
-          tooltip.style.display = 'none';
-        }, 150);
+        activeTimeout = setTimeout(hideTooltip, 150);
+      });
+
+      // Mobile: intercept first tap to show tooltip; suppress navigation
+      link.addEventListener('click', function (e) {
+        if (!window.matchMedia('(hover: none)').matches) return;  // desktop: allow normal click
+        if (activeTouchLink === link) {
+          // Second tap on same link: hide tooltip, let navigation proceed
+          hideTooltip();
+          return;
+        }
+        e.preventDefault();
+        activeTouchLink = link;
+        const rect = link.getBoundingClientRect();
+        const x = rect.left + window.scrollX;
+        const y = rect.bottom + window.scrollY + 4;
+        showTooltip(targetId, x, y);
       });
     });
 
-    function positionTooltip(e) {
-      const x = e.clientX + window.scrollX + 12;
-      const y = e.clientY + window.scrollY - 10;
-      // Keep within viewport horizontally
-      const maxX = window.scrollX + window.innerWidth - 400;
-      tooltip.style.left = Math.min(x, maxX) + 'px';
-      tooltip.style.top = y + 'px';
-      tooltip.style.position = 'absolute';
-    }
+    // Mobile: tap outside any cite link dismisses the tooltip
+    document.addEventListener('touchstart', function (e) {
+      if (activeTouchLink && !e.target.closest('.ltx_cite')) {
+        hideTooltip();
+      }
+    }, { passive: true });
+  }
+
+  /* ── Back-to-text button ───────────────────────────────────── */
+  /* When a citation link navigates to a bib entry, show a floating
+     "↩ back to text" button that restores the saved scroll position.
+     Scroll is saved on touchstart/mousedown (before hashchange fires). */
+  function initBackToText() {
+    var savedScrollY = null;
+
+    var btn = document.createElement('button');
+    btn.id = 'nk-back-btn';
+    btn.textContent = '↩ back to text';
+    btn.setAttribute('aria-label', 'Return to citation in text');
+    btn.style.display = 'none';
+    document.body.appendChild(btn);
+
+    // Save scroll position as early as possible (before navigation fires)
+    document.querySelectorAll('.ltx_cite a.ltx_ref').forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || !href.startsWith('#bib.')) return;
+      function saveScroll() { savedScrollY = window.scrollY; }
+      link.addEventListener('mousedown', saveScroll);
+      link.addEventListener('touchstart', saveScroll, { passive: true });
+      // Show button on click — handles both first-time and same-hash repeat clicks.
+      // Check defaultPrevented so we don't show it when the tooltip intercepted the tap.
+      link.addEventListener('click', function (e) {
+        if (e.defaultPrevented) return;
+        btn.style.display = 'block';
+      });
+    });
+
+    // hashchange handles navigation via keyboard or direct URL editing
+    window.addEventListener('hashchange', function () {
+      if (location.hash.startsWith('#bib.') && savedScrollY !== null) {
+        btn.style.display = 'block';
+      } else if (!location.hash.startsWith('#bib.')) {
+        btn.style.display = 'none';
+      }
+    });
+
+    btn.addEventListener('click', function () {
+      if (savedScrollY !== null) {
+        window.scrollTo({ top: savedScrollY, behavior: 'smooth' });
+      }
+      btn.style.display = 'none';
+      savedScrollY = null;
+    });
   }
 
   /* ── Fix <title> tag ───────────────────────────────────────── */
@@ -465,6 +584,7 @@
     requestAnimationFrame(function () {
       initProofToggles();
       initCitationTooltips();
+      initBackToText();
     });
   }
 

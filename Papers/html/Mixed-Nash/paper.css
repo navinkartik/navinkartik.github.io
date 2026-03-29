@@ -48,6 +48,7 @@
   --footnote-mark: #9a7840;
 }
 
+
 /* ── Reset ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -98,6 +99,25 @@ body {
   user-select: none;
 }
 #nk-dark-toggle:hover { color: var(--text); }
+
+/* ── Back-to-text button ─────────────────────────────────────── */
+#nk-back-btn {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-muted);
+  border: 1px solid var(--border-strong);
+  color: var(--link);
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#nk-back-btn:hover { background: var(--bg); }
 
 /* ── Title & header ──────────────────────────────────────────── */
 .ltx_title_document {
@@ -288,7 +308,7 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
 .nk-proof-body {
   max-height: 200rem;  /* large cap; collapsed state overrides to 0 */
   transition: max-height 0.25s ease, opacity 0.25s ease;
-  overflow: hidden;
+  overflow: visible;  /* JS sets overflow:hidden only during collapse animation */
 }
 
 .nk-proof-body.nk-collapsed {
@@ -299,12 +319,22 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
 /* ── Equations ───────────────────────────────────────────────── */
 .ltx_equation,
 .ltx_eqn_table {
+  display: table;
   width: 100%;
+  border-collapse: collapse;
   overflow-x: auto;
   margin: 0.75rem 0;
 }
 
-.ltx_eqn_row { vertical-align: baseline; }
+.ltx_eqn_row   { display: table-row; vertical-align: baseline; }
+.ltx_eqn_cell  { display: table-cell; }
+
+/* Equation number: zero-width cell, number floats right into margin */
+.ltx_eqn_eqno  { max-width: 0; overflow: visible; white-space: nowrap; }
+.ltx_eqn_eqno.ltx_align_right .ltx_tag { float: right; }
+
+/* Equations inside footnotes: natural width + horizontal scroll (narrow margin columns) */
+.ltx_note_content .ltx_eqn_table { width: auto; overflow-x: auto; }
 
 /* Center align-environment column pairs: pad cells absorb slack, content stays tight.
    Scoped to ltx_eqn_align only — single-equation tables must not have constrained pads
@@ -385,6 +415,11 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
     /* prevent footnote from being drawn too far above its anchor */
     margin-top: 0.1rem;
     margin-bottom: 1.8rem;
+  }
+
+  /* proof box has padding-right:1rem; compensate so footnotes inside proofs align with those outside */
+  div.nk-proof .ltx_note_outer {
+    margin-right: calc(-1 * (var(--margin-note-width) + var(--margin-note-gap) + 1rem));
   }
 }
 
@@ -541,6 +576,8 @@ a, .ltx_ref { color: var(--link); text-decoration: none; }
 a:hover     { text-decoration: underline; }
 a.ltx_anchor { color: inherit; }  /* label anchors: no link styling */
 .ltx_cite   { font-style: normal; }
+/* \citeauthor links: author name should look like text, not a hyperlink */
+.ltx_citemacro_citeauthor a.ltx_ref { color: inherit; cursor: text; }
 
 /* ── Lists ───────────────────────────────────────────────────── */
 .ltx_enumerate,
@@ -642,13 +679,29 @@ div.nk-proof ul.ltx_itemize > .ltx_item > .ltx_para {
   .ltx_tabular { font-size: 0.85rem; }
 }
 
-/* ── Footer ──────────────────────────────────────────────────── */
-.ltx_page_logo {
-  margin-top: 3rem;
-  font-size: 0.78rem;
-  color: var(--c-muted);
+/* ── HTML version banner (top and bottom of page) ────────────── */
+.nk-html-banner {
+  font-size: 0.8rem;
+  color: var(--muted);
   text-align: center;
 }
+article + .nk-html-banner {
+  padding-top: 0.75rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.nk-html-banner + article {
+  padding-top: 0;
+}
+.nk-html-banner:first-child,
+.ltx_page_content > .nk-html-banner:first-of-type {
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.ltx_page_logo { display: none; }
 
 @media print {
   #nk-dark-toggle { display: none; }
