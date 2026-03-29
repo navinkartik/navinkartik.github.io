@@ -134,7 +134,7 @@
       with {% assign coauth_size = paper.coauthors | size %}{% assign second_last_idx = coauth_size | minus: 2 %}{% for coauthor in paper.coauthors %}{% assign url = site.data.coauthors[coauthor] %}<a class="coauthor" href="{{ url }}">{{ coauthor }}</a>{% unless forloop.last %}{% if forloop.index0 == second_last_idx %}, and {% else %}, {% endif %}{% endunless %}{% endfor %}
     </div>{% endif %}
     <div class="journal-and-links">
-      <a class="journal" href="{{ paper.journal_url }}"><i>{{ paper.journal }}</i></a>, {{ paper.pub_date }}{% if paper.slides or paper.links %}<span class="paper-links-inline" style="margin-left: 1rem;">{% unless paper.html %}{% if paper.slides %}<a href="{{ paper.slides }}">Slides</a>{% endif %}{% endunless %}{% for link in paper.links %} <a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}</span>{% endif %}{% if paper.notes and paper.notes_inside_journal_div %}
+      <a class="journal" href="{{ paper.journal_url }}"><i>{{ paper.journal }}</i></a>, {{ paper.pub_date }}{% if paper.links %}<span class="paper-links-inline" style="margin-left: 1rem;">{% for link in paper.links %}<a href="{{ link.url }}">{{ link.label }}</a>{% endfor %}</span>{% endif %}{% if paper.notes and paper.notes_inside_journal_div %}
       <div class="paper-notes">
         {{ paper.notes }}
       </div>{% endif %}
