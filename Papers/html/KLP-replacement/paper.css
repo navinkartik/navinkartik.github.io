@@ -85,20 +85,33 @@ body {
 /* ── Dark mode toggle ────────────────────────────────────────── */
 #nk-dark-toggle {
   position: fixed;
-  top: 0.9rem;
+  bottom: 1.2rem;
   right: 1rem;
   background: var(--bg-muted);
   border: 1px solid var(--border);
   color: var(--muted);
-  border-radius: 4px;
-  padding: 0.25rem 0.6rem;
+  border-radius: 2rem;
+  padding: 0.3rem 0.7rem;
   font-size: 0.8rem;
   font-family: var(--font-body);
   cursor: pointer;
   z-index: 1000;
   user-select: none;
+  transition: opacity 0.25s, transform 0.25s;
 }
 #nk-dark-toggle:hover { color: var(--text); }
+#nk-dark-toggle.nk-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+@media (max-width: 600px) {
+  #nk-dark-toggle {
+    padding: 0.35rem 0.55rem;
+    font-size: 1rem;
+    line-height: 1;
+  }
+}
 
 /* ── Back-to-text button ─────────────────────────────────────── */
 #nk-back-btn {

@@ -10,7 +10,6 @@
   function initDarkMode() {
     const btn = document.createElement('button');
     btn.id = 'nk-dark-toggle';
-    btn.textContent = '◑ dark';
     btn.setAttribute('aria-label', 'Toggle dark mode');
     document.body.appendChild(btn);
 
@@ -19,18 +18,43 @@
     const titleEl = document.querySelector('.ltx_title_document');
     const titleOrigColor = titleEl ? titleEl.style.color : null;
 
+    // Default to system preference; saved override takes precedence
+    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const saved = localStorage.getItem('nk-theme');
-    if (saved === 'dark') setDark(true);
+    setDark(saved ? saved === 'dark' : sysDark, /*persist=*/false);
 
     btn.addEventListener('click', function () {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      setDark(!isDark);
+      setDark(!isDark, /*persist=*/true);
     });
 
-    function setDark(on) {
+    // Hide on scroll-down, show on scroll-up (mobile best practice)
+    var lastScrollY = window.scrollY, ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var current = window.scrollY;
+          if (current > lastScrollY + 8) btn.classList.add('nk-hidden');
+          else if (current < lastScrollY - 8) btn.classList.remove('nk-hidden');
+          lastScrollY = current;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive: true});
+
+    function isMobile() { return window.innerWidth <= 600; }
+
+    function updateLabel(on) {
+      btn.textContent = isMobile() ? '◑' : (on ? '◑ light' : '◑ dark');
+    }
+    window.addEventListener('resize', function () { updateLabel(
+      document.documentElement.getAttribute('data-theme') === 'dark'); });
+
+    function setDark(on, persist) {
       document.documentElement.setAttribute('data-theme', on ? 'dark' : 'light');
-      btn.textContent = on ? '◑ light' : '◑ dark';
-      localStorage.setItem('nk-theme', on ? 'dark' : 'light');
+      updateLabel(on);
+      if (persist) localStorage.setItem('nk-theme', on ? 'dark' : 'light');
       if (titleEl && titleOrigColor) {
         titleEl.style.color = on ? lightenHex(titleOrigColor) : titleOrigColor;
       }
