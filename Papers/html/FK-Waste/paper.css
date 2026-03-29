@@ -139,6 +139,14 @@ body {
   font-size: 0.95rem;
 }
 
+/* JEL/Keywords paragraphs that LaTeXML places inside abstract — moved out by apply_design.py */
+.ltx_abstract + p.ltx_p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
+
 .ltx_title_abstract {
   font-size: 1rem;
   font-weight: bold;
@@ -369,6 +377,7 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
     margin-right: calc(-1 * (var(--margin-note-width) + var(--margin-note-gap)));
     width: var(--margin-note-width);
     font-size: 0.8rem;
+    font-weight: normal;
     line-height: 1.5;
     color: var(--muted);
     padding-left: 0.9rem;
@@ -426,10 +435,32 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
   vertical-align: top;
 }
 
+/* Pure layout tables (keywords, JEL codes, inline notation): suppress row borders.
+   Distinguished from data/math tables by lacking ltx_centering, ltx_guessed_headers,
+   and ltx_markedasmath. */
+.ltx_tabular.ltx_align_middle:not(.ltx_centering):not(.ltx_guessed_headers):not(.ltx_markedasmath) td,
+.ltx_tabular.ltx_align_middle:not(.ltx_centering):not(.ltx_guessed_headers):not(.ltx_markedasmath) th {
+  border-bottom: none;
+}
+
 .ltx_tabular th {
   font-weight: bold;
+}
+
+/* Thick bottom only on column headers, not row-header th cells in data rows */
+.ltx_tabular th.ltx_th_column {
   border-bottom: 2px solid var(--border-strong);
 }
+
+/* LaTeXML explicit cell border classes (reflect |, booktabs rules, etc. from LaTeX source) */
+.ltx_tabular .ltx_border_l  { border-left:   1px solid var(--border); }
+.ltx_tabular .ltx_border_r  { border-right:  1px solid var(--border); }
+.ltx_tabular .ltx_border_rr { border-right:  2px solid var(--border-strong); }
+.ltx_tabular .ltx_border_ll { border-left:   2px solid var(--border-strong); }
+.ltx_tabular .ltx_border_t  { border-top:    1px solid var(--border); }
+.ltx_tabular .ltx_border_tt { border-top:    2px solid var(--border-strong); }
+.ltx_tabular .ltx_border_b  { border-bottom: 1px solid var(--border); }
+.ltx_tabular .ltx_border_bb { border-bottom: 2px solid var(--border-strong); }
 
 /* ── Bibliography ────────────────────────────────────────────── */
 .ltx_bibliography {

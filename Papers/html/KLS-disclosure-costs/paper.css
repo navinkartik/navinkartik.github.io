@@ -377,6 +377,7 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
     margin-right: calc(-1 * (var(--margin-note-width) + var(--margin-note-gap)));
     width: var(--margin-note-width);
     font-size: 0.8rem;
+    font-weight: normal;
     line-height: 1.5;
     color: var(--muted);
     padding-left: 0.9rem;
