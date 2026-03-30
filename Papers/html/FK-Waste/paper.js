@@ -103,23 +103,75 @@
         // Old papers embed affiliation inside ltx_personname via <br> breaks.
         // Modern papers put it in ltx_author_notes. Handle both.
         const breaks = nameEl.querySelectorAll('br.ltx_break');
-        let authorName, affiliationText = null;
+        let authorName, affiliationText = null, inlineNoteHTML = null;
 
         if (breaks.length > 0) {
-          // Split at first <br>: before = name, after = affiliation lines
-          const nameParts = [], affParts = [];
-          let seenBreak = false;
-          for (const node of nameEl.childNodes) {
-            if (node.nodeName === 'BR') { seenBreak = true; continue; }
-            const txt = node.textContent.trim();
-            if (!txt) continue;
-            if (!seenBreak) nameParts.push(txt);
-            else affParts.push(txt);
+          const firstEl = nameEl.firstElementChild;
+          if (firstEl && firstEl.nodeName === 'SPAN' && firstEl !== breaks[0]) {
+            // All-authors-in-one-span pattern (e.g. \thanks[a]{} affiliations):
+            // firstEl is a bold span with all author names + sup[a,b,c] markers.
+            // After first <br>: outer sup marker then a font-size span with addresses.
+            const clone = firstEl.cloneNode(true);
+            clone.querySelectorAll('sup').forEach(function(s) { s.remove(); });
+            authorName = clone.textContent.replace(/,\s*,/g, ',').replace(/\s+/g, ' ').trim();
+            const affLines = [];
+            let pastFirstBreak = false;
+            for (const node of nameEl.childNodes) {
+              if (!pastFirstBreak) { if (node.nodeName === 'BR') pastFirstBreak = true; continue; }
+              if (node.nodeName === 'SUP') continue;
+              if (node.nodeName === 'SPAN') {
+                let lineText = '';
+                for (const child of node.childNodes) {
+                  if (child.nodeName === 'BR') {
+                    const l = lineText.replace(/\s+/g, ' ').trim();
+                    if (l) affLines.push(l);
+                    lineText = '';
+                  } else if (child.nodeName === 'SUP') {
+                    continue;
+                  } else {
+                    lineText += child.textContent;
+                  }
+                }
+                const l = lineText.replace(/\s+/g, ' ').trim();
+                if (l) affLines.push(l);
+              } else if (node.nodeType === 3) {
+                const txt = node.textContent.replace(/\s+/g, ' ').trim();
+                if (txt) affLines.push(txt);
+              }
+            }
+            affiliationText = affLines.join('\n');
+          } else {
+            // Simple pattern: plain text nodes separated by <br> breaks.
+            const nameParts = [], affParts = [];
+            let seenBreak = false;
+            for (const node of nameEl.childNodes) {
+              if (node.nodeName === 'BR') { seenBreak = true; continue; }
+              if (node.nodeName === 'SUP') continue;
+              const txt = node.textContent.trim();
+              if (!txt) continue;
+              if (!seenBreak) nameParts.push(txt);
+              else affParts.push(txt);
+            }
+            authorName = nameParts.join(' ').trim();
+            affiliationText = affParts.filter(Boolean).join(', ');
           }
-          authorName = nameParts.join(' ').trim();
-          affiliationText = affParts.filter(Boolean).join(', ');
         } else {
-          authorName = nameEl.textContent.trim();
+          // Old papers: affiliation in ltx_note ltx_role_footnote inside ltx_personname.
+          // Clone name, strip the note to get clean author name, extract note content separately.
+          const inlineNote = nameEl.querySelector('.ltx_note.ltx_role_footnote');
+          if (inlineNote) {
+            const nameClone = nameEl.cloneNode(true);
+            nameClone.querySelectorAll('.ltx_note').forEach(function(n) { n.remove(); });
+            authorName = nameClone.textContent.trim();
+            const noteContent = inlineNote.querySelector('.ltx_note_content');
+            if (noteContent) {
+              const cc = noteContent.cloneNode(true);
+              cc.querySelectorAll('.ltx_note_mark, .ltx_tag').forEach(function(n) { n.remove(); });
+              inlineNoteHTML = cc.innerHTML.trim();
+            }
+          } else {
+            authorName = nameEl.textContent.trim();
+          }
         }
 
         // Author name line
@@ -137,8 +189,25 @@
           affBlock.style.marginBottom = '0.3rem';
           affBlock.style.fontSize = '0.82rem';
           affBlock.style.color = 'var(--muted)';
-          affBlock.textContent = affiliationText;
+          if (affiliationText.includes('\n')) {
+            affiliationText.split('\n').forEach(function(line) {
+              const d = document.createElement('div');
+              d.textContent = line;
+              affBlock.appendChild(d);
+            });
+          } else {
+            affBlock.textContent = affiliationText;
+          }
           container.appendChild(affBlock);
+        }
+        // Affiliation from inline footnote inside ltx_personname (old \thanks{} pattern)
+        if (inlineNoteHTML && !noteEl) {
+          const noteBlock = document.createElement('div');
+          noteBlock.style.marginBottom = '0.8rem';
+          noteBlock.style.fontSize = '0.82rem';
+          noteBlock.style.color = 'var(--muted)';
+          noteBlock.innerHTML = inlineNoteHTML;
+          container.appendChild(noteBlock);
         }
         // ltx_author_notes: affiliation for modern papers, contact info for old papers — show either way
         if (noteEl) {
@@ -312,6 +381,124 @@
       btn.textContent = 'show';
       btn.setAttribute('aria-expanded', 'false');
     });
+
+    // Pattern D: nk-proof-smallcaps — smallcaps "Proof:" span (e.g. Opinions, ∥ QED).
+    // Structurally identical to Pattern B but keyed on ltx_font_smallcaps.
+    document.querySelectorAll('div.nk-proof-smallcaps').forEach(function (proof) {
+      const scSpan = proof.querySelector('.ltx_font_smallcaps');
+      if (!scSpan || !/^\s*Proof[.:\s]/.test(scSpan.textContent)) return;
+
+      const paras = Array.from(proof.children).filter(function (el) {
+        return el.classList.contains('ltx_para');
+      });
+      if (!paras.length) return;
+
+      const body = document.createElement('div');
+      body.className = 'nk-proof-body';
+
+      const labelP = scSpan.closest('p');
+      const nodesToMove = [];
+      let past = false;
+      Array.from(labelP.childNodes).forEach(function (node) {
+        if (past) { nodesToMove.push(node); }
+        else if (node === scSpan) { past = true; }
+      });
+      nodesToMove.forEach(function (node) { body.appendChild(node); });
+      const firstParaDiv = labelP.parentElement;
+      if (firstParaDiv && firstParaDiv.classList.contains('ltx_para')) {
+        const afterLabelP = [];
+        let seenLabelP = false;
+        Array.from(firstParaDiv.childNodes).forEach(function (node) {
+          if (seenLabelP) { afterLabelP.push(node); }
+          else if (node === labelP) { seenLabelP = true; }
+        });
+        afterLabelP.forEach(function (node) { body.appendChild(node); });
+      }
+      paras.slice(1).forEach(function (para) { body.appendChild(para); });
+      proof.appendChild(body);
+
+      const btn = document.createElement('span');
+      btn.className = 'nk-proof-toggle';
+      btn.textContent = 'hide';
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('aria-expanded', 'true');
+      scSpan.appendChild(btn);
+
+      attachProofToggle(body, btn);
+      body.classList.add('nk-collapsed');
+      body.style.overflow = 'hidden';
+      btn.textContent = 'show';
+      btn.setAttribute('aria-expanded', 'false');
+    });
+
+    // Pattern C: nk-proof-italic — italic <em>Proof</em> inside p.ltx_p inside div.ltx_para.
+    // The em tag contains only "Proof"; the period is a text node sibling immediately after.
+    // We keep the period in the label and move everything after it into nk-proof-body.
+    document.querySelectorAll('div.nk-proof-italic').forEach(function (proof) {
+      const emTag = proof.querySelector('em');
+      if (!emTag || !/^\s*Proof[.\s]?/.test(emTag.textContent)) return;
+
+      const paras = Array.from(proof.children).filter(function (el) {
+        return el.classList.contains('ltx_para');
+      });
+      if (!paras.length) return;
+
+      const body = document.createElement('div');
+      body.className = 'nk-proof-body';
+      const labelP = emTag.closest('p');
+
+      // If the node immediately after emTag is a text node starting with '.', split it:
+      // keep '.' in the label (so "Proof." stays visible when collapsed), move the rest to body.
+      // The button will be inserted after the '.' text node.
+      let anchor = emTag; // button inserts after this node
+      const afterEm = emTag.nextSibling;
+      if (afterEm && afterEm.nodeType === Node.TEXT_NODE && afterEm.textContent.startsWith('.')) {
+        const rest = afterEm.textContent.slice(1);
+        afterEm.textContent = '.';
+        if (rest) {
+          labelP.insertBefore(document.createTextNode(rest), afterEm.nextSibling);
+        }
+        anchor = afterEm; // button goes after the '.'
+      }
+
+      // Move everything after anchor into body
+      const nodesToMove = [];
+      let pastAnchor = false;
+      Array.from(labelP.childNodes).forEach(function (node) {
+        if (pastAnchor) nodesToMove.push(node);
+        else if (node === anchor) pastAnchor = true;
+      });
+      nodesToMove.forEach(function (node) { body.appendChild(node); });
+
+      // Also move any siblings of labelP within the first para div
+      const firstParaDiv = labelP.parentElement;
+      if (firstParaDiv && firstParaDiv.classList.contains('ltx_para')) {
+        const afterLabelP = [];
+        let seenLabelP = false;
+        Array.from(firstParaDiv.childNodes).forEach(function (node) {
+          if (seenLabelP) { afterLabelP.push(node); }
+          else if (node === labelP) { seenLabelP = true; }
+        });
+        afterLabelP.forEach(function (node) { body.appendChild(node); });
+      }
+      paras.slice(1).forEach(function (para) { body.appendChild(para); });
+      proof.appendChild(body);
+
+      const btn = document.createElement('span');
+      btn.className = 'nk-proof-toggle';
+      btn.textContent = 'hide';
+      btn.setAttribute('role', 'button');
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('aria-expanded', 'true');
+      labelP.insertBefore(btn, anchor.nextSibling);
+
+      attachProofToggle(body, btn);
+      body.classList.add('nk-collapsed');
+      body.style.overflow = 'hidden';
+      btn.textContent = 'show';
+      btn.setAttribute('aria-expanded', 'false');
+    });
   }
 
   /* ── Citation hover tooltips ───────────────────────────────── */
@@ -415,24 +602,46 @@
     }, { passive: true });
   }
 
+  /* ── TOC toggle ─────────────────────────────────────────────── */
+  document.querySelectorAll('nav.ltx_TOC').forEach(function (toc) {
+    var heading = toc.querySelector('h6.ltx_title_contents');
+    var list    = toc.querySelector('ol.ltx_toclist');
+    if (!heading || !list) return;
+
+    var body = document.createElement('div');
+    body.className = 'nk-toc-body';
+    toc.insertBefore(body, list);
+    body.appendChild(list);
+
+    var ind = document.createElement('span');
+    ind.className = 'nk-toc-indicator';
+    ind.textContent = '▸';
+    heading.appendChild(ind);
+
+    body.classList.add('nk-collapsed');
+
+    heading.addEventListener('click', function () {
+      var collapsed = body.classList.toggle('nk-collapsed');
+      ind.textContent = collapsed ? '▸' : '▾';
+    });
+  });
+
   /* ── Back-to-text button ───────────────────────────────────── */
-  /* When a citation link navigates to a bib entry, show a floating
+  /* When any internal link (#...) navigates away, show a floating
      "↩ back to text" button that restores the saved scroll position.
-     Scroll is saved on touchstart/mousedown (before hashchange fires). */
+     Scroll is saved on touchstart/mousedown (before navigation fires). */
   function initBackToText() {
     var savedScrollY = null;
 
     var btn = document.createElement('button');
     btn.id = 'nk-back-btn';
-    btn.textContent = '↩ back to text';
-    btn.setAttribute('aria-label', 'Return to citation in text');
+    btn.textContent = '↩ back';
+    btn.setAttribute('aria-label', 'Return to previous position in text');
     btn.style.display = 'none';
     document.body.appendChild(btn);
 
     // Save scroll position as early as possible (before navigation fires)
-    document.querySelectorAll('.ltx_cite a.ltx_ref').forEach(function (link) {
-      var href = link.getAttribute('href');
-      if (!href || !href.startsWith('#bib.')) return;
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
       function saveScroll() { savedScrollY = window.scrollY; }
       link.addEventListener('mousedown', saveScroll);
       link.addEventListener('touchstart', saveScroll, { passive: true });
@@ -446,19 +655,23 @@
 
     // hashchange handles navigation via keyboard or direct URL editing
     window.addEventListener('hashchange', function () {
-      if (location.hash.startsWith('#bib.') && savedScrollY !== null) {
+      if (savedScrollY !== null) {
         btn.style.display = 'block';
-      } else if (!location.hash.startsWith('#bib.')) {
-        btn.style.display = 'none';
       }
     });
 
-    btn.addEventListener('click', function () {
+    function doBack() {
       if (savedScrollY !== null) {
         window.scrollTo({ top: savedScrollY, behavior: 'smooth' });
       }
       btn.style.display = 'none';
       savedScrollY = null;
+    }
+
+    btn.addEventListener('click', doBack);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && btn.style.display !== 'none') doBack();
     });
   }
 
@@ -577,20 +790,108 @@
     document.querySelectorAll('.ltx_bib_etal').forEach(function (etal) {
       const cite = etal.closest('.ltx_cite');
       if (!cite) return;
-      // Find the link to the bib entry (may be sibling of etal or ancestor)
-      const link = cite.querySelector('a.ltx_ref[href^="#bib.bib"]');
+      // Find the link associated with THIS etal: walk next siblings (not first in cite)
+      let link = null;
+      let sib = etal.nextSibling;
+      while (sib) {
+        if (sib.nodeType === Node.ELEMENT_NODE && sib.matches('a.ltx_ref[href^="#bib.bib"]')) {
+          link = sib;
+          break;
+        }
+        sib = sib.nextSibling;
+      }
       if (!link) return;
       const bibId = link.getAttribute('href').slice(1); // strip leading #
       const fullNames = bibMap[bibId];
       if (!fullNames) return;
       // Replace the leading author text node (previous sibling of etal span)
+      // Preserve any non-alpha prefix (e.g. "; " separator between citations)
       const prev = etal.previousSibling;
       if (prev && prev.nodeType === Node.TEXT_NODE) {
-        prev.textContent = fullNames;
+        const m = prev.textContent.match(/^([\s\S]*?)([A-Za-z][\s\S]*)$/);
+        prev.textContent = m ? m[1] + fullNames : fullNames;
       } else {
         etal.parentNode.insertBefore(document.createTextNode(fullNames), etal);
       }
       etal.remove();
+    });
+  }
+
+  /* ── Lightbox ───────────────────────────────────────────────── */
+  function initLightbox() {
+    var lb = document.createElement('div');
+    lb.id = 'nk-lightbox';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-label', 'Figure zoom');
+    var lbImg = document.createElement('img');
+    lbImg.id = 'nk-lightbox-img';
+    lbImg.alt = '';
+    var lbCap = document.createElement('div');
+    lbCap.id = 'nk-lightbox-caption';
+    lb.appendChild(lbImg);
+    lb.appendChild(lbCap);
+    document.body.appendChild(lb);
+
+    function openLb(src, captionEl) {
+      lbImg.src = src;
+      lbImg.classList.toggle('nk-lb-svg', src.endsWith('.svg'));
+      lbCap.innerHTML = captionEl ? captionEl.innerHTML : '';
+      lb.classList.add('nk-lb-active');
+    }
+    function closeLb() {
+      lb.classList.remove('nk-lb-active');
+      lbImg.src = '';
+      lbCap.innerHTML = '';
+    }
+
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb) closeLb();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lb.classList.contains('nk-lb-active')) closeLb();
+    });
+
+    var figs = document.querySelectorAll('figure.ltx_figure, figure.ltx_figure_panel');
+    figs.forEach(function (fig) {
+      var caption = fig.querySelector('figcaption.ltx_caption');
+
+      fig.querySelectorAll('img.ltx_graphics:not(.ltx_markedasmath)').forEach(function (img) {
+        img.addEventListener('click', function (e) {
+          e.stopPropagation();
+          openLb(img.src, caption);
+        });
+      });
+
+      fig.querySelectorAll('object.ltx_graphics').forEach(function (obj) {
+        var wrap = document.createElement('span');
+        wrap.className = 'nk-fig-wrap';
+        obj.parentNode.insertBefore(wrap, obj);
+        wrap.appendChild(obj);
+        var overlay = document.createElement('span');
+        overlay.className = 'nk-fig-overlay';
+        wrap.appendChild(overlay);
+        overlay.addEventListener('click', function (e) {
+          e.stopPropagation();
+          openLb(obj.data, caption);
+        });
+      });
+    });
+
+    // Bare object.ltx_graphics not inside a figure (e.g. inline footnote diagrams)
+    document.querySelectorAll('object.ltx_graphics').forEach(function (obj) {
+      if (obj.closest('figure')) return; // already handled above
+      var wrap = document.createElement('span');
+      wrap.className = 'nk-fig-wrap';
+      obj.parentNode.insertBefore(wrap, obj);
+      wrap.appendChild(obj);
+      var overlay = document.createElement('span');
+      overlay.className = 'nk-fig-overlay';
+      wrap.appendChild(overlay);
+      overlay.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openLb(obj.data, null);
+      });
     });
   }
 
@@ -609,6 +910,7 @@
       initProofToggles();
       initCitationTooltips();
       initBackToText();
+      initLightbox();
     });
   }
 
