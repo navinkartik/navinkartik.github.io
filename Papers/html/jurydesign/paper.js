@@ -11,7 +11,10 @@
     const btn = document.createElement('button');
     btn.id = 'nk-dark-toggle';
     btn.setAttribute('aria-label', 'Toggle dark mode');
-    document.body.appendChild(btn);
+    var group = document.createElement('div');
+    group.id = 'nk-btn-group';
+    group.appendChild(btn);
+    document.body.appendChild(group);
 
     // If the title has an author-chosen inline color, lighten it for dark mode
     // (preserves hue/saturation, forces lightness to 70% so it reads on dark bg)
@@ -895,10 +898,55 @@
     });
   }
 
+  /* ── Scroll to top ─────────────────────────────────────────── */
+  function initScrollToTop() {
+    var group = document.getElementById('nk-btn-group');
+    if (!group) return;
+
+    var btn = document.createElement('button');
+    btn.id = 'nk-top-btn';
+    btn.setAttribute('aria-label', 'Scroll to top');
+    btn.classList.add('nk-hidden'); // hidden until scrolled past threshold
+
+    function isMobile() { return window.innerWidth <= 600; }
+    function updateLabel() { btn.textContent = isMobile() ? '↑' : '↑ Top'; }
+    updateLabel();
+    window.addEventListener('resize', updateLabel);
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Show on scroll-up past threshold; hide on scroll-down or near top
+    var THRESHOLD = 400;
+    var lastY = window.scrollY, ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var current = window.scrollY;
+          if (current < THRESHOLD) {
+            btn.classList.add('nk-hidden');
+          } else if (current > lastY + 8) {
+            btn.classList.add('nk-hidden');
+          } else if (current < lastY - 8) {
+            btn.classList.remove('nk-hidden');
+          }
+          lastY = current;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive: true});
+
+    // Prepend so scroll-to-top sits above dark mode toggle in the column
+    group.insertBefore(btn, group.firstChild);
+  }
+
   /* ── Init ──────────────────────────────────────────────────── */
   function init() {
     fixPageTitle();
     initDarkMode();
+    initScrollToTop();
     initAffiliations();
     ensureAbstractHeading();
     expandEtAl();

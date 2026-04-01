@@ -82,11 +82,18 @@ body {
   }
 }
 
-/* ── Dark mode toggle ────────────────────────────────────────── */
-#nk-dark-toggle {
+/* ── Button group (scroll-to-top + dark mode toggle) ─────────── */
+#nk-btn-group {
   position: fixed;
   bottom: 1.2rem;
   right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  z-index: 1000;
+}
+#nk-dark-toggle, #nk-top-btn {
   background: var(--bg-muted);
   border: 1px solid var(--border);
   color: var(--muted);
@@ -95,19 +102,18 @@ body {
   font-size: 0.8rem;
   font-family: var(--font-body);
   cursor: pointer;
-  z-index: 1000;
   user-select: none;
   transition: opacity 0.25s, transform 0.25s;
 }
-#nk-dark-toggle:hover { color: var(--text); }
-#nk-dark-toggle.nk-hidden {
+#nk-dark-toggle:hover, #nk-top-btn:hover { color: var(--text); }
+#nk-dark-toggle.nk-hidden, #nk-top-btn.nk-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateY(0.5rem);
 }
 @media (max-width: 600px) {
-  #nk-dark-toggle {
-    padding: 0.35rem 0.55rem;
+  #nk-dark-toggle, #nk-top-btn {
+    padding: 0.55rem 0.9rem;
     font-size: 1rem;
     line-height: 1;
   }
@@ -772,7 +778,7 @@ article + .nk-html-banner {
 .ltx_page_logo { display: none; }
 
 @media print {
-  #nk-dark-toggle { display: none; }
+  #nk-dark-toggle, #nk-top-btn { display: none; }
   .ltx_note_outer { display: block !important; float: none !important;
                     margin: 0; width: auto; border: none;
                     font-size: 0.8rem; color: #555; }
