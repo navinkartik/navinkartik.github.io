@@ -29,6 +29,8 @@
   --content-width:      52rem;
   --margin-note-width:  18rem;
   --margin-note-gap:    2.5rem;
+  --tablet-margin-note-width: 13rem;
+  --tablet-margin-note-gap:   1.5rem;
 
   --footnote-mark: #b36a00;
 
@@ -78,6 +80,14 @@ body {
 @media (min-width: 90rem) {
   .ltx_document {
     margin-left: max(3rem, calc(50vw - var(--content-width) / 2 - var(--margin-note-width) / 2 - var(--margin-note-gap) / 2));
+    margin-right: 0;
+  }
+}
+
+/* ── Tablet: shift left to reserve gutter for narrow margin notes ── */
+@media (min-width: 70rem) and (max-width: 89.99rem) {
+  .ltx_document {
+    margin-left: max(1.25rem, calc(50vw - var(--content-width) / 2 - var(--tablet-margin-note-width) / 2 - var(--tablet-margin-note-gap) / 2));
     margin-right: 0;
   }
 }
@@ -430,7 +440,7 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
 }
 
 /* ── Below wide: footnotes inline below mark ─────────────────── */
-@media (max-width: 89.99rem) {
+@media (max-width: 69.99rem) {
   .ltx_note_outer {
     display: block;
     font-size: 0.83rem;
@@ -439,6 +449,34 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
     border-left: 2px solid var(--border);
     padding: 0.3rem 0 0.3rem 0.75rem;
     margin: 0.3rem 0 0.3rem 0.5rem;
+  }
+}
+
+/* ── Tablet: narrow margin notes ────────────────────────────── */
+@media (min-width: 70rem) and (max-width: 89.99rem) {
+  .ltx_note.ltx_role_footnote,
+  .ltx_note.ltx_role_thanks {
+    position: static;
+  }
+
+  .ltx_note_outer {
+    display: block;
+    float: right;
+    clear: right;
+    margin-right: calc(-1 * (var(--tablet-margin-note-width) + var(--tablet-margin-note-gap)));
+    width: var(--tablet-margin-note-width);
+    font-size: 0.8rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: var(--muted);
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--border);
+    margin-top: 0.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  div.nk-proof .ltx_note_outer {
+    margin-right: calc(-1 * (var(--tablet-margin-note-width) + var(--tablet-margin-note-gap) + 1rem));
   }
 }
 
