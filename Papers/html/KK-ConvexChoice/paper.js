@@ -1142,7 +1142,7 @@
         if (e.sidebarItem) e.sidebarItem.classList.toggle('nk-toc-active', on);
         if (e.panelItem)   e.panelItem.classList.toggle('nk-toc-active', on);
       });
-      if (id && !sidebarHidden) {
+      if (id && !sidebarHidden && isSidebarMode()) {
         var el = sidebar.querySelector('[data-toc-id="' + CSS.escape(id) + '"]');
         if (el) el.scrollIntoView({block: 'nearest', behavior: 'smooth'});
       }
