@@ -1096,7 +1096,15 @@
     sidebar.setAttribute('aria-label', 'Table of contents');
     var sidebarHeader = document.createElement('div');
     sidebarHeader.className = 'nk-toc-header';
-    sidebarHeader.textContent = 'Contents';
+    var sidebarTitle = document.createElement('span');
+    sidebarTitle.textContent = 'Contents';
+    var sidebarCloseBtn = document.createElement('button');
+    sidebarCloseBtn.id = 'nk-toc-sidebar-close';
+    sidebarCloseBtn.setAttribute('aria-label', 'Close table of contents');
+    sidebarCloseBtn.textContent = '✕';
+    sidebarCloseBtn.addEventListener('click', toggleSidebar);
+    sidebarHeader.appendChild(sidebarTitle);
+    sidebarHeader.appendChild(sidebarCloseBtn);
     sidebar.appendChild(sidebarHeader);
     sidebar.appendChild(buildList(false));
     document.body.appendChild(sidebar);

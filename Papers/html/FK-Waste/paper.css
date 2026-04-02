@@ -812,6 +812,13 @@ article + .nk-html-banner {
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border);
 }
+/* On wide screens, drop the bottom border — visual contrast with paper title is sufficient */
+@media (min-width: 90rem) {
+  .nk-html-banner:first-child,
+  .ltx_page_content > .nk-html-banner:first-of-type {
+    border-bottom: none;
+  }
+}
 
 /* ── Footer ──────────────────────────────────────────────────── */
 .ltx_page_logo { display: none; }
@@ -892,8 +899,8 @@ figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-i
   scrollbar-width: thin;
   scrollbar-color: var(--border) transparent;
   display: none;
-  border-right: 1px solid var(--border);
-  padding: 0 0.75rem 1rem 0;
+  background: var(--bg);
+  padding: 0.5rem 0.75rem 1rem 0;
   font-family: var(--font-body);
   font-size: 0.78rem;
   line-height: 1.5;
@@ -908,6 +915,9 @@ figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-i
 
 /* ── TOC List Items (sidebar + panel) ───────────────────────── */
 .nk-toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.7rem;
   font-weight: 600;
   font-variant: small-caps;
@@ -918,6 +928,20 @@ figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-i
   margin-bottom: 0.25rem;
   border-bottom: 1px solid var(--border);
 }
+#nk-toc-sidebar-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  line-height: 1;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: 0;
+}
+#nk-toc-sidebar-close:hover { color: var(--text); background: var(--bg-muted); }
 .nk-toc-list {
   list-style: none;
   padding: 0;
