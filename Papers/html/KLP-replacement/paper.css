@@ -1029,3 +1029,22 @@ figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-i
 @media print {
   #nk-toc-sidebar, #nk-toc-panel, #nk-toc-backdrop { display: none !important; }
 }
+
+/* ── Cross-reference preview tooltip ────────────────────────── */
+#nk-ref-preview {
+  position: absolute;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  max-width: 32rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  z-index: 310;           /* above citation tooltip (300), below modals */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  pointer-events: none;   /* critical: don't intercept mouse events */
+  font-size: 0.85rem;
+}
+#nk-ref-preview .ltx_theorem { margin: 0; }
+#nk-ref-preview .nk-proof    { display: none; }

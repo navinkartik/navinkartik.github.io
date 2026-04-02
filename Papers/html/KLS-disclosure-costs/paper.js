@@ -629,6 +629,77 @@
     });
   });
 
+  /* ── Cross-reference preview tooltips ─────────────────────── */
+  function initRefPreviews() {
+    // Desktop only — skip touch/hover:none devices
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    var preview = document.createElement('div');
+    preview.id = 'nk-ref-preview';
+    preview.style.display = 'none';
+    document.body.appendChild(preview);
+
+    function cloneTheoremContent(el) {
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('.nk-proof, .nk-proof-toggle, button').forEach(function(n) { n.remove(); });
+      return clone;
+    }
+
+    function resolveContent(id) {
+      if (id.startsWith('bib.bib') || id.startsWith('footnote')) return null;
+      var target = document.getElementById(id);
+      if (!target) return null;
+      if (target.classList.contains('ltx_theorem'))   return cloneTheoremContent(target);
+      if (target.classList.contains('ltx_eqn_table')) return target.cloneNode(true);
+      return null;
+    }
+
+    function placePreview(x, y) {
+      var pw = Math.max(preview.offsetWidth, 200);
+      var ph = Math.max(preview.offsetHeight, 100);
+      var maxX = window.scrollX + window.innerWidth - pw - 16;
+      var px = Math.min(x + 16, maxX);
+      var py = y + 20;
+      if (py + ph > window.scrollY + window.innerHeight - 16) py = y - ph - 8;
+      preview.style.left = Math.max(window.scrollX + 8, px) + 'px';
+      preview.style.top  = Math.max(window.scrollY + 8, py) + 'px';
+    }
+
+    var showTimer = null, hideTimer = null;
+
+    document.querySelectorAll('a.ltx_ref').forEach(function(link) {
+      if (link.closest('.ltx_cite, #nk-toc-sidebar, #nk-toc-panel, #nk-ref-preview')) return;
+      var href = link.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
+
+      link.addEventListener('mouseenter', function(e) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        var ex = e.pageX, ey = e.pageY;
+        showTimer = setTimeout(function() {
+          var content = resolveContent(href.slice(1));
+          if (!content) return;
+          preview.innerHTML = '';
+          preview.appendChild(content);
+          preview.style.display = 'block';
+          placePreview(ex, ey);
+        }, 300);
+      });
+
+      link.addEventListener('mousemove', function(e) {
+        if (preview.style.display !== 'none') placePreview(e.pageX, e.pageY);
+      });
+
+      link.addEventListener('mouseleave', function() {
+        clearTimeout(showTimer);
+        hideTimer = setTimeout(function() {
+          preview.style.display = 'none';
+          preview.innerHTML = '';
+        }, 150);
+      });
+    });
+  }
+
   /* ── Back-to-text button ───────────────────────────────────── */
   /* When any internal link (#...) navigates away, show a floating
      "↩ back to text" button that restores the saved scroll position.
@@ -1193,6 +1264,7 @@
     requestAnimationFrame(function () {
       initProofToggles();
       initCitationTooltips();
+      initRefPreviews();
       initBackToText();
       initLightbox();
     });
