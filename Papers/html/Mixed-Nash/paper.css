@@ -131,23 +131,30 @@ body {
 }
 
 /* ── Back-to-text button ─────────────────────────────────────── */
-#nk-back-btn {
+#nk-back-container {
   position: fixed;
   bottom: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: stretch;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+#nk-back-btn, #nk-back-close {
   background: var(--bg-muted);
   border: 1px solid var(--border-strong);
   color: var(--link);
-  border-radius: 4px;
-  padding: 0.4rem 1rem;
   font-size: 0.85rem;
   font-family: var(--font-body);
   cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 0.4rem 1rem;
 }
-#nk-back-btn:hover { background: var(--bg); }
+#nk-back-btn { border-right: none; }
+#nk-back-close { padding: 0.4rem 0.7rem; border-left: 1px solid var(--border-strong); }
+#nk-back-btn:hover, #nk-back-close:hover { background: var(--bg); }
 
 /* ── Title & header ──────────────────────────────────────────── */
 .ltx_title_document {

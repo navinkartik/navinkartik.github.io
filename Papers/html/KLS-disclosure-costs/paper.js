@@ -45,6 +45,7 @@
         ticking = true;
       }
     }, {passive: true});
+    window.addEventListener('hashchange', function () { btn.classList.remove('nk-hidden'); });
 
     function isMobile() { return window.innerWidth <= 600; }
 
@@ -707,12 +708,26 @@
   function initBackToText() {
     var savedScrollY = null;
 
+    var container = document.createElement('div');
+    container.id = 'nk-back-container';
+    container.style.display = 'none';
+
     var btn = document.createElement('button');
     btn.id = 'nk-back-btn';
     btn.textContent = '↩ back';
     btn.setAttribute('aria-label', 'Return to previous position in text');
-    btn.style.display = 'none';
-    document.body.appendChild(btn);
+
+    var closeBtn = document.createElement('button');
+    closeBtn.id = 'nk-back-close';
+    closeBtn.textContent = '✕';
+    closeBtn.setAttribute('aria-label', 'Dismiss');
+
+    container.appendChild(btn);
+    container.appendChild(closeBtn);
+    document.body.appendChild(container);
+
+    function show() { container.style.display = 'flex'; }
+    function hide() { container.style.display = 'none'; }
 
     // Save scroll position as early as possible (before navigation fires)
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
@@ -723,29 +738,28 @@
       // Check defaultPrevented so we don't show it when the tooltip intercepted the tap.
       link.addEventListener('click', function (e) {
         if (e.defaultPrevented) return;
-        btn.style.display = 'block';
+        show();
       });
     });
 
     // hashchange handles navigation via keyboard or direct URL editing
     window.addEventListener('hashchange', function () {
-      if (savedScrollY !== null) {
-        btn.style.display = 'block';
-      }
+      if (savedScrollY !== null) { show(); }
     });
 
     function doBack() {
       if (savedScrollY !== null) {
         window.scrollTo({ top: savedScrollY, behavior: 'smooth' });
       }
-      btn.style.display = 'none';
+      hide();
       savedScrollY = null;
     }
 
     btn.addEventListener('click', doBack);
+    closeBtn.addEventListener('click', hide);
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && btn.style.display !== 'none') doBack();
+      if (e.key === 'Escape' && container.style.display !== 'none') hide();
     });
   }
 
@@ -1008,6 +1022,7 @@
         ticking = true;
       }
     }, {passive: true});
+    window.addEventListener('hashchange', function () { if (window.scrollY >= THRESHOLD) btn.classList.remove('nk-hidden'); });
 
     // Prepend so scroll-to-top sits above dark mode toggle in the column
     group.insertBefore(btn, group.firstChild);
@@ -1043,6 +1058,13 @@
       entries.push({ id: id, level: level, isAppendix: isAppendix,
                      num: num, title: title, sidebarItem: null, panelItem: null });
     });
+
+    // Prepend Abstract if present
+    var absEl = document.querySelector('div.ltx_abstract');
+    if (absEl) {
+      if (!absEl.id) absEl.id = 'abstract';
+      entries.unshift({ id: 'abstract', level: 1, isAppendix: false, num: '', title: 'Abstract', sidebarItem: null, panelItem: null });
+    }
 
     if (!entries.length) return;
 
