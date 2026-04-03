@@ -1169,7 +1169,7 @@
     tocBtn.setAttribute('aria-expanded', 'true');
 
     function isMobile() { return window.innerWidth <= 600; }
-    function isSidebarMode() { return window.innerWidth >= 110 * 16; }
+    function isSidebarMode() { return window.innerWidth >= 106 * 16; }
 
     function updateLabel() { tocBtn.textContent = isMobile() ? '☰' : '☰ TOC'; }
     updateLabel();

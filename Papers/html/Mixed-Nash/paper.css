@@ -913,7 +913,7 @@ figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-i
   line-height: 1.5;
   z-index: 50;
 }
-@media (min-width: 110rem) {
+@media (min-width: 106rem) {
   #nk-toc-sidebar                  { display: block; }
   #nk-toc-sidebar.nk-toc-hidden   { display: none; }
   nav.ltx_TOC                      { display: none; }  /* sidebar replaces inline TOC */
