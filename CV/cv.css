@@ -1,0 +1,180 @@
+/* ================================================================
+   cv.css — Stylesheet for CV HTML page (navinkartik.github.io/CV/)
+   Matches website aesthetic: Georgia serif, Yale blue, same link/hover colors.
+   Standalone — no dependency on paper.css or mystyles.css.
+   ================================================================ */
+
+/* ── CSS Variables ───────────────────────────────────────────── */
+:root {
+  --bg:        #faf8f6;
+  --bg-muted:  #f0ede5;
+  --text:      #111;
+  --muted:     #555;
+  --link:      #1d32c0;   /* matches mystyles.css --link-blue */
+  --link-hover:#c22e2e;   /* matches mystyles.css --hover-color */
+  --heading:   #00356b;   /* Yale blue */
+  --border:    #d0cdc8;
+  --font:      Georgia, 'Times New Roman', serif;
+  --max-width: 800px;
+}
+
+[data-theme="dark"] {
+  --bg:        #1c1b19;
+  --bg-muted:  #252420;
+  --text:      #e8e5df;
+  --muted:     #999;
+  --link:      #7d93f0;
+  --link-hover:#e8a0a0;
+  --heading:   #7baad4;
+  --border:    #3a3835;
+}
+
+/* ── Reset & Base ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+em { font-style: italic; }
+
+/* ── Nav bar ─────────────────────────────────────────────────── */
+.cv-nav {
+  padding: 0.6rem 1.5rem;
+  background: var(--bg-muted);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.cv-nav a { color: var(--link); }
+.cv-nav a:hover { color: var(--link-hover); text-decoration: none; }
+
+/* ── Container ───────────────────────────────────────────────── */
+.cv-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 5rem;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.cv-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid var(--heading);
+}
+.cv-header h1 {
+  font-family: Georgia, serif;
+  font-size: 2em;
+  color: var(--heading);
+  margin: 0 0 0.15rem;
+  font-weight: bold;
+}
+.cv-subtitle {
+  font-variant: small-caps;
+  font-size: 1.05em;
+  color: var(--muted);
+  margin: 0.1rem 0;
+  letter-spacing: 0.04em;
+}
+.cv-date {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.95em;
+  margin: 0.25rem 0;
+}
+.cv-pdf-link {
+  margin: 0.5rem 0 0;
+  font-size: 0.95em;
+}
+.cv-pdf-link a { color: var(--link); }
+.cv-pdf-link a:hover { color: var(--link-hover); }
+
+/* ── Section TOC ─────────────────────────────────────────────── */
+.cv-toc {
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.65rem 1rem 0.75rem;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+}
+.cv-toc p {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-family: Georgia, serif;
+}
+.cv-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.8rem;
+}
+.cv-toc li { white-space: nowrap; }
+.cv-toc a { color: var(--link); }
+.cv-toc a:hover { color: var(--link-hover); text-decoration: none; }
+
+/* ── Section headings ────────────────────────────────────────── */
+h2 {
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  font-size: 1.1em;
+  color: var(--heading);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+  margin: 2.25rem 0 0.6rem;
+  letter-spacing: 0.03em;
+}
+
+/* ── Body paragraphs ─────────────────────────────────────────── */
+.cv-body p {
+  margin: 0.35rem 0;
+}
+
+/* ── Dark mode toggle ────────────────────────────────────────── */
+#cv-dark-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.4rem 0.65rem;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 100;
+  line-height: 1;
+}
+#cv-dark-toggle:hover { color: var(--heading); border-color: var(--heading); }
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .cv-toc { display: none; }
+  .cv-container { padding: 1.5rem 1rem 4rem; }
+  .cv-header h1 { font-size: 1.6em; }
+}
+
+/* ── Print ───────────────────────────────────────────────────── */
+@media print {
+  .cv-nav, .cv-toc, #cv-dark-toggle { display: none; }
+  body { color: #000; background: #fff; font-size: 11pt; line-height: 1.5; }
+  a { color: #000; text-decoration: none; }
+  h2 { color: #000; border-bottom: 1px solid #aaa; page-break-after: avoid; }
+  .cv-container { padding: 0; max-width: 100%; }
+  .cv-header { border-bottom: 2px solid #000; }
+  .cv-header h1, .cv-subtitle { color: #000; }
+}

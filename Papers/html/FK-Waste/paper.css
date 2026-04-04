@@ -827,6 +827,30 @@ article + .nk-html-banner {
   }
 }
 
+/* ── Homepage back-link nav (top and bottom of page) ─────────── */
+.nk-home-nav {
+  text-align: center;
+  padding-bottom: 0.6rem;
+}
+.nk-home-nav:last-of-type {
+  padding-top: 0.6rem;
+  padding-bottom: 0;
+}
+.nk-home-nav a {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  color: var(--link);
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.25rem 0.75rem;
+  text-decoration: none;
+}
+.nk-home-nav a:hover {
+  color: var(--text);
+}
+
 /* ── Footer ──────────────────────────────────────────────────── */
 .ltx_page_logo { display: none; }
 
