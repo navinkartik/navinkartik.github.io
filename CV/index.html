@@ -18,9 +18,9 @@
   </script>
 </head>
 <body>
-  <nav class="cv-nav">
-    <a href="../index.html">← Navin Kartik</a>
-  </nav>
+  <div class="nav-links" style="text-align: center; margin-top: 1em;">
+    <a href="../index.html" style="font-size: 1.2em;">Home</a>
+  </div>
 
   <main class="cv-container">
     <header class="cv-header">
@@ -30,25 +30,9 @@
       <p class="cv-pdf-link"><a href="cv.pdf" target="_blank">PDF version</a></p>
     </header>
 
-    <nav class="cv-toc" aria-label="Jump to section">
-      <p>Jump to:</p>
-      <ul>
-        <li><a href="#contact-information">Contact Information</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#academic-positions">Academic Positions</a></li>
-        <li><a href="#editorial-positions">Editorial Positions</a></li>
-        <li><a href="#honors-fellowships-and-awards">Honors, Fellowships, and Awards</a></li>
-        <li><a href="#research-grants">Research Grants</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#unpublished-papers">Unpublished Papers</a></li>
-        <li><a href="#courses-taught">Courses Taught</a></li>
-        <li><a href="#refereeing">Refereeing</a></li>
-        <li><a href="#notable-lectures-and-visits">Notable Lectures and Visits</a></li>
-        <li><a href="#ph-d-advising">Ph.D. Advising</a></li>
-        <li><a href="#service-at-columbia">Service at Columbia</a></li>
-        <li><a href="#other-professional-activities">Other Professional Activities</a></li>
-      </ul>
-    </nav>
+    <p class="cv-toc" aria-label="Jump to section">
+      <span class="cv-toc-label">Jump to:</span> <a href="#contact-information">Contact Information</a> | <a href="#education">Education</a> | <a href="#academic-positions">Academic Positions</a> | <a href="#editorial-positions">Editorial Positions</a> | <a href="#honors-fellowships-and-awards">Honors, Fellowships, and Awards</a> | <a href="#research-grants">Research Grants</a> | <a href="#publications">Publications</a> | <a href="#unpublished-papers">Unpublished Papers</a> | <a href="#courses-taught">Courses Taught</a> | <a href="#refereeing">Refereeing</a> | <a href="#notable-lectures-and-visits">Notable Lectures and Visits</a> | <a href="#ph-d-advising">Ph.D. Advising</a> | <a href="#service-at-columbia">Service at Columbia</a> | <a href="#other-professional-activities">Other Professional Activities</a>
+    </p>
 
     <div class="cv-body">
 <h2 id="contact-information">Contact Information</h2>
@@ -257,7 +241,7 @@ Binational Science Foundation.</p>
 <p>Keynote Lecture, Canadian Public Economics Group, 2022.</p>
 <p>Distinguished Visitor, Boston University, Fall 2018.</p>
 <p>26<sup>th</sup> Jerusalem Summer School in Economic Theory, 2015.</p>
-<h2 id="ph-d-advising">Ph.D. Advising</h2>
+<h2 id="ph-d-advising"><a href="../students.html">Ph.D. Advising →</a></h2>
 <p>(with graduation year and first placement; typically, students I
 wrote a letter for; * indicates [co-]primary advisor)</p>
 <p>Arslan Ali* (in progress); César Barilla* (2025; Oxford/Nuffield
@@ -316,24 +300,5 @@ Meeting, 2012.</p>
 
     </div>
   </main>
-
-  <button id="cv-dark-toggle" aria-label="Toggle dark mode">&#9685;</button>
-
-  <script>
-  (function () {
-  var btn  = document.getElementById('cv-dark-toggle');
-  var root = document.documentElement;
-  function setTheme(dark, persist) {
-    root.setAttribute('data-theme', dark ? 'dark' : 'light');
-    if (persist) localStorage.setItem('nk-theme', dark ? 'dark' : 'light');
-  }
-  var saved   = localStorage.getItem('nk-theme');
-  var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(saved ? saved === 'dark' : sysDark, false);
-  btn.addEventListener('click', function () {
-    setTheme(root.getAttribute('data-theme') !== 'dark', true);
-  });
-}());
-  </script>
 </body>
 </html>
