@@ -98,7 +98,7 @@ em { font-style: italic; }
   font-size: 0.875rem;
   line-height: 1.9;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--heading);
 }
 .cv-toc-label {
   color: var(--muted);
@@ -137,6 +137,21 @@ h2 a:hover {
   margin: 0.35rem 0;
 }
 
+/* Small text (explanatory notes in Word doc) */
+.cv-body small {
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.cv-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95em;
+}
+
 /* ── Mobile ──────────────────────────────────────────────────── */
 @media (max-width: 700px) {
   .cv-toc { display: none; }
@@ -146,7 +161,7 @@ h2 a:hover {
 
 /* ── Print ───────────────────────────────────────────────────── */
 @media print {
-  .nav-links, .cv-toc { display: none; }
+  .nav-links, .cv-toc, .cv-footer { display: none; }
   body { color: #000; background: #fff; font-size: 11pt; line-height: 1.5; }
   a { color: #000; text-decoration: none; }
   h2 { color: #000; border-bottom: 1px solid #aaa; page-break-after: avoid; }
