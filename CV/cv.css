@@ -31,7 +31,7 @@ body {
 }
 
 a { color: var(--link); text-decoration: none; }
-a:hover { color: var(--link-hover); text-decoration: underline; }
+a:hover { color: var(--link-hover); text-decoration: none; }
 
 em { font-style: italic; }
 
@@ -129,7 +129,7 @@ h2 a {
 }
 h2 a:hover {
   color: var(--link-hover);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* ── Body paragraphs ─────────────────────────────────────────── */
