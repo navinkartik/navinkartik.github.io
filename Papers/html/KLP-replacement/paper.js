@@ -85,6 +85,62 @@
     }
   }
 
+  /* ── Font size control ─────────────────────────────────────── */
+  function initFontSize() {
+    var group = document.getElementById('nk-btn-group');
+    if (!group) return;
+
+    // Segmented pill: [a | A | A+] — all three sizes always visible
+    var ctrl = document.createElement('div');
+    ctrl.id = 'nk-fontsize-ctrl';
+
+    var sizes = ['small', 'medium', 'large'];
+    var labels = {small: 'a', medium: 'A', large: 'A+'};
+    var saved = localStorage.getItem('nk-fontsize');
+    var current = (saved && sizes.indexOf(saved) !== -1) ? saved : 'medium';
+
+    sizes.forEach(function (size) {
+      var btn = document.createElement('button');
+      btn.textContent = labels[size];
+      btn.dataset.size = size;
+      btn.setAttribute('aria-label', size + ' font size');
+      btn.addEventListener('click', function () { applySize(size); });
+      ctrl.appendChild(btn);
+    });
+
+    applySize(current, false);
+    group.insertBefore(ctrl, group.firstChild);
+
+    // Hide on scroll-down, show on scroll-up (same pattern as dark mode toggle)
+    var lastScrollY = window.scrollY, ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var c = window.scrollY;
+          if (c > lastScrollY + 8) ctrl.classList.add('nk-hidden');
+          else if (c < lastScrollY - 8) ctrl.classList.remove('nk-hidden');
+          lastScrollY = c;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive: true});
+    window.addEventListener('hashchange', function () { ctrl.classList.remove('nk-hidden'); });
+
+    function applySize(size, persist) {
+      current = size;
+      if (size === 'medium') {
+        document.documentElement.removeAttribute('data-fontsize');
+      } else {
+        document.documentElement.setAttribute('data-fontsize', size);
+      }
+      ctrl.querySelectorAll('button').forEach(function (b) {
+        b.classList.toggle('nk-active', b.dataset.size === size);
+      });
+      if (persist !== false) localStorage.setItem('nk-fontsize', size);
+    }
+  }
+
   /* ── Affiliation display ───────────────────────────────────── */
   /* LaTeXML puts affiliations in .ltx_author_notes (hidden in CSS).
      Reformat: each author on own line, with affiliation directly below. */
@@ -1282,6 +1338,7 @@
   function init() {
     fixPageTitle();
     initDarkMode();
+    initFontSize();
     initScrollToTop();
     initToc();
     initAffiliations();

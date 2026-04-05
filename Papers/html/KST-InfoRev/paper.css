@@ -56,6 +56,16 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
+html[data-fontsize="small"] { font-size: 14px; }
+html[data-fontsize="large"] {
+  font-size: 18px;
+  /* Keep margin notes approximately the same pixel width as at 16px,
+     so they don't need extra gutter space at the wider rem breakpoints */
+  --margin-note-width:         16rem;   /* ~288px ≈ 18rem@16px */
+  --margin-note-gap:           2.2rem;  /* ~40px  ≈ 2.5rem@16px */
+  --tablet-margin-note-width:  11.5rem; /* ~207px ≈ 13rem@16px */
+  --tablet-margin-note-gap:    1.3rem;  /* ~23px  ≈ 1.5rem@16px */
+}
 
 body {
   background: var(--bg);
@@ -128,6 +138,45 @@ body {
     font-size: 1rem;
     line-height: 1;
   }
+}
+
+/* ── Font size segmented control ────────────────────────────── */
+#nk-fontsize-ctrl {
+  display: flex;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  overflow: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+}
+#nk-fontsize-ctrl button {
+  background: none;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  transition: color 0.15s;
+}
+#nk-fontsize-ctrl button:first-child { border-left: none; }
+#nk-fontsize-ctrl button:hover { color: var(--text); }
+#nk-fontsize-ctrl button.nk-active {
+  background: var(--border);
+  color: var(--text);
+  cursor: default;
+  pointer-events: none;
+}
+#nk-fontsize-ctrl.nk-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+@media (max-width: 600px) {
+  #nk-fontsize-ctrl button { padding: 0.55rem 0.75rem; font-size: 1rem; }
 }
 
 /* ── Back-to-text button ─────────────────────────────────────── */
