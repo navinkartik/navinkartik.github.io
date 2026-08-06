@@ -2,7 +2,7 @@
 # GitHub Pages automatically builds this site with Jekyll
 
 title: Navin Kartik
-description: Professor of Economics, Yale University
+description: A. Douglas Melamed Professor of Economics, Yale University
 
 # Build settings
 markdown: kramdown
@@ -16,3 +16,8 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  # Superseded pages kept in the repo as backups: not built, so not published
+  # at a URL and not crawlable.
+  - index_old.html
+  - index-old.md
+  - Old/
