@@ -137,6 +137,40 @@ h2 a:hover {
   margin: 0.35rem 0;
 }
 
+/* Indents, hanging indents, and list numbers are recovered from the docx and
+   emitted per paragraph as --first / --wrap (see paragraph_layout in
+   generate_cv.py). --indent-scale shrinks them all together on narrow screens. */
+.cv-body {
+  --indent-scale: 1;
+  overflow-wrap: break-word;
+}
+.cv-body p.cv-lay {
+  padding-left: calc(var(--wrap) * var(--indent-scale));
+  text-indent: calc((var(--first) - var(--wrap)) * var(--indent-scale));
+}
+
+/* The fixed-width boxes the hanging indents hang off of: list numbers, and the
+   Contact block's label column. */
+.cv-body .cv-num,
+.cv-body .cv-label {
+  display: inline-block;
+  width: calc(var(--w) * var(--indent-scale));
+  /* inline-block is a block container, so it would otherwise inherit the
+     paragraph's negative text-indent and shift itself a second time */
+  text-indent: 0;
+}
+
+/* The Contact block is a label/value table, not an indent: scaling it down on
+   mobile squeezes the labels rather than buying back line width. */
+.cv-body p.cv-cols {
+  padding-left: var(--wrap);
+  text-indent: calc(var(--first) - var(--wrap));
+}
+.cv-body p.cv-cols .cv-label {
+  width: var(--w);
+  white-space: nowrap;
+}
+
 /* Small text (explanatory notes in Word doc) */
 .cv-body small {
   font-size: 0.9em;
@@ -157,6 +191,8 @@ h2 a:hover {
   .cv-toc { display: none; }
   .cv-container { padding: 1.5rem 1rem 4rem; }
   .cv-header h1 { font-size: 1.6em; }
+  /* Full-size indents cost too much of a phone's line width */
+  .cv-body { --indent-scale: 0.6; }
 }
 
 /* ── Print ───────────────────────────────────────────────────── */
