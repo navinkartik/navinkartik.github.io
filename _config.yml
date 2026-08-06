@@ -3,9 +3,16 @@
 
 title: Navin Kartik
 description: A. Douglas Melamed Professor of Economics, Yale University
+url: https://navinkartik.com
 
 # Build settings
 markdown: kramdown
+
+# jekyll-sitemap generates sitemap.xml (and a robots.txt pointing at it), so
+# search engines find the individual paper pages, not just the home page.
+# Supported natively by GitHub Pages; no Gemfile or Actions workflow needed.
+plugins:
+  - jekyll-sitemap
 
 # Exclude files from processing
 exclude:
@@ -21,3 +28,5 @@ exclude:
   - index_old.html
   - index-old.md
   - Old/
+  # Personal, not part of the professional site.
+  - Ajay/
