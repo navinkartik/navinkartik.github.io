@@ -1,0 +1,875 @@
+/* ================================================================
+   paper.css — Design layer for LaTeXML-generated HTML papers
+   Navin Kartik — economics papers
+   ================================================================
+
+   Priority order:
+   1. Mobile-friendly (single column, reflowable)
+   2. AI-friendly (all content in DOM, semantic structure preserved)
+   3. Modern appearance (theorem boxes, margin notes, dark mode)
+   ================================================================ */
+
+/* ── CSS Variables ───────────────────────────────────────────── */
+:root {
+  --bg:            #faf8f6;
+  --bg-muted:      #f0ede5;
+  --text:          #111;
+  --muted:         #666;
+  --link:          #1b6c9c;
+  --border:        #d0cdc8;
+  --border-strong: #999;
+
+  /* Theorem left-border colors */
+  --c-thm:        #1a5276;   /* theorem / lemma / proposition / corollary */
+  --c-assumption: #7d6608;   /* assumption */
+  --c-definition: #145a32;   /* definition */
+  --c-example:    #6c3483;   /* example */
+  --c-remark:     #7b7d7d;   /* remark */
+
+  --content-width:      52rem;
+  --margin-note-width:  18rem;
+  --margin-note-gap:    2.5rem;
+  --tablet-margin-note-width: 13rem;
+  --tablet-margin-note-gap:   1.5rem;
+
+  --footnote-mark: #b36a00;
+
+  --font-body: 'Book Antiqua', Palatino, 'Palatino Linotype', Georgia, serif;
+  --font-size: 1.05rem;
+  --line-height: 1.8;
+}
+
+[data-theme="dark"] {
+  --bg:            #1c1b19;
+  --bg-muted:      #252420;
+  --text:          #e8e5df;
+  --muted:         #999;
+  --link:          #6db3e0;
+  --border:        #3a3835;
+  --border-strong: #666;
+  --footnote-mark: #9a7840;
+}
+
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Page layout ─────────────────────────────────────────────── */
+.ltx_page_main {
+  padding: 1.5rem 1.25rem 5rem;
+}
+
+.ltx_document {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+/* On very wide screens shift left to leave right gutter for margin notes */
+@media (min-width: 90rem) {
+  .ltx_document {
+    margin-left: max(3rem, calc(50vw - var(--content-width) / 2 - var(--margin-note-width) / 2 - var(--margin-note-gap) / 2));
+    margin-right: 0;
+  }
+}
+
+/* ── Tablet: shift left to reserve gutter for narrow margin notes ── */
+@media (min-width: 70rem) and (max-width: 89.99rem) {
+  .ltx_document {
+    margin-left: max(1.25rem, calc(50vw - var(--content-width) / 2 - var(--tablet-margin-note-width) / 2 - var(--tablet-margin-note-gap) / 2));
+    margin-right: 0;
+  }
+}
+
+/* ── Button group (scroll-to-top + dark mode toggle) ─────────── */
+#nk-btn-group {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  z-index: 1000;
+}
+#nk-dark-toggle, #nk-top-btn {
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 2rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+#nk-dark-toggle:hover, #nk-top-btn:hover { color: var(--text); }
+#nk-dark-toggle.nk-hidden, #nk-top-btn.nk-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+@media (max-width: 600px) {
+  #nk-dark-toggle, #nk-top-btn {
+    padding: 0.55rem 0.9rem;
+    font-size: 1rem;
+    line-height: 1;
+  }
+}
+
+/* ── Back-to-text button ─────────────────────────────────────── */
+#nk-back-btn {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-muted);
+  border: 1px solid var(--border-strong);
+  color: var(--link);
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+#nk-back-btn:hover { background: var(--bg); }
+
+/* ── Title & header ──────────────────────────────────────────── */
+.ltx_title_document {
+  font-size: 1.75rem;
+  font-weight: normal;
+  color: var(--text) !important;
+  line-height: 1.3;
+  margin: 2.5rem 0 0.75rem;
+}
+
+/* \thanks inside \title: styled identically to footnotes (margin note / popup / inline).
+   Hide the "thanks:" type label — it's a LaTeXML artifact. */
+.ltx_note_type { display: none; }
+
+.ltx_authors {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 0.95rem;
+}
+
+.ltx_personname {
+  font-variant: small-caps;
+  font-size: 1.05rem;
+}
+
+/* Author notes/separators: hidden — JS reformats the author block cleanly */
+.ltx_author_notes { display: none; }
+.ltx_author_before { display: none; }
+.ltx_creator.ltx_role_author { display: none; }
+
+.ltx_dates {
+  font-size: 1rem;
+  margin: 0.25rem 0 2rem;
+}
+
+/* ── Abstract ────────────────────────────────────────────────── */
+.ltx_abstract {
+  border-left: 3px solid var(--border-strong);
+  padding: 0.25rem 1.25rem;
+  margin: 0 0 2.5rem;
+  font-size: 0.95rem;
+}
+
+/* JEL/Keywords paragraphs that LaTeXML places inside abstract — moved out by apply_design.py */
+.ltx_abstract + p.ltx_p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ltx_title_abstract {
+  font-size: 1rem;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 0.4rem;
+}
+
+/* ── Sections & headings ─────────────────────────────────────── */
+.ltx_section,
+.ltx_subsection,
+.ltx_subsubsection,
+.ltx_appendix {
+  margin-top: 2.5rem;
+}
+
+/* Override inline color from titlesec (paper's own LaTeX styling) */
+.ltx_title_section,
+.ltx_title_subsection,
+.ltx_title_subsubsection,
+.ltx_title_appendix {
+  margin: 0 0 0.6rem;
+  color: var(--text) !important;
+}
+
+.ltx_title_section   { font-size: 1.2rem; font-style: italic; font-weight: bold; }
+.ltx_title_subsection { font-size: 1.05rem; font-style: italic; font-weight: bold; }
+.ltx_title_subsubsection { font-size: 1rem; font-style: italic; font-weight: normal; }
+.ltx_title_appendix  { font-size: 1.2rem; font-style: italic; font-weight: bold; }
+.ltx_title_paragraph { font-size: 1rem; font-style: normal; font-weight: bold; margin: 1rem 0 0.3rem; }
+
+/* Add period after section/subsection numbers; colon after appendix */
+.ltx_tag_section::after { content: "."; margin-right: 0.3em; margin-left: -0.1em; }
+.ltx_tag_subsection::after { content: "."; margin-right: 0.3em; margin-left: -0.1em; }
+.ltx_tag_subsubsection::after { content: "."; margin-right: 0.3em; margin-left: -0.1em; }
+.ltx_tag_appendix::after { content: ":"; margin-right: 0.3em; margin-left: -0.1em; }
+
+/* Force all inline spans inside headings to inherit color */
+.ltx_title_section *,
+.ltx_title_subsection *,
+.ltx_title_subsubsection *,
+.ltx_title_appendix * {
+  color: inherit !important;
+}
+
+/* ── Paragraphs ──────────────────────────────────────────────── */
+.ltx_para { margin: 0.7rem 0; }
+
+.ltx_p {
+  margin: 0.5rem 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ── Theorem / lemma / proposition etc. ─────────────────────── */
+.ltx_theorem {
+  margin: 1.5rem 0;
+  padding: 0.65rem 1rem 0.4rem 1.1rem;
+  border-left: 3px solid var(--border-strong);
+  background: var(--bg-muted);
+  border-radius: 0 3px 3px 0;
+}
+
+.ltx_theorem_theorem,
+.ltx_theorem_lemma,
+.ltx_theorem_proposition,
+.ltx_theorem_corollary,
+.ltx_theorem_claim     { border-left-color: var(--c-thm); }
+
+.ltx_theorem_assumption { border-left-color: var(--c-assumption); }
+.ltx_theorem_definition { border-left-color: var(--c-definition); }
+.ltx_theorem_example    { border-left-color: var(--c-example); }
+
+/* Remarks: border only, no background fill */
+.ltx_theorem_remark {
+  border-left-color: var(--c-remark);
+  background: none;
+}
+
+/* Proofs: no box, no indent — plain text with italic "Proof." label */
+.ltx_theorem_proof {
+  border-left: none;
+  background: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+/* Collapse trailing margin so boxes don't have excess space at bottom */
+.ltx_theorem *:last-child,
+ul.ltx_itemize > .ltx_item *:last-child,
+div.nk-proof *:last-child {
+  margin-bottom: 0;
+}
+/* The *:last-child rule loses to ol.ltx_enumerate > .ltx_item (specificity 0,2,1 vs 0,2,0).
+   Override explicitly for the last list item inside theorem/proof boxes. */
+.ltx_theorem ol.ltx_enumerate > .ltx_item:last-child,
+.ltx_theorem ul.ltx_itemize > .ltx_item:last-child,
+div.nk-proof ol.ltx_enumerate > .ltx_item:last-child,
+div.nk-proof ul.ltx_itemize > .ltx_item:last-child {
+  margin-bottom: 0;
+}
+
+.ltx_title_theorem,
+.ltx_title_proof {
+  display: inline;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-right: 0.3em;
+}
+
+/* LaTeXML renders amsthm proofs as div.ltx_proof in some older papers */
+div.ltx_proof {
+  margin: 1rem 0;
+  padding: 0.55rem 1rem 0.4rem 1.1rem;
+  background: var(--bg-muted);
+  border-left: 3px solid var(--c-remark);
+  border-radius: 0 3px 3px 0;
+}
+div.ltx_proof *:last-child { margin-bottom: 0; }
+
+/* ── Proof toggle ────────────────────────────────────────────── */
+/* Proofs: show a [hide proof] button; content stays in DOM.
+   JS adds the button and .nk-proof-collapsible class.        */
+.nk-proof-toggle {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-variant: small-caps;
+  color: var(--link);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0 0.4em;
+  margin-left: 0.5em;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.nk-proof-body {
+  max-height: 200rem;  /* large cap; collapsed state overrides to 0 */
+  transition: max-height 0.25s ease, opacity 0.25s ease;
+  overflow: visible;  /* JS sets overflow:hidden only during collapse animation */
+}
+
+.nk-proof-body.nk-collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+/* ── Table of Contents ───────────────────────────────────────── */
+nav.ltx_TOC {
+  display: inline-block;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.6rem 1rem 0.6rem 0.9rem;
+  margin: 1rem 0 1.5rem;
+}
+nav.ltx_TOC h6.ltx_title_contents {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.nk-toc-indicator { color: var(--link); margin-left: 0.3em; }
+.nk-toc-body {
+  max-height: 200rem;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+.nk-toc-body.nk-collapsed { max-height: 0 !important; opacity: 0; }
+nav.ltx_TOC ol.ltx_toclist         { margin: 0.4rem 0 0; padding-left: 0; font-size: 0.85rem; list-style: none; }
+nav.ltx_TOC ol.ltx_toclist_section,
+nav.ltx_TOC ol.ltx_toclist_appendix { padding-left: 1rem; list-style: none; }
+nav.ltx_TOC .ltx_tocentry          { margin: 0.15rem 0; }
+nav.ltx_TOC a.ltx_ref              { text-decoration: none; }
+nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
+
+/* ── Equations ───────────────────────────────────────────────── */
+.ltx_equation,
+.ltx_eqn_table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+
+.ltx_eqn_row   { display: table-row; vertical-align: baseline; }
+.ltx_eqn_cell  { display: table-cell; }
+
+/* Equation number: zero-width cell, number floats right into margin */
+.ltx_eqn_eqno  { max-width: 0; overflow: visible; white-space: nowrap; }
+.ltx_eqn_eqno.ltx_align_right .ltx_tag { float: right; }
+
+/* Equations inside footnotes: natural width + horizontal scroll (narrow margin columns) */
+.ltx_note_content .ltx_eqn_table { width: auto; overflow-x: auto; }
+
+/* Center align-environment column pairs: pad cells absorb slack, content stays tight.
+   Scoped to ltx_eqn_align only — single-equation tables must not have constrained pads
+   or the content cell gets squeezed to zero (breaks image figures in equations). */
+.ltx_eqn_align .ltx_eqn_center_padleft,
+.ltx_eqn_align .ltx_eqn_center_padright { width: 50%; }
+
+.ltx_align_center { text-align: center; }
+
+.ltx_tag_equation {
+  font-size: 1rem;
+  color: var(--muted);
+  padding-left: 1rem;
+  white-space: nowrap;
+}
+
+/* ── Footnotes ───────────────────────────────────────────────── */
+/* Footnote superscript mark */
+.ltx_note_mark {
+  font-size: 0.72rem;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--footnote-mark);
+  cursor: default;
+}
+
+/* The duplicate ltx_note_mark inside content: hide (already shown inline) */
+.ltx_note_content .ltx_note_mark {
+  display: none;
+}
+/* Exception: thanks notes have no ltx_tag_note, so show the mark in the content */
+.ltx_role_thanks .ltx_note_content .ltx_note_mark {
+  display: inline;
+}
+
+/* Show footnote number at start of note content */
+.ltx_note_content .ltx_tag_note {
+  font-size: 0.75rem;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--footnote-mark);
+  margin-right: 0.15em;
+}
+
+/* ── Below wide: footnotes inline below mark ─────────────────── */
+@media (max-width: 69.99rem) {
+  .ltx_note_outer {
+    display: block;
+    font-size: 0.83rem;
+    line-height: 1.5;
+    color: var(--muted);
+    border-left: 2px solid var(--border);
+    padding: 0.3rem 0 0.3rem 0.75rem;
+    margin: 0.3rem 0 0.3rem 0.5rem;
+  }
+}
+
+/* ── Tablet: narrow margin notes ────────────────────────────── */
+@media (min-width: 70rem) and (max-width: 89.99rem) {
+  .ltx_note.ltx_role_footnote,
+  .ltx_note.ltx_role_thanks {
+    position: static;
+  }
+
+  .ltx_note_outer {
+    display: block;
+    float: right;
+    clear: right;
+    margin-right: calc(-1 * (var(--tablet-margin-note-width) + var(--tablet-margin-note-gap)));
+    width: var(--tablet-margin-note-width);
+    font-size: 0.8rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: var(--muted);
+    padding-left: 0.75rem;
+    border-left: 1px solid var(--border);
+    margin-top: 0.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  div.nk-proof .ltx_note_outer {
+    margin-right: calc(-1 * (var(--tablet-margin-note-width) + var(--tablet-margin-note-gap) + 1rem));
+  }
+}
+
+/* ── Wide screens: margin notes ─────────────────────────────── */
+@media (min-width: 90rem) {
+  .ltx_note.ltx_role_footnote,
+  .ltx_note.ltx_role_thanks {
+    position: static;
+  }
+
+  .ltx_note_outer {
+    display: block;
+    float: right;
+    clear: right;
+    /* push into right gutter */
+    margin-right: calc(-1 * (var(--margin-note-width) + var(--margin-note-gap)));
+    width: var(--margin-note-width);
+    font-size: 0.8rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: var(--muted);
+    padding-left: 0.9rem;
+    border-left: 1px solid var(--border);
+    /* prevent footnote from being drawn too far above its anchor */
+    margin-top: 0.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  /* proof box has padding-right:1rem; compensate so footnotes inside proofs align with those outside */
+  div.nk-proof .ltx_note_outer {
+    margin-right: calc(-1 * (var(--margin-note-width) + var(--margin-note-gap) + 1rem));
+  }
+}
+
+/* ── Figures & images ────────────────────────────────────────── */
+.ltx_figure,
+.ltx_float {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.ltx_figure img,
+.ltx_figure svg {
+  max-width: 100%;
+  height: auto;
+}
+
+[data-theme="dark"] .ltx_graphics {
+  background: #faf8f6;
+}
+
+.ltx_caption {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.ltx_tag_figure,
+.ltx_tag_table {
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
+/* Hide orphaned ltx_rule elements (misplaced figure dividers from LaTeXML) */
+.ltx_rule {
+  display: none !important;
+}
+
+/* ── Tables ──────────────────────────────────────────────────── */
+.ltx_tabular {
+  border-collapse: collapse;
+  margin: 0.75rem auto;
+  font-size: 0.93rem;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+.ltx_tabular td,
+.ltx_tabular th {
+  padding: 0.25rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+/* Pure layout tables (keywords, JEL codes, inline notation): suppress row borders.
+   Distinguished from data/math tables by lacking ltx_centering, ltx_guessed_headers,
+   and ltx_markedasmath. */
+.ltx_tabular.ltx_align_middle:not(.ltx_centering):not(.ltx_guessed_headers):not(.ltx_markedasmath) td,
+.ltx_tabular.ltx_align_middle:not(.ltx_centering):not(.ltx_guessed_headers):not(.ltx_markedasmath) th {
+  border-bottom: none;
+}
+
+.ltx_tabular th {
+  font-weight: bold;
+}
+
+/* Thick bottom only on column headers, not row-header th cells in data rows */
+.ltx_tabular th.ltx_th_column {
+  border-bottom: 2px solid var(--border-strong);
+}
+
+/* LaTeXML explicit cell border classes (reflect |, booktabs rules, etc. from LaTeX source) */
+.ltx_tabular .ltx_border_l  { border-left:   1px solid var(--border); }
+.ltx_tabular .ltx_border_r  { border-right:  1px solid var(--border); }
+.ltx_tabular .ltx_border_rr { border-right:  2px solid var(--border-strong); }
+.ltx_tabular .ltx_border_ll { border-left:   2px solid var(--border-strong); }
+.ltx_tabular .ltx_border_t  { border-top:    1px solid var(--border); }
+.ltx_tabular .ltx_border_tt { border-top:    2px solid var(--border-strong); }
+.ltx_tabular .ltx_border_b  { border-bottom: 1px solid var(--border); }
+.ltx_tabular .ltx_border_bb { border-bottom: 2px solid var(--border-strong); }
+
+/* ── Bibliography ────────────────────────────────────────────── */
+.ltx_bibliography {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.ltx_title_bibliography {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.ltx_biblist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hanging-indent paragraph style: author-year + bibblocks all inline */
+.ltx_bibitem {
+  display: block;
+  margin-bottom: 0.8rem;
+  padding-left: 2em;
+  text-indent: -2em;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.ltx_tag_bibitem {
+  display: inline;
+  color: var(--muted);
+}
+.ltx_tag_bibitem::after {
+  content: ".";
+}
+
+.ltx_bibblock {
+  display: inline;
+}
+
+/* "Cited by" cross-refs: muted and smaller */
+.ltx_bibblock.ltx_bib_cited {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* Journal name italicized */
+.ltx_bib_journal { font-style: italic; }
+
+/* "External Links" label */
+.ltx_bib_links { display: inline; }
+
+/* Citation hover: JS adds tooltip, CSS styles it */
+.nk-cite-tooltip {
+  position: absolute;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  max-width: 24rem;
+  z-index: 300;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  pointer-events: none;
+}
+
+.nk-cite-tooltip em,
+.nk-cite-tooltip i {
+  font-style: italic;
+}
+
+/* ── Links & cross-references ────────────────────────────────── */
+a, .ltx_ref { color: var(--link); text-decoration: none; }
+a:hover     { text-decoration: underline; }
+a.ltx_anchor { color: inherit; }  /* label anchors: no link styling */
+.ltx_cite   { font-style: normal; }
+/* \citeauthor links: author name should look like text, not a hyperlink */
+.ltx_citemacro_citeauthor a.ltx_ref { color: inherit; cursor: text; }
+
+/* ── Lists ───────────────────────────────────────────────────── */
+.ltx_enumerate,
+.ltx_itemize {
+  margin: 0.5rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Enumerate: flex keeps "1." on same line as content */
+ol.ltx_enumerate > .ltx_item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+}
+ol.ltx_enumerate > .ltx_item > .ltx_tag.ltx_tag_item {
+  flex: 0 0 auto;
+  min-width: 1.5rem;
+}
+ol.ltx_enumerate > .ltx_item > .ltx_para,
+ol.ltx_enumerate > .ltx_item > .ltx_p {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Itemize (regular bullets): flex keeps bullet on same line as content */
+ul.ltx_itemize > .ltx_item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0.4rem 0;
+  padding: 0;
+}
+ul.ltx_itemize > .ltx_item > .ltx_tag.ltx_tag_item {
+  flex: 0 0 auto;
+}
+ul.ltx_itemize > .ltx_item > .ltx_para {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Proof blocks: nk-proof wraps label + all content paragraphs */
+div.nk-proof {
+  margin: 1rem 0;
+  padding: 0.55rem 1rem 0.4rem 1.1rem;
+  background: var(--bg-muted);
+  border-left: 3px solid var(--c-remark);
+  border-radius: 0 3px 3px 0;
+}
+div.nk-proof > .ltx_para {
+  margin: 0;
+}
+/* Multi-para proof li not wrapped in nk-proof (entangled case): switch to block so
+   two ltx_para children don't go side-by-side as flex items */
+ul.ltx_itemize > .ltx_item:has(> .ltx_para + .ltx_para) {
+  display: block;
+}
+
+/* ol.ltx_enumerate items with complex content (multiple ltx_para or a theorem child):
+   flex layout squashes content into near-zero-width columns. Use grid instead:
+   column 1 = label (auto width), column 2 = all content (1fr), stacking vertically. */
+ol.ltx_enumerate > .ltx_item:has(> .ltx_para + .ltx_para),
+ol.ltx_enumerate > .ltx_item:has(> .ltx_theorem) {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: 0.4em;
+}
+ol.ltx_enumerate > .ltx_item:has(> .ltx_para + .ltx_para) > .ltx_para,
+ol.ltx_enumerate > .ltx_item:has(> .ltx_para + .ltx_para) > .ltx_theorem,
+ol.ltx_enumerate > .ltx_item:has(> .ltx_theorem) > .ltx_para,
+ol.ltx_enumerate > .ltx_item:has(> .ltx_theorem) > .ltx_theorem {
+  grid-column: 2;
+}
+
+/* Proof label li: block (not flex) so label sits above content */
+div.nk-proof ul.ltx_itemize > .ltx_item {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+div.nk-proof ul.ltx_itemize > .ltx_item > .ltx_tag.ltx_tag_item {
+  font-weight: bold;
+  font-style: italic;
+  margin-right: 0.3em;
+}
+div.nk-proof ul.ltx_itemize > .ltx_item > .ltx_para {
+  display: block;
+  margin: 0;
+}
+
+/* ── Pagination / page break markers ────────────────────────── */
+.ltx_pagination { display: none; }
+
+/* ── Miscellaneous LaTeXML elements ─────────────────────────── */
+.ltx_font_bold     { font-weight: bold; }
+.ltx_font_italic   { font-style: italic; }
+.ltx_font_smallcaps { font-variant: small-caps; }
+.ltx_font_typewriter { font-family: 'Courier New', Courier, monospace; font-size: 0.9em; }
+
+.ltx_emph { font-style: italic; }
+
+/* Author note affiliations shown in a details block (JS builds it) */
+#nk-affiliations {
+  margin: 0.75rem 0 1.5rem;
+  line-height: 1.6;
+}
+
+/* ── Responsive fine-tuning ──────────────────────────────────── */
+@media (max-width: 39.99rem) {
+  .ltx_title_document { font-size: 1.4rem; }
+  .ltx_theorem { padding: 0.5rem 0.75rem; }
+  .ltx_tabular { font-size: 0.85rem; }
+}
+
+/* ── HTML version banner (top and bottom of page) ────────────── */
+.nk-html-banner {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+article + .nk-html-banner {
+  padding-top: 0.75rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.nk-html-banner + article {
+  padding-top: 0;
+}
+.nk-html-banner:first-child,
+.ltx_page_content > .nk-html-banner:first-of-type {
+  padding-bottom: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.ltx_page_logo { display: none; }
+
+@media print {
+  #nk-dark-toggle, #nk-top-btn { display: none; }
+  .ltx_note_outer { display: block !important; float: none !important;
+                    margin: 0; width: auto; border: none;
+                    font-size: 0.8rem; color: #555; }
+  a { color: #000; text-decoration: none; }
+}
+
+/* ── Lightbox ────────────────────────────────────────────────── */
+#nk-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.82);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  cursor: zoom-out;
+  gap: 1rem;
+  overflow-y: auto;
+}
+#nk-lightbox.nk-lb-active { display: flex; }
+
+#nk-lightbox-img {
+  max-width: 90vw;
+  max-height: 82vh;
+  cursor: default;
+  background: #faf8f6;
+}
+/* SVGs are vector — upscale to fill the screen; aspect ratio preserved by browser */
+#nk-lightbox-img.nk-lb-svg {
+  width: min(90vw, 65vh);
+  height: auto;
+  max-height: 82vh;
+}
+@media (max-width: 600px) {
+  #nk-lightbox-img, #nk-lightbox-img.nk-lb-svg { max-height: 60vh; }
+}
+
+#nk-lightbox-caption {
+  max-width: min(60rem, 90vw);
+  color: #e8e5df;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  cursor: default;
+}
+#nk-lightbox-caption .ltx_tag_figure { color: #fff; }
+
+.nk-fig-wrap { position: relative; display: inline-block; }
+.nk-fig-overlay { position: absolute; inset: 0; z-index: 1; cursor: zoom-in; }
+
+figure.ltx_figure img.ltx_graphics:not(.ltx_markedasmath),
+figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-in; }
+
+@media print { #nk-lightbox { display: none !important; } }

@@ -84,6 +84,7 @@
 
 - title: "Lemonade from Lemons: Information Design and Adverse Selection"
   pdf: Papers/KZ-Lemonade.pdf
+  html: KZ-Lemonade
   coauthors: [Weijie Zhong]
   journal: "Theoretical Economics"
   journal_url: https://econtheory.org/ojs/index.php/te/article/view/20260281
@@ -94,6 +95,7 @@
 
 - title: "Test-Optional Admissions"
   pdf: Papers/DFK-TestOptional.pdf
+  html: DFK-TestOptional
   coauthors: [Wouter Dessein, Alex Frankel]
   journal: "American Economic Review"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.20231407
@@ -200,6 +202,7 @@
 
 - title: "Reputation Effects and Incumbency (Dis)Advantage"
   pdf: Papers/KvW-incumbency.pdf
+  html: KvW-incumbency
   coauthors: [Richard Van Weelden]
   journal: "Quarterly Journal of Political Science"
   journal_url: https://dx.doi.org/10.1561/100.00016057
@@ -279,6 +282,7 @@
 
 - title: "Optimal Contracts for Experimentation"
   pdf: Papers/HKL_contracts_experimentation.pdf
+  html: HKL_contracts_experimentation
   coauthors: [Marina Halac, Qingmin Liu]
   journal: "Review of Economic Studies"
   journal_url: https://dx.doi.org/10.1093/restud/rdw013
@@ -403,6 +407,7 @@
 
 - title: "Would I Lie to You? On Social Preferences and Lying Aversion"
   pdf: Papers/would_i_lie.pdf
+  html: would_i_lie
   coauthors: [Sjaak Hurkens]
   journal: "Experimental Economics"
   journal_url: https://dx.doi.org/10.1007/s10683-008-9208-2
