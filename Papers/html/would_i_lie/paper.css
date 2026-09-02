@@ -31,6 +31,7 @@
   --margin-note-gap:    2.5rem;
   --tablet-margin-note-width: 13rem;
   --tablet-margin-note-gap:   1.5rem;
+  --toc-width:          14rem;
 
   --footnote-mark: #b36a00;
 
@@ -55,6 +56,16 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
+html[data-fontsize="small"] { font-size: 14px; }
+html[data-fontsize="large"] {
+  font-size: 18px;
+  /* Keep margin notes approximately the same pixel width as at 16px,
+     so they don't need extra gutter space at the wider rem breakpoints */
+  --margin-note-width:         16rem;   /* ~288px ≈ 18rem@16px */
+  --margin-note-gap:           2.2rem;  /* ~40px  ≈ 2.5rem@16px */
+  --tablet-margin-note-width:  11.5rem; /* ~207px ≈ 13rem@16px */
+  --tablet-margin-note-gap:    1.3rem;  /* ~23px  ≈ 1.5rem@16px */
+}
 
 body {
   background: var(--bg);
@@ -103,7 +114,7 @@ body {
   gap: 0.4rem;
   z-index: 1000;
 }
-#nk-dark-toggle, #nk-top-btn {
+#nk-dark-toggle, #nk-top-btn, #nk-toc-btn {
   background: var(--bg-muted);
   border: 1px solid var(--border);
   color: var(--muted);
@@ -115,38 +126,84 @@ body {
   user-select: none;
   transition: opacity 0.25s, transform 0.25s;
 }
-#nk-dark-toggle:hover, #nk-top-btn:hover { color: var(--text); }
-#nk-dark-toggle.nk-hidden, #nk-top-btn.nk-hidden {
+#nk-dark-toggle:hover, #nk-top-btn:hover, #nk-toc-btn:hover { color: var(--text); }
+#nk-dark-toggle.nk-hidden, #nk-top-btn.nk-hidden, #nk-toc-btn.nk-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateY(0.5rem);
 }
 @media (max-width: 600px) {
-  #nk-dark-toggle, #nk-top-btn {
+  #nk-dark-toggle, #nk-top-btn, #nk-toc-btn {
     padding: 0.55rem 0.9rem;
     font-size: 1rem;
     line-height: 1;
   }
 }
 
+/* ── Font size segmented control ────────────────────────────── */
+#nk-fontsize-ctrl {
+  display: flex;
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  overflow: hidden;
+  transition: opacity 0.25s, transform 0.25s;
+}
+#nk-fontsize-ctrl button {
+  background: none;
+  border: none;
+  border-left: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  transition: color 0.15s;
+}
+#nk-fontsize-ctrl button:first-child { border-left: none; }
+#nk-fontsize-ctrl button:hover { color: var(--text); }
+#nk-fontsize-ctrl button.nk-active {
+  background: var(--border);
+  color: var(--text);
+  cursor: default;
+  pointer-events: none;
+}
+#nk-fontsize-ctrl.nk-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+@media (max-width: 600px) {
+  #nk-fontsize-ctrl button { padding: 0.55rem 0.75rem; font-size: 1rem; }
+}
+
 /* ── Back-to-text button ─────────────────────────────────────── */
-#nk-back-btn {
+#nk-back-container {
   position: fixed;
   bottom: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: stretch;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+#nk-back-btn, #nk-back-close {
   background: var(--bg-muted);
   border: 1px solid var(--border-strong);
   color: var(--link);
-  border-radius: 4px;
-  padding: 0.4rem 1rem;
   font-size: 0.85rem;
   font-family: var(--font-body);
   cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 0.4rem 1rem;
 }
-#nk-back-btn:hover { background: var(--bg); }
+#nk-back-btn { border-right: none; }
+#nk-back-close { padding: 0.4rem 0.7rem; border-left: 1px solid var(--border-strong); }
+#nk-back-btn:hover, #nk-back-close:hover { background: var(--bg); }
 
 /* ── Title & header ──────────────────────────────────────────── */
 .ltx_title_document {
@@ -811,12 +868,43 @@ article + .nk-html-banner {
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border);
 }
+/* On wide screens, drop the bottom border — visual contrast with paper title is sufficient */
+@media (min-width: 90rem) {
+  .nk-html-banner:first-child,
+  .ltx_page_content > .nk-html-banner:first-of-type {
+    border-bottom: none;
+  }
+}
+
+/* ── Homepage back-link nav (top and bottom of page) ─────────── */
+.nk-home-nav {
+  text-align: center;
+  padding-bottom: 0.6rem;
+}
+.nk-home-nav:last-of-type {
+  padding-top: 0.6rem;
+  padding-bottom: 0;
+}
+.nk-home-nav a {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  color: var(--link);
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 0.25rem 0.75rem;
+  text-decoration: none;
+}
+.nk-home-nav a:hover {
+  color: var(--text);
+}
 
 /* ── Footer ──────────────────────────────────────────────────── */
 .ltx_page_logo { display: none; }
 
 @media print {
-  #nk-dark-toggle, #nk-top-btn { display: none; }
+  #nk-dark-toggle, #nk-top-btn, #nk-toc-btn { display: none; }
   .ltx_note_outer { display: block !important; float: none !important;
                     margin: 0; width: auto; border: none;
                     font-size: 0.8rem; color: #555; }
@@ -873,3 +961,194 @@ figure.ltx_figure img.ltx_graphics:not(.ltx_markedasmath),
 figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-in; }
 
 @media print { #nk-lightbox { display: none !important; } }
+
+/* ── TOC Sidebar ─────────────────────────────────────────────── */
+/* left: mirrors .ltx_document margin-left formula (see ~line 80),
+   placing sidebar's right edge ~1.5rem left of content */
+#nk-toc-sidebar {
+  position: fixed;
+  top: 3rem;
+  left: max(0.5rem, calc(50vw
+        - var(--content-width) / 2
+        - var(--margin-note-width) / 2
+        - var(--margin-note-gap) / 2
+        - var(--toc-width) - 1.5rem));
+  width: var(--toc-width);
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  display: none;
+  background: var(--bg);
+  padding: 0.5rem 0.75rem 1rem 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  z-index: 50;
+}
+@media (min-width: 106rem) {
+  #nk-toc-sidebar                  { display: block; }
+  #nk-toc-sidebar.nk-toc-hidden   { display: none; }
+  nav.ltx_TOC                      { display: none; }  /* sidebar replaces inline TOC */
+  #nk-toc-panel, #nk-toc-backdrop { display: none !important; }
+}
+
+/* ── TOC List Items (sidebar + panel) ───────────────────────── */
+.nk-toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+#nk-toc-sidebar-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  line-height: 1;
+  font-variant: normal;
+  text-transform: none;
+  letter-spacing: 0;
+}
+#nk-toc-sidebar-close:hover { color: var(--text); background: var(--bg-muted); }
+.nk-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nk-toc-item {
+  margin: 0;
+  padding: 0;
+}
+.nk-toc-item a {
+  display: flex;
+  gap: 0.4em;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 0.18rem 0.4rem 0.18rem 0;
+  border-radius: 3px;
+  transition: color 0.15s, background 0.15s;
+  line-height: 1.35;
+}
+.nk-toc-item a:hover {
+  color: var(--text);
+  background: var(--bg-muted);
+  text-decoration: none;
+}
+.nk-toc-l1 a { font-size: 0.78rem; }
+.nk-toc-l2 a { font-size: 0.73rem; padding-left: 0.85rem; }
+.nk-toc-num {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.9em;
+  min-width: 1.8rem;
+}
+.nk-toc-title {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.nk-toc-item.nk-toc-active > a             { color: var(--link); font-weight: 600; }
+.nk-toc-item.nk-toc-active > a .nk-toc-num { color: var(--link); }
+.nk-toc-divider {
+  height: 0;
+  border-top: 1px solid var(--border);
+  margin: 0.4rem 0;
+  list-style: none;
+}
+
+/* ── TOC Mobile Panel ────────────────────────────────────────── */
+#nk-toc-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(22rem, 85vw);
+  height: 100dvh;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+  z-index: 1500;
+  overflow-y: auto;
+  padding: 1.25rem 1rem 2rem 1.25rem;
+  transform: translateX(-100%);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+#nk-toc-panel.nk-toc-open { transform: translateX(0); }
+.nk-toc-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.nk-toc-panel-header span {
+  font-size: 0.7rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+#nk-toc-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  line-height: 1;
+}
+#nk-toc-close:hover { color: var(--text); background: var(--bg-muted); }
+#nk-toc-panel .nk-toc-l1 a { font-size: 0.88rem; }
+#nk-toc-panel .nk-toc-l2 a { font-size: 0.83rem; padding-left: 1rem; }
+#nk-toc-panel .nk-toc-item a { padding: 0.28rem 0.4rem 0.28rem 0; }
+
+/* ── TOC Backdrop ────────────────────────────────────────────── */
+#nk-toc-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1400;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#nk-toc-backdrop.nk-toc-open { display: block; opacity: 1; }
+
+@media print {
+  #nk-toc-sidebar, #nk-toc-panel, #nk-toc-backdrop { display: none !important; }
+}
+
+/* ── Cross-reference preview tooltip ────────────────────────── */
+#nk-ref-preview {
+  position: absolute;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  max-width: 32rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  z-index: 310;           /* above citation tooltip (300), below modals */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  pointer-events: none;   /* critical: don't intercept mouse events */
+  font-size: 0.85rem;
+}
+#nk-ref-preview .ltx_theorem { margin: 0; }
+#nk-ref-preview .nk-proof    { display: none; }

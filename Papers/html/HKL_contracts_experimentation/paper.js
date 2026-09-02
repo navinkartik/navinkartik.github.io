@@ -45,6 +45,7 @@
         ticking = true;
       }
     }, {passive: true});
+    window.addEventListener('hashchange', function () { btn.classList.remove('nk-hidden'); });
 
     function isMobile() { return window.innerWidth <= 600; }
 
@@ -81,6 +82,62 @@
         }
       }
       return 'hsl('+Math.round(h*360)+','+Math.round(s*100)+'%,70%)';
+    }
+  }
+
+  /* ── Font size control ─────────────────────────────────────── */
+  function initFontSize() {
+    var group = document.getElementById('nk-btn-group');
+    if (!group) return;
+
+    // Segmented pill: [a | A | A+] — all three sizes always visible
+    var ctrl = document.createElement('div');
+    ctrl.id = 'nk-fontsize-ctrl';
+
+    var sizes = ['small', 'medium', 'large'];
+    var labels = {small: 'a', medium: 'A', large: 'A+'};
+    var saved = localStorage.getItem('nk-fontsize');
+    var current = (saved && sizes.indexOf(saved) !== -1) ? saved : 'medium';
+
+    sizes.forEach(function (size) {
+      var btn = document.createElement('button');
+      btn.textContent = labels[size];
+      btn.dataset.size = size;
+      btn.setAttribute('aria-label', size + ' font size');
+      btn.addEventListener('click', function () { applySize(size); });
+      ctrl.appendChild(btn);
+    });
+
+    applySize(current, false);
+    group.insertBefore(ctrl, group.firstChild);
+
+    // Hide on scroll-down, show on scroll-up (same pattern as dark mode toggle)
+    var lastScrollY = window.scrollY, ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var c = window.scrollY;
+          if (c > lastScrollY + 8) ctrl.classList.add('nk-hidden');
+          else if (c < lastScrollY - 8) ctrl.classList.remove('nk-hidden');
+          lastScrollY = c;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, {passive: true});
+    window.addEventListener('hashchange', function () { ctrl.classList.remove('nk-hidden'); });
+
+    function applySize(size, persist) {
+      current = size;
+      if (size === 'medium') {
+        document.documentElement.removeAttribute('data-fontsize');
+      } else {
+        document.documentElement.setAttribute('data-fontsize', size);
+      }
+      ctrl.querySelectorAll('button').forEach(function (b) {
+        b.classList.toggle('nk-active', b.dataset.size === size);
+      });
+      if (persist !== false) localStorage.setItem('nk-fontsize', size);
     }
   }
 
@@ -629,6 +686,77 @@
     });
   });
 
+  /* ── Cross-reference preview tooltips ─────────────────────── */
+  function initRefPreviews() {
+    // Desktop only — skip touch/hover:none devices
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    var preview = document.createElement('div');
+    preview.id = 'nk-ref-preview';
+    preview.style.display = 'none';
+    document.body.appendChild(preview);
+
+    function cloneTheoremContent(el) {
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('.nk-proof, .nk-proof-toggle, button').forEach(function(n) { n.remove(); });
+      return clone;
+    }
+
+    function resolveContent(id) {
+      if (id.startsWith('bib.bib') || id.startsWith('footnote')) return null;
+      var target = document.getElementById(id);
+      if (!target) return null;
+      if (target.classList.contains('ltx_theorem'))   return cloneTheoremContent(target);
+      if (target.classList.contains('ltx_eqn_table')) return target.cloneNode(true);
+      return null;
+    }
+
+    function placePreview(x, y) {
+      var pw = Math.max(preview.offsetWidth, 200);
+      var ph = Math.max(preview.offsetHeight, 100);
+      var maxX = window.scrollX + window.innerWidth - pw - 16;
+      var px = Math.min(x + 16, maxX);
+      var py = y + 20;
+      if (py + ph > window.scrollY + window.innerHeight - 16) py = y - ph - 8;
+      preview.style.left = Math.max(window.scrollX + 8, px) + 'px';
+      preview.style.top  = Math.max(window.scrollY + 8, py) + 'px';
+    }
+
+    var showTimer = null, hideTimer = null;
+
+    document.querySelectorAll('a.ltx_ref').forEach(function(link) {
+      if (link.closest('.ltx_cite, #nk-toc-sidebar, #nk-toc-panel, #nk-ref-preview')) return;
+      var href = link.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
+
+      link.addEventListener('mouseenter', function(e) {
+        clearTimeout(hideTimer);
+        clearTimeout(showTimer);
+        var ex = e.pageX, ey = e.pageY;
+        showTimer = setTimeout(function() {
+          var content = resolveContent(href.slice(1));
+          if (!content) return;
+          preview.innerHTML = '';
+          preview.appendChild(content);
+          preview.style.display = 'block';
+          placePreview(ex, ey);
+        }, 300);
+      });
+
+      link.addEventListener('mousemove', function(e) {
+        if (preview.style.display !== 'none') placePreview(e.pageX, e.pageY);
+      });
+
+      link.addEventListener('mouseleave', function() {
+        clearTimeout(showTimer);
+        hideTimer = setTimeout(function() {
+          preview.style.display = 'none';
+          preview.innerHTML = '';
+        }, 150);
+      });
+    });
+  }
+
   /* ── Back-to-text button ───────────────────────────────────── */
   /* When any internal link (#...) navigates away, show a floating
      "↩ back to text" button that restores the saved scroll position.
@@ -636,12 +764,26 @@
   function initBackToText() {
     var savedScrollY = null;
 
+    var container = document.createElement('div');
+    container.id = 'nk-back-container';
+    container.style.display = 'none';
+
     var btn = document.createElement('button');
     btn.id = 'nk-back-btn';
     btn.textContent = '↩ back';
     btn.setAttribute('aria-label', 'Return to previous position in text');
-    btn.style.display = 'none';
-    document.body.appendChild(btn);
+
+    var closeBtn = document.createElement('button');
+    closeBtn.id = 'nk-back-close';
+    closeBtn.textContent = '✕';
+    closeBtn.setAttribute('aria-label', 'Dismiss');
+
+    container.appendChild(btn);
+    container.appendChild(closeBtn);
+    document.body.appendChild(container);
+
+    function show() { container.style.display = 'flex'; }
+    function hide() { container.style.display = 'none'; }
 
     // Save scroll position as early as possible (before navigation fires)
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
@@ -652,29 +794,28 @@
       // Check defaultPrevented so we don't show it when the tooltip intercepted the tap.
       link.addEventListener('click', function (e) {
         if (e.defaultPrevented) return;
-        btn.style.display = 'block';
+        show();
       });
     });
 
     // hashchange handles navigation via keyboard or direct URL editing
     window.addEventListener('hashchange', function () {
-      if (savedScrollY !== null) {
-        btn.style.display = 'block';
-      }
+      if (savedScrollY !== null) { show(); }
     });
 
     function doBack() {
       if (savedScrollY !== null) {
         window.scrollTo({ top: savedScrollY, behavior: 'smooth' });
       }
-      btn.style.display = 'none';
+      hide();
       savedScrollY = null;
     }
 
     btn.addEventListener('click', doBack);
+    closeBtn.addEventListener('click', hide);
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && btn.style.display !== 'none') doBack();
+      if (e.key === 'Escape' && container.style.display !== 'none') hide();
     });
   }
 
@@ -937,16 +1078,269 @@
         ticking = true;
       }
     }, {passive: true});
+    window.addEventListener('hashchange', function () { if (window.scrollY >= THRESHOLD) btn.classList.remove('nk-hidden'); });
 
     // Prepend so scroll-to-top sits above dark mode toggle in the column
     group.insertBefore(btn, group.firstChild);
+  }
+
+  /* ── TOC Sidebar + Panel ───────────────────────────────────── */
+  function initToc() {
+    var HEADING_SELECTOR = [
+      'section.ltx_section    > h2.ltx_title_section',
+      'section.ltx_appendix   > h2.ltx_title_appendix',
+      'section.ltx_subsection > h3.ltx_title_subsection'
+    ].join(',');
+
+    var headingEls = document.querySelectorAll(HEADING_SELECTOR);
+    if (!headingEls.length) return;
+
+    // Build entries
+    var entries = [];
+    headingEls.forEach(function(h) {
+      var sec = h.closest('section[id]');
+      if (!sec) return;
+      var id = sec.id;
+      var isAppendix = /^A/.test(id);
+      var level = h.classList.contains('ltx_title_subsection') ? 2 : 1;
+
+      var tagSpan = h.querySelector('[class*="ltx_tag_"]');
+      var num = tagSpan ? tagSpan.textContent.trim() : '';
+      var clone = h.cloneNode(true);
+      var cloneTag = clone.querySelector('[class*="ltx_tag_"]');
+      if (cloneTag) cloneTag.remove();
+      var title = clone.textContent.trim();
+
+      entries.push({ id: id, level: level, isAppendix: isAppendix,
+                     num: num, title: title, sidebarItem: null, panelItem: null });
+    });
+
+    // Prepend Abstract if present
+    var absEl = document.querySelector('div.ltx_abstract');
+    if (absEl) {
+      if (!absEl.id) absEl.id = 'abstract';
+      entries.unshift({ id: 'abstract', level: 1, isAppendix: false, num: '', title: 'Abstract', sidebarItem: null, panelItem: null });
+    }
+
+    if (!entries.length) return;
+
+    var hasRegular = entries.some(function(e) { return !e.isAppendix; });
+    var firstAppendixIdx = -1;
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isAppendix && firstAppendixIdx === -1) { firstAppendixIdx = i; break; }
+    }
+
+    function buildList(forPanel) {
+      var ul = document.createElement('ul');
+      ul.className = 'nk-toc-list';
+      entries.forEach(function(e, idx) {
+        if (idx === firstAppendixIdx && hasRegular) {
+          var div = document.createElement('li');
+          div.className = 'nk-toc-divider';
+          div.setAttribute('aria-hidden', 'true');
+          ul.appendChild(div);
+        }
+        var li = document.createElement('li');
+        li.className = 'nk-toc-item nk-toc-l' + e.level;
+        if (e.isAppendix) li.classList.add('nk-toc-appendix');
+        li.dataset.tocId = e.id;
+
+        var a = document.createElement('a');
+        a.href = '#' + e.id;
+        var numSpan = document.createElement('span');
+        numSpan.className = 'nk-toc-num';
+        numSpan.textContent = e.num;
+        var titleSpan = document.createElement('span');
+        titleSpan.className = 'nk-toc-title';
+        titleSpan.textContent = e.title;
+        a.appendChild(numSpan);
+        a.appendChild(titleSpan);
+        li.appendChild(a);
+
+        if (forPanel) {
+          e.panelItem = li;
+          a.addEventListener('click', closePanel);
+        } else {
+          e.sidebarItem = li;
+        }
+        ul.appendChild(li);
+      });
+      return ul;
+    }
+
+    // Sidebar
+    var sidebar = document.createElement('nav');
+    sidebar.id = 'nk-toc-sidebar';
+    sidebar.setAttribute('aria-label', 'Table of contents');
+    var sidebarHeader = document.createElement('div');
+    sidebarHeader.className = 'nk-toc-header';
+    var sidebarTitle = document.createElement('span');
+    sidebarTitle.textContent = 'Contents';
+    var sidebarCloseBtn = document.createElement('button');
+    sidebarCloseBtn.id = 'nk-toc-sidebar-close';
+    sidebarCloseBtn.setAttribute('aria-label', 'Close table of contents');
+    sidebarCloseBtn.textContent = '✕';
+    sidebarCloseBtn.addEventListener('click', toggleSidebar);
+    sidebarHeader.appendChild(sidebarTitle);
+    sidebarHeader.appendChild(sidebarCloseBtn);
+    sidebar.appendChild(sidebarHeader);
+    sidebar.appendChild(buildList(false));
+    document.body.appendChild(sidebar);
+
+    // Panel
+    var panel = document.createElement('div');
+    panel.id = 'nk-toc-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-label', 'Table of contents');
+
+    var panelHeader = document.createElement('div');
+    panelHeader.className = 'nk-toc-panel-header';
+    var panelTitle = document.createElement('span');
+    panelTitle.textContent = 'Contents';
+    var closeBtn = document.createElement('button');
+    closeBtn.id = 'nk-toc-close';
+    closeBtn.setAttribute('aria-label', 'Close table of contents');
+    closeBtn.textContent = '✕';
+    closeBtn.addEventListener('click', closePanel);
+    panelHeader.appendChild(panelTitle);
+    panelHeader.appendChild(closeBtn);
+
+    var panelNav = document.createElement('nav');
+    panelNav.appendChild(buildList(true));
+    panel.appendChild(panelHeader);
+    panel.appendChild(panelNav);
+    document.body.appendChild(panel);
+
+    var backdrop = document.createElement('div');
+    backdrop.id = 'nk-toc-backdrop';
+    backdrop.addEventListener('click', closePanel);
+    document.body.appendChild(backdrop);
+
+    // Toggle button
+    var group = document.getElementById('nk-btn-group');
+    var tocBtn = document.createElement('button');
+    tocBtn.id = 'nk-toc-btn';
+    tocBtn.setAttribute('aria-label', 'Toggle table of contents');
+    tocBtn.setAttribute('aria-expanded', 'true');
+
+    function isMobile() { return window.innerWidth <= 600; }
+    function isSidebarMode() { return window.innerWidth >= 106 * 16; }
+
+    function updateLabel() { tocBtn.textContent = isMobile() ? '☰' : '☰ TOC'; }
+    updateLabel();
+    window.addEventListener('resize', updateLabel);
+
+    group.insertBefore(tocBtn, group.firstChild);
+
+    // Panel open/close
+    var panelOpen = false;
+    function openPanel() {
+      panel.classList.add('nk-toc-open');
+      backdrop.classList.add('nk-toc-open');
+      tocBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      panelOpen = true;
+    }
+    function closePanel() {
+      panel.classList.remove('nk-toc-open');
+      backdrop.classList.remove('nk-toc-open');
+      tocBtn.setAttribute('aria-expanded', panelOpen ? 'false' : 'true');
+      document.body.style.overflow = '';
+      panelOpen = false;
+    }
+
+    // Sidebar toggle
+    var sidebarHidden = false;
+    function toggleSidebar() {
+      sidebarHidden = !sidebarHidden;
+      sidebar.classList.toggle('nk-toc-hidden', sidebarHidden);
+      tocBtn.setAttribute('aria-expanded', sidebarHidden ? 'false' : 'true');
+    }
+
+    tocBtn.addEventListener('click', function() {
+      if (isSidebarMode()) toggleSidebar();
+      else if (panelOpen) closePanel();
+      else openPanel();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && panelOpen) closePanel();
+    });
+
+    window.addEventListener('resize', function() {
+      if (isSidebarMode() && panelOpen) closePanel();
+    });
+
+    // Hide button on scroll down (same pattern as other group buttons)
+    var lastTocY = window.scrollY, tocTicking = false;
+    window.addEventListener('scroll', function() {
+      if (!tocTicking) {
+        window.requestAnimationFrame(function() {
+          var current = window.scrollY;
+          if (current > lastTocY + 8) tocBtn.classList.add('nk-hidden');
+          else if (current < lastTocY - 8) tocBtn.classList.remove('nk-hidden');
+          lastTocY = current;
+          tocTicking = false;
+        });
+        tocTicking = true;
+      }
+    }, {passive: true});
+
+    // Scroll-spy
+    var activeId = null;
+    var scanPending = false;
+
+    function setActive(id) {
+      if (id === activeId) return;
+      activeId = id;
+      entries.forEach(function(e) {
+        var on = e.id === id;
+        if (e.sidebarItem) e.sidebarItem.classList.toggle('nk-toc-active', on);
+        if (e.panelItem)   e.panelItem.classList.toggle('nk-toc-active', on);
+      });
+      if (id && !sidebarHidden && isSidebarMode()) {
+        var el = sidebar.querySelector('[data-toc-id="' + CSS.escape(id) + '"]');
+        if (el) el.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+      }
+    }
+
+    function scanActive() {
+      var threshold = window.scrollY + window.innerHeight * 0.25;
+      var best = null;
+      entries.forEach(function(e) {
+        var sec = document.getElementById(e.id);
+        if (!sec) return;
+        if (sec.getBoundingClientRect().top + window.scrollY <= threshold) best = e;
+      });
+      setActive(best ? best.id : null);
+    }
+
+    var io = new IntersectionObserver(function(records) {
+      records.forEach(function(rec) {
+        if (rec.isIntersecting) setActive(rec.target.id);
+      });
+      if (!scanPending) {
+        scanPending = true;
+        requestAnimationFrame(function() { scanActive(); scanPending = false; });
+      }
+    }, {rootMargin: '0px 0px -75% 0px', threshold: 0});
+
+    entries.forEach(function(e) {
+      var sec = document.getElementById(e.id);
+      if (sec) io.observe(sec);
+    });
+
+    scanActive();
   }
 
   /* ── Init ──────────────────────────────────────────────────── */
   function init() {
     fixPageTitle();
     initDarkMode();
+    initFontSize();
     initScrollToTop();
+    initToc();
     initAffiliations();
     ensureAbstractHeading();
     expandEtAl();
@@ -957,6 +1351,7 @@
     requestAnimationFrame(function () {
       initProofToggles();
       initCitationTooltips();
+      initRefPreviews();
       initBackToText();
       initLightbox();
     });
