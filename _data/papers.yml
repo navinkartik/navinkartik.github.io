@@ -111,6 +111,7 @@
 
 - title: "The Test-Optional Puzzle"
   pdf: Papers/DFK-TestOptionalPuzzle.pdf
+  html: DFK-TestOptionalPuzzle
   coauthors: [Wouter Dessein, Alex Frankel]
   journal: "AEA Papers and Proceedings"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/pandp.20251055
@@ -136,6 +137,7 @@
 
 - title: "Beyond Unbounded Beliefs: How Preferences and Information Interplay in Social Learning"
   pdf: Papers/KLLR-BUB.pdf
+  html: KLLR-BUB
   coauthors: [SangMok Lee, Tianhao Liu, Daniel Rappoport]
   coauthors_on_next_line: true
   journal: "Econometrica"
@@ -147,6 +149,7 @@
 
 - title: "Sequential Veto Bargaining with Incomplete Information"
   pdf: Papers/AKK-svb.pdf
+  html: AKK-svb
   coauthors: [Nageeb Ali, Andreas Kleiner]
   journal: "Econometrica"
   journal_url: https://onlinelibrary.wiley.com/doi/10.3982/ECTA20658
@@ -226,6 +229,7 @@
 
 - title: "What Kind of Central Bank Competence?"
   pdf: Papers/FK-Competence.pdf
+  html: FK-Competence
   coauthors: [Alex Frankel]
   journal: "Theoretical Economics"
   journal_url: https://econtheory.org/ojs/index.php/te/article/view/20180697
@@ -299,6 +303,7 @@
 
 - title: "Congested Observational Learning"
   pdf: Papers/EGKR-congestion.pdf
+  html: EGKR-congestion
   coauthors: [Erik Eyster, Andrea Galeotti, Matthew Rabin]
   journal: "Games and Economic Behavior"
   journal_url: https://dx.doi.org/10.1016/j.geb.2014.06.006
@@ -331,6 +336,7 @@
 
 - title: "Pandering to Persuade"
   pdf: Papers/cdk-pandering.pdf
+  html: cdk-pandering
   coauthors: [Yeon-Koo Che, Wouter Dessein]
   journal: "American Economic Review"
   journal_url: http://www.aeaweb.org/articles.php?doi=10.1257/aer.103.1.47
@@ -359,6 +365,7 @@
 
 - title: "Implementation with Evidence"
   pdf: Papers/implementation_evidence.pdf
+  html: implementation_evidence
   coauthors: [Olivier Tercieux]
   journal: "Theoretical Economics"
   journal_url: https://dx.doi.org/10.3982/TE723

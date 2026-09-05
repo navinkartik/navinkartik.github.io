@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="dcterms: http://purl.org/dc/terms/">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>The Test-Optional Puzzle</title>
+<!--Generated on Sun Mar 29 09:31:51 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on November 2024.-->
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper.css?v=1788635806" rel="stylesheet" type="text/css"/>
+<script>
+MathJax = {
+  options: { skipHtmlTags: ["script","noscript","style","textarea","pre"] },
+  startup: { typeset: true }
+};
+</script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
+<script defer="" src="paper.js?v=1788635806"></script>
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/DFK-TestOptionalPuzzle.pdf">PDF</a> is more accurate.</div><article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">The Test-Optional Puzzle</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Wouter Dessein
+</span><span class="ltx_author_notes">Columbia University, Graduate School of Business. Email: <a class="ltx_ref ltx_href ltx_font_typewriter" href="mailto:wd2179@columbia.edu">wd2179@columbia.edu</a>.</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Alex Frankel
+</span><span class="ltx_author_notes">University of Chicago, Booth School of Business; Email: <a class="ltx_ref ltx_href ltx_font_typewriter" href="mailto:afrankel@chicagobooth.edu">afrankel@chicagobooth.edu</a>.</span></span>
+<span class="ltx_author_before">  </span><span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Navin Kartik
+</span><span class="ltx_author_notes">Columbia University, Department of Economics; Email: <a class="ltx_ref ltx_href ltx_font_typewriter" href="mailto:nkartik@columbia.edu">nkartik@columbia.edu</a>.</span></span>
+</div>
+<div class="ltx_dates">November 2024</div>
+<div class="ltx_para" id="p1">
+<p class="ltx_p">Even prior to the Covid-19 pandemic, there was a trend in US colleges making standardized test scores optional for undergraduate applicants. In 2019, one third of the 900+ colleges that accepted the Common Application <a class="ltx_ref ltx_href" href="https://www.diverseeducation.com/students/article/15114774/report-testoptional-trends-in-pandemic-year-for-college-admissions">did not require test scores</a>.<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>While we emphasize undergraduate admissions, the test-optional movement ranges from kindergarten to graduate school (<a class="ltx_ref ltx_href" href="https://www.forbes.com/sites/akilbello/2022/01/14/did-harvard-just-signal-the-end-of-the-testing-era-it-started/?sh=645f36ff55b1">Forbes magazine, 2022</a>).</span></span></span></p>
+</div>
+<div class="ltx_para" id="p2">
+<p class="ltx_p">Colleges often state that the purpose of test-optional policies is to help enroll a more diverse class. They argue that de-emphasizing tests avoids disadvantaging students groups—including underrepresented minorities—who score lower on standardized tests.
+For instance, when University of Michigan <a class="ltx_ref ltx_href" href="https://record.umich.edu/articles/u-m-formally-adopts-test-optional-admissions-policy/">announced</a> in February 2024 that it would adopt a test-optional policy for the indefinite future, a vice provost stated: “Our commitment today to a test-optional policy for undergraduate admissions demonstrates our focus on providing access to high-achieving students from all backgrounds.”</p>
+</div>
+<div class="ltx_para" id="p3">
+<p class="ltx_p">We find this argument puzzling. Regardless of a (rational) economic agent’s objectives, more information should help their decision making. In particular, colleges can choose how much weight to put on tests, and how to adjust test scores for students from different circumstances and backgrounds.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>The explicit consideration of race in the college admissions process was banned nationwide by the Supreme Court in June 2023, in <em class="ltx_emph ltx_font_italic">Students for Fair Admissions v. Harvard</em>. But colleges are still allowed to adjust scores based on high school neighborhoods. Indeed, a 2024 <a class="ltx_ref ltx_href" href="https://home.dartmouth.edu/sites/home/files/2024-02/sat-undergrad-admissions.pdf">Dartmouth report</a> states that “Dartmouth Admissions uses SAT scores within context; a score of 1400 for an applicant from a high school in a lower-income community with lower school-wide test scores is a more significant achievement than a score of 1400 for an applicant from a high school in a higher-income community with higher school-wide test scores.”</span></span></span> Wouldn’t a college be better off observing students’ scores and deciding how to use them, rather than letting some students not submit scores?</p>
+</div>
+<div class="ltx_para" id="p4">
+<p class="ltx_p">This article formalizes the point via a simple
+“impossibility result”: under certain assumptions, a test-mandatory policy is always (weakly) better for the college. In fact, we show that a test-mandatory college can replicate any outcome it could obtain under test optional.
+Our argument will be straightforward to an economic theorist, as it has the flavor of a “revelation principle” familiar from mechanism design. But we
+believe there is value in articulating a set of assumptions that assure the result in the present context. In particular, the result holds even when score distributions differ across student groups, students can exert hidden effort towards improving their scores, and when effort costs are unobservably heterogeneous across students.</p>
+</div>
+<div class="ltx_para" id="p5">
+<p class="ltx_p">One interpretation of our impossibility result is that test-optional policies are a mistake (pandemics notwithstanding). Indeed, some colleges have reverted to test mandatory after the Covid-19 pandemic.
+Another interpretation is that the result sheds light on what is needed to rationalize such policies. We discuss a few such considerations in the latter part of the paper.</p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>The Impossibility Result</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">For clarity, we formulate the problem as one of a single student applying to a single college. The logic extends to many students applying to many colleges.</p>
+</div>
+<section class="ltx_paragraph" id="S1.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">Model.</h3>
+<div class="ltx_para" id="S1.SS0.SSS0.Px1.p1">
+<p class="ltx_p">We are interested in three alternative testing regimes: <em class="ltx_emph ltx_font_italic">test mandatory</em>, <em class="ltx_emph ltx_font_italic">test optional</em>, and <em class="ltx_emph ltx_font_italic">test blind</em>. Under test mandatory, if the student applies to the college, they must submit their standardized test score. Under test optional, the student chooses whether to submit their score. Under test blind, the student cannot submit their score. Given a testing regime, the college publicly commits to an <em class="ltx_emph ltx_font_italic">admission policy</em>, which—as detailed below—consists both of a message space and a mapping from everything it observes about the student to a probability of admission.</p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px1.p2">
+<p class="ltx_p">Given a testing regime and admission policy, the student faces the following decision problem:</p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px1.p3">
+<ol class="ltx_enumerate" id="S1.I1">
+<li class="ltx_item" id="S1.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S1.I1.i1.p1">
+<p class="ltx_p">The student’s exogenous characteristics, denoted by <math alttext="x\equiv(z,q)" class="ltx_Math" display="inline" id="S1.I1.i1.p1.m1"><mrow><mi>x</mi><mo>≡</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math>, are stochastically realized. We assume the student observes only the component <math alttext="z" class="ltx_Math" display="inline" id="S1.I1.i1.p1.m2"><mi>z</mi></math> while the college does not observe either component. However, the college will obtain a signal as described in point (<a class="ltx_ref" href="#S1.I1.i5"><span class="ltx_text ltx_ref_tag">5</span></a>) below, which may reveal components of <math alttext="x" class="ltx_Math" display="inline" id="S1.I1.i1.p1.m3"><mi>x</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S1.I1.i1.p2">
+<p class="ltx_p">We think of <math alttext="z" class="ltx_Math" display="inline" id="S1.I1.i1.p2.m1"><mi>z</mi></math> itself as having both “public” and “private” characteristics. That is, some student features will be seen by the college in the student’s application: GPA and other measures of classroom performance, extra-curricular achievements, legacy status, etc. Others are never directly observed by the college: family wealth or aspects of the student’s interests and upbringing, say. Features such as race or socioeconomic status might or might not be seen by the college, depending on what information it collects on its application.</p>
+</div>
+<div class="ltx_para" id="S1.I1.i1.p3">
+<p class="ltx_p">We view the variable <math alttext="q" class="ltx_Math" display="inline" id="S1.I1.i1.p3.m1"><mi>q</mi></math> as quality/ability, which is not directly observable to either the college or the student, although each may assess that through correlation with other variables they do observe.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S1.I1.i2.p1">
+<p class="ltx_p">The student chooses effort <math alttext="e" class="ltx_Math" display="inline" id="S1.I1.i2.p1.m1"><mi>e</mi></math>, which is not directly observed by the college. We think of <math alttext="e" class="ltx_Math" display="inline" id="S1.I1.i2.p1.m2"><mi>e</mi></math> as effort towards preparation for a standardized test, although it can also capture actions that affect other aspects of a student’s application.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S1.I1.i3.p1">
+<p class="ltx_p">The student privately obtains a test score <math alttext="t" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m1"><mi>t</mi></math>, which can stochastically depend on the characteristics <math alttext="x" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m2"><mi>x</mi></math> and effort <math alttext="e" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m3"><mi>e</mi></math>.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i4" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span>
+<div class="ltx_para" id="S1.I1.i4.p1">
+<p class="ltx_p">The student chooses whether to apply to the college, <math alttext="a\in\{0,1\}" class="ltx_Math" display="inline" id="S1.I1.i4.p1.m1"><mrow><mi>a</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>, where <math alttext="1" class="ltx_Math" display="inline" id="S1.I1.i4.p1.m2"><mn>1</mn></math> denotes applying. If the student applies, then in the test-optional regime, the student chooses whether to disclose their test score <math alttext="t" class="ltx_Math" display="inline" id="S1.I1.i4.p1.m3"><mi>t</mi></math>. The test score is automatically disclosed under test mandatory, and cannot be disclosed under test blind. The student may also send the college a supplementary “cheap talk” or payoff-irrelevant message <math alttext="m" class="ltx_Math" display="inline" id="S1.I1.i4.p1.m4"><mi>m</mi></math>; the set of available messages is chosen by the college as part of its admission policy. We think of <math alttext="m" class="ltx_Math" display="inline" id="S1.I1.i4.p1.m5"><mi>m</mi></math> as capturing responses to application questions concerning “soft” information.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i5" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span>
+<div class="ltx_para" id="S1.I1.i5.p1">
+<p class="ltx_p">If the student applies, the college observes a stochastic signal <math alttext="h" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m1"><mi>h</mi></math>—which we refer to as a “holistic” signal—that can depend on the preceding exogenous and endogenous variables (<math alttext="x" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m2"><mi>x</mi></math>, <math alttext="e" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m3"><mi>e</mi></math>, <math alttext="t" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m4"><mi>t</mi></math>, and <math alttext="m" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m5"><mi>m</mi></math>). We think of <math alttext="h" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m6"><mi>h</mi></math> as capturing everything the college observes about the student except for the test score and the student’s supplementary message. Among other things, <math alttext="h" class="ltx_Math" display="inline" id="S1.I1.i5.p1.m7"><mi>h</mi></math> can subsume recommendation letters, the college’s assessment of the student’s match, etc.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i6" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">6.</span>
+<div class="ltx_para" id="S1.I1.i6.p1">
+<p class="ltx_p">Finally, if the student applies, admission is determined by the college’s admission policy, which maps <math alttext="h" class="ltx_Math" display="inline" id="S1.I1.i6.p1.m1"><mi>h</mi></math>, <math alttext="t" class="ltx_Math" display="inline" id="S1.I1.i6.p1.m2"><mi>t</mi></math> (if disclosed), and <math alttext="m" class="ltx_Math" display="inline" id="S1.I1.i6.p1.m3"><mi>m</mi></math> into an admission probability.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px1.p4">
+<p class="ltx_p">Let <math alttext="o" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p4.m1"><mi>o</mi></math> be a binary variable indicating whether the student is admitted by the college. The student’s preferences are given by two utility functions: one if they apply, which can depend on <math alttext="(x,e,t,h,o)" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p4.m2"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>e</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi>o</mi><mo stretchy="false">)</mo></mrow></math>, and another if they don’t, which can depend on <math alttext="(x,e,t)" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p4.m3"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>e</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math>.
+The college’s utility is normalized to <math alttext="0" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p4.m4"><mn>0</mn></math> if the student does not apply or is not admitted, and is some function of <math alttext="(x,e,t,h)" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p4.m5"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>e</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></math> if the student is admitted.</p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px1.p5">
+<p class="ltx_p">These preference assumptions rule out either party’s utility depending directly on the testing regime or admission policy,
+and on whether the student discloses their score or which supplementary message they send. There is also, implicitly, no cost to generating a (possibly very low) test score. Otherwise, our formulation is quite general. In particular, the student’s cost of improving their test score (i.e., exerting effort <math alttext="e" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p5.m1"><mi>e</mi></math>) and the score distribution conditional on effort can vary with the student’s characteristics (<math alttext="x" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p5.m2"><mi>x</mi></math>), in ways that are either observable or unobservable to the college. On the college’s side, factors like preferences over yield (how likely the student is to matriculate) can be subsumed by making yield a component of the holistic signal <math alttext="h" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p5.m3"><mi>h</mi></math>.</p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px1.p6">
+<p class="ltx_p">We assume the student knows all the relevant stochastic distributions (i.e., of <math alttext="x" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p6.m1"><mi>x</mi></math>, <math alttext="t" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p6.m2"><mi>t</mi></math>, and <math alttext="h" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px1.p6.m3"><mi>h</mi></math>), and that none of those distributions depends on either the testing regime or the admission policy. Given any regime and policy, the student best responds, i.e., chooses their (possibly randomized) actions at steps (<a class="ltx_ref" href="#S1.I1.i2"><span class="ltx_text ltx_ref_tag">2</span></a>) and (<a class="ltx_ref" href="#S1.I1.i4"><span class="ltx_text ltx_ref_tag">4</span></a>) in the sequence above to maximize their expected utility.<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>In fact, it should become clear from the subsequent logic that expected utility is not essential.</span></span></span></p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S1.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">Result.</h3>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p1">
+<p class="ltx_p">We say that an admission policy <math alttext="\alpha^{\prime}" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p1.m1"><msup><mi>α</mi><mo>′</mo></msup></math> (in some testing regime) <em class="ltx_emph ltx_font_italic">replicates</em> another admission policy <math alttext="\alpha" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p1.m2"><mi>α</mi></math> (in a possibly different regime) if, roughly speaking, optimal student behavior results in the same payoff-relevant outcomes under both policies. More precisely, <math alttext="\alpha^{\prime}" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p1.m3"><msup><mi>α</mi><mo>′</mo></msup></math> replicates <math alttext="\alpha" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p1.m4"><mi>α</mi></math> if:</p>
+<ol class="ltx_enumerate" id="S1.I2">
+<li class="ltx_item" id="S1.I2.ix1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">i)</span>
+<div class="ltx_para" id="S1.I2.ix1.p1">
+<p class="ltx_p">the set of student-optimal effort and application decision pairs <math alttext="(e,a)" class="ltx_Math" display="inline" id="S1.I2.ix1.p1.m1"><mrow><mo stretchy="false">(</mo><mi>e</mi><mo>,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></math> are the same under both policies; and</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I2.ix2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">ii)</span>
+<div class="ltx_para" id="S1.I2.ix2.p1">
+<p class="ltx_p">given any optimal <math alttext="(e,a)" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m1"><mrow><mo stretchy="false">(</mo><mi>e</mi><mo>,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></math>, and any optimal supplementary message <math alttext="m" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m2"><mi>m</mi></math> under <math alttext="\alpha" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m3"><mi>α</mi></math>, there is an optimal message <math alttext="m^{\prime}" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m4"><msup><mi>m</mi><mo>′</mo></msup></math> under <math alttext="\alpha^{\prime}" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m5"><msup><mi>α</mi><mo>′</mo></msup></math> such that for any realizations of the student characteristics <math alttext="x" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m6"><mi>x</mi></math>, test score <math alttext="t" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m7"><mi>t</mi></math>, and holistic signal <math alttext="h" class="ltx_Math" display="inline" id="S1.I2.ix2.p1.m8"><mi>h</mi></math>, the student’s probability of admission under both policies is the same.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p2">
+<p class="ltx_p">If every admission policy under one testing regime can be replicated by a policy under another regime, then the college is (weakly) better off in the latter regime.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_proposition" id="Thmproposition1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Proposition 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmproposition1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For any test-optional admission policy, there is a replicating test-mandatory policy. For any test-blind admission policy, there is a replicating test-optional policy.</span></p>
+</div>
+</div>
+<div class="nk-proof"><div class="ltx_para" id="S1.SS0.SSS0.Px2.p3">
+<ul class="ltx_itemize">
+<li class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">Proof.</span>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p3.p1">
+<p class="ltx_p">We show how any test-optional admission policy can be replicated by some test-mandatory policy. An analogous argument, which we omit, shows that test optional can replicate test blind.</p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p3.p2">
+<p class="ltx_p">Take any test-optional admission policy with a message space <math alttext="M" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m1"><mi>M</mi></math> and admission probability function <math alttext="\alpha(h,\hat{t},m)" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m2"><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math>. Here, <math alttext="\hat{t}" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m3"><mover accent="true"><mi>t</mi><mo>^</mo></mover></math> is the test score <math alttext="t" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m4"><mi>t</mi></math> if submitted and null, denoted <math alttext="\varphi" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m5"><mi>φ</mi></math>, otherwise. Consider a test-mandatory policy with message space <math alttext="M^{\prime}:=M\times\{0,1\}" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m6"><mrow><msup><mi>M</mi><mo>′</mo></msup><mo lspace="0.278em" rspace="0.278em">:=</mo><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math> and admission probability function <math alttext="\alpha^{\prime}(h,t,m^{\prime})" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m7"><mrow><msup><mi>α</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>t</mi><mo>,</mo><msup><mi>m</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> given by
+<math alttext="\alpha^{\prime}(h,t,(m,0)):=\alpha(h,\varphi,m)" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m8"><mrow><mrow><msup><mi>α</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>t</mi><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:=</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>φ</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math alttext="\alpha^{\prime}(h,t,(m,1)):=\alpha(h,t,m)" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m9"><mrow><mrow><msup><mi>α</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>t</mi><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:=</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo>,</mo><mi>t</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. In other words, the college sets its test-mandatory admission probability equal to what a student with the same holistic signal, test score, and supplementary message <em class="ltx_emph ltx_font_italic">would have gotten</em> under the test-optional policy. The nuance is that the student is now also asked to indicate whether they would have submitted their score under test optional. Formally, this is the second component of their test-mandatory message <math alttext="m^{\prime}" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m10"><msup><mi>m</mi><mo>′</mo></msup></math>, with a <math alttext="0" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m11"><mn>0</mn></math> indicating nonsubmission under test optional and <math alttext="1" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p2.m12"><mn>1</mn></math> indicating submission. The college’s test-mandatory policy mimics the corresponding test-optional outcome.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>We only need the student to indicate whether they would have submitted under test optional if the college cannot perfectly predict that based on what else it observes. Albeit in a different model, <cite class="ltx_cite ltx_citemacro_citet">Hancart (<a class="ltx_ref" href="#bib.bib45">2024</a>, Section 2.1)</cite> shows that a form of test optional can do strictly better than test mandatory in the absence of cheap talk; when cheap talk is permitted, however, there would be no benefit from going test optional.</span></span></span></p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p3.p3">
+<p class="ltx_p">Thus defined, the test-mandatory policy ensures that the incentives for the student to choose effort, to apply, to choose the first component of their message <math alttext="m^{\prime}" class="ltx_Math" display="inline" id="S1.SS0.SSS0.Px2.p3.p3.m1"><msup><mi>m</mi><mo>′</mo></msup></math>, and to (indicate whether they would) submit a test score are identical to those under the test-optional policy. It is thus a best response for the student to act the same as under test optional, and the outcome is replicated. ∎</p>
+</div>
+</li>
+</ul></div></div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p4">
+<p class="ltx_p">Note that a test-mandatory admissions policy might also be replicated by a test-optional policy that simply rejects any student who does not submit a test score.
+We do not consider this interesting because always rejecting students who do not submit scores defeats the spirit of test optional, as it is de facto test mandatory. </p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p5">
+<p class="ltx_p">Although <a class="ltx_ref ltx_refmacro_autoref" href="#Thmproposition1"><span class="ltx_text ltx_ref_tag">Proposition 1</span></a> only implies that the college cannot do worse under test mandatory than test optional (and under test optional rather than test blind), one would expect that observing more information about the test score would allow the college to generally do strictly better (so long as the test-optional policy is not replicating test mandatory).</p>
+</div>
+<div class="ltx_para" id="S1.SS0.SSS0.Px2.p6">
+<p class="ltx_p">We stress that we do <em class="ltx_emph ltx_font_italic">not</em> interpret <a class="ltx_ref ltx_refmacro_autoref" href="#Thmproposition1"><span class="ltx_text ltx_ref_tag">Proposition 1</span></a> as implying that colleges in the real world cannot benefit from going test optional or test blind. Rather, the model and result point us to the assumptions that must be violated for a college to in fact benefit from not observing test scores.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Ways Out of the Puzzle</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">We now turn to discussing how breaking some of <a class="ltx_ref ltx_refmacro_autoref" href="#Thmproposition1"><span class="ltx_text ltx_ref_tag">Proposition 1</span></a>’s underlying assumptions might—or might not—lead the college to prefer test optional to test mandatory.</p>
+</div>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px1">
+<h3 class="ltx_title ltx_title_paragraph">Lack of Commitment.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px1.p1">
+<p class="ltx_p">Suppose the college lacks commitment power, and instead admits students according to what it finds ex-post optimal given the information provided.
+We expect that under reasonable monotonicity assumptions, the college still cannot do better under test optional than test mandatory. The logic is now quite different from that of <a class="ltx_ref ltx_refmacro_autoref" href="#Thmproposition1"><span class="ltx_text ltx_ref_tag">Proposition 1</span></a>, however. The issue now is that a test-optional policy unravels, as in classic voluntary-disclosure models <cite class="ltx_cite ltx_citemacro_citep">(e.g., Milgrom, <a class="ltx_ref" href="#bib.bib5">1981</a>)</cite>. Despite the college being nominally test optional, all students end up submitting their scores because not submitting will, in equilibrium, be met with the skepticism of a low score and hurt admission. Such unraveling suggests that a lack of college commitment power is unlikely, on its own, to explain why colleges might go test optional.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px2">
+<h3 class="ltx_title ltx_title_paragraph">Additional Costs.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px2.p1">
+<p class="ltx_p">We allowed for the students to have arbitrary type-dependent costs of studying for the test and of applying to the college. However, we did not allow for a direct cost of sitting for the test—formally, there was no (lower cost) option to not generate a test score—nor of submitting a test score. Adding either of these costs breaks the replication argument and can flip the result.
+A student who applies can avoid these costs only if the college is test optional or test blind.
+In the presence of such costs, colleges potentially face a genuine tradeoff: requiring test scores deters applications while yielding more information about students who do apply <cite class="ltx_cite ltx_citemacro_citep">(cf.  Garg<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib4">2021</a>)</cite>.<span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup><span class="ltx_tag ltx_tag_note">5</span>Relatedly, <cite class="ltx_cite ltx_citemacro_citet">Liang and Xu (<a class="ltx_ref" href="#bib.bib52">2024</a>)</cite> suggest that “procedural fairness”—which they conceptualize as a reduced-form cost of observing test scores—may be a reason a college prefers to not see scores.</span></span></span></p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px2.p2">
+<p class="ltx_p">There is, of course, a large cost of sitting for the test during a pandemic—even infinite, when test centers are shut down. Our view is that this cost is not otherwise particularly large.<span class="ltx_note ltx_role_footnote" id="footnote6"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup><span class="ltx_tag ltx_tag_note">6</span>For instance, the SAT takes about 3 hours to sit—about half a day of school, while a typical U.S. student is expected to go to school for about 180 days a year for 12 years prior to college. The SAT currently has a monetary cost of $60, but low income students in the US can get this fee waived; fee waivers are automatic for students eligible for federally subsidized school lunches. Students can then submit their SAT scores to four colleges at no cost and they pay $12 per submission after that, but again these fees are waived for low income students. (<a class="ltx_ref ltx_href" href="https://satsuite.collegeboard.org/sat/registration/fees-refunds/test-fees">Fees link</a>.)</span></span></span> (Let us reiterate that this test-sitting cost would be separate from any costs of studying and preparing for test, which we view as significant but are already part of the model.)
+That said, students may still perceive these costs as significant <cite class="ltx_cite ltx_citemacro_citep">(cf.  Goodman, <a class="ltx_ref" href="#bib.bib28">2016</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px3">
+<h3 class="ltx_title ltx_title_paragraph">Non-equilibrium Behavior.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px3.p1">
+<p class="ltx_p">The impossibility result can fail if students don’t follow our predictions of equilibrium behavior.
+Students may make different application or test-preparation decisions when facing a test-optional college rather than a test-mandatory college with the same acceptance probabilities. For instance, colleges would certainly want to switch from test mandatory to test optional if many students happened to follow the behavioral rule that they will not apply to test-mandatory colleges.<span class="ltx_note ltx_role_footnote" id="footnote7"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup><span class="ltx_tag ltx_tag_note">7</span>In the context of applications to graduate schools, Dr. Kim Yi Dionne, a professor at UC Riverside, <a class="ltx_ref ltx_href" href="https://twitter.com/dadakim/status/1578943695797133312">writes on X</a> (formerly Twitter): “Students at the minority-serving institution where I work are ABSOLUTELY taking schools off their list if they require the GRE.”</span></span></span> Even a student who plans on taking the test and submitting their score to test-optional colleges might, for reasons of principle, be unwilling to apply to a test-mandatory college.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px4">
+<h3 class="ltx_title ltx_title_paragraph">Signaling.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px4.p1">
+<p class="ltx_p">In practice, students may try to infer a college’s values from its admission policy. Being test optional could then be a credible signal that the college cares about diversity or about aspects of a student’s character that can’t be measured by tests.<span class="ltx_note ltx_role_footnote" id="footnote8"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup><span class="ltx_tag ltx_tag_note">8</span>When George Washington University went test optional in 2015, <a class="ltx_ref ltx_href" href="https://gwtoday.gwu.edu/standardized-test-scores-will-be-optional-gw-applicants">a school official stated</a> “We hope the test-optional policy <em class="ltx_emph ltx_font_italic">sends a message</em> to prospective students that if you are smart, hard-working and have challenged yourself in a demanding high school curriculum, there could be a place for you here.” (emphasis added)</span></span></span> Likewise, if students do not blindly trust admission policy pronouncements, then test optional could serve as a credible signal that the college will not put much weight on test scores.<span class="ltx_note ltx_role_footnote" id="footnote9"><sup class="ltx_note_mark">9</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">9</sup><span class="ltx_tag ltx_tag_note">9</span>Writing on <a class="ltx_ref ltx_href" href="https://www.insidehighered.com/opinion/views/2024/06/10/colleges-value-test-scores-more-they-say-opinion">Inside Higher Ed</a>, David Blobaum pushes this logic even further: “If a college does not value SAT or ACT scores, then the college would not use those scores. It would be SAT/ACT-blind, not SAT/ACT-optional.”</span></span></span></p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px5">
+<h3 class="ltx_title ltx_title_paragraph">Constraints on Admission Rules.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px5.p1">
+<p class="ltx_p">Our replication argument assumes that the college is able to choose any admission policy. If the college is instead constrained, the impossibility result could fail. As an extreme case, imagine that the college has no flexibility at all: it is required to evaluate students with a test score by one rule, and students without a test score by another rule. If the admission rule for students with test scores were to put too much weight on tests, the college might very well prefer not to see tests at all. Such an exogenous admission rule might be imposed by the government or by stakeholders with different preferences from the college.
+</p>
+</div>
+<div class="ltx_para" id="S2.SS0.SSS0.Px5.p2">
+<p class="ltx_p">The approach in <cite class="ltx_cite ltx_citemacro_citet">Dessein<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib51">2024</a>)</cite> of college decisions under social pressure is a milder form of constraints on admissions. In that model, the college is free to choose any admission policy it wants, but it faces costs of making admission decisions that a third party disagrees with. Not seeing scores allows the college to reduce disagreement, which can outweigh the loss of information.
+</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px6">
+<h3 class="ltx_title ltx_title_paragraph">Agency Issues.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px6.p1">
+<p class="ltx_p">Admission policies may also be limited by a college’s admissions officers. These officers might put more weight on test scores than the college seeks, owing to differences in preferences or beliefs. The salience of test scores may also subconsciously influence how officers process, interpret, or attend to other more subjective parts of an application. Finally, officers may put excess weight on test scores due to incentives and moral hazard: officers may only find it worthwhile to conduct a costly holistic assessment when they lose access to test scores.</p>
+</div>
+</section>
+<section class="ltx_paragraph" id="S2.SS0.SSS0.Px7">
+<h3 class="ltx_title ltx_title_paragraph">Gaming Rankings.</h3>
+<div class="ltx_para" id="S2.SS0.SSS0.Px7.p1">
+<p class="ltx_p">Finally, some commentators <a class="ltx_ref ltx_href" href="https://www.highereddatastories.com/2024/04/changes-in-sat-scores-after-test.html">have suggested that</a> colleges may go test optional simply to report higher average (submitted) standardized test scores, which mechanically improves their rankings from organizations like the U.S. News. <cite class="ltx_cite ltx_citemacro_citet">Conlin<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib53">2013</a>)</cite> provide evidence of strategic admission decisions by test-optional colleges to manipulate their rankings.</p>
+</div>
+</section>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib53">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Conlin, S. Dickert-Conlin, and G. Chapman (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Voluntary disclosure and the strategic behavior of colleges</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Behavior &amp; Organization</span>, <span class="ltx_text ltx_bib_pages"> pp. 48–64</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS0.SSS0.Px7.p1"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib51">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">W. Dessein, A. Frankel, and N. Kartik (2024)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Test-optional admissions</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">Unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS0.SSS0.Px5.p2"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib4">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Garg, H. Li, and F. Monachou (2021)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Dropping standardized testing for admissions trades off information and access</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">arXiv preprint arXiv:2010.04396</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref doi ltx_bib_external" href="https://dx.doi.org/10.48550/ARXIV.2010.04396">Document</a>,
+<a class="ltx_ref ltx_bib_external" href="https://arxiv.org/abs/2010.04396">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS0.SSS0.Px2.p1"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib28">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">S. Goodman (2016)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Learning from the test: raising selective college enrollment by providing information</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Review of Economics and Statistics</span> <span class="ltx_text ltx_bib_volume">98</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 671–684</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS0.SSS0.Px2.p2"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib45">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Hancart (2024)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Designing the optimal menu of tests</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">Unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib52">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">Y. Liang and W. Xu (2024)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Why exclude test scores from admission criteria?</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">Unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote5"><span class="ltx_text ltx_ref_tag">footnote 5</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib5">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. R. Milgrom (1981)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Good news and bad news: representation theorems and applications</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Bell Journal of Economics</span> <span class="ltx_text ltx_bib_volume">12</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 380–391</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.SS0.SSS0.Px1.p1"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+</ul>
+</section><div about="" class="ltx_rdf" content="Dessein and Frankel and Kartik" property="dcterms:creator"></div>
+<div about="" class="ltx_rdf" content="Test-Optional Admissions" property="dcterms:title"></div>
+</article><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/DFK-TestOptionalPuzzle.pdf">PDF</a> is more accurate.</div><nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo"></div></footer>
+</div>
+</body>
+</html>
