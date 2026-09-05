@@ -397,9 +397,11 @@ div.ltx_proof *:last-child { margin-bottom: 0; }
 }
 
 .nk-proof-body {
-  max-height: 200rem;  /* large cap; collapsed state overrides to 0 */
+  /* No max-height cap: a fixed one (was 200rem) clamps the box while overflow:visible
+     keeps painting the text, so any longer proof overlapped the content after it.
+     JS measures scrollHeight to animate, then releases the cap to none. */
   transition: max-height 0.25s ease, opacity 0.25s ease;
-  overflow: visible;  /* JS sets overflow:hidden only during collapse animation */
+  overflow: visible;  /* JS sets overflow:hidden only during the animation */
 }
 
 .nk-proof-body.nk-collapsed {

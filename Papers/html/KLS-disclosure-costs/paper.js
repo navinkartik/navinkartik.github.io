@@ -289,16 +289,27 @@
      We set overflow:hidden only during the collapse animation, then restore. */
   function attachProofToggle(body, btn) {
     btn.addEventListener('click', function () {
-      const collapsed = body.classList.toggle('nk-collapsed');
-      btn.textContent = collapsed ? 'show' : 'hide';
-      btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
-      if (collapsed) {
-        body.style.overflow = 'hidden';
+      var collapsing = !body.classList.contains('nk-collapsed');
+      body.style.overflow = 'hidden';
+      if (collapsing) {
+        // Give the transition a concrete starting height, then let .nk-collapsed
+        // (max-height: 0 !important) drive it to zero.
+        body.style.maxHeight = body.scrollHeight + 'px';
+        void body.offsetHeight;   // force reflow so the change animates
+        body.classList.add('nk-collapsed');
+        body.style.maxHeight = '';
       } else {
-        body.addEventListener('transitionend', function () {
+        body.classList.remove('nk-collapsed');
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.addEventListener('transitionend', function handler(e) {
+          if (e.propertyName !== 'max-height') return;
+          body.removeEventListener('transitionend', handler);
+          body.style.maxHeight = 'none';  // released, so tall proofs cannot clip
           body.style.overflow = '';
-        }, { once: true });
+        });
       }
+      btn.textContent = collapsing ? 'show' : 'hide';
+      btn.setAttribute('aria-expanded', collapsing ? 'false' : 'true');
     });
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
