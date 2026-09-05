@@ -307,6 +307,10 @@ body {
   margin: 0.5rem 0;
   text-align: justify;
   hyphens: auto;
+  /* Avoid a very short last line. Inline <math> is atomic, so when a formula runs to
+     the right margin the only break opportunity left is just before the punctuation
+     that follows it, orphaning a lone "." on its own line. Ignored where unsupported. */
+  text-wrap: pretty;
 }
 
 /* ── Theorem / lemma / proposition etc. ─────────────────────── */
@@ -460,6 +464,13 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
 .ltx_eqn_align .ltx_eqn_center_padright { width: 50%; }
 
 .ltx_align_center { text-align: center; }
+
+/* \parbox: ltx_align_center centers the BOX, not the lines inside it. Without this,
+   a parbox of running prose in a figure gets every line centered. */
+.ltx_parbox {
+  text-align: left;
+  margin-inline: auto;
+}
 
 .ltx_tag_equation {
   font-size: 1rem;
@@ -957,8 +968,8 @@ article + .nk-html-banner {
 .nk-fig-wrap { position: relative; display: inline-block; }
 .nk-fig-overlay { position: absolute; inset: 0; z-index: 1; cursor: zoom-in; }
 
-figure.ltx_figure img.ltx_graphics:not(.ltx_markedasmath),
-figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-in; }
+figure.ltx_figure img.ltx_graphics,
+figure.ltx_figure_panel img.ltx_graphics { cursor: zoom-in; }
 
 @media print { #nk-lightbox { display: none !important; } }
 
@@ -1152,3 +1163,7 @@ figure.ltx_figure_panel img.ltx_graphics:not(.ltx_markedasmath) { cursor: zoom-i
 }
 #nk-ref-preview .ltx_theorem { margin: 0; }
 #nk-ref-preview .nk-proof    { display: none; }
+/* Footnote previews clone .ltx_note_content (a span) without its .ltx_note_outer
+   wrapper, so it needs block layout here; dropping the wrapper also means it does
+   not inherit the muted margin-note colour, which is what we want in a popover. */
+#nk-ref-preview .ltx_note_content { display: block; }

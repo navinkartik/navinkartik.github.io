@@ -702,12 +702,38 @@
       return clone;
     }
 
+    // A reference to a footnote ("see fn. 14") points at something offscreen, so it
+    // gets a preview like theorem and equation refs do. The footnote MARK is a plain
+    // <sup> with no href, so it is unaffected: its text already sits in the margin.
+    function cloneNoteContent(el) {
+      var content = el.querySelector('.ltx_note_content');
+      if (!content) return null;
+      var clone = content.cloneNode(true);
+      clone.querySelectorAll('.ltx_note_mark, .ltx_tag_note, .ltx_note_type').forEach(
+        function(n) { n.remove(); });
+      return clone;
+    }
+
     function resolveContent(id) {
-      if (id.startsWith('bib.bib') || id.startsWith('footnote')) return null;
+      if (id.startsWith('bib.bib')) return null;
       var target = document.getElementById(id);
       if (!target) return null;
       if (target.classList.contains('ltx_theorem'))   return cloneTheoremContent(target);
+      if (target.classList.contains('ltx_note'))      return cloneNoteContent(target);
       if (target.classList.contains('ltx_eqn_table')) return target.cloneNode(true);
+      // A \label on one row of a multi-line aligned block (align, eqnarray, and the
+      // tagged programs/constraints in HKL-style papers) puts the id on a bare <tbody>
+      // inside the equation table, not on the table itself. Preview just that row group,
+      // reusing the table shell so the MathML still has its table context to render in.
+      var eqn = target.closest && target.closest('.ltx_eqn_table');
+      if (eqn) {
+        if (target !== eqn && target.tagName === 'TBODY') {
+          var shell = eqn.cloneNode(false);
+          shell.appendChild(target.cloneNode(true));
+          return shell;
+        }
+        return eqn.cloneNode(true);
+      }
       return null;
     }
 
@@ -1000,7 +1026,11 @@
     figs.forEach(function (fig) {
       var caption = fig.querySelector('figcaption.ltx_caption');
 
-      fig.querySelectorAll('img.ltx_graphics:not(.ltx_markedasmath)').forEach(function (img) {
+      // No :not(.ltx_markedasmath) here — LaTeXML stamps that class on any
+      // \includegraphics used in math mode, which includes full-size plots. This
+      // selector is already scoped to a captioned figure, so every image inside it
+      // is a figure image. Bare inline graphics are handled separately below.
+      fig.querySelectorAll('img.ltx_graphics').forEach(function (img) {
         img.addEventListener('click', function (e) {
           e.stopPropagation();
           openLb(img.src, caption);
