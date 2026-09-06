@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="dcterms: http://purl.org/dc/terms/">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>A Note On Cheap Talk and Burned MoneyI thank Vince Crawford, Joel Sobel, and two anonymous referees for helpful comments.</title>
+<!--Generated on Sat Mar 28 20:22:46 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on July 2006.-->
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<link href="paper.css?v=1788704246" rel="stylesheet" type="text/css"/>
+<script>
+MathJax = {
+  options: { skipHtmlTags: ["script","noscript","style","textarea","pre"] },
+  startup: { typeset: true }
+};
+</script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
+<script defer="" src="paper.js?v=1788704246"></script>
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/burned_note.pdf">PDF</a> is more accurate.</div><article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">A Note On Cheap Talk and Burned Money<span class="ltx_note ltx_role_thanks"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">thanks: </span>I thank Vince Crawford, Joel Sobel, and two anonymous
+referees for helpful comments.</span></span></span>
+</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Navin Kartik 
+<br class="ltx_break"/>Department of Economics
+<br class="ltx_break"/>
+<br class="ltx_break"/>University of California, San Diego
+</span><span class="ltx_author_notes">Email: <a class="ltx_ref ltx_href" href="mailto:nkartik@ucsd.edu">nkartik@ucsd.edu</a>; Snail-mail: 9500 Gilman Drive, La
+Jolla, CA 92093-0508.</span></span>
+</div>
+<div class="ltx_dates">July 2006</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+<p class="ltx_p"><span class="ltx_text ltx_font_typewriter">Austen-Smith and Banks (Journal of Economic Theory, 2000)</span> study how
+money burning can expand the set of pure cheap talk equilibria of <span class="ltx_text ltx_font_typewriter">Crawford and Sobel (Econometrica, 1982)</span>.  This note identifies an
+error in the main Theorem of Austen-Smith and Banks, and provides a
+variant that preserves some of the important implications.  I also
+prove that generically, cheap talk can be influential in the
+presence of money burning if and only if it can be influential
+without money burning.  This considerably strengthens a result of
+Austen-Smith and Banks, but simultaneously uncovers other errors in
+their analysis.  Finally, their conjecture on the continuity of the
+equilibrium set as the upper bound on burned money shrinks to <math alttext="0" class="ltx_Math" display="inline" id="m2"><mn>0</mn></math> is
+proved correct.</p>
+</div>
+<div class="ltx_para" id="p1">
+<br class="ltx_break"/>
+</div>
+<div class="ltx_para" id="p2">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold" style="font-size:90%;">Keywords<span class="ltx_text ltx_font_medium">: Cheap Talk, Money Burning, Signaling </span></span></p>
+</div>
+<div class="ltx_para" id="p3">
+<br class="ltx_break"/>
+</div>
+<div class="ltx_para" id="p4">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold" style="font-size:90%;">J.E.L. Classification<span class="ltx_text ltx_font_medium">: C7, D8 </span></span></p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">In an important paper on signaling with multiple instruments, <cite class="ltx_cite ltx_citemacro_citet">Austen-Smith and Banks (<a class="ltx_ref" href="#bib.bib26">2000</a>, hereafter ASB)</cite> augment the
+seminal cheap talk model of
+<cite class="ltx_cite ltx_citemacro_citet">Crawford and Sobel (<a class="ltx_ref" href="#bib.bib115">1982</a>, hereafter
+CS)</cite> by allowing the Sender to send not only
+costless messages, but also choose from a set of purely dissipative signals,
+i.e. “burn money”.  ASB’s contribution is twofold: first, to show that
+money burning by itself can be an effective signaling instrument in the CS
+setting; second, to study how money burning can interact with and influence
+the informativeness of cheap talk messages.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">This note accomplishes three tasks:</p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<ol class="ltx_enumerate" id="S1.I1">
+<li class="ltx_item" id="S1.I1.i1" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span>
+<div class="ltx_para" id="S1.I1.i1.p1">
+<p class="ltx_p">Section <a class="ltx_ref" href="#S3"><span class="ltx_text ltx_ref_tag">3</span></a> identifies an error in Theorem 1 of ASB that
+asserts the existence of particular equilibria with money burning in
+relation to equilibria of CS.  I provide a variant of the Theorem, which
+preserves some of the main implications, but not all of them.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i2" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span>
+<div class="ltx_para" id="S1.I1.i2.p1">
+<p class="ltx_p">Section <a class="ltx_ref" href="#S4"><span class="ltx_text ltx_ref_tag">4</span></a> derives a result showing that
+money burning cannot expand the set of environments in which cheap
+talk is credible, except perhaps in knife-edged cases.  This
+considerably strengthens Theorem 2 in ASB, but also showing that
+ASB’s (p. 13) claims following that Theorem are incorrect.  In
+particular, not only is the example reported in ASB (p. 13)
+erroneous,<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Footnote <a class="ltx_ref" href="#footnote8"><span class="ltx_text ltx_ref_tag">8</span></a> in this note
+points out exactly where their example fails.</span></span></span> but moreover, no such
+generic example exists.</p>
+</div>
+</li>
+<li class="ltx_item" id="S1.I1.i3" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span>
+<div class="ltx_para" id="S1.I1.i3.p1">
+<p class="ltx_p">Suppose the maximal amount of available burned money is some <math alttext="\overline{b}\geq 0" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m1"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>≥</mo><mn>0</mn></mrow></math>.  If <math alttext="\overline{b}=0" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m2"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>=</mo><mn>0</mn></mrow></math>, the setting is effectively that of CS.  Throughout their paper, ASB work with the case of <math alttext="\overline{b}=\infty" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m3"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math> (or
+sufficiently large). However, ASB (p. 15) conclude with a conjecture that
+the “qualitative properties of the equilibrium set are close to those of
+the CS model” when <math alttext="\overline{b}\approx 0" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m4"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>≈</mo><mn>0</mn></mrow></math>; to my knowledge, this has remained
+an open question.  In Section <a class="ltx_ref" href="#S5"><span class="ltx_text ltx_ref_tag">5</span></a>, I show that conjecture
+is in fact correct and thereby establish a continuity result on the
+equilibrium correspondence at <math alttext="\overline{b}=0" class="ltx_Math" display="inline" id="S1.I1.i3.p1.m5"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">Before turning to the formalities, I should mention that the ASB model can
+be considered as a limit of the discriminatory signaling model studied in <cite class="ltx_cite ltx_citemacro_citet">Kartik (<a class="ltx_ref" href="#bib.bib218">2005a</a>)</cite>.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>By definition, money burning is non-discriminatory in the sense that
+its cost does not vary with the Sender’s private information or
+type; this is in contrast to discriminatory signaling where the cost
+of using a particular signal varies with the Sender’s type.</span></span></span>  An
+earlier, extended version of this note
+<cite class="ltx_cite ltx_citemacro_citep">(Kartik, <a class="ltx_ref" href="#bib.bib220">2005b</a>)</cite> contains a detailed comparison of
+the similarities and differences, and also discusses issues
+pertaining to refinement of equilibria in the ASB model.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Preliminaries</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">To preserve continuity of exposition, I follow ASB’s
+notation closely. A Sender, <math alttext="S" class="ltx_Math" display="inline" id="S2.p1.m1"><mi>S</mi></math>, is privately informed about a variable, <math alttext="t\in[0,1]" class="ltx_Math" display="inline" id="S2.p1.m2"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> (his type) which is drawn from a distribution with density <math alttext="h" class="ltx_Math" display="inline" id="S2.p1.m3"><mi>h</mi></math>, <math alttext="h(t)&gt;0" class="ltx_Math" display="inline" id="S2.p1.m4"><mrow><mrow><mi>h</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> for all <math alttext="t" class="ltx_Math" display="inline" id="S2.p1.m5"><mi>t</mi></math>.  <math alttext="S" class="ltx_Math" display="inline" id="S2.p1.m6"><mi>S</mi></math> sends a signal to the Receiver, <math alttext="R" class="ltx_Math" display="inline" id="S2.p1.m7"><mi>R</mi></math>, who observes
+the signal and then takes an action <math alttext="a\in\mathbb{R}" class="ltx_Math" display="inline" id="S2.p1.m8"><mrow><mi>a</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>.  Let <math alttext="\sigma:[0,1]\rightarrow M\times\mathbb{R}_{+}" class="ltx_Math" display="inline" id="S2.p1.m9"><mrow><mi>σ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℝ</mi><mo>+</mo></msub></mrow></mrow></mrow></math> be the Sender’s (pure) strategy that consists
+of a cheap talk message <math alttext="m\in M" class="ltx_Math" display="inline" id="S2.p1.m10"><mrow><mi>m</mi><mo>∈</mo><mi>M</mi></mrow></math>, where <math alttext="M" class="ltx_Math" display="inline" id="S2.p1.m11"><mi>M</mi></math> is any uncountable space, and a
+burned money component <math alttext="b\in\mathbb{R}_{+}" class="ltx_Math" display="inline" id="S2.p1.m12"><mrow><mi>b</mi><mo>∈</mo><msub><mi>ℝ</mi><mo>+</mo></msub></mrow></math>, for every type <math alttext="t\in[0,1]" class="ltx_Math" display="inline" id="S2.p1.m13"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>.  Let <math alttext="\alpha:M\times\mathbb{R}_{+}\rightarrow\mathbb{R}_{+}" class="ltx_Math" display="inline" id="S2.p1.m14"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℝ</mi><mo>+</mo></msub></mrow><mo stretchy="false">→</mo><msub><mi>ℝ</mi><mo>+</mo></msub></mrow></mrow></math> be the Receiver’s (pure)
+strategy that consists of an action <math alttext="a\in\mathbb{R}" class="ltx_Math" display="inline" id="S2.p1.m15"><mrow><mi>a</mi><mo>∈</mo><mi>ℝ</mi></mrow></math> for every (<math alttext="m,b" class="ltx_Math" display="inline" id="S2.p1.m16"><mrow><mi>m</mi><mo>,</mo><mi>b</mi></mrow></math>) pair
+observed.  Furthermore, the Receiver’s beliefs are denoted by the cdf <math alttext="G(\cdot|r,m)" class="ltx_math_unparsed" display="inline" id="S2.p1.m17"><mrow><mi>G</mi><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mi>r</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow></math>.  Over triplets <math alttext="(a,b,t)" class="ltx_Math" display="inline" id="S2.p1.m18"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math>, the Receiver’s preferences are <math alttext="u^{R}(a,t)" class="ltx_Math" display="inline" id="S2.p1.m19"><mrow><msup><mi>u</mi><mi>R</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> and the Sender’s preferences are <math alttext="u^{S}(a,t)-b" class="ltx_Math" display="inline" id="S2.p1.m20"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mi>b</mi></mrow></math> where <math alttext="u^{S}" class="ltx_Math" display="inline" id="S2.p1.m21"><msup><mi>u</mi><mi>S</mi></msup></math> and <math alttext="u^{R}" class="ltx_Math" display="inline" id="S2.p1.m22"><msup><mi>u</mi><mi>R</mi></msup></math>
+satisfy the CS assumptions.<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>That is, for each <math alttext="i\in\{S,R\}" class="ltx_Math" display="inline" id="footnote3.m1"><mrow><mi>i</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mi>S</mi><mo>,</mo><mi>R</mi><mo stretchy="false">}</mo></mrow></mrow></math>, <math alttext="u^{i}(\cdot,\cdot)" class="ltx_Math" display="inline" id="footnote3.m2"><mrow><msup><mi>u</mi><mi>i</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> is twice-differentiable,
+<math alttext="u^{i}_{11}(\cdot,\cdot)&lt;0" class="ltx_Math" display="inline" id="footnote3.m3"><mrow><mrow><msubsup><mi>u</mi><mn>11</mn><mi>i</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mn>0</mn></mrow></math>, and <math alttext="u^{i}_{12}(\cdot,\cdot)&gt;0" class="ltx_Math" display="inline" id="footnote3.m4"><mrow><mrow><msubsup><mi>u</mi><mn>12</mn><mi>i</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>.  To ease
+notation, I have suppressed the bias parameter, <math alttext="x" class="ltx_Math" display="inline" id="footnote3.m5"><mi>x</mi></math>, used by ASB.</span></span></span>  The
+utility maximizing actions given <math alttext="t" class="ltx_Math" display="inline" id="S2.p1.m23"><mi>t</mi></math> are denoted <math alttext="y^{i}(t)\equiv\arg\max_{a}u^{i}(a,t)" class="ltx_Math" display="inline" id="S2.p1.m24"><mrow><mrow><msup><mi>y</mi><mi>i</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≡</mo><mrow><mrow><mi>arg</mi><mo lspace="0.167em">⁡</mo><mrow><msub><mi>max</mi><mi>a</mi></msub><mo lspace="0.167em">⁡</mo><msup><mi>u</mi><mi>i</mi></msup></mrow></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for each <math alttext="i\in\{S,R\}" class="ltx_Math" display="inline" id="S2.p1.m25"><mrow><mi>i</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mi>S</mi><mo>,</mo><mi>R</mi><mo stretchy="false">}</mo></mrow></mrow></math>; it is assumed that for all <math alttext="t" class="ltx_Math" display="inline" id="S2.p1.m26"><mi>t</mi></math>, <math alttext="y^{R}(t)&lt;y^{S}(t)" class="ltx_Math" display="inline" id="S2.p1.m27"><mrow><mrow><msup><mi>y</mi><mi>R</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mrow><msup><mi>y</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.  For any <math alttext="t\leq t^{\prime}" class="ltx_Math" display="inline" id="S2.p1.m28"><mrow><mi>t</mi><mo>≤</mo><msup><mi>t</mi><mo>′</mo></msup></mrow></math>, define</p>
+<table class="ltx_equation ltx_eqn_table" id="S2.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="y(t,t^{\prime})\equiv\left\{\begin{array}[]{ll}\arg\max_{a}\int_{t}^{t^{\prime%
+}}u^{R}\left(a,\tau\right)h(\tau)d\tau&amp;\text{if }t^{\prime}&gt;t\\
+y^{R}\left(t\right)&amp;\text{if }t^{\prime}=t\end{array}\right." class="ltx_Math" display="block" id="S2.Ex1.m1"><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><msup><mi>t</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≡</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>arg</mi><mo lspace="0.167em">⁡</mo><msub><mi>max</mi><mi>a</mi></msub></mrow><mo lspace="0.167em">⁢</mo><mrow><mstyle displaystyle="false"><msubsup><mo>∫</mo><mi>t</mi><msup><mi>t</mi><mo>′</mo></msup></msubsup></mstyle><mrow><msup><mi>u</mi><mi>R</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mi>a</mi><mo>,</mo><mi>τ</mi><mo>)</mo></mrow><mo>⁢</mo><mi>h</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>τ</mi></mrow></mrow></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo>⁢</mo><msup><mi>t</mi><mo>′</mo></msup></mrow><mo>&gt;</mo><mi>t</mi></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msup><mi>y</mi><mi>R</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo>⁢</mo><msup><mi>t</mi><mo>′</mo></msup></mrow><mo>=</mo><mi>t</mi></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">As shorthand, let <math alttext="y(t)\equiv y(t,t)" class="ltx_Math" display="inline" id="S2.p1.m29"><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≡</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">In what follows, I use two concepts from CS.  First, recall the
+idea of a solution to the standard arbitrage condition.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_definition" id="Thmdefinition1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmdefinition1.p1">
+<p class="ltx_p">A sequence <math alttext="\langle s_{0},s_{1},\ldots,s_{N}\rangle" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m1"><mrow><mo stretchy="false">⟨</mo><msub><mi>s</mi><mn>0</mn></msub><mo>,</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>s</mi><mi>N</mi></msub><mo stretchy="false">⟩</mo></mrow></math> such that</p>
+<table class="ltx_equation ltx_eqn_table" id="S2.Ex2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\forall i=1,\ldots,N-1,\ \ \ u^{S}(y(s_{i-1},s_{i}),s_{i})=u^{S}(y(s_{i},s_{i+%
+1}),s_{i})" class="ltx_Math" display="block" id="S2.Ex2.m1"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>i</mi></mrow><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></mrow></mrow><mo rspace="1.667em">,</mo><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo>,</mo><msub><mi>s</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(A)</span></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a forward (resp. backward) solution to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) if <math alttext="s_{1}&gt;s_{0}" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m2"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>&gt;</mo><msub><mi>s</mi><mn>0</mn></msub></mrow></math>
+(resp. <math alttext="s_{1}&lt;s_{0}" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m3"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>s</mi><mn>0</mn></msub></mrow></math>).</p>
+</div>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">Next, CS (p. 1444) introduced a condition on the product space of
+preferences and distribution of private information that ensures the
+difference equation solutions to the above arbitrage condition satisfy a
+“regularity” property.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_regcondition" id="Thmregconditionx1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Condtion M</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmregconditionx1.p1">
+<p class="ltx_p">For any two increasing sequences, <math alttext="\langle t_{0},t_{1},...,t_{K}\rangle" class="ltx_Math" display="inline" id="Thmregconditionx1.p1.m1"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mn>0</mn></msub><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mi>K</mi></msub><mo stretchy="false">⟩</mo></mrow></math> and <math alttext="\langle\tilde{t}_{0},\tilde{t}_{1},...,\tilde{t}_{K}\rangle" class="ltx_Math" display="inline" id="Thmregconditionx1.p1.m2"><mrow><mo stretchy="false">⟨</mo><msub><mover accent="true"><mi>t</mi><mo>~</mo></mover><mn>0</mn></msub><mo>,</mo><msub><mover accent="true"><mi>t</mi><mo>~</mo></mover><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mover accent="true"><mi>t</mi><mo>~</mo></mover><mi>K</mi></msub><mo stretchy="false">⟩</mo></mrow></math>, that are both forward solutions to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>), if <math alttext="t_{1}&gt;\tilde{t}_{1}&gt;t_{0}=\tilde{t}_{0}" class="ltx_Math" display="inline" id="Thmregconditionx1.p1.m3"><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>&gt;</mo><msub><mover accent="true"><mi>t</mi><mo>~</mo></mover><mn>1</mn></msub><mo>&gt;</mo><msub><mi>t</mi><mn>0</mn></msub><mo>=</mo><msub><mover accent="true"><mi>t</mi><mo>~</mo></mover><mn>0</mn></msub></mrow></math>, then <math alttext="t_{j}&gt;\tilde{t}_{j}" class="ltx_Math" display="inline" id="Thmregconditionx1.p1.m4"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>&gt;</mo><msub><mover accent="true"><mi>t</mi><mo>~</mo></mover><mi>j</mi></msub></mrow></math> for all
+<math alttext="j\in\{1,\ldots,K\}" class="ltx_Math" display="inline" id="Thmregconditionx1.p1.m5"><mrow><mi>j</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>K</mi><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_para" id="S2.p4">
+<p class="ltx_p">What this says is that if we start at a given point, the solutions to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) must all move up or down together.</p>
+</div>
+<div class="ltx_para" id="S2.p5">
+<p class="ltx_p">Throughout, the term equilibrium refers to a sequential equilibrium, which
+is equivalent to perfect Bayesian equilibrium in signaling games such as
+this one.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Squeezing in Separating Segments</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">ASB (Theorem 1, p. 7) assert the following.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_ASBthm" id="ThmASBthmx1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">ASB Theorem</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="ThmASBthmx1.p1">
+<p class="ltx_p">Let <math alttext="(\sigma,\alpha)" class="ltx_Math" display="inline" id="ThmASBthmx1.p1.m1"><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math> be a CS equilibrium with supporting partition <math alttext="\langle t_{0}\equiv 0,t_{1},\ldots,t_{N}\equiv 1\rangle" class="ltx_Math" display="inline" id="ThmASBthmx1.p1.m2"><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>≡</mo><mrow><mn>0</mn><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>t</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow></math>.  Then for all <math alttext="\hat{t}\leq t_{1}" class="ltx_Math" display="inline" id="ThmASBthmx1.p1.m3"><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>≤</mo><msub><mi>t</mi><mn>1</mn></msub></mrow></math>, there exists a partition
+<math alttext="\langle s_{0}\equiv 0,s_{1}\equiv\hat{t},\ldots,s_{N},s_{N+1}\equiv 1\rangle" class="ltx_Math" display="inline" id="ThmASBthmx1.p1.m4"><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mn>0</mn></mrow><mo>,</mo><mrow><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>≡</mo><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>s</mi><mi>N</mi></msub></mrow></mrow><mo>,</mo><mrow><msub><mi>s</mi><mrow><mi>N</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>≡</mo><mn>1</mn></mrow></mrow></mrow><mo stretchy="false">⟩</mo></mrow></math> supporting
+an equilibrium <math alttext="(\sigma,\alpha)(\hat{t})" class="ltx_Math" display="inline" id="ThmASBthmx1.p1.m5"><mrow><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math> such that</p>
+<table class="ltx_equationgroup ltx_eqn_align ltx_eqn_table" id="A0.EGx1">
+<tbody id="S3.Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\forall i" class="ltx_Math" display="inline" id="S3.Ex3.m1"><mrow><mo rspace="0.167em">∀</mo><mi>i</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle=0\ldots,N-1,\ \ \forall t\in[s_{i},s_{i+1}),\ \ \sigma(t)=(m_{i}%
+,0),\ \ \ m_{i}\neq m_{j}\ \ \forall i\neq j;" class="ltx_Math" display="inline" id="S3.Ex3.m2"><mrow><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>0</mn><mo>⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>,</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>t</mi></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>s</mi><mi>i</mi></msub><mo>,</mo><msub><mi>s</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo rspace="1.667em">,</mo><mrow><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>m</mi><mi>j</mi></msub></mrow><mspace width="1.167em"></mspace><mrow><mrow><mo rspace="0.167em">∀</mo><mi>i</mi></mrow><mo>≠</mo><mi>j</mi></mrow></mrow></mrow></mrow></mrow><mo>;</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\forall t" class="ltx_Math" display="inline" id="S3.Ex4.m1"><mrow><mo rspace="0.167em">∀</mo><mi>t</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle\in[s_{N},1],\ \ \ \sigma(t)=(m^{\circ},b(t))," class="ltx_Math" display="inline" id="S3.Ex4.m2"><mrow><mrow><mrow><mi></mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>s</mi><mi>N</mi></msub><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><mo rspace="1.667em">,</mo><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>∘</mo></msup><mo>,</mo><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math alttext="b(t)" class="ltx_Math" display="inline" id="ThmASBthmx1.p1.m6"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a strictly increasing function.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>ASB also pin down the function <math alttext="b(t)" class="ltx_Math" display="inline" id="footnote4.m1"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math>, which I do not include here for
+brevity.</span></span></span></p>
+</div>
+</div>
+<section class="ltx_subsection" id="S3.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>The Problem</h3>
+<div class="ltx_para" id="S3.SS1.p1">
+<p class="ltx_p">ASB’s proof proceeds in two steps.  In the first, they start by picking any
+<math alttext="\hat{t}&lt;t_{1}" class="ltx_Math" display="inline" id="S3.SS1.p1.m1"><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>&lt;</mo><msub><mi>t</mi><mn>1</mn></msub></mrow></math> (the case of <math alttext="\hat{t}=t_{1}" class="ltx_Math" display="inline" id="S3.SS1.p1.m2"><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>=</mo><msub><mi>t</mi><mn>1</mn></msub></mrow></math> can be dealt with easily), and
+consider a forward solution to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) starting with <math alttext="s_{0}\equiv 0" class="ltx_Math" display="inline" id="S3.SS1.p1.m3"><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mn>0</mn></mrow></math> and <math alttext="s_{1}\equiv\hat{t}" class="ltx_Math" display="inline" id="S3.SS1.p1.m4"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>≡</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover></mrow></math>. <em class="ltx_emph ltx_font_italic">This, they claim, provides a sequence <math alttext="\langle s_{0}\equiv 0,s_{1}\equiv\hat{t},\ldots,s_{N}\rangle" class="ltx_Math" display="inline" id="S3.SS1.p1.m5"><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mn>0</mn></mrow><mo>,</mo><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>≡</mo><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>s</mi><mi>N</mi></msub></mrow></mrow></mrow><mo stretchy="false">⟩</mo></mrow></math> such that <math alttext="s_{n}&lt;t_{n}" class="ltx_Math" display="inline" id="S3.SS1.p1.m6"><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>&lt;</mo><msub><mi>t</mi><mi>n</mi></msub></mrow></math> for all <math alttext="n\in\{1,\ldots,N\}" class="ltx_Math" display="inline" id="S3.SS1.p1.m7"><mrow><mi>n</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>N</mi><mo stretchy="false">}</mo></mrow></mrow></math>.</em>  Their justification of this claim contains the
+error.  The second part of the proof is to construct the strictly
+increasing function <math alttext="b(t)" class="ltx_Math" display="inline" id="S3.SS1.p1.m8"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> such that it is optimal for all types <math alttext="t\in[s_{N},1]" class="ltx_Math" display="inline" id="S3.SS1.p1.m9"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>s</mi><mi>N</mi></msub><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> to reveal themselves by burning <math alttext="b(t)" class="ltx_Math" display="inline" id="S3.SS1.p1.m10"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p2">
+<p class="ltx_p">I note that <em class="ltx_emph ltx_font_italic">if the above claim were true, that would make
+Condition M always true, since the monotonicity of forward solutions
+to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) is precisely what it assumes</em>.  The specific error
+leading to ASB’s assertion is the following.  On p. 8, they define
+for any <math alttext="s^{\prime},s,\text{ and }t" class="ltx_Math" display="inline" id="S3.SS1.p2.m1"><mrow><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo>,</mo><mrow><mtext> and </mtext><mo>⁢</mo><mi>t</mi></mrow></mrow></math>, the function</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.Ex5">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="V(s^{\prime},s,t)=u^{S}(y(s^{\prime},s),s)-u^{S}(y(s,t),s)" class="ltx_Math" display="block" id="S3.Ex5.m1"><mrow><mrow><mi>V</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">ASB claim that fixing <math alttext="s^{\prime}" class="ltx_Math" display="inline" id="S3.SS1.p2.m2"><msup><mi>s</mi><mo>′</mo></msup></math> and setting <math alttext="V\equiv 0" class="ltx_Math" display="inline" id="S3.SS1.p2.m3"><mrow><mi>V</mi><mo>≡</mo><mn>0</mn></mrow></math> yields their
+equation (6) through implicit differentiation:</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.Ex6">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\left.\frac{dt}{ds}\right|_{s^{\prime}}=\frac{u^{S}_{2}(y(s^{\prime},s),s)-u^{%
+S}_{2}(y(s,t),s)}{u^{S}_{1}(y(s,t),s)y_{2}(s,t)}" class="ltx_Math" display="block" id="S3.Ex6.m1"><mrow><msub><mrow><mfrac><mrow><mi>d</mi><mo>⁢</mo><mi>t</mi></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>s</mi></mrow></mfrac><mo>|</mo></mrow><msup><mi>s</mi><mo>′</mo></msup></msub><mo>=</mo><mfrac><mrow><mrow><msubsup><mi>u</mi><mn>2</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msubsup><mi>u</mi><mn>2</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S3.SS1.p3">
+<p class="ltx_p">But this is wrong: it ignores the <em class="ltx_emph ltx_font_italic">indirect</em> effect of <math alttext="s" class="ltx_Math" display="inline" id="S3.SS1.p3.m1"><mi>s</mi></math> on <math alttext="V" class="ltx_Math" display="inline" id="S3.SS1.p3.m2"><mi>V</mi></math>
+through the change of <math alttext="y(s^{\prime},s)" class="ltx_Math" display="inline" id="S3.SS1.p3.m3"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math alttext="y(s,t)" class="ltx_Math" display="inline" id="S3.SS1.p3.m4"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math>.  To see this, observe
+that totally differentiating <math alttext="V" class="ltx_Math" display="inline" id="S3.SS1.p3.m5"><mi>V</mi></math> with respect to <math alttext="s" class="ltx_Math" display="inline" id="S3.SS1.p3.m6"><mi>s</mi></math> and <math alttext="t" class="ltx_Math" display="inline" id="S3.SS1.p3.m7"><mi>t</mi></math> (holding <math alttext="s^{\prime}" class="ltx_Math" display="inline" id="S3.SS1.p3.m8"><msup><mi>s</mi><mo>′</mo></msup></math> fixed) yields</p>
+<table class="ltx_equationgroup ltx_eqn_align ltx_eqn_table" id="A0.EGx2">
+<tbody id="S3.Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle dV=" class="ltx_Math" display="inline" id="S3.Ex7.m1"><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>V</mi></mrow><mo>=</mo><mi></mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle\left[u^{S}_{1}(y(s^{\prime},s),s)y_{2}(s^{\prime},s)+u^{S}_{2}(y%
+(s^{\prime},s),s)-u^{S}_{1}(y(s,t),s)y_{1}(s,t)-u^{S}_{2}(y(s,t),s)\right]ds" class="ltx_Math" display="inline" id="S3.Ex7.m2"><mrow><mrow><mo>[</mo><mrow><mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msubsup><mi>u</mi><mn>2</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>−</mo><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msubsup><mi>u</mi><mn>2</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>]</mo></mrow><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>s</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle-\left[u^{S}_{1}(y(s,t),s)y_{2}(s,t)\right]dt" class="ltx_Math" display="inline" id="S3.Ex8.m1"><mrow><mo>−</mo><mrow><mrow><mo>[</mo><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>t</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and therefore the correct formula is</p>
+<table class="ltx_equationgroup ltx_eqn_align ltx_eqn_table" id="A0.EGx3">
+<tbody id="S3.Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\left.\frac{dt}{ds}\right|_{s^{\prime}}=" class="ltx_Math" display="inline" id="S3.Ex9.m1"><mrow><msub><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>d</mi><mo>⁢</mo><mi>t</mi></mrow><mrow><mi>d</mi><mo>⁢</mo><mi>s</mi></mrow></mfrac></mstyle><mo>|</mo></mrow><msup><mi>s</mi><mo>′</mo></msup></msub><mo>=</mo><mi></mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle\frac{u^{S}_{2}(y(s^{\prime},s),s)-u^{S}_{2}(y(s,t),s)}{u^{S}_{1}%
+(y(s,t),s)y_{2}(s,t)}+\frac{u^{S}_{1}(y(s^{\prime},s),s)y_{2}(s^{\prime},s)-u^%
+{S}_{1}(y(s,t),s)y_{1}(s,t)}{u^{S}_{1}(y(s,t),s)y_{2}(s,t)}" class="ltx_Math" display="inline" id="S3.Ex9.m2"><mrow><mstyle displaystyle="true"><mfrac><mrow><mrow><msubsup><mi>u</mi><mn>2</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msubsup><mi>u</mi><mn>2</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac><mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6*)</span></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">For ASB’s claim to go through, it would have to be that the RHS of (<a class="ltx_ref" href="#S3.Ex9"><span class="ltx_text ltx_ref_tag">6*</span></a>) is positive.  As they argue, the first term indeed is
+(denominator negative and numerator negative).  However, the second term
+(which is missing in (<a class="ltx_ref" href="#S3.Ex6"><span class="ltx_text ltx_ref_tag">6</span></a>)) is negative.  To see this, first note
+that the denominator is negative, just as in the first term.  In the
+numerator: <math alttext="y_{1}(\cdot,\cdot)&gt;0" class="ltx_Math" display="inline" id="S3.SS1.p3.m9"><mrow><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> and <math alttext="y_{2}(\cdot,\cdot)&gt;0" class="ltx_Math" display="inline" id="S3.SS1.p3.m10"><mrow><mrow><msub><mi>y</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>, but <math alttext="u^{S}_{1}(y(s^{\prime},s),s)&gt;0" class="ltx_Math" display="inline" id="S3.SS1.p3.m11"><mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mo>′</mo></msup><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> whereas <math alttext="u^{S}_{1}(y(s,t),s)&lt;0" class="ltx_Math" display="inline" id="S3.SS1.p3.m12"><mrow><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mn>0</mn></mrow></math>.  Hence the numerator
+is positive, whereby the whole second term is negative.  Accordingly, one
+cannot in general sign the RHS of (<a class="ltx_ref" href="#S3.Ex9"><span class="ltx_text ltx_ref_tag">6*</span></a>), leading to a failure of
+the argument of ASB.</p>
+</div>
+<div class="ltx_para" id="S3.SS1.p4">
+<p class="ltx_p">There is at least one explicit conclusion that ASB draw from their
+Theorem that may not be correct.  ASB (p. 11) say that their result
+“implies that a sufficient condition for there to exist equilibria
+exhibiting both influential cheap talk and influential costly
+signals is that there exist influential CS equilibria.”  Given the
+error, it is an open question whether this is true when Condition M
+does not hold.  A corollary to Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a> below
+is that a sufficient condition is that there exists a CS equilibrium
+with <em class="ltx_emph ltx_font_italic">three</em> influential messages.</p>
+</div>
+</section>
+<section class="ltx_subsection" id="S3.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>A Correct Variant</h3>
+<div class="ltx_para" id="S3.SS2.p1">
+<p class="ltx_p">ASB’s Theorem 1 is valid under Condition M.<span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup><span class="ltx_tag ltx_tag_note">5</span>It should be
+noted that in most applications of CS, Condition M is typically
+satisfied.  For example, it holds in the widely-used “uniform
+quadratic” setting where the prior is uniform and utilities are
+quadratic loss functions.</span></span></span>  However, one would like to know
+what—if anything—can be said without imposing Condition M, for
+at least two reasons: first, the results of CS regarding existence
+and characterization of pure cheap talk equilibria do not require
+Condition M; second, Condition M is not a condition on
+primitives.<span class="ltx_note ltx_role_footnote" id="footnote6"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup><span class="ltx_tag ltx_tag_note">6</span>See Theorem 2 in CS for sufficient conditions
+on primitives that imply Condition M.</span></span></span>  There are a few ways one
+might alter ASB’s Theorem in this vein; I provide one below which
+arguably preserves their main points.  As I understand it, ASB’s
+primary goal was to show that “we can squeeze in separating
+segments at the far end of <em class="ltx_emph ltx_font_italic">any</em> CS partition.” (p. 7, their
+emphasis)  Their Theorem however claimed more: not only can we
+squeeze in a separating segment at the far end of a CS partition,
+but moreover, we can squeeze it in while maintaining the same number
+of influential cheap talk messages.  It is here that one runs into
+difficulty.  Instead, if we are satisfied with squeezing in
+separation at the cost of reducing the number of influential cheap
+talk messages by one, this can be done.  Formally,</p>
+</div>
+<div class="ltx_theorem ltx_theorem_theorem" id="Thmtheorem1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmtheorem1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Let there be a CS equilibrium with supporting
+partition <math alttext="\langle t_{0}\equiv 0,t_{1},\ldots,t_{N}\equiv 1\rangle" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m1"><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>≡</mo><mrow><mn>0</mn><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>t</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow></math>.
+ Then there exists an equilibrium <math alttext="(\sigma,\alpha)" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m2"><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math> such that</span></p>
+<table class="ltx_equationgroup ltx_eqn_align ltx_eqn_table" id="A0.EGx4">
+<tbody id="S3.Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\forall i" class="ltx_Math" display="inline" id="S3.Ex10.m1"><mrow><mo rspace="0.167em">∀</mo><mi>i</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle=0\ldots,N-2,\ \ \forall t\in[t_{i},t_{i+1}),\ \ \sigma(t)=(m_{i}%
+,0),\ \ \ m_{i}\neq m_{j}\ \ \forall i\neq j;" class="ltx_Math" display="inline" id="S3.Ex10.m2"><mrow><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>0</mn><mo>⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>,</mo><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>t</mi></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo rspace="1.667em">,</mo><mrow><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>m</mi><mi>j</mi></msub></mrow><mspace width="1.167em"></mspace><mrow><mrow><mo rspace="0.167em">∀</mo><mi>i</mi></mrow><mo>≠</mo><mi>j</mi></mrow></mrow></mrow></mrow></mrow><mo>;</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="S3.Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle\forall t" class="ltx_Math" display="inline" id="S3.Ex11.m1"><mrow><mo rspace="0.167em">∀</mo><mi>t</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math alttext="\displaystyle\in[t_{N-1},1],\ \ \ \sigma(t)=(m^{\circ},b(t))," class="ltx_Math" display="inline" id="S3.Ex11.m2"><mrow><mrow><mrow><mi></mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><mo rspace="1.667em">,</mo><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>m</mi><mo>∘</mo></msup><mo>,</mo><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">where <math alttext="b(t)" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m3"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a strictly increasing function.</span></p>
+</div>
+</div>
+<div class="ltx_para" id="S3.SS2.p2">
+<p class="ltx_p">The proof is relegated to the Appendix since the logic is similar to
+that of ASB’s Theorem 1.  This modification of the ASB Theorem
+preserves the essence of their result.  In particular, it
+immediately implies that full revelation is an equilibrium outcome.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_corollary" id="Thmcorollary1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Corollary 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmcorollary1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">There is an equilibrium <math alttext="(\sigma,\alpha)" class="ltx_Math" display="inline" id="Thmcorollary1.p1.m1"><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math> such that for all <math alttext="t" class="ltx_Math" display="inline" id="Thmcorollary1.p1.m2"><mi>t</mi></math>,
+<math alttext="\alpha(\sigma(t))=y(t)" class="ltx_Math" display="inline" id="Thmcorollary1.p1.m3"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S3.SS2.p3">
+<p class="ltx_p">Apply Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a> to a CS “babbling” equilibrium,
+i.e. a CS equilibrium with supporting partition <math alttext="\langle t_{0}\equiv 0,t_{1}\equiv 1\rangle" class="ltx_Math" display="inline" id="S3.SS2.p3.m1"><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>≡</mo><mn>0</mn></mrow><mo>,</mo><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow></math>.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_para" id="S3.SS2.p4">
+<p class="ltx_p">Note that this Corollary is weaker than ASB’s Corollary 1 (p. 11),
+which is correct despite the error in their Theorem 1.</p>
+</div>
+</section>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>Can Money Burning Make Cheap Talk Influential?</h2>
+<div class="ltx_para" id="S4.p1">
+<p class="ltx_p">Following ASB, say that an equilibrium has influential cheap talk if
+a particular level of money burning can elicit multiple actions in
+equilibrium through distinct accompanying cheap talk messages.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_definition" id="Thmdefinition2">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmdefinition2.p1">
+<p class="ltx_p">An equilibrium <math alttext="(\sigma,\alpha)" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m1"><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></math> has influential cheap talk if there
+exist <math alttext="t" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m2"><mi>t</mi></math> and <math alttext="t^{\prime}" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m3"><msup><mi>t</mi><mo>′</mo></msup></math> such that <math alttext="m(t)\neq m(t^{\prime})" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m4"><mrow><mrow><mi>m</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><mi>m</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>t</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+<math alttext="b(t)=b(t^{\prime})" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m5"><mrow><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>t</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, and <math alttext="\alpha(\sigma(t))\neq\alpha(\sigma(t^{\prime}))" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m6"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>t</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_para" id="S4.p2">
+<p class="ltx_p">Similarly, a CS equilibrium is said to be influential if at least
+two different Receiver actions are played on the equilibrium path.</p>
+</div>
+<div class="ltx_para" id="S4.p3">
+<p class="ltx_p">Theorem 2 of ASB shows that certain kind of equilibria with
+influential cheap talk (termed “left-pooling influential
+equilibria”) exist if and only if influential equilibria exist in
+CS.  However, following their Theorem 2, ASB (p. 13) claim that
+their Theorem “cannot be extended to cover <em class="ltx_emph ltx_font_italic">all</em> influential
+equilibria” (their emphasis), because there may be some equilibria
+with influential cheap talk when there are no influential CS
+equilibria.  To support this claim, ASB (p. 13) construct an
+example where there assert that there is no influential CS
+equilibrium, but they claim an equilibrium with influential cheap
+talk in the presence of burned money.<span class="ltx_note ltx_role_footnote" id="footnote7"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup><span class="ltx_tag ltx_tag_note">7</span>It is unclear exactly
+how one should verify that there is no influential CS equilibrium in
+their example.  Since it is not known whether the example satisfies
+Condition M, simply checking that <math alttext="y(0,1)&gt;y(0)" class="ltx_Math" display="inline" id="footnote7.m1"><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> is insufficient.</span></span></span>  Unfortunately, the example is erroneous: the strategy profile they
+report is <em class="ltx_emph ltx_font_italic">not</em> an
+equilibrium.<span class="ltx_note ltx_role_footnote" id="footnote8"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup><span class="ltx_tag ltx_tag_note">8</span>The reason it is not an
+equilibrium is that all types in <math alttext="[0.15,0.2)" class="ltx_Math" display="inline" id="footnote8.m1"><mrow><mo stretchy="false">[</mo><mn>0.15</mn><mo>,</mo><mn>0.2</mn><mo stretchy="false">)</mo></mrow></math> would strictly prefer
+to deviate from the prescribed strategy and play <math alttext="\sigma(0.2)" class="ltx_Math" display="inline" id="footnote8.m2"><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0.2</mn><mo stretchy="false">)</mo></mrow></mrow></math>
+instead.  This is because type <math alttext="0.15" class="ltx_Math" display="inline" id="footnote8.m3"><mn>0.15</mn></math>’s ideal action is
+<math alttext="0.15+0.1157=0.2657" class="ltx_Math" display="inline" id="footnote8.m4"><mrow><mrow><mn>0.15</mn><mo>+</mo><mn>0.1157</mn></mrow><mo>=</mo><mn>0.2657</mn></mrow></math> which is closer to <math alttext="\alpha(\sigma(0.2))=0.2889" class="ltx_Math" display="inline" id="footnote8.m5"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0.2</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0.2889</mn></mrow></math>
+than <math alttext="\alpha(\sigma(0.15))=0.1739" class="ltx_Math" display="inline" id="footnote8.m6"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0.15</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0.1739</mn></mrow></math>.</span></span></span> The following result show that
+generically, one cannot construct such an example, because except in
+knife-edged cases, an equilibrium with influential cheap talk exists
+in the ASB model if and only if an influential equilibrium exists in
+CS.<span class="ltx_note ltx_role_footnote" id="footnote9"><sup class="ltx_note_mark">9</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">9</sup><span class="ltx_tag ltx_tag_note">9</span>A working paper version of ASB
+<cite class="ltx_cite ltx_citemacro_citep">(Austen-Smith and Banks, <a class="ltx_ref" href="#bib.bib25">1998</a>)</cite> contained this result
+for the “uniform quadratic” special case.</span></span></span></p>
+</div>
+<div class="ltx_theorem ltx_theorem_theorem" id="Thmtheorem2">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmtheorem2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Assume <math alttext="u^{S}(y(0),0)\neq u^{S}(y(0,1),0)" class="ltx_Math" display="inline" id="Thmtheorem2.p1.m1"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.  There exists an equilibrium with influential cheap talk if and only
+if there exists an influential CS equilibrium.</span></p>
+</div>
+</div>
+<div class="ltx_para" id="S4.p4">
+<p class="ltx_p">That is, ASB’s Theorem 2 <em class="ltx_emph ltx_font_italic">does</em> extend to all influential
+equilibria, except perhaps in non-generic cases where type <math alttext="0" class="ltx_Math" display="inline" id="S4.p4.m1"><mn>0</mn></math> is
+exactly indifferent between actions <math alttext="y(0)" class="ltx_Math" display="inline" id="S4.p4.m2"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> and <math alttext="y(0,1)" class="ltx_Math" display="inline" id="S4.p4.m3"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.  The proof
+of the Theorem requires two Lemmas, the latter of which holds
+independent interest outside the ASB model.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_lemma" id="Thmlemma1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmlemma1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">If there is an equilibrium with influential cheap
+talk, then there
+exists a strictly increasing sequence, <math alttext="\langle t_{1},t_{2},t_{3}\rangle" class="ltx_Math" display="inline" id="Thmlemma1.p1.m1"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><msub><mi>t</mi><mn>2</mn></msub><mo>,</mo><msub><mi>t</mi><mn>3</mn></msub><mo stretchy="false">⟩</mo></mrow></math>, that satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S4.p5">
+<p class="ltx_p">Suppose that <math alttext="\left(\sigma,\alpha\right)" class="ltx_Math" display="inline" id="S4.p5.m1"><mrow><mo>(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo>)</mo></mrow></math> is an equilibrium with
+influential cheap talk.  Then there exist <math alttext="t^{\prime}" class="ltx_Math" display="inline" id="S4.p5.m2"><msup><mi>t</mi><mo>′</mo></msup></math>, <math alttext="t^{\prime\prime}" class="ltx_Math" display="inline" id="S4.p5.m3"><msup><mi>t</mi><mo>′′</mo></msup></math>, <math alttext="m^{\prime}" class="ltx_Math" display="inline" id="S4.p5.m4"><msup><mi>m</mi><mo>′</mo></msup></math>, <math alttext="m^{\prime\prime}" class="ltx_Math" display="inline" id="S4.p5.m5"><msup><mi>m</mi><mo>′′</mo></msup></math>, and <math alttext="b" class="ltx_Math" display="inline" id="S4.p5.m6"><mi>b</mi></math> such that <math alttext="\sigma\left(t^{\prime}\right)=\left(m^{\prime},b\right)" class="ltx_Math" display="inline" id="S4.p5.m7"><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo>(</mo><msup><mi>t</mi><mo>′</mo></msup><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mo>(</mo><msup><mi>m</mi><mo>′</mo></msup><mo>,</mo><mi>b</mi><mo>)</mo></mrow></mrow></math>, <math alttext="\sigma\left(t^{\prime\prime}\right)=\left(m^{\prime\prime},b\right)" class="ltx_Math" display="inline" id="S4.p5.m8"><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo>(</mo><msup><mi>t</mi><mo>′′</mo></msup><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mo>(</mo><msup><mi>m</mi><mo>′′</mo></msup><mo>,</mo><mi>b</mi><mo>)</mo></mrow></mrow></math>, and <math alttext="\alpha\left(\sigma\left(t\prime\right)\right)&lt;\alpha\left(\sigma\left(t^{%
+\prime\prime}\right)\right)" class="ltx_math_unparsed" display="inline" id="S4.p5.m9"><mrow><mi>α</mi><mrow><mo>(</mo><mi>σ</mi><mrow><mo>(</mo><mi>t</mi><mo lspace="0em" rspace="0em">′</mo><mo>)</mo></mrow><mo>)</mo></mrow><mo>&lt;</mo><mi>α</mi><mrow><mo>(</mo><mi>σ</mi><mrow><mo>(</mo><msup><mi>t</mi><mo>′′</mo></msup><mo>)</mo></mrow><mo>)</mo></mrow></mrow></math>.  Let
+<math alttext="a_{i}\equiv\alpha\left(\sigma\left(t^{\prime}\right)\right)" class="ltx_Math" display="inline" id="S4.p5.m10"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>≡</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo>(</mo><msup><mi>t</mi><mo>′</mo></msup><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math>,
+<math alttext="a_{k}\equiv\alpha\left(\sigma\left(t^{\prime\prime}\right)\right)" class="ltx_Math" display="inline" id="S4.p5.m11"><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>≡</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo>(</mo><msup><mi>t</mi><mo>′′</mo></msup><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math>, and <math alttext="a_{j}\equiv\inf_{a&gt;a_{i}}\{a:a\in\bigcup_{t\in[0,1]}\alpha(\sigma(t))\}" class="ltx_Math" display="inline" id="S4.p5.m12"><mrow><msub><mi>a</mi><mi>j</mi></msub><mo rspace="0.1389em">≡</mo><mrow><msub><mo lspace="0.1389em" rspace="0em">inf</mo><mrow><mi>a</mi><mo>&gt;</mo><msub><mi>a</mi><mi>i</mi></msub></mrow></msub><mrow><mo stretchy="false">{</mo><mi>a</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>a</mi><mo rspace="0.111em">∈</mo><mrow><msub><mo>⋃</mo><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></msub><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>.  For <math alttext="l=i,j,k" class="ltx_Math" display="inline" id="S4.p5.m13"><mrow><mi>l</mi><mo>=</mo><mrow><mi>i</mi><mo>,</mo><mi>j</mi><mo>,</mo><mi>k</mi></mrow></mrow></math>, let <math alttext="t_{l}\equiv\inf\{t:\alpha(\sigma(t))=a_{l}\}" class="ltx_Math" display="inline" id="S4.p5.m14"><mrow><msub><mi>t</mi><mi>l</mi></msub><mo rspace="0.1389em">≡</mo><mrow><mo lspace="0.1389em" rspace="0em">inf</mo><mrow><mo stretchy="false">{</mo><mi>t</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>a</mi><mi>l</mi></msub></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math> and <math alttext="t_{l+1}\equiv\sup\{t:\alpha(\sigma(t))=a_{l}\}" class="ltx_Math" display="inline" id="S4.p5.m15"><mrow><msub><mi>t</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msub><mo rspace="0.1389em">≡</mo><mrow><mo lspace="0.1389em" rspace="0em">sup</mo><mrow><mo stretchy="false">{</mo><mi>t</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>a</mi><mi>l</mi></msub></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>.  By Lemma 1 of ASB, <math alttext="t_{i}&lt;t_{i+1}\leq t_{j}\leq t_{j+1}\leq t_{k}&lt;t_{k+1}" class="ltx_Math" display="inline" id="S4.p5.m16"><mrow><msub><mi>t</mi><mi>i</mi></msub><mo>&lt;</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>≤</mo><msub><mi>t</mi><mi>j</mi></msub><mo>≤</mo><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>≤</mo><msub><mi>t</mi><mi>k</mi></msub><mo>&lt;</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math>, and by construction
+<math alttext="t^{\prime}\in[t_{i},t_{i+1}]" class="ltx_Math" display="inline" id="S4.p5.m17"><mrow><msup><mi>t</mi><mo>′</mo></msup><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">]</mo></mrow></mrow></math> and <math alttext="t^{\prime\prime}\in[t_{k},t_{k+1}]" class="ltx_Math" display="inline" id="S4.p5.m18"><mrow><msup><mi>t</mi><mo>′′</mo></msup><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mi>k</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">]</mo></mrow></mrow></math>.
+ If <math alttext="t_{i+1}=t_{k}" class="ltx_Math" display="inline" id="S4.p5.m19"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>t</mi><mi>k</mi></msub></mrow></math>, then we are done, since <math alttext="\langle t_{i},t_{i+1},t_{k+1}\rangle" class="ltx_Math" display="inline" id="S4.p5.m20"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">⟩</mo></mrow></math> satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).</p>
+</div>
+<div class="ltx_para" id="S4.p6">
+<p class="ltx_p">So suppose <math alttext="t_{i+1}&lt;t_{k}" class="ltx_Math" display="inline" id="S4.p6.m1"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><msub><mi>t</mi><mi>k</mi></msub></mrow></math>.  If <math alttext="b(\cdot)" class="ltx_Math" display="inline" id="S4.p6.m2"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> is non-decreasing on
+<math alttext="(t_{i},t_{k+1})" class="ltx_Math" display="inline" id="S4.p6.m3"><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></math>, then <math alttext="b(t)=b" class="ltx_Math" display="inline" id="S4.p6.m4"><mrow><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>b</mi></mrow></math> for all <math alttext="t\in(t_{i},t_{k+1})" class="ltx_Math" display="inline" id="S4.p6.m5"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math>, in which
+case <math alttext="t_{j}=t_{i+1}" class="ltx_Math" display="inline" id="S4.p6.m6"><mrow><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math>, and we are done because <math alttext="\langle t_{i},t_{i+1},t_{j+1}\rangle" class="ltx_Math" display="inline" id="S4.p6.m7"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">⟩</mo></mrow></math> satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).</p>
+</div>
+<div class="ltx_para" id="S4.p7">
+<p class="ltx_p">It remains to consider <math alttext="t_{i+1}&lt;t_{k}" class="ltx_Math" display="inline" id="S4.p7.m1"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><msub><mi>t</mi><mi>k</mi></msub></mrow></math> and <math alttext="b(\cdot)" class="ltx_Math" display="inline" id="S4.p7.m2"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> decreasing
+somewhere on <math alttext="(t_{i},t_{k+1})" class="ltx_Math" display="inline" id="S4.p7.m3"><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></math>.  By Lemma 1 of ASB, there exists some
+<math alttext="t_{n}\in(t_{i},t_{k+1})" class="ltx_Math" display="inline" id="S4.p7.m4"><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> such that <math alttext="b(\cdot)" class="ltx_Math" display="inline" id="S4.p7.m5"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> is discontinuous at
+<math alttext="t_{n}" class="ltx_Math" display="inline" id="S4.p7.m6"><msub><mi>t</mi><mi>n</mi></msub></math>, and <math alttext="b^{n}\equiv\lim_{\varepsilon\downarrow 0}b\left(t_{n}-\varepsilon\right)&gt;b_{n}%
+\equiv\lim_{\varepsilon\downarrow 0}b\left(t_{n}+\varepsilon\right)" class="ltx_Math" display="inline" id="S4.p7.m7"><mrow><msup><mi>b</mi><mi>n</mi></msup><mo rspace="0.1389em">≡</mo><mrow><msub><mo lspace="0.1389em" rspace="0.167em">lim</mo><mrow><mi>ε</mi><mo stretchy="false">↓</mo><mn>0</mn></mrow></msub><mrow><mi>b</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>−</mo><mi>ε</mi></mrow><mo>)</mo></mrow></mrow></mrow><mo>&gt;</mo><msub><mi>b</mi><mi>n</mi></msub><mo rspace="0.1389em">≡</mo><mrow><msub><mo lspace="0.1389em" rspace="0.167em">lim</mo><mrow><mi>ε</mi><mo stretchy="false">↓</mo><mn>0</mn></mrow></msub><mrow><mi>b</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>+</mo><mi>ε</mi></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math>.  It is straightforward that
+there must be some <math alttext="t&gt;t_{n}" class="ltx_Math" display="inline" id="S4.p7.m8"><mrow><mi>t</mi><mo>&gt;</mo><msub><mi>t</mi><mi>n</mi></msub></mrow></math> such that <math alttext="b(\cdot)" class="ltx_Math" display="inline" id="S4.p7.m9"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> is pooling on
+<math alttext="(t_{n},t)" class="ltx_Math" display="inline" id="S4.p7.m10"><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math> — if not, for small enough <math alttext="\varepsilon&gt;0" class="ltx_Math" display="inline" id="S4.p7.m11"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, a type
+<math alttext="t_{n}-\varepsilon" class="ltx_Math" display="inline" id="S4.p7.m12"><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>−</mo><mi>ε</mi></mrow></math> has a profitable deviation to
+<math alttext="\sigma(t_{n}+\varepsilon)" class="ltx_Math" display="inline" id="S4.p7.m13"><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>+</mo><mi>ε</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.  Let <math alttext="a_{n}\equiv\min_{a&gt;y(t_{n})}\{a:a\in\bigcup_{t\in[0,1]}\alpha(\sigma(t))\}" class="ltx_Math" display="inline" id="S4.p7.m14"><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>≡</mo><mrow><msub><mi>min</mi><mrow><mi>a</mi><mo>&gt;</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>a</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>a</mi><mo rspace="0.111em">∈</mo><mrow><msub><mo>⋃</mo><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></msub><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>, <math alttext="t_{n+1}\equiv\sup\{t:\alpha(\sigma(t))=a_{n}\}" class="ltx_Math" display="inline" id="S4.p7.m15"><mrow><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo rspace="0.1389em">≡</mo><mrow><mo lspace="0.1389em" rspace="0em">sup</mo><mrow><mo stretchy="false">{</mo><mi>t</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>, and <math alttext="(m_{n},b_{n})\equiv\sigma(t)" class="ltx_Math" display="inline" id="S4.p7.m16"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>n</mi></msub><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>≡</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for
+any <math alttext="t\in(t_{n},t_{n+1})" class="ltx_Math" display="inline" id="S4.p7.m17"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math>.  There are two cases: either (i) for some
+<math alttext="\delta&gt;0" class="ltx_Math" display="inline" id="S4.p7.m18"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, <math alttext="b\left(\cdot\right)" class="ltx_Math" display="inline" id="S4.p7.m19"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo>(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>)</mo></mrow></mrow></math> is separating on <math alttext="\left(t_{n}-\delta,t_{n}\right)" class="ltx_Math" display="inline" id="S4.p7.m20"><mrow><mo>(</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>−</mo><mi>δ</mi></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></math>; or (ii) for some <math alttext="\delta&gt;0" class="ltx_Math" display="inline" id="S4.p7.m21"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, <math alttext="b\left(\cdot\right)" class="ltx_Math" display="inline" id="S4.p7.m22"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo>(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo>)</mo></mrow></mrow></math> is pooling on <math alttext="\left(t_{n}-\delta,t_{n}\right)" class="ltx_Math" display="inline" id="S4.p7.m23"><mrow><mo>(</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>−</mo><mi>δ</mi></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="S4.p8">
+<p class="ltx_p">(i) It is straightforward to verify that the following incentive
+compatibility condition must hold:</p>
+<table class="ltx_equation ltx_eqn_table" id="S4.Ex12">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="u^{S}\left(y\left(t_{n},t_{n+1}\right),t_{n}\right)-b_{n}=u^{S}\left(y\left(t_%
+{n}\right),t_{n}\right)-b^{n}" class="ltx_Math" display="block" id="S4.Ex12.m1"><mrow><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>−</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo>=</mo><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>−</mo><msup><mi>b</mi><mi>n</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S4.p9">
+<p class="ltx_p">By continuity, it follows that for some <math alttext="t_{n-1}&lt;t_{n}" class="ltx_Math" display="inline" id="S4.p9.m1"><mrow><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><msub><mi>t</mi><mi>n</mi></msub></mrow></math>, and
+<math alttext="\varepsilon&gt;0" class="ltx_Math" display="inline" id="S4.p9.m2"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that <math alttext="b^{n}&gt;b_{n}+\varepsilon" class="ltx_Math" display="inline" id="S4.p9.m3"><mrow><msup><mi>b</mi><mi>n</mi></msup><mo>&gt;</mo><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>+</mo><mi>ε</mi></mrow></mrow></math>,</p>
+<table class="ltx_equation ltx_eqn_table" id="S4.Ex13">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="u^{S}\left(y\left(t_{n},t_{n+1}\right),t_{n}\right)-\left(b_{n}+\varepsilon%
+\right)=u^{S}\left(y\left(t_{n-1},t_{n}\right),t_{n}\right)-b^{n}" class="ltx_Math" display="block" id="S4.Ex13.m1"><mrow><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>−</mo><mrow><mo>(</mo><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>+</mo><mi>ε</mi></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>−</mo><msup><mi>b</mi><mi>n</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S4.p10">
+<p class="ltx_p">Since <math alttext="b^{n}&gt;b_{n}+\varepsilon" class="ltx_Math" display="inline" id="S4.p10.m1"><mrow><msup><mi>b</mi><mi>n</mi></msup><mo>&gt;</mo><mrow><msub><mi>b</mi><mi>n</mi></msub><mo>+</mo><mi>ε</mi></mrow></mrow></math>, we have <math alttext="u^{S}\left(y\left(t_{n-1},t_{n}\right),t_{n}\right)&gt;u^{S}\left(y\left(t_{n},t_%
+{n+1}\right),t_{n}\right)" class="ltx_Math" display="inline" id="S4.p10.m2"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>&gt;</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow></mrow></math>, and consequently, <math alttext="y\left(t_{n},t_{n+1}\right)&gt;y^{S}\left(t_{n}\right)&gt;y\left(t_{n-1},t_{n}\right)" class="ltx_Math" display="inline" id="S4.p10.m3"><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>&gt;</mo><mrow><msup><mi>y</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>&gt;</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow></mrow></math>.  By continuity,
+there exists some <math alttext="\tilde{t}\in\left(t_{n},t_{n+1}\right)" class="ltx_Math" display="inline" id="S4.p10.m4"><mrow><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>∈</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow></math> such that <math alttext="u^{S}\left(y\left(t_{n-1},t_{n}\right),t_{n}\right)=u^{S}\left(y\left(t_{n},%
+\tilde{t}\right),t_{n}\right)" class="ltx_Math" display="inline" id="S4.p10.m5"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow></mrow></math>, and consequently,
+<math alttext="\langle t_{n},\tilde{t},t_{n+1}\rangle" class="ltx_Math" display="inline" id="S4.p10.m6"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">⟩</mo></mrow></math> satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).</p>
+</div>
+<div class="ltx_para" id="S4.p11">
+<p class="ltx_p">(ii) Let <math alttext="a_{n-1}\equiv\max_{a&lt;y(t_{n})}\{a:a\in\bigcup_{t\in[0,1]}\alpha(\sigma(t))\}" class="ltx_Math" display="inline" id="S4.p11.m1"><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>≡</mo><mrow><msub><mi>max</mi><mrow><mi>a</mi><mo>&lt;</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>a</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>a</mi><mo rspace="0.111em">∈</mo><mrow><msub><mo>⋃</mo><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></msub><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>, and <math alttext="t_{n-1}\equiv\inf\{t:\alpha(\sigma(t))=a_{n-1}\}" class="ltx_Math" display="inline" id="S4.p11.m2"><mrow><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo rspace="0.1389em">≡</mo><mrow><mo lspace="0.1389em" rspace="0em">inf</mo><mrow><mo stretchy="false">{</mo><mi>t</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math>.  Then, the following incentive compatibility condition must hold:</p>
+<table class="ltx_equation ltx_eqn_table" id="S4.Ex14">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="u^{S}\left(y\left(t_{n},t_{n+1}\right),t_{n}\right)-b_{n}=u^{S}\left(y\left(t_%
+{n-1},t_{n}\right),t_{n}\right)-b^{n}" class="ltx_Math" display="block" id="S4.Ex14.m1"><mrow><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>−</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo>=</mo><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>−</mo><msup><mi>b</mi><mi>n</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="S4.p12">
+<p class="ltx_p">Since <math alttext="b^{n}&gt;b_{n}" class="ltx_Math" display="inline" id="S4.p12.m1"><mrow><msup><mi>b</mi><mi>n</mi></msup><mo>&gt;</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math>, we have <math alttext="u^{S}\left(y\left(t_{n-1},t_{n}\right),t_{n}\right)&gt;u^{S}\left(y\left(t_{n},t_%
+{n+1}\right),t_{n}\right)" class="ltx_Math" display="inline" id="S4.p12.m2"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>&gt;</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow></mrow></math>, and consequently, <math alttext="y\left(t_{n},t_{n+1}\right)&gt;y^{S}\left(t_{n}\right)&gt;y\left(t_{n-1},t_{n}\right)" class="ltx_Math" display="inline" id="S4.p12.m3"><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow><mo>&gt;</mo><mrow><msup><mi>y</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>&gt;</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow></mrow></math>.  By continuity, there exists some <math alttext="\tilde{t}\in\left(t_{n},t_{n+1}\right)" class="ltx_Math" display="inline" id="S4.p12.m4"><mrow><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>∈</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow></mrow></math> such that <math alttext="u^{S}\left(y\left(t_{n-1},t_{n}\right),t_{n}\right)=u^{S}\left(y\left(t_{n},%
+\tilde{t}\right),t_{n}\right)" class="ltx_Math" display="inline" id="S4.p12.m5"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow></mrow></mrow></math>, and consequently, <math alttext="\langle t_{n},\tilde{t},t_{n+1}\rangle" class="ltx_Math" display="inline" id="S4.p12.m6"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mi>n</mi></msub><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">⟩</mo></mrow></math> satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_para" id="S4.p13">
+<p class="ltx_p">The next Lemma says that generically, a sufficient condition for the
+existence of an influential CS equilibrium is that there exist some
+non-trivial forward solution to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).  Crucially, this
+forward solution need not start at the lower end of the type space,
+<math alttext="0" class="ltx_Math" display="inline" id="S4.p13.m1"><mn>0</mn></math>, nor end at the upper .  This result may be useful in
+applications of CS more generally, because it provides a sufficient
+condition for influential CS equilibria when Condition M does not
+hold.<span class="ltx_note ltx_role_footnote" id="footnote10"><sup class="ltx_note_mark">10</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">10</sup><span class="ltx_tag ltx_tag_note">10</span>When Condition M does hold, it is well-known that the
+necessary and sufficient condition for influential CS equilibria is
+that <math alttext="y(0)&lt;y(0,1)" class="ltx_Math" display="inline" id="footnote10.m1"><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span></span></span></p>
+</div>
+<div class="ltx_theorem ltx_theorem_lemma" id="Thmlemma2">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmlemma2.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Assume <math alttext="u^{S}(y(0),0)\neq u^{S}(y(0,1),0)" class="ltx_Math" display="inline" id="Thmlemma2.p1.m1"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.  If there
+exists a strictly increasing sequence, <math alttext="\left\langle t_{i-1},t_{i},t_{i+1}\right\rangle" class="ltx_Math" display="inline" id="Thmlemma2.p1.m2"><mrow><mo>⟨</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⟩</mo></mrow></math>, that satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>), then there exists an influential CS equilibrium.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S4.p14">
+<p class="ltx_p">I start by arguing that there is a forward solution to
+(<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>), <math alttext="\langle t_{i-1},\hat{t},1\rangle" class="ltx_Math" display="inline" id="S4.p14.m1"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>,</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math>, such that
+<math alttext="\hat{t}\in\left[t_{i},1\right)" class="ltx_Math" display="inline" id="S4.p14.m2"><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>∈</mo><mrow><mo>[</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><mn>1</mn><mo>)</mo></mrow></mrow></math>.  Clearly this is true if
+<math alttext="t_{i+1}=1" class="ltx_Math" display="inline" id="S4.p14.m3"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>1</mn></mrow></math>, so assume that <math alttext="t_{i+1}&lt;1" class="ltx_Math" display="inline" id="S4.p14.m4"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><mn>1</mn></mrow></math>.  For any <math alttext="\tau_{1}&gt;t_{i-1}" class="ltx_Math" display="inline" id="S4.p14.m5"><mrow><msub><mi>τ</mi><mn>1</mn></msub><mo>&gt;</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math>,
+there is at most one value of <math alttext="\tau_{2}&gt;\tau_{1}" class="ltx_Math" display="inline" id="S4.p14.m6"><mrow><msub><mi>τ</mi><mn>2</mn></msub><mo>&gt;</mo><msub><mi>τ</mi><mn>1</mn></msub></mrow></math> such that the sequence
+<math alttext="\langle t_{i-1},\tau_{1},\tau_{2}\rangle" class="ltx_Math" display="inline" id="S4.p14.m7"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>τ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>τ</mi><mn>2</mn></msub><mo stretchy="false">⟩</mo></mrow></math> satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>), due
+to the monotonicity of <math alttext="y(\cdot,\cdot)" class="ltx_Math" display="inline" id="S4.p14.m8"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> in each argument and the
+concavity of <math alttext="u^{S}(\cdot,\cdot)" class="ltx_Math" display="inline" id="S4.p14.m9"><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> in its first argument.  Moreover,
+since <math alttext="u^{S}(y(t,1),1)&lt;u^{S}(y(1),1)" class="ltx_Math" display="inline" id="S4.p14.m10"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all <math alttext="t&lt;1" class="ltx_Math" display="inline" id="S4.p14.m11"><mrow><mi>t</mi><mo>&lt;</mo><mn>1</mn></mrow></math>, continuity implies
+that there exists some <math alttext="\tau_{1}\in(t_{i},1)" class="ltx_Math" display="inline" id="S4.p14.m12"><mrow><msub><mi>τ</mi><mn>1</mn></msub><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> for which there is no
+<math alttext="\tau_{2}&gt;\tau_{1}" class="ltx_Math" display="inline" id="S4.p14.m13"><mrow><msub><mi>τ</mi><mn>2</mn></msub><mo>&gt;</mo><msub><mi>τ</mi><mn>1</mn></msub></mrow></math> such that <math alttext="\langle t_{i-1},\tau_{1},\tau_{2}\rangle" class="ltx_Math" display="inline" id="S4.p14.m14"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>τ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>τ</mi><mn>2</mn></msub><mo stretchy="false">⟩</mo></mrow></math>
+satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).  Since solutions to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) vary
+continuously with initial conditions, it follows that there is some
+<math alttext="\hat{t}\in(t_{i},1)" class="ltx_Math" display="inline" id="S4.p14.m15"><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> such that <math alttext="\langle t_{i-1},\hat{t},1\rangle" class="ltx_Math" display="inline" id="S4.p14.m16"><mrow><mo stretchy="false">⟨</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>,</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math>
+satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).</p>
+</div>
+<div class="ltx_para" id="S4.p15">
+<p class="ltx_p">Now I argue that there is a <em class="ltx_emph ltx_font_italic">backward</em> solution to
+(<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>), <math alttext="\langle 1,\tilde{t},0\rangle" class="ltx_Math" display="inline" id="S4.p15.m1"><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math>, such that
+<math alttext="\tilde{t}\in(0,1)" class="ltx_Math" display="inline" id="S4.p15.m2"><mrow><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.<span class="ltx_note ltx_role_footnote" id="footnote11"><sup class="ltx_note_mark">11</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">11</sup><span class="ltx_tag ltx_tag_note">11</span>Recall that a sequence <math alttext="\langle s_{0},s_{1},\ldots,s_{N}\rangle" class="ltx_Math" display="inline" id="footnote11.m1"><mrow><mo stretchy="false">⟨</mo><msub><mi>s</mi><mn>0</mn></msub><mo>,</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>s</mi><mi>N</mi></msub><mo stretchy="false">⟩</mo></mrow></math> is a backward solution to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>)
+if it solves (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) and <math alttext="s_{1}&lt;s_{0}" class="ltx_Math" display="inline" id="footnote11.m2"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>s</mi><mn>0</mn></msub></mrow></math>.</span></span></span>  If <math alttext="t_{i-1}=0" class="ltx_Math" display="inline" id="S4.p15.m3"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math>, then by
+the earlier construction, the sequence <math alttext="\langle 1,\hat{t},0\rangle" class="ltx_Math" display="inline" id="S4.p15.m4"><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>,</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math>
+suffices; so assume that <math alttext="t_{i-1}&gt;0" class="ltx_Math" display="inline" id="S4.p15.m5"><mrow><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>&gt;</mo><mn>0</mn></mrow></math>.  By the earlier logic, for
+any <math alttext="\tau_{1}&lt;1" class="ltx_Math" display="inline" id="S4.p15.m6"><mrow><msub><mi>τ</mi><mn>1</mn></msub><mo>&lt;</mo><mn>1</mn></mrow></math>, there is at most one value of <math alttext="\tau_{2}&lt;\tau_{1}" class="ltx_Math" display="inline" id="S4.p15.m7"><mrow><msub><mi>τ</mi><mn>2</mn></msub><mo>&lt;</mo><msub><mi>τ</mi><mn>1</mn></msub></mrow></math> such
+that the sequence <math alttext="\langle 1,\tau_{1},\tau_{2}\rangle" class="ltx_Math" display="inline" id="S4.p15.m8"><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><msub><mi>τ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>τ</mi><mn>2</mn></msub><mo stretchy="false">⟩</mo></mrow></math> satisfies
+(<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).  The hypothesis that <math alttext="u^{S}(y(0),0)\neq u^{S}(y(0,1),0)" class="ltx_Math" display="inline" id="S4.p15.m9"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+implies (by continuity) that for small enough <math alttext="\tau_{1}" class="ltx_Math" display="inline" id="S4.p15.m10"><msub><mi>τ</mi><mn>1</mn></msub></math>, there is no
+<math alttext="\tau_{2}&lt;\tau_{1}" class="ltx_Math" display="inline" id="S4.p15.m11"><mrow><msub><mi>τ</mi><mn>2</mn></msub><mo>&lt;</mo><msub><mi>τ</mi><mn>1</mn></msub></mrow></math> such that <math alttext="\langle 1,\tau_{1},\tau_{2}\rangle" class="ltx_Math" display="inline" id="S4.p15.m12"><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><msub><mi>τ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>τ</mi><mn>2</mn></msub><mo stretchy="false">⟩</mo></mrow></math>
+satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).  Since solutions to (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) vary
+continuously with initial conditions, it follows that there is some
+<math alttext="\tilde{t}\in(0,1)" class="ltx_Math" display="inline" id="S4.p15.m13"><mrow><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> such that <math alttext="\langle 1,\tilde{t},0\rangle" class="ltx_Math" display="inline" id="S4.p15.m14"><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math>
+satisfies (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>).</p>
+</div>
+<div class="ltx_para" id="S4.p16">
+<p class="ltx_p">The proof is completed by noting that the sequence <math alttext="\langle 0,\tilde{t},1\rangle" class="ltx_Math" display="inline" id="S4.p16.m1"><mrow><mo stretchy="false">⟨</mo><mn>0</mn><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math> defines an influential CS equilibrium
+partition, by construction.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_para" id="S4.p17">
+<p class="ltx_p">The proof of Theorem <a class="ltx_ref" href="#Thmtheorem2"><span class="ltx_text ltx_ref_tag">2</span></a> readily follows from
+the Lemmas.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a class="ltx_ref" href="#Thmtheorem2"><span class="ltx_text ltx_ref_tag">2</span></a>.</h6>
+<div class="ltx_para" id="S4.p18">
+<p class="ltx_p">Necessity follows from Lemmas <a class="ltx_ref" href="#Thmlemma1"><span class="ltx_text ltx_ref_tag">1</span></a> and <a class="ltx_ref" href="#Thmlemma2"><span class="ltx_text ltx_ref_tag">2</span></a>.  For
+sufficiency, simply note that one can transform a CS equilibrium
+into an equilibrium of ASB by augmenting the play of <math alttext="b(t)=0" class="ltx_Math" display="inline" id="S4.p18.m1"><mrow><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> for
+all <math alttext="t" class="ltx_Math" display="inline" id="S4.p18.m2"><mi>t</mi></math>, and <math alttext="\alpha(m,b)=\alpha(m,0)" class="ltx_Math" display="inline" id="S4.p18.m3"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for any <math alttext="(m,b)" class="ltx_Math" display="inline" id="S4.p18.m4"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math> such that
+<math alttext="b&gt;0" class="ltx_Math" display="inline" id="S4.p18.m5"><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+</section>
+<section class="ltx_section" id="S5">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>Continuity of the Equilibrium Correspondence</h2>
+<div class="ltx_para" id="S5.p1">
+<p class="ltx_p">At the end of their paper, ASB (p. 15) write:</p>
+</div>
+<div class="ltx_para" id="S5.p2">
+<blockquote class="ltx_quote">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">“if the costly signaling literally involves money … imposing a
+budget constraint might be appropriate.  A referee conjectures that for
+arbitrarily small budget constraints, the qualitative properties of the
+equilibrium set are close to those of the Crawford-Sobel model.  This
+conjecture has strong intuition … However, a general argument has proved
+elusive.” </span></p>
+</blockquote>
+</div>
+<div class="ltx_para" id="S5.p3">
+<p class="ltx_p">This is a statement about continuity of the equilibrium outcome
+correspondence.  Lower hemi-continuity is straightforward: any CS
+equilibrium partition supports an equilibrium when burned money is
+available, where no type actually burns any positive amounts of
+money.  So the real issue is that of upper hemi-continuity, i.e. as
+the budget of burned money shrinks, are all equilibria “close” to
+CS equilibria?  This section shows that the answer is yes, as
+conjectured.</p>
+</div>
+<div class="ltx_para" id="S5.p4">
+<p class="ltx_p">Let <math alttext="\overline{b}&gt;0" class="ltx_Math" display="inline" id="S5.p4.m1"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>&gt;</mo><mn>0</mn></mrow></math> denote the maximal amount of burned money available to the
+Sender.  That is, the Sender’s strategy is henceforth <math alttext="\sigma:[0,1]\rightarrow M\times[0,\overline{b}]" class="ltx_Math" display="inline" id="S5.p4.m2"><mrow><mi>σ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math>.  ASB (Lemma 1 and subsequent discussion)
+have proven that every equilibrium with burned money is partitional; the
+only difference with CS being that all types within an element of the
+partition may be completely separating rather than pooling with each other.
+ In particular, higher Sender types elicit weakly higher actions from the
+Receiver.</p>
+</div>
+<div class="ltx_para" id="S5.p5">
+<p class="ltx_p">The key step in analyzing equilibria as <math alttext="\overline{b}\rightarrow 0" class="ltx_Math" display="inline" id="S5.p5.m1"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mn>0</mn></mrow></math> is
+the following result which severely restricts the set of separating
+types for small <math alttext="\overline{b}" class="ltx_Math" display="inline" id="S5.p5.m2"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math>.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_lemma" id="Thmlemma3">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Lemma 3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmlemma3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For any <math alttext="\varepsilon&gt;0" class="ltx_Math" display="inline" id="Thmlemma3.p1.m1"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, there exists
+<math alttext="\delta&gt;0" class="ltx_Math" display="inline" id="Thmlemma3.p1.m2"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that for all <math alttext="\overline{b}&lt;\delta" class="ltx_Math" display="inline" id="Thmlemma3.p1.m3"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>&lt;</mo><mi>δ</mi></mrow></math>, the only separating
+types lie in <math alttext="[0,\varepsilon]" class="ltx_Math" display="inline" id="Thmlemma3.p1.m4"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>ε</mi><mo stretchy="false">]</mo></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_para" id="S5.p6">
+<p class="ltx_p">The proof consists of minor modifications of Lemma 2 in
+<cite class="ltx_cite ltx_citemacro_citet">Kartik (<a class="ltx_ref" href="#bib.bib218">2005a</a>)</cite>; it is included in the Appendix
+for completeness.</p>
+</div>
+<div class="ltx_para" id="S5.p7">
+<p class="ltx_p">The Lemma says that as <math alttext="\overline{b}" class="ltx_Math" display="inline" id="S5.p7.m1"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math> gets small, the measure of
+separating types in any equilibrium is converging to <math alttext="0" class="ltx_Math" display="inline" id="S5.p7.m2"><mn>0</mn></math>, and
+moreover, all separation occurs in a neighborhood of type <math alttext="0" class="ltx_Math" display="inline" id="S5.p7.m3"><mn>0</mn></math>.  Accordingly, henceforth, given an equilibrium,
+<math alttext="(\sigma,\alpha)(\overline{b})" class="ltx_Math" display="inline" id="S5.p7.m4"><mrow><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo>,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>, with supporting partition <math alttext="\langle s_{0}\equiv 0,s_{1},\ldots,s_{N}\equiv 1\rangle(\overline{b})" class="ltx_Math" display="inline" id="S5.p7.m5"><mrow><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mrow><mn>0</mn><mo>,</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>s</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>, let <math alttext="\underline{s}(\overline{b})\geq 0" class="ltx_Math" display="inline" id="S5.p7.m6"><mrow><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mn>0</mn></mrow></math> be the lowest type such that there are no separating types of
+positive measure above <math alttext="\underline{s}(\overline{b})" class="ltx_Math" display="inline" id="S5.p7.m7"><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>.<span class="ltx_note ltx_role_footnote" id="footnote12"><sup class="ltx_note_mark">12</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">12</sup><span class="ltx_tag ltx_tag_note">12</span>There are two details to note.  First, supporting partitions are always
+defined so that adjacent to any segment of separation are segments of
+pooling; i.e. each segment of full separation is “maximal”.  Second,
+unlike in CS, the partition supporting an equilibrium with <math alttext="\overline{b}&gt;0" class="ltx_Math" display="inline" id="footnote12.m1"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>&gt;</mo><mn>0</mn></mrow></math> may
+have (countably) infinite elements.  However, <em class="ltx_emph ltx_font_italic">above</em> <math alttext="\underline{s}" class="ltx_Math" display="inline" id="footnote12.m2"><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder></math>,
+there are are only a finite number of elements.</span></span></span>  Clearly, <math alttext="\underline{s}(\overline{b})\rightarrow 0" class="ltx_Math" display="inline" id="S5.p7.m8"><mrow><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mn>0</mn></mrow></math> as <math alttext="\overline{b}\rightarrow 0" class="ltx_Math" display="inline" id="S5.p7.m9"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mn>0</mn></mrow></math>.  With some abuse of
+terminology, I will refer to the supporting partition of an equilibrium as
+<math alttext="\langle s_{0}\equiv\underline{s},s_{1},\ldots,s_{N}\equiv 1\rangle(\overline{b})" class="ltx_Math" display="inline" id="S5.p7.m10"><mrow><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>,</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>s</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_theorem" id="Thmtheorem3">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmtheorem3.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">For any <math alttext="\varepsilon&gt;0" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m1"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, there exists <math alttext="\delta&gt;0" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m2"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>
+such that when <math alttext="\overline{b}&lt;\delta" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m3"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>&lt;</mo><mi>δ</mi></mrow></math>, for any equilibrium supported by
+<math alttext="\langle s_{0}\equiv\underline{s},s_{1},\ldots,s_{N}\equiv 1\rangle(\overline{b})" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m4"><mrow><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>,</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>s</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>, there is a CS equilibrium supported by
+<math alttext="\langle t_{0}\equiv 0,t_{1},\ldots,t_{N}\equiv 1\rangle" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m5"><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>≡</mo><mrow><mn>0</mn><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>t</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow></math> such that
+<math alttext="\left|s_{j}-t_{j}\right|&lt;\varepsilon" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m6"><mrow><mrow><mo>|</mo><mrow><msub><mi>s</mi><mi>j</mi></msub><mo>−</mo><msub><mi>t</mi><mi>j</mi></msub></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math> for all
+<math alttext="j\in\{0,1,\ldots,N\}" class="ltx_Math" display="inline" id="Thmtheorem3.p1.m7"><mrow><mi>j</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>N</mi><mo stretchy="false">}</mo></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_para" id="S5.p8">
+<p class="ltx_p">The proof follows from minor modifications of Lemma 2 in
+<cite class="ltx_cite ltx_citemacro_citet">Kartik (<a class="ltx_ref" href="#bib.bib218">2005a</a>)</cite>; it is included in the Appendix
+for completeness.</p>
+</div>
+</section>
+<section class="ltx_section" id="Sx1">
+<h2 class="ltx_title ltx_title_section">Appendix</h2>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a class="ltx_ref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">1</span></a>.</h6>
+<div class="ltx_para" id="Sx1.p1">
+<p class="ltx_p">Construct the equilibrium as follows.  Pick a set of <math alttext="N" class="ltx_Math" display="inline" id="Sx1.p1.m1"><mi>N</mi></math> distinct
+messages, <math alttext="\{m_{1},\ldots,m_{N}\}" class="ltx_Math" display="inline" id="Sx1.p1.m2"><mrow><mo stretchy="false">{</mo><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>m</mi><mi>N</mi></msub><mo stretchy="false">}</mo></mrow></math>.  For all <math alttext="t\in[0,t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m3"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> define
+<math alttext="\sigma(t)" class="ltx_Math" display="inline" id="Sx1.p1.m4"><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> as follows: <math alttext="t\in[t_{i-1},t_{i})" class="ltx_Math" display="inline" id="Sx1.p1.m5"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+(<math alttext="i\in\{1,\ldots,N-1\}" class="ltx_Math" display="inline" id="Sx1.p1.m6"><mrow><mi>i</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>) plays <math alttext="\sigma(t)=(m_{i},0)" class="ltx_Math" display="inline" id="Sx1.p1.m7"><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>.  For type
+<math alttext="t_{N-1}" class="ltx_Math" display="inline" id="Sx1.p1.m8"><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub></math>, set <math alttext="m(t_{N-1})=m_{N}" class="ltx_Math" display="inline" id="Sx1.p1.m9"><mrow><mrow><mi>m</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>m</mi><mi>N</mi></msub></mrow></math> and <math alttext="b(t_{N-1})=C(t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m10"><mrow><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> where</p>
+<table class="ltx_equation ltx_eqn_table" id="A0.Ex15">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="C(t_{N-1})\equiv\left\{\begin{array}[]{ll}u^{S}(y(t_{N-1}),t_{N-1})-u^{S}(y(t_%
+{N-2},t_{N-1}),t_{N-1})&amp;\text{if }N&gt;1\\
+0&amp;\text{if }N=1\end{array}\right." class="ltx_Math" display="block" id="A0.Ex15.m1"><mrow><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≡</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo>⁢</mo><mi>N</mi></mrow><mo>&gt;</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mn>1</mn></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">That is, if <math alttext="N&gt;1" class="ltx_Math" display="inline" id="Sx1.p1.m11"><mrow><mi>N</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, <math alttext="b(t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m12"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> is the amount of burned money that
+would make <math alttext="t_{N-1}" class="ltx_Math" display="inline" id="Sx1.p1.m13"><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub></math> indifferent between eliciting action
+<math alttext="y(t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m14"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> (i.e. revealing itself) by burning <math alttext="b(t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m15"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> and
+eliciting <math alttext="y(t_{N-2},t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m16"><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> with no burned money.<span class="ltx_note ltx_role_footnote" id="footnote13"><sup class="ltx_note_mark">13</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">13</sup><span class="ltx_tag ltx_tag_note">13</span>This
+follows the approach of ASB.</span></span></span>  If <math alttext="N=1" class="ltx_Math" display="inline" id="Sx1.p1.m17"><mrow><mi>N</mi><mo>=</mo><mn>1</mn></mrow></math>, then there are no types
+below <math alttext="t_{N-1}\equiv 0" class="ltx_Math" display="inline" id="Sx1.p1.m18"><mrow><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>≡</mo><mn>0</mn></mrow></math>, hence <math alttext="b(t_{N-1})" class="ltx_Math" display="inline" id="Sx1.p1.m19"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math> is set to <math alttext="0" class="ltx_Math" display="inline" id="Sx1.p1.m20"><mn>0</mn></math>.</p>
+</div>
+<div class="ltx_para" id="Sx1.p2">
+<p class="ltx_p">For all types <math alttext="t\in(t_{N-1},1]" class="ltx_Math" display="inline" id="Sx1.p2.m1"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>, set <math alttext="m(t)=m_{N}" class="ltx_Math" display="inline" id="Sx1.p2.m2"><mrow><mrow><mi>m</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>m</mi><mi>N</mi></msub></mrow></math> and <math alttext="b(t)" class="ltx_Math" display="inline" id="Sx1.p2.m3"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> following
+ASB to keep each type just indifferent between revealing itself and
+mimicking a marginally higher type, i.e.</p>
+<table class="ltx_equation ltx_eqn_table" id="A0.Ex16">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="b(t)=\int_{t_{N-1}}^{t}u^{S}_{1}(y(s),s)y^{\prime}(s)ds+C(t_{N-1})" class="ltx_Math" display="block" id="A0.Ex16.m1"><mrow><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><msubsup><mo>∫</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mi>t</mi></msubsup><mrow><msubsup><mi>u</mi><mn>1</mn><mi>S</mi></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>y</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>s</mi></mrow></mrow></mrow><mo>+</mo><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="Sx1.p3">
+<p class="ltx_p">The Receiver’s response for any signal on the equilibrium path is
+given by <math alttext="\alpha(m_{i},0)=y(t_{i-1},t_{i})" class="ltx_Math" display="inline" id="Sx1.p3.m1"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all
+<math alttext="i\in\{1,\ldots,N-1\}" class="ltx_Math" display="inline" id="Sx1.p3.m2"><mrow><mi>i</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math> and
+<math alttext="\alpha(m_{N},\hat{b})=y\left(b^{-1}(\hat{b})\right)" class="ltx_Math" display="inline" id="Sx1.p3.m3"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>N</mi></msub><mo>,</mo><mover accent="true"><mi>b</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msup><mi>b</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math> for all
+<math alttext="\hat{b}\in\left[b(t_{N-1}),b(1)\right]" class="ltx_Math" display="inline" id="Sx1.p3.m4"><mrow><mover accent="true"><mi>b</mi><mo>^</mo></mover><mo>∈</mo><mrow><mo>[</mo><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></math>.  For signals off the
+equilibrium path, proceed thus: define <math alttext="a_{0}\equiv\alpha(\sigma(0))" class="ltx_Math" display="inline" id="Sx1.p3.m5"><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>≡</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>;<span class="ltx_note ltx_role_footnote" id="footnote14"><sup class="ltx_note_mark">14</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">14</sup><span class="ltx_tag ltx_tag_note">14</span>Since <math alttext="\sigma(0)" class="ltx_Math" display="inline" id="footnote14.m1"><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> is an
+on-the-equilibrium path signal, <math alttext="\alpha(\sigma(0))" class="ltx_Math" display="inline" id="footnote14.m2"><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> has already been
+defined.</span></span></span> for all signals <math alttext="(m,b)" class="ltx_Math" display="inline" id="Sx1.p3.m6"><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math> such that there is no <math alttext="t" class="ltx_Math" display="inline" id="Sx1.p3.m7"><mi>t</mi></math> with
+<math alttext="(m,b)=\sigma(t)" class="ltx_Math" display="inline" id="Sx1.p3.m8"><mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, set <math alttext="\alpha(m,b)=a_{0}" class="ltx_Math" display="inline" id="Sx1.p3.m9"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub></mrow></math>.</p>
+</div>
+<div class="ltx_para" id="Sx1.p4">
+<p class="ltx_p">It is straightforward to verify that these strategies constitutes an
+equilibrium where <math alttext="b(\cdot)" class="ltx_Math" display="inline" id="Sx1.p4.m1"><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> is strictly increasing on
+<math alttext="[t_{N-1},1]" class="ltx_Math" display="inline" id="Sx1.p4.m2"><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Lemma <a class="ltx_ref" href="#Thmlemma3"><span class="ltx_text ltx_ref_tag">3</span></a>.</h6>
+<div class="ltx_para" id="Sx1.p5">
+<p class="ltx_p">Pick any type <math alttext="\hat{t}&gt;0" class="ltx_Math" display="inline" id="Sx1.p5.m1"><mrow><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo>&gt;</mo><mn>0</mn></mrow></math> and suppose it is separating.  I argue to
+a contradiction for <math alttext="\overline{b}" class="ltx_Math" display="inline" id="Sx1.p5.m2"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math> small enough.  Denote by <math alttext="\tilde{t}" class="ltx_Math" display="inline" id="Sx1.p5.m3"><mover accent="true"><mi>t</mi><mo>~</mo></mover></math>
+the type such that <math alttext="y^{S}(\tilde{t})=y(\hat{t})" class="ltx_Math" display="inline" id="Sx1.p5.m4"><mrow><mrow><msup><mi>y</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow></mrow></math> if it exists, or else
+let <math alttext="\tilde{t}=0" class="ltx_Math" display="inline" id="Sx1.p5.m5"><mrow><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>=</mo><mn>0</mn></mrow></math>.  Note that <math alttext="\tilde{t}" class="ltx_Math" display="inline" id="Sx1.p5.m6"><mover accent="true"><mi>t</mi><mo>~</mo></mover></math> is strictly smaller than
+<math alttext="\hat{t}" class="ltx_Math" display="inline" id="Sx1.p5.m7"><mover accent="true"><mi>t</mi><mo>^</mo></mover></math> (since <math alttext="y^{S}(t)&gt;y^{R}(t)" class="ltx_Math" display="inline" id="Sx1.p5.m8"><mrow><mrow><msup><mi>y</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mrow><msup><mi>y</mi><mi>R</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all <math alttext="t" class="ltx_Math" display="inline" id="Sx1.p5.m9"><mi>t</mi></math>) and does not vary with
+<math alttext="\overline{b}" class="ltx_Math" display="inline" id="Sx1.p5.m10"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math>.  Since <math alttext="\hat{t}" class="ltx_Math" display="inline" id="Sx1.p5.m11"><mover accent="true"><mi>t</mi><mo>^</mo></mover></math> is separating by hypothesis,
+<math alttext="\alpha(\sigma(\tilde{t}))\leq y(\tilde{t},\hat{t})" class="ltx_Math" display="inline" id="Sx1.p5.m12"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.  For type
+<math alttext="\tilde{t}" class="ltx_Math" display="inline" id="Sx1.p5.m13"><mover accent="true"><mi>t</mi><mo>~</mo></mover></math> not to imitate (i.e. pool with) <math alttext="\hat{t}" class="ltx_Math" display="inline" id="Sx1.p5.m14"><mover accent="true"><mi>t</mi><mo>^</mo></mover></math> requires
+<math alttext="u^{S}(y(\hat{t}),\tilde{t})-u^{S}(y(\tilde{t},\hat{t}),\tilde{t})\leq b(\hat{t%
+})-b(\tilde{t})" class="ltx_Math" display="inline" id="Sx1.p5.m15"><mrow><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo>,</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>^</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>t</mi><mo>~</mo></mover><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.  However, the RHS is bounded above by
+<math alttext="\overline{b}" class="ltx_Math" display="inline" id="Sx1.p5.m16"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math> whereas the LHS is a positive constant; hence the
+inequality fails for all <math alttext="\overline{b}" class="ltx_Math" display="inline" id="Sx1.p5.m17"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math> smaller than some positive
+threshold.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Theorem <a class="ltx_ref" href="#Thmtheorem3"><span class="ltx_text ltx_ref_tag">3</span></a>.</h6>
+<div class="ltx_para" id="Sx1.p6">
+<p class="ltx_p">By Lemma <a class="ltx_ref" href="#Thmlemma3"><span class="ltx_text ltx_ref_tag">3</span></a>, for any <math alttext="\varepsilon&gt;0" class="ltx_Math" display="inline" id="Sx1.p6.m1"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, there is a
+<math alttext="\delta&gt;0" class="ltx_Math" display="inline" id="Sx1.p6.m2"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that for all <math alttext="\overline{b}&lt;\delta" class="ltx_Math" display="inline" id="Sx1.p6.m3"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo>&lt;</mo><mi>δ</mi></mrow></math>, in any equilibrium
+partition <math alttext="\langle s_{0}\equiv\underline{s},s_{1},\ldots,s_{N}\equiv 1\rangle(\overline{b})" class="ltx_Math" display="inline" id="Sx1.p6.m4"><mrow><mrow><mo stretchy="false">⟨</mo><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>≡</mo><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>,</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>s</mi><mi>N</mi></msub><mo>≡</mo><mn>1</mn></mrow></mrow><mo stretchy="false">⟩</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math>,
+<math alttext="s_{0}&lt;\varepsilon" class="ltx_Math" display="inline" id="Sx1.p6.m5"><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>&lt;</mo><mi>ε</mi></mrow></math> and there are only pools above <math alttext="s_{0}" class="ltx_Math" display="inline" id="Sx1.p6.m6"><msub><mi>s</mi><mn>0</mn></msub></math>.  For any
+pooling interval <math alttext="(s_{j-1},s_{j})" class="ltx_Math" display="inline" id="Sx1.p6.m7"><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>s</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></math>, denote the amount of burned
+money by all types in this pool as <math alttext="b_{j}" class="ltx_Math" display="inline" id="Sx1.p6.m8"><msub><mi>b</mi><mi>j</mi></msub></math>.  The incentive
+compatibility conditions for equilibrium require that for all
+<math alttext="j\in\{1,\ldots,N-1\}" class="ltx_Math" display="inline" id="Sx1.p6.m9"><mrow><mi>j</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>,</p>
+<table class="ltx_equationgroup ltx_eqn_align ltx_eqn_table" id="A0.EGx5">
+<tbody id="A0.Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math alttext="\displaystyle u^{S}(y(s_{j-1},s_{j}),s_{j})-u^{S}(y(s_{j},s_{j+1}),s_{j})=b_{j%
+}-b_{j+1}" class="ltx_Math" display="inline" id="A0.Ex17.m1"><mrow><mrow><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>s</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>s</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msup><mi>u</mi><mi>S</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mi>j</mi></msub><mo>,</mo><msub><mi>s</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>s</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><msub><mi>b</mi><mi>j</mi></msub><mo>−</mo><msub><mi>b</mi><mrow><mi>j</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(IC)</span></td>
+</tr></tbody>
+</table>
+</div>
+<div class="ltx_para" id="Sx1.p7">
+<p class="ltx_p">As <math alttext="\overline{b}\rightarrow 0" class="ltx_Math" display="inline" id="Sx1.p7.m1"><mrow><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mn>0</mn></mrow></math>, the RHS of equation (<a class="ltx_ref" href="#A0.Ex17"><span class="ltx_text ltx_ref_tag">IC</span></a>)
+converges to <math alttext="0" class="ltx_Math" display="inline" id="Sx1.p7.m2"><mn>0</mn></math>.  It follows from equations (<a class="ltx_ref" href="#A0.Ex17"><span class="ltx_text ltx_ref_tag">IC</span></a>) and
+(<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) that if for all <math alttext="\overline{b}" class="ltx_Math" display="inline" id="Sx1.p7.m3"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math> sufficiently small, every
+equilibrium partition has <math alttext="s_{1}(\overline{b})" class="ltx_Math" display="inline" id="Sx1.p7.m4"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow></math> arbitrarily close to some
+CS partition first segment boundary <math alttext="t_{1}" class="ltx_Math" display="inline" id="Sx1.p7.m5"><msub><mi>t</mi><mn>1</mn></msub></math>, the Theorem is true.</p>
+</div>
+<div class="ltx_para" id="Sx1.p8">
+<p class="ltx_p">So suppose towards contradiction that this is not the case.  Then
+there exists a sequence <math alttext="\{\overline{b}_{i}\}_{i=1}^{\infty}\rightarrow 0" class="ltx_Math" display="inline" id="Sx1.p8.m1"><mrow><msubsup><mrow><mo stretchy="false">{</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">}</mo></mrow><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></msubsup><mo stretchy="false">→</mo><mn>0</mn></mrow></math>
+and an equilibrium partition for each <math alttext="\overline{b}_{i}" class="ltx_Math" display="inline" id="Sx1.p8.m2"><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub></math> such that
+<math alttext="s_{1}(\overline{b}_{i})" class="ltx_Math" display="inline" id="Sx1.p8.m3"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> converges (in subsequence) to some <math alttext="\overline{s}" class="ltx_Math" display="inline" id="Sx1.p8.m4"><mover accent="true"><mi>s</mi><mo>¯</mo></mover></math> that
+is not a CS partition first segment boundary.  Consider a forward
+solution to the difference equation (<a class="ltx_ref" href="#S2.Ex2"><span class="ltx_text ltx_ref_tag">A</span></a>) starting with
+<math alttext="\tau_{0}=0" class="ltx_Math" display="inline" id="Sx1.p8.m5"><mrow><msub><mi>τ</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow></math> and <math alttext="\tau_{1}=\overline{s}" class="ltx_Math" display="inline" id="Sx1.p8.m6"><mrow><msub><mi>τ</mi><mn>1</mn></msub><mo>=</mo><mover accent="true"><mi>s</mi><mo>¯</mo></mover></mrow></math>.  Since <math alttext="\overline{s}" class="ltx_Math" display="inline" id="Sx1.p8.m7"><mover accent="true"><mi>s</mi><mo>¯</mo></mover></math> is not the first
+segment boundary of a CS partition, there is a <math alttext="\theta&gt;0" class="ltx_Math" display="inline" id="Sx1.p8.m8"><mrow><mi>θ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that
+no <math alttext="\tau_{j}" class="ltx_Math" display="inline" id="Sx1.p8.m9"><msub><mi>τ</mi><mi>j</mi></msub></math> (<math alttext="j=0,1,\ldots" class="ltx_Math" display="inline" id="Sx1.p8.m10"><mrow><mi>j</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>) lies in <math alttext="(1-\theta,1]" class="ltx_Math" display="inline" id="Sx1.p8.m11"><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>θ</mi></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>.  Noting that
+for sufficiently small <math alttext="\overline{b}_{i}" class="ltx_Math" display="inline" id="Sx1.p8.m12"><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub></math>,
+<math alttext="s_{0}(\overline{b}_{i})\equiv\underline{s}(\overline{b}_{i})" class="ltx_Math" display="inline" id="Sx1.p8.m13"><mrow><mrow><msub><mi>s</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≡</mo><mrow><munder accentunder="true"><mi>s</mi><mo>¯</mo></munder><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and
+<math alttext="s_{1}(\overline{b}_{i})" class="ltx_Math" display="inline" id="Sx1.p8.m14"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> are arbitrarily close to <math alttext="\tau_{0}\equiv 0" class="ltx_Math" display="inline" id="Sx1.p8.m15"><mrow><msub><mi>τ</mi><mn>0</mn></msub><mo>≡</mo><mn>0</mn></mrow></math> and
+<math alttext="\tau_{1}\equiv\overline{s}" class="ltx_Math" display="inline" id="Sx1.p8.m16"><mrow><msub><mi>τ</mi><mn>1</mn></msub><mo>≡</mo><mover accent="true"><mi>s</mi><mo>¯</mo></mover></mrow></math> respectively, it follows from equation
+(<a class="ltx_ref" href="#A0.Ex17"><span class="ltx_text ltx_ref_tag">IC</span></a>) that each <math alttext="s_{j}(\overline{b}_{i})" class="ltx_Math" display="inline" id="Sx1.p8.m17"><mrow><msub><mi>s</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> is arbitrarily close
+to some <math alttext="\tau_{j}" class="ltx_Math" display="inline" id="Sx1.p8.m18"><msub><mi>τ</mi><mi>j</mi></msub></math> (<math alttext="j=0,1,\ldots" class="ltx_Math" display="inline" id="Sx1.p8.m19"><mrow><mi>j</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>).  Thus, for small enough
+<math alttext="\overline{b}_{i}" class="ltx_Math" display="inline" id="Sx1.p8.m20"><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub></math>, there is no <math alttext="j" class="ltx_Math" display="inline" id="Sx1.p8.m21"><mi>j</mi></math> such that <math alttext="s_{j}(\overline{b}_{i})=1" class="ltx_Math" display="inline" id="Sx1.p8.m22"><mrow><mrow><msub><mi>s</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mover accent="true"><mi>b</mi><mo>¯</mo></mover><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.  But
+this is a contradiction with the requirement for an equilibrium
+partition.  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib25">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Austen-Smith and J. S. Banks (1998)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Cheap talk and burned money</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">Center for Mathematical Studies in Economics and Management Science DP 1245, Northwestern University</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote9"><span class="ltx_text ltx_ref_tag">footnote 9</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib26">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Austen-Smith and J. S. Banks (2000)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Cheap talk and burned money</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">91</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1–16</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib115">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">V. Crawford and J. Sobel (1982)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Strategic information transmission</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">50</span> (<span class="ltx_text ltx_bib_number">6</span>), <span class="ltx_text ltx_bib_pages"> pp. 1431–1451</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib218">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Kartik (2005a)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Information transmission with almost-cheap talk</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">mimeo, University of California, San Diego</span>
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="http://econ.ucsd.edu/~nkartik/Papers/almost-cheap.pdf">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S5.p6"><span class="ltx_text ltx_ref_tag">§5</span></a>,
+<a class="ltx_ref" href="#S5.p8"><span class="ltx_text ltx_ref_tag">§5</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib220">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Kartik (2005b)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">On cheap talk and burned money</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">mimeo, University of California, San Diego</span>
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="http://econ.ucsd.edu/~nkartik/Papers/burned.pdf">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p4"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+</ul>
+</section><div about="" class="ltx_rdf" content="Navin Kartik" property="dcterms:creator"></div>
+<div about="" class="ltx_rdf" content="Cheap Talk, Burned Money, Signaling, Refinements, Equilibrium Selection" property="dcterms:subject"></div>
+<div about="" class="ltx_rdf" content="On Cheap Talk and Burned Money" property="dcterms:title"></div>
+</article><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/burned_note.pdf">PDF</a> is more accurate.</div><nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo"></div></footer>
+</div>
+</body>
+</html>

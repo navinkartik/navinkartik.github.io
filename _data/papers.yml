@@ -160,6 +160,7 @@
 
 - title: "Improving Information from Manipulable Data"
   pdf: Papers/FK-ImprovingInfo.pdf
+  html: FK-ImprovingInfo
   coauthors: [Alex Frankel]
   journal: "Journal of the European Economic Association"
   journal_url: https://doi.org/10.1093/jeea/jvab017
@@ -170,6 +171,7 @@
 
 - title: "Delegation in Veto Bargaining"
   pdf: Papers/KKvW-veto.pdf
+  html: KKvW-veto
   coauthors: [Andreas Kleiner, Richard Van Weelden]
   journal: "American Economic Review"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/aer.20201817
@@ -216,6 +218,7 @@
 
 - title: "Informative Cheap Talk in Elections"
   pdf: Papers/KvW-communication.pdf
+  html: KvW-communication
   coauthors: [Richard Van Weelden]
   journal: "Review of Economic Studies"
   journal_url: https://doi.org/10.1093/restud/rdy009
@@ -264,6 +267,7 @@
 
 - title: "Contests for Experimentation"
   pdf: Papers/HKL_contests.pdf
+  html: HKL_contests
   coauthors: [Marina Halac, Qingmin Liu]
   journal: "Journal of Political Economy"
   journal_url: https://doi.org/10.1086/693040
@@ -277,6 +281,7 @@
 
 - title: "Investment in Concealable Information by Biased Experts"
   pdf: Papers/KLS-acquisition.pdf
+  html: KLS-acquisition
   coauthors: [Frances Xu Lee, Wing Suen]
   journal: "RAND Journal of Economics"
   journal_url: https://dx.doi.org/10.1111/1756-2171.12166
@@ -448,6 +453,7 @@
 
 - title: "A Note on Cheap Talk and Burned Money"
   pdf: Papers/burned_note.pdf
+  html: burned_note
   coauthors: []
   journal: "Journal of Economic Theory"
   journal_url: https://dx.doi.org/10.1016/j.jet.2006.07.001
@@ -476,6 +482,7 @@
 
 - title: "Credulity, Lies, and Costly Talk"
   pdf: Papers/Published/clct.pdf
+  html: clct
   coauthors: [Marco Ottaviani, Francesco Squintani]
   journal: "Journal of Economic Theory"
   journal_url: https://dx.doi.org/10.1016/j.jet.2006.04.003

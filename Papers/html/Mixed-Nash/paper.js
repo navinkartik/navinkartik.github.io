@@ -287,7 +287,18 @@
   /* ── Proof toggle helper ───────────────────────────────────── */
   /* overflow:visible by default so margin floats escape the proof body.
      We set overflow:hidden only during the collapse animation, then restore. */
+  /* A proof body that is only a pointer ("See Appendix B.", "Follows from Lemma 1.")
+     gains nothing from a hide/show control. 115 is the midpoint of the gap between
+     the longest such stub (108 chars) and the shortest proof that actually argues
+     something (122), measured over the 27 deployed and Tier-1 papers. Returns false
+     when no toggle was attached, so the caller leaves the body expanded. */
+  var PROOF_STUB_MAX = 115;
+
   function attachProofToggle(body, btn) {
+    if (body.textContent.trim().length < PROOF_STUB_MAX) {
+      btn.remove();
+      return false;
+    }
     btn.addEventListener('click', function () {
       var collapsing = !body.classList.contains('nk-collapsed');
       body.style.overflow = 'hidden';
@@ -314,6 +325,7 @@
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
     });
+    return true;
   }
 
   /* ── Proof toggle ──────────────────────────────────────────── */
@@ -343,11 +355,12 @@
       btn.setAttribute('aria-expanded', 'true');
       label.appendChild(btn);
 
-      attachProofToggle(body, btn);
-      body.classList.add('nk-collapsed');
-      body.style.overflow = 'hidden';
-      btn.textContent = 'show';
-      btn.setAttribute('aria-expanded', 'false');
+      if (attachProofToggle(body, btn)) {
+        body.classList.add('nk-collapsed');
+        body.style.overflow = 'hidden';
+        btn.textContent = 'show';
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // All nk-proof proofs are wrapped by apply_design.py.
@@ -391,11 +404,12 @@
       btn.setAttribute('aria-expanded', 'true');
       tag.appendChild(btn);
 
-      attachProofToggle(body, btn);
-      body.classList.add('nk-collapsed');
-      body.style.overflow = 'hidden';
-      btn.textContent = 'show';
-      btn.setAttribute('aria-expanded', 'false');
+      if (attachProofToggle(body, btn)) {
+        body.classList.add('nk-collapsed');
+        body.style.overflow = 'hidden';
+        btn.textContent = 'show';
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Pattern B: nk-proof-bold — bold "Proof." span inside p.ltx_p inside div.ltx_para.
@@ -446,11 +460,12 @@
       btn.setAttribute('aria-expanded', 'true');
       boldSpan.appendChild(btn);
 
-      attachProofToggle(body, btn);
-      body.classList.add('nk-collapsed');
-      body.style.overflow = 'hidden';
-      btn.textContent = 'show';
-      btn.setAttribute('aria-expanded', 'false');
+      if (attachProofToggle(body, btn)) {
+        body.classList.add('nk-collapsed');
+        body.style.overflow = 'hidden';
+        btn.textContent = 'show';
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Pattern D: nk-proof-smallcaps — smallcaps "Proof:" span (e.g. Opinions, ∥ QED).
@@ -496,11 +511,12 @@
       btn.setAttribute('aria-expanded', 'true');
       scSpan.appendChild(btn);
 
-      attachProofToggle(body, btn);
-      body.classList.add('nk-collapsed');
-      body.style.overflow = 'hidden';
-      btn.textContent = 'show';
-      btn.setAttribute('aria-expanded', 'false');
+      if (attachProofToggle(body, btn)) {
+        body.classList.add('nk-collapsed');
+        body.style.overflow = 'hidden';
+        btn.textContent = 'show';
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Pattern C: nk-proof-italic — italic <em>Proof</em> inside p.ltx_p inside div.ltx_para.
@@ -564,11 +580,12 @@
       btn.setAttribute('aria-expanded', 'true');
       labelP.insertBefore(btn, anchor.nextSibling);
 
-      attachProofToggle(body, btn);
-      body.classList.add('nk-collapsed');
-      body.style.overflow = 'hidden';
-      btn.textContent = 'show';
-      btn.setAttribute('aria-expanded', 'false');
+      if (attachProofToggle(body, btn)) {
+        body.classList.add('nk-collapsed');
+        body.style.overflow = 'hidden';
+        btn.textContent = 'show';
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
@@ -725,6 +742,10 @@
       return clone;
     }
 
+    function isNumberedRow(tbody) {
+      return !!tbody.querySelector('.ltx_tag_equation');
+    }
+
     function resolveContent(id) {
       if (id.startsWith('bib.bib')) return null;
       var target = document.getElementById(id);
@@ -740,7 +761,23 @@
       if (eqn) {
         if (target !== eqn && target.tagName === 'TBODY') {
           var shell = eqn.cloneNode(false);
-          shell.appendChild(target.cloneNode(true));
+          var rows = [target];
+          // An unnumbered sibling row group is a continuation line of the numbered one
+          // (\nonumber in an align, or a split), so it belongs in the same preview.
+          // Gated on the target being numbered: where every row carries its own number
+          // each is a separate equation and must stay alone, which is what this branch
+          // was written for.
+          if (isNumberedRow(target)) {
+            var prev = target.previousElementSibling;
+            while (prev && prev.tagName === 'TBODY' && !isNumberedRow(prev)) {
+              rows.unshift(prev); prev = prev.previousElementSibling;
+            }
+            var next = target.nextElementSibling;
+            while (next && next.tagName === 'TBODY' && !isNumberedRow(next)) {
+              rows.push(next); next = next.nextElementSibling;
+            }
+          }
+          rows.forEach(function (r) { shell.appendChild(r.cloneNode(true)); });
           return shell;
         }
         return eqn.cloneNode(true);
@@ -775,6 +812,11 @@
           if (!content) return;
           preview.innerHTML = '';
           preview.appendChild(content);
+          // Displayed equations are often wider than the default popover, and
+          // pointer-events:none means the reader cannot scroll one that overflows,
+          // so give equation previews a wider cap.
+          preview.classList.toggle('nk-preview-eqn', !!content.querySelector &&
+            (content.classList.contains('ltx_eqn_table') || !!content.querySelector('.ltx_eqn_table')));
           preview.style.display = 'block';
           placePreview(ex, ey);
         }, 300);

@@ -514,6 +514,9 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
   .ltx_note_outer {
     display: block;
     font-size: 0.83rem;
+    /* \thanks notes sit inside the bold <h1>, so they inherit its weight; the
+       tablet and wide blocks below reset this and this one must too. */
+    font-weight: normal;
     line-height: 1.5;
     color: var(--muted);
     border-left: 2px solid var(--border);
@@ -1169,3 +1172,11 @@ figure.ltx_figure_panel img.ltx_graphics { cursor: zoom-in; }
    wrapper, so it needs block layout here; dropping the wrapper also means it does
    not inherit the muted margin-note colour, which is what we want in a popover. */
 #nk-ref-preview .ltx_note_content { display: block; }
+
+/* Equation numbers are painted OUTSIDE the table box (zero-width cell + float:right)
+   so they land in the page margin. A popover has no margin to lend, and its overflow
+   clipping cuts them off. Inside the preview, give the number a real cell instead.
+   Same idea as the footnote rule above. */
+#nk-ref-preview .ltx_eqn_eqno { max-width: none; padding-left: 1.25rem; }
+#nk-ref-preview .ltx_eqn_eqno.ltx_align_right .ltx_tag { float: none; }
+#nk-ref-preview.nk-preview-eqn { max-width: min(92vw, 60rem); }
