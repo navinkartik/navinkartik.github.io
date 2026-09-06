@@ -836,6 +836,27 @@
     });
   }
 
+  /* ── Browser chrome colour ─────────────────────────────────── */
+  /* The theme-color metas in the document follow prefers-color-scheme, which the
+     in-page dark toggle does not change. Without this, toggling to dark on a light
+     phone leaves light-tinted browser chrome around a dark page. */
+  function initThemeColor() {
+    function sync() {
+      var bg = getComputedStyle(document.body).backgroundColor;
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      for (var i = 0; i < metas.length; i++) metas[i].parentNode.removeChild(metas[i]);
+      var m = document.createElement('meta');
+      m.name = 'theme-color';
+      m.content = bg;
+      document.head.appendChild(m);
+    }
+    if (window.MutationObserver) {
+      new MutationObserver(sync).observe(document.documentElement,
+        { attributes: true, attributeFilter: ['data-theme'] });
+    }
+    sync();
+  }
+
   /* ── Back-to-text button ───────────────────────────────────── */
   /* When any internal link (#...) navigates away, show a floating
      "↩ back to text" button that restores the saved scroll position.
@@ -1435,7 +1456,8 @@
       initProofToggles();
       initCitationTooltips();
       initRefPreviews();
-      initBackToText();
+      initThemeColor();
+    initBackToText();
       initLightbox();
     });
   }

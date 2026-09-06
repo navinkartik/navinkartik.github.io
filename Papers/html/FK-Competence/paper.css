@@ -55,6 +55,10 @@
 /* ── Reset ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* The canvas, not just the page box. body's background normally propagates, but
+   iOS Safari paints grey bands behind the status bar and toolbar without this
+   (see also the theme-color metas injected by apply_design.py). */
+html { background: var(--bg); }
 html { font-size: 16px; scroll-behavior: smooth; }
 html[data-fontsize="small"] { font-size: 14px; }
 html[data-fontsize="large"] {
@@ -465,7 +469,20 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
 .ltx_eqn_align .ltx_eqn_center_padleft,
 .ltx_eqn_align .ltx_eqn_center_padright { width: 50%; }
 
+/* Skip rendering offscreen chunks below the tablet breakpoint. MathJax roughly
+   triples the DOM (43k nodes vs 16k on a mid-size paper), and on a phone that was
+   enough to crash Safari's renderer on a fast scroll. Desktop is deliberately
+   excluded: it does not crash there, so it keeps today's behaviour exactly.
+   Per-chunk contain-intrinsic-size is written by apply_design.py. */
+@media (max-width: 69.99rem) {
+  .nk-cv { content-visibility: auto; }
+}
+
 .ltx_align_center { text-align: center; }
+/* LaTeXML marks the LHS cell of an align block ltx_align_right; without this it
+   computed text-align:start and sat at the far left of its cell, opening a wide
+   gap before the relation symbol. Also fixes right-aligned cells in tabulars. */
+.ltx_align_right  { text-align: right; }
 
 /* \parbox: ltx_align_center centers the BOX, not the lines inside it. Without this,
    a parbox of running prose in a figure gets every line centered. */
