@@ -836,6 +836,62 @@
     });
   }
 
+  /* ── Fit over-wide math ────────────────────────────────────── */
+  /* A MathML box paints outside its cell, its table, and the document's scrollable
+     width, and no overflow rule on any ancestor contains it — measured on iOS: content
+     ended 40-97px beyond where the page could scroll, i.e. unreachable by any gesture.
+     Scaling the element's own font-size is the only lever that reflows rather than just
+     repainting, and unlike a rule on `math` it touches only the equations that overflow,
+     leaving inline math at prose size. */
+  function initFitMath() {
+    var MIN_SCALE = 0.5;
+
+    function shrink(el, avail) {
+      el.style.fontSize = '';
+      var w = el.getBoundingClientRect().width;
+      if (w <= avail) return;
+      // Re-wrapping means one pass can undershoot; two are enough in practice.
+      for (var pass = 0; pass < 2 && w > avail; pass++) {
+        var scale = Math.max(MIN_SCALE, avail / w);
+        var cur = parseFloat(getComputedStyle(el).fontSize) || 16;
+        el.style.fontSize = (cur * scale) + 'px';
+        w = el.getBoundingClientRect().width;
+      }
+    }
+
+    function fit() {
+      var page = document.querySelector('.ltx_document') || document.body;
+      var avail = page.clientWidth - 8;
+      if (avail <= 0) return;
+      // Tables first: in an align block the two cells sit side by side, so each
+      // equation can fit on its own while the row does not. Scaling the table
+      // shrinks everything in it together and keeps the columns aligned.
+      var tables = document.querySelectorAll('table.ltx_eqn_table');
+      for (var i = 0; i < tables.length; i++) shrink(tables[i], avail);
+      // Then anything still over-wide that a table did not already cover.
+      var rest = document.querySelectorAll('math, mjx-container');
+      for (var j = 0; j < rest.length; j++) {
+        if (rest[j].closest && rest[j].closest('table.ltx_eqn_table')) continue;
+        shrink(rest[j], avail);
+      }
+    }
+
+    var pending = false;
+    function schedule() {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () { pending = false; fit(); });
+    }
+
+    schedule();
+    window.addEventListener('resize', schedule);
+    window.addEventListener('load', schedule);
+    // Font swap and MathJax typesetting both change widths after first paint.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    new MutationObserver(schedule).observe(document.documentElement,
+      { attributes: true, attributeFilter: ['data-fontsize'] });
+  }
+
   /* ── Browser chrome colour ─────────────────────────────────── */
   /* The theme-color metas in the document follow prefers-color-scheme, which the
      in-page dark toggle does not change. Without this, toggling to dark on a light
@@ -1456,7 +1512,8 @@
       initProofToggles();
       initCitationTooltips();
       initRefPreviews();
-      initThemeColor();
+      initFitMath();
+    initThemeColor();
     initBackToText();
       initLightbox();
     });

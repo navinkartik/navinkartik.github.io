@@ -9,15 +9,20 @@
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
 <meta content="#faf8f6" media="(prefers-color-scheme: light)" name="theme-color"/>
 <meta content="#1c1b19" media="(prefers-color-scheme: dark)" name="theme-color"/>
-<link href="paper.css?v=1788713721" rel="stylesheet" type="text/css"/>
+<link href="paper.css?v=1791552188" rel="stylesheet" type="text/css"/>
 <script>
 MathJax = {
   options: { skipHtmlTags: ["script","noscript","style","textarea","pre"] },
   startup: { typeset: true }
 };
+if (!window.matchMedia || !window.matchMedia("(hover: none)").matches) {
+  var s = document.createElement("script");
+  s.id = "MathJax-script"; s.async = true;
+  s.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js";
+  document.head.appendChild(s);
+}
 </script>
-<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js"></script>
-<script defer="" src="paper.js?v=1788713721"></script>
+<script defer="" src="paper.js?v=1791552188"></script>
 </head>
 <body>
 <div class="ltx_page_main">
@@ -312,7 +317,7 @@ The assumed linearity of <math alttext="u^{s}(x,t)" class="ltx_Math" display="in
 <section class="ltx_subsection" id="S3.SS2">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">3.2 </span>Discussion of the Model</h3>
-<section class="ltx_subsubsection nk-cv" id="S3.SS2.SSS1" style="contain-intrinsic-size: auto 874px">
+<section class="ltx_subsubsection" id="S3.SS2.SSS1">
 <h4 class="ltx_title ltx_title_subsubsection">
 <span class="ltx_tag ltx_tag_subsubsection">3.2.1 </span>Imputation and acceptance rules</h4>
 <div class="ltx_para" id="S3.SS2.SSS1.p1">
@@ -322,7 +327,7 @@ The assumed linearity of <math alttext="u^{s}(x,t)" class="ltx_Math" display="in
 <p class="ltx_p">At a theoretical level, however, the natural alternative would be to specify an admissions policy as an arbitrary mapping from observables, whether the student submits their score, and the score if submitted, to an admissions probability. We show in <a class="ltx_ref ltx_refmacro_autoref" href="#A2"><span class="ltx_text ltx_ref_tag">Appendix B</span></a> that the outcome under this alternative is the same as that under flexible imputation. In other words, given flexible imputation, it is without loss of generality to stipulate that the college treats missing test scores via imputation and uses a monotonic acceptance rule.</p>
 </div>
 </section>
-<section class="ltx_subsubsection nk-cv" id="S3.SS2.SSS2" style="contain-intrinsic-size: auto 1408px">
+<section class="ltx_subsubsection" id="S3.SS2.SSS2">
 <h4 class="ltx_title ltx_title_subsubsection">
 <span class="ltx_tag ltx_tag_subsubsection">3.2.2 </span>Restricted imputation rules</h4>
 <div class="ltx_para" id="S3.SS2.SSS2.p1">
@@ -358,7 +363,7 @@ Of course, in the real world, students face uncertainty about how colleges treat
 </section>
 </section>
 </section>
-<section class="ltx_subsection nk-cv" id="S3.SS3" style="contain-intrinsic-size: auto 3055px">
+<section class="ltx_subsection" id="S3.SS3">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">3.3 </span>Ex-Post Utility</h3>
 <div class="ltx_para" id="S3.SS3.p1">
@@ -429,7 +434,7 @@ and <math alttext="u^{i}=a^{i}+x+w^{i}\times t" class="ltx_Math" display="inline
 </div>
 </figure>
 </section>
-<section class="ltx_subsection nk-cv" id="S3.SS4" style="contain-intrinsic-size: auto 967px">
+<section class="ltx_subsection" id="S3.SS4">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">3.4 </span>Test-Mandatory Admissions</h3>
 <div class="ltx_para" id="S3.SS4.p1">
@@ -452,7 +457,7 @@ and <math alttext="u^{i}=a^{i}+x+w^{i}\times t" class="ltx_Math" display="inline
 <section class="ltx_section" id="S4">
 <h2 class="ltx_title ltx_title_section">
 <span class="ltx_tag ltx_tag_section">4 </span>Test-Optional Admissions</h2>
-<section class="ltx_subsection nk-cv" id="S4.SS1" style="contain-intrinsic-size: auto 2107px">
+<section class="ltx_subsection" id="S4.SS1">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">4.1 </span>Optimal Acceptance Rule</h3>
 <div class="ltx_para" id="S4.SS1.p1">
@@ -773,7 +778,7 @@ prefers test mandatory to test optional if either:</span></p>
 <section class="ltx_section" id="S5">
 <h2 class="ltx_title ltx_title_section">
 <span class="ltx_tag ltx_tag_section">5 </span>Further Results</h2>
-<section class="ltx_subsection nk-cv" id="S5.SS1" style="contain-intrinsic-size: auto 4270px">
+<section class="ltx_subsection" id="S5.SS1">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">5.1 </span>Banning Affirmative Action</h3>
 <div class="ltx_para" id="S5.SS1.p1">
@@ -818,7 +823,7 @@ Even prior to this decision, some commentators had suggested that banning affirm
 <p class="ltx_p">We conclude this subsection by noting that group identity in our extended example can also represent other attributes besides race. For example, it could be legacy status. Colleges often give a leg up in admission to students whose family members have attended the college. The above analysis then applies for evaluating a ban on the use of legacy status in admissions, with one possible twist. For legacy status, the preferred group might have a higher average test score than other applicants, instead of a lower one, as legacy students tend to come from advantaged backgrounds.<span class="ltx_note ltx_role_footnote" id="footnote35"><sup class="ltx_note_mark">35</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">35</sup><span class="ltx_tag ltx_tag_note">35</span>For example, the <a class="ltx_ref ltx_href" href="https://features.thecrimson.com/2023/freshman-survey/academics/">Harvard Crimson reports</a> that legacy students in Harvard’s entering class of 2027 had an average SAT score of about 28 points higher than their non-legacy counterparts.</span></span></span> A ban on legacy admissions—which has been implemented by a few US states, most recently California in September 2024—would then mean that the college now wants to put <em class="ltx_emph ltx_font_italic">extra</em> weight on tests. Hence, the college’s desire to see test scores would increase.</p>
 </div>
 </section>
-<section class="ltx_subsection nk-cv" id="S5.SS2" style="contain-intrinsic-size: auto 6684px">
+<section class="ltx_subsection" id="S5.SS2">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">5.2 </span>Competition Between Colleges</h3>
 <div class="ltx_para" id="S5.SS2.p1">
@@ -916,7 +921,7 @@ In <a class="ltx_ref ltx_refmacro_autoref" href="#S5.SS2"><span class="ltx_text 
 <div class="ltx_para" id="S6.p3">
 <p class="ltx_p">We close by discussing some alternative modeling assumptions and broader issues.</p>
 </div>
-<section class="ltx_subsection nk-cv" id="S6.SS1" style="contain-intrinsic-size: auto 938px">
+<section class="ltx_subsection" id="S6.SS1">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">6.1 </span>Capacity Constraints and Interactions Across Students</h3>
 <div class="ltx_para" id="S6.SS1.p1">
@@ -929,7 +934,7 @@ In <a class="ltx_ref ltx_refmacro_autoref" href="#S5.SS2"><span class="ltx_text 
 <p class="ltx_p">Our formulation also abstracts from the college’s or society’s preferences for one student depending on the admission outcome of another. In that sense, payoffs are additively separable across students. This omits considerations such as class balance or diversity (on legally-permissible dimensions).</p>
 </div>
 </section>
-<section class="ltx_subsection nk-cv" id="S6.SS2" style="contain-intrinsic-size: auto 965px">
+<section class="ltx_subsection" id="S6.SS2">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">6.2 </span>Alternative Restricted Imputation Rules</h3>
 <div class="ltx_para" id="S6.SS2.p1">
@@ -946,7 +951,7 @@ we cannot have a range of scores being submitted: a student with the lowest such
 <p class="ltx_p">The upshot, then, is that under either of these alternative forms of restricted imputation, test optional would collapse to either test blind or mandatory.</p>
 </div>
 </section>
-<section class="ltx_subsection nk-cv" id="S6.SS3" style="contain-intrinsic-size: auto 998px">
+<section class="ltx_subsection" id="S6.SS3">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">6.3 </span>No Commitment to the Acceptance Rule</h3>
 <div class="ltx_para" id="S6.SS3.p1">
@@ -959,7 +964,7 @@ we cannot have a range of scores being submitted: a student with the lowest such
 <p class="ltx_p">This means that a test-optional college now accepts all the students it would under test mandatory, and possibly additional ones (if, for some observable <math alttext="x" class="ltx_Math" display="inline" id="S6.SS3.p3.m1"><mi>x</mi></math> at which it is less selective than society, it chooses <math alttext="\tau(x)=\infty" class="ltx_Math" display="inline" id="S6.SS3.p3.m2"><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math> and accepts all students with observable <math alttext="x" class="ltx_Math" display="inline" id="S6.SS3.p3.m3"><mi>x</mi></math>). Hence, all students benefit, at least weakly, from test optional. Of course, this conclusion relies crucially on the college not having a capacity constraint.</p>
 </div>
 </section>
-<section class="ltx_subsection nk-cv" id="S6.SS4" style="contain-intrinsic-size: auto 1159px">
+<section class="ltx_subsection" id="S6.SS4">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">6.4 </span>Non-Bayesian Society</h3>
 <div class="ltx_para" id="S6.SS4.p1">
@@ -970,7 +975,7 @@ we cannot have a range of scores being submitted: a student with the lowest such
 when red types have higher test scores than green types (<math alttext="p_{r}&gt;p_{g}" class="ltx_Math" display="inline" id="S6.SS4.p2.m1"><mrow><msub><mi>p</mi><mi>r</mi></msub><mo>&gt;</mo><msub><mi>p</mi><mi>g</mi></msub></mrow></math>), going test blind effectively makes society value green types more and red types less, on average. Going test blind thus brings the non-Bayesian society’s preferences even closer to the college’s.</p>
 </div>
 </section>
-<section class="ltx_subsection nk-cv" id="S6.SS5" style="contain-intrinsic-size: auto 860px">
+<section class="ltx_subsection" id="S6.SS5">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">6.5 </span>Non-Equilibrium Behavior by Students</h3>
 <div class="ltx_para" id="S6.SS5.p1">
@@ -982,7 +987,7 @@ when red types have higher test scores than green types (<math alttext="p_{r}&gt
 provides another explanation, in addition to that after <a class="ltx_ref ltx_refmacro_autoref" href="#Thmproposition5"><span class="ltx_text ltx_ref_tag">Proposition 5</span></a>, for why some colleges have recently reinstated their testing requirements. Indeed, one of the factors in Dartmouth’s 2024 decision was that under test optional some applicants did not submit their scores even when submission would have “helped that student tremendously, maybe tripling their chance of admissions,” <a class="ltx_ref ltx_href" href="https://www.thedartmouth.com/article/2024/02/college-to-reinstate-standardized-test-requirement-for-class-of-2029">according to</a> Professor Bruce Sacerdote.</p>
 </div>
 </section>
-<section class="ltx_subsection nk-cv" id="S6.SS6" style="contain-intrinsic-size: auto 556px">
+<section class="ltx_subsection" id="S6.SS6">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">6.6 </span>Why Test Scores?</h3>
 <div class="ltx_para" id="S6.SS6.p1">
@@ -1408,7 +1413,7 @@ Indeed, every lawsuit opposing affirmative action has used standardized test sco
 <section class="ltx_appendix" id="A1">
 <h2 class="ltx_title ltx_title_appendix">
 <span class="ltx_tag ltx_tag_appendix">Appendix A </span>Proofs</h2>
-<section class="ltx_subsection nk-cv" id="A1.SS1" style="contain-intrinsic-size: auto 300px">
+<section class="ltx_subsection" id="A1.SS1">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">A.1 </span>Proof for <a class="ltx_ref ltx_refmacro_autoref" href="#S3.SS4"><span class="ltx_text ltx_ref_tag">Subsection 3.4</span></a>
 </h3>
@@ -1431,7 +1436,7 @@ Indeed, every lawsuit opposing affirmative action has used standardized test sco
 </li>
 </ul></div></div>
 </section>
-<section class="ltx_subsection nk-cv" id="A1.SS2" style="contain-intrinsic-size: auto 2738px">
+<section class="ltx_subsection" id="A1.SS2">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">A.2 </span>Proofs for <a class="ltx_ref ltx_refmacro_autoref" href="#S4"><span class="ltx_text ltx_ref_tag">Section 4</span></a>
 </h3>
@@ -1835,7 +1840,7 @@ c}(x,t)f(t)\mathrm{d}t+\int_{t^{\circ}}^{\infty}u^{c}(x,t)f(t)\mathrm{d}t." clas
 </ul></div></div>
 </section>
 </section>
-<section class="ltx_appendix nk-cv" id="A2" style="contain-intrinsic-size: auto 4149px">
+<section class="ltx_appendix" id="A2">
 <h2 class="ltx_title ltx_title_appendix">
 <span class="ltx_tag ltx_tag_appendix">Appendix B </span>Imputation and Monotonic Acceptance Rules</h2>
 <div class="ltx_para" id="A2.p1">
@@ -1880,7 +1885,7 @@ and <math alttext="\tau(x)=\overline{t}-\varepsilon" class="ltx_Math" display="i
 <section class="ltx_appendix" id="A3">
 <h2 class="ltx_title ltx_title_appendix">
 <span class="ltx_tag ltx_tag_appendix">Appendix C </span>Details for Banning Affirmative Action</h2>
-<section class="ltx_subsection nk-cv" id="A3.SS1" style="contain-intrinsic-size: auto 3408px">
+<section class="ltx_subsection" id="A3.SS1">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">C.1 </span>A Model of Affirmative Action</h3>
 <div class="ltx_para" id="A3.SS1.p1">
@@ -2024,7 +2029,7 @@ If <math alttext="(1+\delta)(2\beta\Delta-1)\geq(\beta\Delta)^{2}" class="ltx_Ma
 </div>
 </section>
 </section>
-<section class="ltx_subsection nk-cv" id="A3.SS3" style="contain-intrinsic-size: auto 2099px">
+<section class="ltx_subsection" id="A3.SS3">
 <h3 class="ltx_title ltx_title_subsection">
 <span class="ltx_tag ltx_tag_subsection">C.3 </span>Society’s Preferences</h3>
 <div class="ltx_para" id="A3.SS3.p1">
@@ -2442,7 +2447,7 @@ This expression equals zero when <math alttext="\delta" class="ltx_Math" display
 </section>
 </section>
 </section>
-<section class="ltx_appendix nk-cv" id="A4" style="contain-intrinsic-size: auto 6880px">
+<section class="ltx_appendix" id="A4">
 <h2 class="ltx_title ltx_title_appendix">
 <span class="ltx_tag ltx_tag_appendix">Appendix D </span>Competition Examples</h2>
 <div class="ltx_para" id="A4.p1">
