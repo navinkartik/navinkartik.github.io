@@ -535,6 +535,13 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
   margin-right: 0.15em;
 }
 
+/* A margin note is pulled out of the flow, so it should not inherit the typography of
+   whatever it was embedded in. Footnotes inside a theorem statement sit within
+   LaTeXML's span.ltx_text.ltx_font_italic and came out italic; \thanks notes sit inside
+   the bold <h1>. Reset both here rather than per breakpoint — targeting the element beats
+   inheritance regardless of source order. */
+.ltx_note_outer { font-style: normal; font-weight: normal; }
+
 /* ── Below wide: footnotes inline below mark ─────────────────── */
 @media (max-width: 69.99rem) {
   .ltx_note_outer {
