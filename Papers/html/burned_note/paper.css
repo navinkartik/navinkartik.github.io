@@ -1220,3 +1220,27 @@ figure.ltx_figure_panel img.ltx_graphics { cursor: zoom-in; }
 #nk-ref-preview .ltx_eqn_eqno { max-width: none; padding-left: 1.25rem; }
 #nk-ref-preview .ltx_eqn_eqno.ltx_align_right .ltx_tag { float: none; }
 #nk-ref-preview.nk-preview-eqn { max-width: min(92vw, 60rem); }
+
+/* ── Narrow screens: reclaim horizontal space ─────────────────── */
+/* Placed at the end deliberately. Media queries add no specificity, so these have to
+   come after the base rules they override (.ltx_theorem ~l.339 and again later,
+   ol.ltx_enumerate ~l.800) or they are silently ignored — which is what happened the
+   first time they were written, higher up the file. */
+@media (max-width: 69.99rem) {
+  /* A boxed equation had 59px of a 350px column taken by padding and list indent before
+     it was even measured, so it shrank further than one in open text. */
+  .ltx_theorem, div.nk-proof, div.nk-proof-bold {
+    padding-left: 0.55rem;
+    padding-right: 0.4rem;
+  }
+  ol.ltx_enumerate > .ltx_item,
+  ul.ltx_itemize > .ltx_item { gap: 0.3rem; }
+  ol.ltx_enumerate > .ltx_item > .ltx_tag.ltx_tag_item { min-width: 1.1rem; }
+
+  /* The equation number is a zero-width cell whose tag floats into the page margin.
+     There is no margin to float into here, so it painted past the screen edge and was
+     never counted when the equation was fitted. Give it a real cell. */
+  .ltx_eqn_eqno { max-width: none; padding-left: 0.6rem; }
+  .ltx_eqn_eqno.ltx_align_right .ltx_tag { float: none; }
+
+}

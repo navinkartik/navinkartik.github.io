@@ -844,22 +844,98 @@
      repainting, and unlike a rule on `math` it touches only the equations that overflow,
      leaving inline math at prose size. */
   function initFitMath() {
+    // Soft floor: do not shrink past this just to gain margin. HARD_MIN applies only when
+    // the alternative is an equation wider than the page — over-wide MathML paints past the
+    // document's scrollable width, so the overflow cannot be scrolled to and is simply lost.
+    // Tiny but complete beats clipped: a phone reader can pinch-zoom, but cannot reveal
+    // content that was never laid out within reach.
     var MIN_SCALE = 0.5;
+    var HARD_MIN = 0.34;
 
     function shrink(el, avail) {
       el.style.fontSize = '';
+      var base = parseFloat(getComputedStyle(el).fontSize) || 16;
       var w = el.getBoundingClientRect().width;
       if (w <= avail) return;
       // Re-wrapping means one pass can undershoot; two are enough in practice.
+      // The floor is absolute, against the original size: applying it per pass let two
+      // passes compound well below it (0.47 observed against a 0.5 floor).
+      var size = base;
       for (var pass = 0; pass < 2 && w > avail; pass++) {
-        var scale = Math.max(MIN_SCALE, avail / w);
-        var cur = parseFloat(getComputedStyle(el).fontSize) || 16;
-        el.style.fontSize = (cur * scale) + 'px';
+        size = Math.max(base * MIN_SCALE, size * (avail / w));
+        el.style.fontSize = size + 'px';
+        w = el.getBoundingClientRect().width;
+      }
+      // Still wider than the page at the soft floor: keep going rather than lose content.
+      for (var extra = 0; extra < 2 && w > avail; extra++) {
+        size = Math.max(base * HARD_MIN, size * (avail / w));
+        el.style.fontSize = size + 'px';
         w = el.getBoundingClientRect().width;
       }
     }
 
+    /* Width available to THIS element, not to the page. An equation inside a theorem
+       box has the box's padding and left border taken out of it, so fitting against
+       .ltx_document overshot and left it overflowing its own box. Table parts are
+       skipped on the way up because their width is derived from the content being
+       measured. */
+    function availFor(el, fallback) {
+      // Negative margins let a boxed equation reach back across the box padding and list
+      // indent (see the breakout rule in paper.css), so it is legitimately wider than its
+      // parent. Subtracting its own margins — negative here — credits it that extra room;
+      // for everything else the margins are zero and this is just the parent's width.
+      var cs = getComputedStyle(el);
+      var bleed = (parseFloat(cs.marginLeft) || 0) + (parseFloat(cs.marginRight) || 0);
+      var n = el.parentElement;
+      while (n && n !== document.body) {
+        if (getComputedStyle(n).display.indexOf('table') === -1 && n.clientWidth > 0) {
+          return n.clientWidth - bleed - 8;
+        }
+        n = n.parentElement;
+      }
+      return fallback;
+    }
+
+    /* Let a display inside a theorem or proof box reach back across the box padding and
+       any list indent, so it is measured against the page width rather than the indent.
+       The distance differs per equation — a display nested in a numbered list sits much
+       further in than one directly in the box — so a fixed CSS bleed over-shifted the
+       shallow ones right off the screen. Measure each one instead. */
+    var NARROW = window.matchMedia('(max-width: 69.99rem)');
+    var BLEED_SEL = '.ltx_theorem table.ltx_eqn_table, div.nk-proof table.ltx_eqn_table,'
+                  + ' div.nk-proof-bold table.ltx_eqn_table';
+
+    function applyBleed() {
+      var page = document.querySelector('.ltx_document');
+      if (!page) return;
+      var tables = document.querySelectorAll(BLEED_SEL);
+      for (var i = 0; i < tables.length; i++) {
+        var t = tables[i];
+        t.style.marginLeft = ''; t.style.marginRight = ''; t.style.width = '';
+      }
+      if (!NARROW.matches) return;
+      var pr = page.getBoundingClientRect();
+      for (var j = 0; j < tables.length; j++) {
+        var el = tables[j];
+        if (el.getBoundingClientRect().width <= 0) continue;
+        // Measure the CONTAINER, not the table: the table's own width depends on the
+        // font-size a previous pass gave it, so a table already shrunk to fit reported a
+        // right edge far short of the page and lost the room on that side.
+        var host = el.parentElement;
+        while (host && getComputedStyle(host).display.indexOf('table') !== -1) host = host.parentElement;
+        if (!host) continue;
+        var hr = host.getBoundingClientRect();
+        var left = Math.max(0, Math.floor(hr.left - pr.left));
+        var right = Math.max(0, Math.floor(pr.right - hr.right));
+        if (left + right < 4) continue;
+        el.style.marginLeft = (-left) + 'px';
+        el.style.marginRight = (-right) + 'px';
+        el.style.width = 'calc(100% + ' + (left + right) + 'px)';
+      }
+    }
+
     function fit() {
+      applyBleed();
       var page = document.querySelector('.ltx_document') || document.body;
       var avail = page.clientWidth - 8;
       if (avail <= 0) return;
@@ -867,12 +943,12 @@
       // equation can fit on its own while the row does not. Scaling the table
       // shrinks everything in it together and keeps the columns aligned.
       var tables = document.querySelectorAll('table.ltx_eqn_table');
-      for (var i = 0; i < tables.length; i++) shrink(tables[i], avail);
+      for (var i = 0; i < tables.length; i++) shrink(tables[i], availFor(tables[i], avail));
       // Then anything still over-wide that a table did not already cover.
       var rest = document.querySelectorAll('math, mjx-container');
       for (var j = 0; j < rest.length; j++) {
         if (rest[j].closest && rest[j].closest('table.ltx_eqn_table')) continue;
-        shrink(rest[j], avail);
+        shrink(rest[j], availFor(rest[j], avail));
       }
     }
 
