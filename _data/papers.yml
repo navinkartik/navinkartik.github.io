@@ -79,6 +79,7 @@
   journal_url: https://www.econometricsociety.org/publications/theoretical-economics/forthcoming-papers
   pub_date: "forthcoming"
   wp_date: "August 2026"
+  slides: Slides/KST-InfoRev-slides.pdf
   notes: |
     Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a> <span class="paper-links-inline"><a class="slidestitle" href="Slides/KST-slides-May2013.pdf">Slides</a></span>
   status: published
