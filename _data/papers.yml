@@ -51,17 +51,6 @@
   wp_date: "March 2026"
   status: unpublished
 
-- title: "Information Revelation in Constant-Sum Games: Elections and Beyond"
-  pdf: Papers/KST-InfoRev.pdf
-  html: KST-InfoRev
-  coauthors: [Francesco Squintani, Katrin Tinn]
-  coauthors_on_next_line: true
-  date: "revised August 2026"
-  wp_date: "August 2026"
-  notes: |
-    Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a> <span class="paper-links-inline"><a class="slidestitle" href="Slides/KST-slides-May2013.pdf">Slides</a></span>
-  status: unpublished
-
 - title: "A Note on Mixed-Nash Implementation"
   pdf: Papers/Mixed-Nash.pdf
   html: Mixed-Nash
@@ -81,6 +70,19 @@
 # =============================================================================
 # PUBLISHED PAPERS
 # =============================================================================
+
+- title: "Information Revelation in Constant-Sum Games: Elections and Beyond"
+  pdf: Papers/KST-InfoRev.pdf
+  html: KST-InfoRev
+  coauthors: [Francesco Squintani, Katrin Tinn]
+  coauthors_on_next_line: true
+  journal: "Theoretical Economics"
+  journal_url: https://www.econometricsociety.org/publications/theoretical-economics/forthcoming-papers
+  pub_date: "forthcoming"
+  wp_date: "August 2026"
+  notes: |
+    Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a> <span class="paper-links-inline"><a class="slidestitle" href="Slides/KST-slides-May2013.pdf">Slides</a></span>
+  status: published
 
 - title: "Lemonade from Lemons: Information Design and Adverse Selection"
   pdf: Papers/KZ-Lemonade.pdf
