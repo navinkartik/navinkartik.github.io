@@ -185,6 +185,7 @@
 
 - title: "Information Validates the Prior: A Theorem on Bayesian Updating and Applications"
   pdf: Papers/KLS-IVP.pdf
+  html: KLS-IVP
   coauthors: [Frances Xu Lee, Wing Suen]
   journal: "American Economic Review: Insights"
   journal_url: https://www.aeaweb.org/articles?id=10.1257/aeri.20200284
@@ -400,6 +401,7 @@
 
 - title: "Opinions as Incentives"
   pdf: Papers/opinions.pdf
+  html: opinions
   coauthors: [Yeon-Koo Che]
   journal: "Journal of Political Economy"
   journal_url: https://dx.doi.org/10.1086/648432
@@ -413,6 +415,7 @@
 
 - title: "Strategic Communication with Lying Costs"
   pdf: Papers/sclc.pdf
+  html: sclc
   coauthors: []
   journal: "Review of Economic Studies"
   journal_url: https://dx.doi.org/10.1111/j.1467-937X.2009.00559.x
@@ -449,6 +452,7 @@
 
 - title: "Selecting Cheap-Talk Equilibria"
   pdf: Papers/Published/nits.pdf
+  html: nits
   coauthors: [Ying Chen, Joel Sobel]
   journal: "Econometrica"
   journal_url: https://dx.doi.org/10.1111/j.0012-9682.2008.00819.x
@@ -472,6 +476,7 @@
 
 - title: "Signaling Character in Electoral Competition"
   pdf: Papers/Published/character.pdf
+  html: character
   coauthors: [Preston McAfee]
   journal: "American Economic Review"
   journal_url: https://dx.doi.org/10.1257/aer.97.3.852
