@@ -81,7 +81,7 @@
   wp_date: "August 2026"
   slides: Slides/KST-InfoRev-slides.pdf
   notes: |
-    Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a> <span class="paper-links-inline"><a class="slidestitle" href="Slides/KST-slides-May2013.pdf">Slides</a></span>
+    Earlier incarnations with title "Information Revelation and Pandering in Elections": <a class="papertitle" href="Papers/KST_pandering_elections_June2024.pdf">2024</a>; <a class="papertitle" href="Papers/KST_pandering_elections_April2015.pdf">2015</a>
   status: published
 
 - title: "Lemonade from Lemons: Information Design and Adverse Selection"
@@ -125,6 +125,7 @@
 
 - title: "Single-Crossing Differences in Convex Environments"
   pdf: Papers/KLR-SCDstar.pdf
+  html: KLR-SCDstar
   coauthors: [SangMok Lee, Daniel Rappoport]
   journal: "Review of Economic Studies"
   journal_url: https://academic.oup.com/restud/article-abstract/91/5/2981/7330557
@@ -199,6 +200,7 @@
 
 - title: "Muddled Information"
   pdf: Papers/FK-MudInf.pdf
+  html: FK-MudInf
   coauthors: [Alex Frankel]
   journal: "Journal of Political Economy"
   journal_url: https://doi.org/10.1086/701604
@@ -258,6 +260,7 @@
 
 - title: "Electoral Ambiguity and Political Representation"
   pdf: Papers/KVWW-ambiguity.pdf
+  html: KVWW-ambiguity
   coauthors: [Richard Van Weelden, Stephane Wolton]
   journal: "American Journal of Political Science"
   journal_url: https://dx.doi.org/10.1111/ajps.12310
@@ -387,6 +390,7 @@
 
 - title: "A Note on Undominated Bertrand Equilibria"
   pdf: Papers/Published/bertrand_undominated.pdf
+  html: bertrand_undominated
   coauthors: []
   journal: "Economics Letters"
   journal_url: https://dx.doi.org/10.1016/j.econlet.2011.01.013
