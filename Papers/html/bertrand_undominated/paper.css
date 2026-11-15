@@ -335,6 +335,10 @@ body {
   text-wrap: pretty;
 }
 
+/* Inline formula + the punctuation touching it (apply_design.py step 4d): no line break
+   between them, so a ";" or "." never starts a line. */
+.nk-nobr { white-space: nowrap; }
+
 /* ── Theorem / lemma / proposition etc. ─────────────────────── */
 .ltx_theorem {
   margin: 1.5rem 0;

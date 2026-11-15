@@ -368,8 +368,10 @@
     // - Multi-paragraph: multiple div.ltx_para children → collapse all but the label para
     // - Single-paragraph: one div.ltx_para child (content inside li) → collapse li content
     document.querySelectorAll('div.nk-proof').forEach(function (proof) {
+      // apply_design.py only wraps proofs in div.nk-proof, including titled ones whose
+      // label does not start with "Proof" (\begin{proof}[Part 2 of Lemma 3.]).
       const tag = proof.querySelector('.ltx_tag_item');
-      if (!tag || !/^\s*Proof[.\s]/.test(tag.textContent)) return;
+      if (!tag) return;
 
       const paras = Array.from(proof.children).filter(function (el) {
         return el.classList.contains('ltx_para');
