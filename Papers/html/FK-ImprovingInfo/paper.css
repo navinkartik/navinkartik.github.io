@@ -558,6 +558,14 @@ nav.ltx_TOC a.ltx_ref:hover        { text-decoration: underline; }
   }
 }
 
+/* Margin notes (tablet and wide) are 30-45 characters wide, too narrow for justified text:
+   word gaps balloon, especially in name lists that cannot hyphenate. Set them ragged right.
+   Inline notes below 70rem span the body width and stay justified. */
+@media (min-width: 70rem) {
+  .ltx_note_outer,
+  .ltx_note_outer .ltx_p { text-align: left; }
+}
+
 /* ── Tablet: narrow margin notes ────────────────────────────── */
 @media (min-width: 70rem) and (max-width: 89.99rem) {
   .ltx_note.ltx_role_footnote,
