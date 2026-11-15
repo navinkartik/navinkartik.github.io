@@ -324,6 +324,7 @@
 
 - title: "Candidates, Character, and Corruption"
   pdf: Papers/BernheimKartik-Character.pdf
+  html: BernheimKartik-Character
   coauthors: [Doug Bernheim]
   journal: "American Economic Journal: Microeconomics"
   journal_url: http://www.aeaweb.org/articles.php?doi=10.1257/mic.6.2.205
@@ -338,6 +339,7 @@
 
 - title: "Simple Mechanisms and Preferences for Honesty"
   pdf: Papers/HKT_implementation_honesty.pdf
+  html: HKT_implementation_honesty
   coauthors: [Richard Holden, Olivier Tercieux]
   journal: "Games and Economic Behavior"
   journal_url: https://dx.doi.org/10.1016/j.geb.2013.11.011
@@ -361,6 +363,7 @@
 
 - title: "Herding with Collective Preferences"
   pdf: Papers/herding_collective_prefs.pdf
+  html: herding_collective_prefs
   coauthors: [Nageeb Ali]
   journal: "Economic Theory"
   journal_url: https://dx.doi.org/10.1007/s00199-011-0609-7

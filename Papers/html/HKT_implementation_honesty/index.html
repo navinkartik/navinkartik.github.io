@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="dcterms: http://purl.org/dc/terms/">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<title>Simple Mechanisms and Preferences for Honesty1fn. 11footnote 1We thank Amanda Friedenberg, the referees, and an Associate Editor for helpful comments.</title>
+<!--Generated on Sun Nov 15 18:00:01 2026 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on November 2013.-->
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="#faf8f6" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#1c1b19" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<link href="paper.css?v=1794783604" rel="stylesheet" type="text/css"/>
+<script>
+MathJax = {
+  options: { skipHtmlTags: ["script","noscript","style","textarea","pre"] },
+  startup: { typeset: true }
+};
+if (!window.matchMedia || !window.matchMedia("(hover: none)").matches) {
+  var s = document.createElement("script");
+  s.id = "MathJax-script"; s.async = true;
+  s.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js";
+  document.head.appendChild(s);
+}
+</script>
+<script defer="" src="paper.js?v=1794783604"></script>
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/HKT_implementation_honesty.pdf">PDF</a> is more accurate.</div><article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Simple Mechanisms and Preferences for Honesty<span class="ltx_note ltx_role_footnote" id="footnote1"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>We thank Amanda Friedenberg, the referees, and an Associate Editor for helpful comments.</span></span></span>
+</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Navin Kartik, Olivier Tercieux, and Richard Holden
+</span><span class="ltx_author_notes">Kartik: Columbia University, Department of Economics; email: <a class="ltx_ref ltx_href ltx_font_typewriter" href="mailto:nkartik@columbia.edu">nkartik@columbia.edu</a>. Tercieux: Paris School of
+Economics; email: <a class="ltx_ref ltx_href ltx_font_typewriter" href="mailto:tercieux@pse.ens.fr">tercieux@pse.ens.fr</a>. Holden: University of New South Wales, School of Economics, Australian
+School of Business and NBER; email: <a class="ltx_ref ltx_href ltx_font_typewriter" href="mailto:richard.holden@unsw.edu.au">richard.holden@unsw.edu.au</a>.</span></span>
+</div>
+<div class="ltx_dates">November 2013</div>
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+<p class="ltx_p">We consider full implementation in complete-information
+environments when agents have an arbitrarily small preference for honesty.
+We offer a condition called <span class="ltx_text ltx_font_italic">separable punishment</span> and show that when
+it holds and there are at least two agents, any social choice
+function can be implemented by a simple mechanism in two rounds of iterated
+deletion of strictly dominated strategies.</p>
+</div>
+<section class="ltx_section" id="S1">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+<div class="ltx_para" id="S1.p1">
+<p class="ltx_p">What social objectives can be achieved in decentralized economies? In his celebrated work, <cite class="ltx_cite ltx_citemacro_citet">Maskin (<a class="ltx_ref" href="#bib.bib41">1999</a>, circulated in
+1977)</cite>
+formally introduced the notion of implementing social choice functions (hereafter, SCFs)
+through a suitably-constructed mechanism or game
+form when agents know some “state of the
+world” that a social planner does not.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>
+“Implementation” without qualification
+in this paper always refers to full-implementation, which means that <em class="ltx_emph ltx_font_italic">
+every</em> outcome should coincide with the social objective; this contrasts
+with partial-implementation where only <em class="ltx_emph ltx_font_italic">some</em> outcome need be desirable.</span></span></span> <cite class="ltx_cite ltx_citemacro_citet">Maskin (<a class="ltx_ref" href="#bib.bib41">1999</a>)</cite> focussed on outcomes that obtain in Nash equilibria and
+found that only SCFs that satisfy a fairly demanding property,
+<em class="ltx_emph ltx_font_italic">(Maskin-)monotonicity</em>, are implementable. Moreover,
+sufficiency of this property—along with some other mild conditions—has only been established in general environments using so-called
+“integer games” or “tail-chasing mechanisms”, which are
+unappealing for well-known reasons <cite class="ltx_cite ltx_citemacro_citep">(see, for example, Jackson, <a class="ltx_ref" href="#bib.bib32">1992</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S1.p2">
+<p class="ltx_p">For both the above reasons, a sizable literature has examined implementation
+in other solution concepts, often refinements of Nash equilibrium. The scope for implementation expands substantially
+under either subgame-perfect Nash equilibria <cite class="ltx_cite ltx_citemacro_citep">(Abreu and Sen, <a class="ltx_ref" href="#bib.bib9">1990</a>; Moore and Repullo, <a class="ltx_ref" href="#bib.bib45">1988</a>)</cite> or
+undominated Nash equilibria <cite class="ltx_cite ltx_citemacro_citep">(Palfrey and Srivastava, <a class="ltx_ref" href="#bib.bib47">1991</a>; Jackson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>; furthermore, some of these implementing mechanisms
+are “well behaved”. However, these implementations of
+non-monotonic SCFs are problematic because they are not robust to even
+slight departures from underlying common knowledge assumptions <cite class="ltx_cite ltx_citemacro_citep">(Chung and Ely, <a class="ltx_ref" href="#bib.bib15">2003</a>; Aghion<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib62">2012</a>)</cite>.<span class="ltx_note ltx_role_footnote" id="footnote3"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>An alternative approach that also yields permissive results is that of
+virtual or approximate implementation <cite class="ltx_cite ltx_citemacro_citep">(Matsushima, <a class="ltx_ref" href="#bib.bib42">1988</a>; Abreu and Sen, <a class="ltx_ref" href="#bib.bib11">1991</a>; Abreu and Matsushima, <a class="ltx_ref" href="#bib.bib77">1992</a>)</cite>. As is
+well-recognized, however, a weakness of this approach is that mechanisms must
+randomize over outcomes and the resulting outcome may be very inefficient,
+unfair, or “far” from the desired
+outcome, even if this only occurs with small ex-ante probability. Furthermore, the mechanisms used here either rely on integer games <cite class="ltx_cite ltx_citemacro_citep">(Matsushima, <a class="ltx_ref" href="#bib.bib42">1988</a>; Abreu and Sen, <a class="ltx_ref" href="#bib.bib11">1991</a>)</cite> or quite critically on the linearity assumption of expected utility <cite class="ltx_cite ltx_citemacro_citep">(Abreu and Matsushima, <a class="ltx_ref" href="#bib.bib77">1992</a>)</cite>. These results
+also become much less permissive when the implementation problem
+concerns only two players, a case that is important for bargaining and
+bilateral contracting.</span></span></span></p>
+</div>
+<div class="ltx_para" id="S1.p3">
+<p class="ltx_p">More recently, a burgeoning literature studies the scope for implementation
+when players have (small) preferences for honesty. Loosely speaking, a player is said to have a preference for
+honesty if he prefers a “truthful”
+message/report when his message does not affect the outcome of the
+mechanism. What now determines implementability is preferences over the
+joint space of messages and outcomes. <cite class="ltx_cite ltx_citemacro_citet">Kartik and Tercieux (<a class="ltx_ref" href="#bib.bib72">2012</a>)</cite> observe that preferences
+for honesty render any SCF monotonic on this extended space. This suggests
+that even Nash implementation may be quite permissive when players have
+preferences for honesty. However, existing results suffer from some of the weaknesses mentioned above. For example, <cite class="ltx_cite ltx_citemacro_citet">Dutta and Sen (<a class="ltx_ref" href="#bib.bib63">2011</a>)</cite>, <cite class="ltx_cite ltx_citemacro_citet">Lombardi and Yoshihara (<a class="ltx_ref" href="#bib.bib5">2011</a>)</cite>, <cite class="ltx_cite ltx_citemacro_citet">Kartik and Tercieux (<a class="ltx_ref" href="#bib.bib72">2012</a>)</cite>, and <cite class="ltx_cite ltx_citemacro_citet">Korpela (<a class="ltx_ref" href="#bib.bib88">2012</a>)</cite>
+use integer games; <cite class="ltx_cite ltx_citemacro_citet">Ortner (<a class="ltx_ref" href="#bib.bib84">2012</a>)</cite> invokes particular refinements of Nash equilibrium and requires five or more players; <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib65">2008a</a>)</cite> uses mechanisms that randomize over outcomes
+and only studies settings with three or more players; while
+<cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib43">2008c</a>)</cite> also uses randomization and further assumes
+stronger conditions on the nature of preferences for honesty.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>Both <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib65">2008a</a>)</cite> and <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib43">2008c</a>)</cite>
+achieve implementation in iterated deletion of dominated strategies
+following the approach of <cite class="ltx_cite ltx_citemacro_citet">Abreu and Matsushima (<a class="ltx_ref" href="#bib.bib77">1992</a>, <a class="ltx_ref" href="#bib.bib76">1994</a>)</cite>. A virtue of these papers is
+that the planner only needs to be able to impose small fines on players.
+Note that <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib65">2008a</a>)</cite> studies settings with complete
+information, as does most of the literature cited earlier, whereas <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib43">2008c</a>)</cite> tackles settings with incomplete
+information relying on the expected utility hypothesis. While we focus on
+complete-information environments here, an earlier version of this paper
+<cite class="ltx_cite ltx_citemacro_citep">(Holden<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib13">2013</a>)</cite> showed that the logic can be extended to settings of incomplete information under weak assumptions on how players evaluate lotteries
+(in particular, without assuming expected utility) so long as there is <em class="ltx_emph ltx_font_italic">non-exclusive information</em>, a notion that is familiar in the Bayesian implementation literature <cite class="ltx_cite ltx_citemacro_citep">(e.g. Postlewaite and Schmeidler, <a class="ltx_ref" href="#bib.bib83">1986</a>)</cite>.</span></span></span></p>
+</div>
+<div class="ltx_para" id="S1.p4">
+<p class="ltx_p">In this paper, we also study implementation when players have a preference
+for honesty. Our contribution is to derive a strong positive result for a wide class of environments of economic interest. Specifically, we show
+that so long as there are <em class="ltx_emph ltx_font_italic">two or more players</em> and the environment satisfies
+a condition we call <em class="ltx_emph ltx_font_italic">separable punishment</em>, any SCF is implementable in
+<em class="ltx_emph ltx_font_italic">two rounds of iterative deletion of (strictly) dominated strategies</em>
+by a simple and well-behaved—indeed, essentially a direct—mechanism. Roughly speaking, the separable-punishment
+condition requires that one can find a player with a preference for honesty,
+say <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S1.p4.m1"><mi>j</mi></math>,</span> and another player, say <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S1.p4.m2"><mi>i</mi></math>,</span> such that for any outcome in the range
+of the SCF, there is an alternative outcome under which, in any state, <math alttext="j" class="ltx_Math" display="inline" id="S1.p4.m3"><mi>j</mi></math>
+is indifferent between the two outcomes while <math alttext="i" class="ltx_Math" display="inline" id="S1.p4.m4"><mi>i</mi></math> strictly prefers the
+socially-desired outcome to the alternative. In this sense, it is possible
+to suitably “punish” one player without punishing the other. We provide examples of
+economic problems in which this condition is naturally satisfied; in
+particular, it holds both in a standard exchange economy and also whenever a mechanism can augment large-enough monetary
+punishments on players.</p>
+</div>
+<div class="ltx_para" id="S1.p5">
+<p class="ltx_p">The idea that some form of separability in the environment can simplify the implementation problem is not new; <cite class="ltx_cite ltx_citemacro_citet">Abreu and Matsushima (<a class="ltx_ref" href="#bib.bib76">1994</a>)</cite>, <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite> and <cite class="ltx_cite ltx_citemacro_citet">Sjöström (<a class="ltx_ref" href="#bib.bib1">1994</a>)</cite> are important antecedent contributions in this vein.<span class="ltx_note ltx_role_footnote" id="footnote5"><sup class="ltx_note_mark">5</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">5</sup><span class="ltx_tag ltx_tag_note">5</span>In work concurrent to ours, <cite class="ltx_cite ltx_citemacro_citet">Lombardi and Yoshihara (<a class="ltx_ref" href="#bib.bib4">2013</a>)</cite> focus exclusively on ”price-quantity implementation” in pure exchange economies when some players have a preference for honesty.</span></span></span> We defer a more detailed comparison to <a class="ltx_ref ltx_refmacro_autoref" href="#S4"><span class="ltx_text ltx_ref_tag">Section 4</span></a>.</p>
+</div>
+<div class="ltx_para" id="S1.p6">
+<p class="ltx_p">The remainder of the paper is organized as follows. <a class="ltx_ref ltx_refmacro_autoref" href="#S2"><span class="ltx_text ltx_ref_tag">Section 2</span></a>
+presents a simple example to highlight the main idea and discusses the merits of the mechanism we propose. The general setting
+and result are provided in <a class="ltx_ref ltx_refmacro_autoref" href="#S3"><span class="ltx_text ltx_ref_tag">Section 3</span></a>. <a class="ltx_ref ltx_refmacro_autoref" href="#S4"><span class="ltx_text ltx_ref_tag">Section 4</span></a> relates our work to other approaches.</p>
+</div>
+</section>
+<section class="ltx_section" id="S2">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>An Example</h2>
+<div class="ltx_para" id="S2.p1">
+<p class="ltx_p">Consider a setting with two players, <math alttext="1" class="ltx_Math" display="inline" id="S2.p1.m1"><mn>1</mn></math> and <span class="nk-nobr"><math alttext="2" class="ltx_Math" display="inline" id="S2.p1.m2"><mn>2</mn></math>,</span> and two states, <math alttext="\theta^{\prime}" class="ltx_Math" display="inline" id="S2.p1.m3"><msup><mi>θ</mi><mo>′</mo></msup></math> and <span class="nk-nobr"><math alttext="\theta^{\prime\prime}" class="ltx_Math" display="inline" id="S2.p1.m4"><msup><mi>θ</mi><mo>′′</mo></msup></math>.</span> The socially desired outcomes at
+state <math alttext="\theta^{\prime}" class="ltx_Math" display="inline" id="S2.p1.m5"><msup><mi>θ</mi><mo>′</mo></msup></math> and <math alttext="\theta^{\prime\prime}" class="ltx_Math" display="inline" id="S2.p1.m6"><msup><mi>θ</mi><mo>′′</mo></msup></math> are respectively
+denoted by <math alttext="f(\theta^{\prime})" class="ltx_Math" display="inline" id="S2.p1.m7"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> and <span class="nk-nobr"><math alttext="f(\theta^{\prime\prime})" class="ltx_Math" display="inline" id="S2.p1.m8"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math>.</span> The mechanism designer can augment outcomes with transfers, but he does not want to use such transfers on the (predicted) path of play. Agents’ preferences are
+quasi-linear and state independent: <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S2.p1.m9"><mi>i</mi></math>’</span>s utility at state <math alttext="\theta\in\{\theta^{\prime},\theta^{\prime\prime}\}" class="ltx_Math" display="inline" id="S2.p1.m10"><mrow><mi>θ</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><msup><mi>θ</mi><mo>′</mo></msup><mo>,</mo><msup><mi>θ</mi><mo>′′</mo></msup><mo stretchy="false">}</mo></mrow></mrow></math> given outcome <math alttext="a" class="ltx_Math" display="inline" id="S2.p1.m11"><mi>a</mi></math> and transfer
+<math alttext="t_{i}" class="ltx_Math" display="inline" id="S2.p1.m12"><msub><mi>t</mi><mi>i</mi></msub></math> is <span class="nk-nobr"><math alttext="v_{i}(a)-t_{i}" class="ltx_Math" display="inline" id="S2.p1.m13"><mrow><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><msub><mi>t</mi><mi>i</mi></msub></mrow></math>.</span> Because preferences are
+state-independent and the goal is full implementation, <math alttext="f" class="ltx_Math" display="inline" id="S2.p1.m14"><mi>f</mi></math> is not
+implementable in virtually any solution concept unless <span class="nk-nobr"><math alttext="f(\theta^{\prime})=f(\theta^{\prime\prime})" class="ltx_Math" display="inline" id="S2.p1.m15"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span></p>
+</div>
+<div class="ltx_para" id="S2.p2">
+<p class="ltx_p">We will study a direct mechanism where each player announces a
+value of the state. The outcome selected by the mechanism only depends on
+player 1’s announcement: if he claims the state is <math alttext="\theta" class="ltx_Math" display="inline" id="S2.p2.m1"><mi>θ</mi></math> then the
+outcome selected is <span class="nk-nobr"><math alttext="f(\theta)" class="ltx_Math" display="inline" id="S2.p2.m2"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span> In this sense, player 1 is a dictator over
+outcomes. Regarding transfers: if players disagree on their announcements,
+then only player 1 is fined an amount <span class="nk-nobr"><math alttext="t_{1}" class="ltx_Math" display="inline" id="S2.p2.m3"><msub><mi>t</mi><mn>1</mn></msub></math>;</span> if players agree, there are no
+transfers.</p>
+</div>
+<div class="ltx_para" id="S2.p3">
+<p class="ltx_p">Now we introduce the notion that player 2 has a preference for honesty by
+supposing that his payoff increases by <math alttext="\varepsilon&gt;0" class="ltx_Math" display="inline" id="S2.p3.m1"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> when making an
+“honest” announcement. Formally, if the true state is <span class="nk-nobr"><math alttext="\theta\in\{\theta^{\prime},\theta^{\prime\prime}\}" class="ltx_Math" display="inline" id="S2.p3.m2"><mrow><mi>θ</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><msup><mi>θ</mi><mo>′</mo></msup><mo>,</mo><msup><mi>θ</mi><mo>′′</mo></msup><mo stretchy="false">}</mo></mrow></mrow></math>,</span> the payoff matrix in the game
+induced by the mechanism is as follows, where we denote the possible
+announcements for each player by <math alttext="\theta" class="ltx_Math" display="inline" id="S2.p3.m3"><mi>θ</mi></math> and <span class="nk-nobr"><math alttext="\neg\theta" class="ltx_Math" display="inline" id="S2.p3.m4"><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow></math>:</span></p>
+</div>
+<div class="ltx_para" id="S2.p4">
+<br class="ltx_break"/>
+</div>
+<figure class="ltx_table" id="S2.T1">
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_table">Table 1: </span>Payoffs when the true state is <math alttext="\theta" class="ltx_Math" display="inline" id="S2.T1.m2"><mi>θ</mi></math></figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><span class="ltx_text ltx_font_bold">(1,2)</span></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><math alttext="\theta" class="ltx_Math" display="inline" id="S2.T1.m3"><mi>θ</mi></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><math alttext="\neg\theta" class="ltx_Math" display="inline" id="S2.T1.m4"><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow></math></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"><math alttext="\theta" class="ltx_Math" display="inline" id="S2.T1.m5"><mi>θ</mi></math></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="v_{1}(f(\theta)),v_{2}(f(\theta))+\varepsilon" class="ltx_Math" display="inline" id="S2.T1.m6"><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi>ε</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t"><math alttext="v_{1}(f(\theta))-t_{1},v_{2}(f(\theta))" class="ltx_Math" display="inline" id="S2.T1.m7"><mrow><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><msub><mi>t</mi><mn>1</mn></msub></mrow><mo>,</mo><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t"><math alttext="\neg\theta" class="ltx_Math" display="inline" id="S2.T1.m8"><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow></math></th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><math alttext="v_{1}(f(\neg\theta))-t_{1},v_{2}(f(\neg\theta))+\varepsilon" class="ltx_Math" display="inline" id="S2.T1.m9"><mrow><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><msub><mi>t</mi><mn>1</mn></msub></mrow><mo>,</mo><mrow><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi>ε</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t"><math alttext="v_{1}(f(\neg\theta)),v_{2}(f(\neg\theta))" class="ltx_Math" display="inline" id="S2.T1.m10"><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo rspace="0.167em">¬</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div class="ltx_para" id="S2.p5">
+<p class="ltx_p">It is clear that in this game player <math alttext="2" class="ltx_Math" display="inline" id="S2.p5.m1"><mn>2</mn></math> has a strictly dominant strategy
+to announce the truth, <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S2.p5.m2"><mi>θ</mi></math>.</span> Furthermore, provided the fine <math alttext="t_{1}" class="ltx_Math" display="inline" id="S2.p5.m3"><msub><mi>t</mi><mn>1</mn></msub></math> is
+large enough, it is then iteratively strictly dominant for player <math alttext="1" class="ltx_Math" display="inline" id="S2.p5.m4"><mn>1</mn></math> to
+also announce <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S2.p5.m5"><mi>θ</mi></math>.</span> Consequently, in either state, both players telling
+the truth is the unique profile of strategies surviving two rounds of
+iterative deletion of strictly dominated strategies.</p>
+</div>
+<div class="ltx_para" id="S2.p6">
+<p class="ltx_p">Implementation in two rounds of iterative deletion of strictly dominated
+strategies is an appealing solution concept for multiple reasons. It is a robust solution concept: when a “small amount of incomplete information” is introduced, no undesirable
+outcomes appear <cite class="ltx_cite ltx_citemacro_citep">(Dekel<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib10">2006</a>; Oury and Tercieux, <a class="ltx_ref" href="#bib.bib82">2012</a>)</cite>, unlike with refinements of
+Nash equilibrium, as noted earlier. In addition, researchers often focus only on <em class="ltx_emph ltx_font_italic">pure-strategy</em> Nash implementation, and one may be justifiably concerned that even if a
+simple mechanism works for this solution concept, it would need complicated augmentation to deal with mixed strategies. Our mechanism obviates this concern.
+Furthermore, the fact that only two rounds of deletion
+are required means that players only need mutual knowledge—
+rather than common knowledge—that strictly dominated strategies will not be
+played <cite class="ltx_cite ltx_citemacro_citep">(cf. Matsushima, <a class="ltx_ref" href="#bib.bib71">2008b</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S2.p7">
+<p class="ltx_p">While we only needed to assume above that one player (viz., player 2) has
+a preference for honesty, the mechanism does exploit the identity of this
+player. If, however, <em class="ltx_emph ltx_font_italic">both</em> players have a preference for honesty—which we view as reasonable—then the mechanism is in fact “detail
+free” in the sense that the planner can choose either player to act as
+“dictator” and does not need to know much about players’ preferences: all
+that he needs to do is impose a sufficiently large fine on the dictator when
+announcements do not coincide. Of course, there is a minimal requirement
+that the planner must know what amount of fine will be large enough.</p>
+</div>
+<div class="ltx_para" id="S2.p8">
+<p class="ltx_p">In the sequel, we show how these ideas can be extended to more general settings of complete information; readers interested in the case of incomplete information can consult our earlier working paper <cite class="ltx_cite ltx_citemacro_citep">(Holden<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib13">2013</a>)</cite>.</p>
+</div>
+</section>
+<section class="ltx_section" id="S3">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>The Main Result</h2>
+<div class="ltx_para" id="S3.p1">
+<p class="ltx_p">There is a set of states <span class="nk-nobr"><math alttext="\Theta" class="ltx_Math" display="inline" id="S3.p1.m1"><mi mathvariant="normal">Θ</mi></math>,</span> a set of outcomes or allocations <span class="nk-nobr"><math alttext="A" class="ltx_Math" display="inline" id="S3.p1.m2"><mi>A</mi></math>,</span> and
+a finite set of players <math alttext="I=\{1,\ldots,n\}" class="ltx_Math" display="inline" id="S3.p1.m3"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></math> with <span class="nk-nobr"><math alttext="n\geq 2" class="ltx_Math" display="inline" id="S3.p1.m4"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math>.</span> A social choice
+function (SCF) is a mapping <span class="nk-nobr"><math alttext="f:\Theta\rightarrow A" class="ltx_Math" display="inline" id="S3.p1.m5"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">→</mo><mi>A</mi></mrow></mrow></math>.</span> Given any function <math alttext="\alpha" class="ltx_Math" display="inline" id="S3.p1.m6"><mi>α</mi></math> whose domain is <span class="nk-nobr"><math alttext="\Theta" class="ltx_Math" display="inline" id="S3.p1.m7"><mi mathvariant="normal">Θ</mi></math>,</span> let <span class="nk-nobr"><math alttext="\alpha(\Theta):=\bigcup_{\theta\in\Theta}\alpha(\theta)" class="ltx_Math" display="inline" id="S3.p1.m8"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Θ</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:=</mo><mrow><msub><mo>⋃</mo><mrow><mi>θ</mi><mo>∈</mo><mi mathvariant="normal">Θ</mi></mrow></msub><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</span> The primitives specify (ordinal) preferences over <math alttext="A" class="ltx_Math" display="inline" id="S3.p1.m9"><mi>A</mi></math> in each
+state <math alttext="\theta" class="ltx_Math" display="inline" id="S3.p1.m10"><mi>θ</mi></math> for each player <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S3.p1.m11"><mi>j</mi></math>,</span> captured by a linear order <span class="nk-nobr"><math alttext="\succeq^{A}_{j,\theta}" class="ltx_Math" display="inline" id="S3.p1.m12"><msubsup><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup></math>.</span> Given a space of message profiles, <span class="nk-nobr"><math alttext="M=M_{1}\times\cdots\times M_{n}" class="ltx_Math" display="inline" id="S3.p1.m13"><mrow><mi>M</mi><mo>=</mo><mrow><msub><mi>M</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>M</mi><mi>n</mi></msub></mrow></mrow></math>,</span> players have preferences defined over the joint space of
+allocations and message profiles: in each state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p1.m14"><mi>θ</mi></math>,</span> a player <math alttext="j" class="ltx_Math" display="inline" id="S3.p1.m15"><mi>j</mi></math> has
+preferences over <math alttext="A\times M" class="ltx_Math" display="inline" id="S3.p1.m16"><mrow><mi>A</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>M</mi></mrow></math> denoted by <span class="nk-nobr"><math alttext="\succeq_{j,\theta}" class="ltx_Math" display="inline" id="S3.p1.m17"><msub><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow></msub></math>.</span> In the
+standard framework, <math alttext="(a,m)\succeq_{j,\theta}(a^{\prime},m^{\prime})" class="ltx_Math" display="inline" id="S3.p1.m18"><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><msub><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow></msub><mrow><mo stretchy="false">(</mo><msup><mi>a</mi><mo>′</mo></msup><mo>,</mo><msup><mi>m</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> if
+and only if <span class="nk-nobr"><math alttext="a\succeq^{A}_{j,\theta}a^{\prime}" class="ltx_Math" display="inline" id="S3.p1.m19"><mrow><mi>a</mi><msubsup><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup><msup><mi>a</mi><mo>′</mo></msup></mrow></math>.</span> A mechanism is a pair <math alttext="(M,g)" class="ltx_Math" display="inline" id="S3.p1.m20"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></math> where <span class="nk-nobr"><math alttext="g:M\rightarrow A" class="ltx_Math" display="inline" id="S3.p1.m21"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>A</mi></mrow></mrow></math>.</span> To simplify the exposition we will focus
+below on pure strategies only; all the concepts and results can be extended
+to cover mixed strategies with very weak assumptions on how players evaluate
+lotteries, as should be clear from the arguments we make.</p>
+</div>
+<div class="ltx_para" id="S3.p2">
+<p class="ltx_p">We now formalize our general notion of a preference for honesty.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_definition" id="Thmdefinition1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmdefinition1.p1">
+<p class="ltx_p">Given a space of message profiles, <span class="nk-nobr"><math alttext="M" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m1"><mi>M</mi></math>,</span> <math alttext="j" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m2"><mi>j</mi></math> has a <em class="ltx_emph ltx_font_italic">preference for honesty</em> on <math alttext="M" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m3"><mi>M</mi></math> if there is an injective function <math alttext="m_{j}^{\ast}:\Theta\rightarrow M_{j}" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m4"><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">→</mo><msub><mi>M</mi><mi>j</mi></msub></mrow></mrow></math> such that for any <math alttext="g:M\rightarrow A" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m5"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>A</mi></mrow></mrow></math>
+and <span class="nk-nobr"><math alttext="\theta\in\Theta" class="ltx_Math" display="inline" id="Thmdefinition1.p1.m6"><mrow><mi>θ</mi><mo>∈</mo><mi mathvariant="normal">Θ</mi></mrow></math>:</span></p>
+</div>
+<div class="ltx_para" id="Thmdefinition1.p2">
+<p class="ltx_p">If</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.E1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\forall m_{-j},m_{j},\tilde{m}_{j}:\ g(m_{-j},m_{j})\sim^{A}_{j,\theta}g(m_{-j%
+},\tilde{m}_{j})" class="ltx_Math" display="block" id="S3.E1.m1"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub></mrow><mo>,</mo><msub><mi>m</mi><mi>j</mi></msub><mo>,</mo><msub><mover accent="true"><mi>m</mi><mo>~</mo></mover><mi>j</mi></msub></mrow><mo lspace="0.278em" rspace="0.778em">:</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>,</mo><msub><mi>m</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><msubsup><mo>∼</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>,</mo><msub><mover accent="true"><mi>m</mi><mo>~</mo></mover><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">then</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.E2">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="\forall m_{-j}\text{ and }\forall m_{j}\neq m^{*}_{j}(\theta):\ (g(m_{-j},m^{*%
+}_{j}(\theta)),m_{-j},m^{*}_{j}(\theta))\succ_{j,\theta}(g(m_{-j},m_{j}),m_{-j%
+},m_{j})." class="ltx_Math" display="block" id="S3.E2.m1"><mrow><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mrow><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>⁢</mo><mtext> and </mtext><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><msub><mi>m</mi><mi>j</mi></msub></mrow></mrow></mrow><mo>≠</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.778em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>,</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>,</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><msub><mo>≻</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow></msub><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>,</mo><msub><mi>m</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>m</mi><mrow><mo>−</mo><mi>j</mi></mrow></msub><mo>,</mo><msub><mi>m</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right" rowspan="1"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_para" id="S3.p3">
+<p class="ltx_p">The key idea here is that because of the antecedent (<a class="ltx_ref" href="#S3.E1"><span class="ltx_text ltx_ref_tag">1</span></a>), the
+condition only has bite on preferences over the subset of <math alttext="A\times M" class="ltx_Math" display="inline" id="S3.p3.m1"><mrow><mi>A</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>M</mi></mrow></math> among
+which <math alttext="j" class="ltx_Math" display="inline" id="S3.p3.m2"><mi>j</mi></math> is “materially indifferent” over the allocations; in this sense,
+it captures small or even lexicographic considerations. The message <math alttext="m_{j}^{\ast}(\theta)" class="ltx_Math" display="inline" id="S3.p3.m3"><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> is what <math alttext="j" class="ltx_Math" display="inline" id="S3.p3.m4"><mi>j</mi></math> considers “truthful” in state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p3.m5"><mi>θ</mi></math>.</span> A leading example is when <math alttext="M_{j}=\Theta" class="ltx_Math" display="inline" id="S3.p3.m6"><mrow><msub><mi>M</mi><mi>j</mi></msub><mo>=</mo><mi mathvariant="normal">Θ</mi></mrow></math> and <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S3.p3.m7"><mi>j</mi></math>’</span>s preferences are as
+follows: (i) if <span class="nk-nobr"><math alttext="a\succeq^{A}_{j,\theta}a^{\prime}" class="ltx_Math" display="inline" id="S3.p3.m8"><mrow><mi>a</mi><msubsup><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup><msup><mi>a</mi><mo>′</mo></msup></mrow></math>,</span> <span class="nk-nobr"><math alttext="m_{j}=\theta" class="ltx_Math" display="inline" id="S3.p3.m9"><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>=</mo><mi>θ</mi></mrow></math>,</span> and <span class="nk-nobr"><math alttext="m^{\prime}_{j}\neq\theta" class="ltx_Math" display="inline" id="S3.p3.m10"><mrow><msubsup><mi>m</mi><mi>j</mi><mo>′</mo></msubsup><mo>≠</mo><mi>θ</mi></mrow></math>,</span> then <span class="nk-nobr"><math alttext="(a,m)\succ_{j,\theta}(a^{\prime},m^{\prime})" class="ltx_Math" display="inline" id="S3.p3.m11"><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><msub><mo>≻</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow></msub><mrow><mo stretchy="false">(</mo><msup><mi>a</mi><mo>′</mo></msup><mo>,</mo><msup><mi>m</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math>;</span> (ii) otherwise, <math alttext="(a,m)\succeq_{j,\theta}(a^{\prime},m^{\prime})" class="ltx_Math" display="inline" id="S3.p3.m12"><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><msub><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow></msub><mrow><mo stretchy="false">(</mo><msup><mi>a</mi><mo>′</mo></msup><mo>,</mo><msup><mi>m</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> if and only if <span class="nk-nobr"><math alttext="a\succeq^{A}_{j,\theta}a^{\prime}" class="ltx_Math" display="inline" id="S3.p3.m13"><mrow><mi>a</mi><msubsup><mo>⪰</mo><mrow><mi>j</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup><msup><mi>a</mi><mo>′</mo></msup></mrow></math>.</span> In this
+case, <math alttext="m^{*}_{j}(\theta)=\theta" class="ltx_Math" display="inline" id="S3.p3.m14"><mrow><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>θ</mi></mrow></math> and our definition reduces to that of <cite class="ltx_cite ltx_citemacro_citet">Dutta and Sen (<a class="ltx_ref" href="#bib.bib63">2011</a>)</cite> and is very similar to <cite class="ltx_cite ltx_citemacro_citet">Kartik and Tercieux (<a class="ltx_ref" href="#bib.bib72">2012</a>, Example 2)</cite>.</p>
+</div>
+<div class="ltx_para" id="S3.p4">
+<p class="ltx_p">It is worth highlighting that a player’s preference for honesty is defined
+with respect to a particular space of message profiles; in particular, <a class="ltx_ref ltx_refmacro_autoref" href="#Thmdefinition1"><span class="ltx_text ltx_ref_tag">Definition 1</span></a> does not require player <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S3.p4.m1"><mi>j</mi></math>’</span>s message space to
+coincide with the set of states (although its cardinality must be at least
+as large).<span class="ltx_note ltx_role_footnote" id="footnote6"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup><span class="ltx_tag ltx_tag_note">6</span>Furthermore, the definition also allows <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="footnote6.m1"><mi>j</mi></math>’</span>s preferences to depend on the
+messages sent by other players beyond how these affect allocations.</span></span></span> To see
+why this may be substantively relevant, suppose each state is a profile of
+preferences over allocations. Then, if player <math alttext="j" class="ltx_Math" display="inline" id="S3.p4.m2"><mi>j</mi></math> were asked to report the
+state (i.e. <span class="nk-nobr"><math alttext="M_{j}=\Theta" class="ltx_Math" display="inline" id="S3.p4.m3"><mrow><msub><mi>M</mi><mi>j</mi></msub><mo>=</mo><mi mathvariant="normal">Θ</mi></mrow></math>)</span> he may not have a strict preference for
+truth-telling because he is reporting other players’ allocation-preferences
+too; but if he is asked to only report his own allocation-preferences (i.e.
+that component of the state), then his preference for truth-telling may have
+bite. So long as player <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S3.p4.m4"><mi>j</mi></math>’</span>s allocation-preferences are distinct in every
+state, this setting would satisfy <a class="ltx_ref ltx_refmacro_autoref" href="#Thmdefinition1"><span class="ltx_text ltx_ref_tag">Definition 1</span></a>.</p>
+</div>
+<div class="ltx_para" id="S3.p5">
+<p class="ltx_p">We next introduce a domain restriction that will play a key role.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_definition" id="Thmdefinition2">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmdefinition2.p1">
+<p class="ltx_p">There is <em class="ltx_emph ltx_font_italic">separable punishment</em> if there is a
+function <math alttext="x:\Theta\rightarrow A" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m1"><mrow><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">→</mo><mi>A</mi></mrow></mrow></math> and players <math alttext="i" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m2"><mi>i</mi></math> and <math alttext="j\neq i" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m3"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math> such
+that for all <math alttext="\theta\in\Theta" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m4"><mrow><mi>θ</mi><mo>∈</mo><mi mathvariant="normal">Θ</mi></mrow></math> and <span class="nk-nobr"><math alttext="\theta^{\prime}\in\Theta" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m5"><mrow><msup><mi>θ</mi><mo>′</mo></msup><mo>∈</mo><mi mathvariant="normal">Θ</mi></mrow></math>:</span> <math alttext="x(\theta^{\prime})\sim_{\theta,j}^{A}f(\theta^{\prime})" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m6"><mrow><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><msubsup><mo>∼</mo><mrow><mi>θ</mi><mo>,</mo><mi>j</mi></mrow><mi>A</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <span class="nk-nobr"><math alttext="x(\theta^{\prime})\prec_{\theta,i}^{A}f(\theta)" class="ltx_Math" display="inline" id="Thmdefinition2.p1.m7"><mrow><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><msubsup><mo>≺</mo><mrow><mi>θ</mi><mo>,</mo><mi>i</mi></mrow><mi>A</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div class="ltx_para" id="S3.p6">
+<p class="ltx_p">In words, separable punishment requires for each state <span class="nk-nobr"><math alttext="\theta^{\prime}" class="ltx_Math" display="inline" id="S3.p6.m1"><msup><mi>θ</mi><mo>′</mo></msup></math>,</span> there be an alternative to the socially desired outcome, <span class="nk-nobr"><math alttext="x(\theta^{\prime})\neq f(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p6.m2"><mrow><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,</span> such that in any state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p6.m3"><mi>θ</mi></math>,</span> player
+<math alttext="j" class="ltx_Math" display="inline" id="S3.p6.m4"><mi>j</mi></math> is indifferent between <math alttext="x(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p6.m5"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> and <math alttext="f(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p6.m6"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math>
+while player <math alttext="i" class="ltx_Math" display="inline" id="S3.p6.m7"><mi>i</mi></math> finds <math alttext="x(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p6.m8"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> strictly worse than <span class="nk-nobr"><math alttext="f(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p6.m9"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math>.</span> Separable punishment may be reminiscent of various “bad/worst
+outcome” conditions in the literature <cite class="ltx_cite ltx_citemacro_citep">(e.g. Moore and Repullo, <a class="ltx_ref" href="#bib.bib33">1990</a>; Jackson<span class="ltx_text ltx_bib_etal"> et al.</span>, <a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>, but it differs in three
+ways: first, it allows for state-dependent alternative allocations; second,
+it requires that each state’s alternative allocation keep player <math alttext="j" class="ltx_Math" display="inline" id="S3.p6.m10"><mi>j</mi></math>
+indifferent rather than making him worse off, and furthermore satisfy this
+indifference no matter the true state; and third, it does not require that a
+state’s alternative allocation must be “bad” for player <math alttext="i" class="ltx_Math" display="inline" id="S3.p6.m11"><mi>i</mi></math> relative to
+all allocations in the range of the SCF, but rather only with respect to the
+state’s socially desired alternative.</p>
+</div>
+<div class="ltx_para" id="S3.p7">
+<p class="ltx_p">Generally, separable punishment is more likely to hold when there are
+transferable private goods, and indeed, there are natural and well-studied
+economic environments that satisfy separable punishment. We provide two
+examples. Consider first an economy with transfers and quasi-linear
+preferences. Here the outcome space <math alttext="A=B\times\mathbb{R}^{n}" class="ltx_Math" display="inline" id="S3.p7.m1"><mrow><mi>A</mi><mo>=</mo><mrow><mi>B</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></mrow></math> consists of
+pairs <math alttext="(b,t)" class="ltx_Math" display="inline" id="S3.p7.m2"><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math> where <math alttext="b" class="ltx_Math" display="inline" id="S3.p7.m3"><mi>b</mi></math> is some fundamental allocation and <math alttext="t=(t_{i})_{i\in I}" class="ltx_Math" display="inline" id="S3.p7.m4"><mrow><mi>t</mi><mo>=</mo><msub><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow></msub></mrow></math> is a vector of transfers. For each player <math alttext="i" class="ltx_Math" display="inline" id="S3.p7.m5"><mi>i</mi></math> and state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p7.m6"><mi>θ</mi></math>,</span>
+preferences <math alttext="\succeq_{i,\theta}^{A}" class="ltx_Math" display="inline" id="S3.p7.m7"><msubsup><mo>⪰</mo><mrow><mi>i</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup></math> over outcomes <math alttext="(b,t)" class="ltx_Math" display="inline" id="S3.p7.m8"><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math> are represented
+by <span class="nk-nobr"><math alttext="v_{i}(b,\theta)-t_{i}" class="ltx_Math" display="inline" id="S3.p7.m9"><mrow><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><msub><mi>t</mi><mi>i</mi></msub></mrow></math>.</span> Assume that for some player <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S3.p7.m10"><mi>i</mi></math>,</span> the
+function <math alttext="v_{i}(\cdot,\cdot)" class="ltx_Math" display="inline" id="S3.p7.m11"><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo rspace="0.167em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> is bounded uniformly over <math alttext="b" class="ltx_Math" display="inline" id="S3.p7.m12"><mi>b</mi></math> and <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p7.m13"><mi>θ</mi></math>,</span>
+i.e. there is a constant <math alttext="C\in\mathbb{R}_{+}" class="ltx_Math" display="inline" id="S3.p7.m14"><mrow><mi>C</mi><mo>∈</mo><msub><mi>ℝ</mi><mo>+</mo></msub></mrow></math> satisfying <math alttext="\left|v_{i}(b,\theta)\right|\leq C" class="ltx_Math" display="inline" id="S3.p7.m15"><mrow><mrow><mo>|</mo><mrow><msub><mi>v</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mi>C</mi></mrow></math> for all <math alttext="b" class="ltx_Math" display="inline" id="S3.p7.m16"><mi>b</mi></math> and <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p7.m17"><mi>θ</mi></math>.</span> Given the
+SCF <span class="nk-nobr"><math alttext="f:\Theta\rightarrow B\times\mathbb{R}^{n}" class="ltx_Math" display="inline" id="S3.p7.m18"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">→</mo><mrow><mi>B</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></mrow></mrow></math>,</span> for any <math alttext="\theta" class="ltx_Math" display="inline" id="S3.p7.m19"><mi>θ</mi></math> let <math alttext="f_{b}(\theta)" class="ltx_Math" display="inline" id="S3.p7.m20"><mrow><msub><mi>f</mi><mi>b</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> be first component of <math alttext="f(\theta)" class="ltx_Math" display="inline" id="S3.p7.m21"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math alttext="f_{t_{i}}(\theta)" class="ltx_Math" display="inline" id="S3.p7.m22"><mrow><msub><mi>f</mi><msub><mi>t</mi><mi>i</mi></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the
+transfer specified for player <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S3.p7.m23"><mi>i</mi></math>.</span> One can now easily check that the
+requirement of separable punishment is satisfied with the function <math alttext="x(\cdot)" class="ltx_Math" display="inline" id="S3.p7.m24"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> defined by <math alttext="x(\theta)=(f_{b}(\theta),t^{\prime})" class="ltx_Math" display="inline" id="S3.p7.m25"><mrow><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>f</mi><mi>b</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msup><mi>t</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> where <math alttext="t_{i}^{\prime}\ " class="ltx_Math" display="inline" id="S3.p7.m26"><msubsup><mi>t</mi><mi>i</mi><mo>′</mo></msubsup></math>is chosen sufficiently large while <math alttext="t_{j}^{\prime}=f_{t_{j}}(\theta)" class="ltx_Math" display="inline" id="S3.p7.m27"><mrow><msubsup><mi>t</mi><mi>j</mi><mo>′</mo></msubsup><mo>=</mo><mrow><msub><mi>f</mi><msub><mi>t</mi><mi>j</mi></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for
+all <span class="nk-nobr"><math alttext="j\neq i" class="ltx_Math" display="inline" id="S3.p7.m28"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math>.</span> This setting subsumes prominent settings in the literature
+such as <cite class="ltx_cite ltx_citemacro_citet">Moore and Repullo (<a class="ltx_ref" href="#bib.bib45">1988</a>, Section 5)</cite>.</p>
+</div>
+<div class="ltx_para" id="S3.p8">
+<p class="ltx_p">Second, consider an exchange economy with <math alttext="\ell\geq 2" class="ltx_Math" display="inline" id="S3.p8.m1"><mrow><mi mathvariant="normal">ℓ</mi><mo>≥</mo><mn>2</mn></mrow></math> commodities. There
+is an aggregate endowment vector <span class="nk-nobr"><math alttext="\omega_{\ell}\in\mathbb{R}_{++}^{\ell}" class="ltx_Math" display="inline" id="S3.p8.m2"><mrow><msub><mi>ω</mi><mi mathvariant="normal">ℓ</mi></msub><mo>∈</mo><msubsup><mi>ℝ</mi><mrow><mi></mi><mo rspace="0em">+</mo><mo lspace="0em">+</mo></mrow><mi mathvariant="normal">ℓ</mi></msubsup></mrow></math>.</span> An outcome <math alttext="a" class="ltx_Math" display="inline" id="S3.p8.m3"><mi>a</mi></math> is an allocation <math alttext="(a_{1},...,a_{n})\in\mathbb{R}^{\ell n}" class="ltx_Math" display="inline" id="S3.p8.m4"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mrow><mi mathvariant="normal">ℓ</mi><mo>⁢</mo><mi>n</mi></mrow></msup></mrow></math>
+such that <math alttext="a_{i}\geq 0" class="ltx_Math" display="inline" id="S3.p8.m5"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>≥</mo><mn>0</mn></mrow></math> and <span class="nk-nobr"><math alttext="\sum_{i\in I}a_{i}\leq\omega_{\ell}" class="ltx_Math" display="inline" id="S3.p8.m6"><mrow><mrow><msub><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi>I</mi></mrow></msub><msub><mi>a</mi><mi>i</mi></msub></mrow><mo>≤</mo><msub><mi>ω</mi><mi mathvariant="normal">ℓ</mi></msub></mrow></math>.</span><span class="ltx_note ltx_role_footnote" id="footnote7"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup><span class="ltx_tag ltx_tag_note">7</span>Each <math alttext="a_{i}" class="ltx_Math" display="inline" id="footnote7.m1"><msub><mi>a</mi><mi>i</mi></msub></math> is a vector with <math alttext="l" class="ltx_Math" display="inline" id="footnote7.m2"><mi>l</mi></math> components; <math alttext="\geq" class="ltx_Math" display="inline" id="footnote7.m3"><mo>≥</mo></math> and <math alttext="&gt;" class="ltx_Math" display="inline" id="footnote7.m4"><mo>&gt;</mo></math> on <math alttext="\mathbb{R}^{l}" class="ltx_Math" display="inline" id="footnote7.m5"><msup><mi>ℝ</mi><mi>l</mi></msup></math>
+are the standard component-wise partial orders.</span></span></span> For each player <math alttext="i" class="ltx_Math" display="inline" id="S3.p8.m7"><mi>i</mi></math> and
+state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p8.m8"><mi>θ</mi></math>,</span> preferences <math alttext="\succeq_{i,\theta}^{A}" class="ltx_Math" display="inline" id="S3.p8.m9"><msubsup><mo>⪰</mo><mrow><mi>i</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup></math> over outcomes are
+assumed to be strictly increasing in <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S3.p8.m10"><mi>i</mi></math>’</span>s component, i.e., <span class="nk-nobr"><math alttext="a_{i}&gt;a_{i}^{\prime}\Longrightarrow a\succ_{i,\theta}^{A}a^{\prime}" class="ltx_Math" display="inline" id="S3.p8.m11"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><msubsup><mi>a</mi><mi>i</mi><mo>′</mo></msubsup><mo stretchy="false">⟹</mo><mi>a</mi><msubsup><mo>≻</mo><mrow><mi>i</mi><mo>,</mo><mi>θ</mi></mrow><mi>A</mi></msubsup><msup><mi>a</mi><mo>′</mo></msup></mrow></math>.</span>
+Assume that at each state the social choice function <math alttext="f" class="ltx_Math" display="inline" id="S3.p8.m12"><mi>f</mi></math> allocates each
+player a strictly positive amount of some commodity. It is now
+straightforward to verify that separable punishment is satisfied with the
+function <math alttext="x(\cdot)" class="ltx_Math" display="inline" id="S3.p8.m13"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> defined by <math alttext="x(\theta)=a^{\prime}" class="ltx_Math" display="inline" id="S3.p8.m14"><mrow><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>a</mi><mo>′</mo></msup></mrow></math> such that <math alttext="a_{i}^{\prime}=0" class="ltx_Math" display="inline" id="S3.p8.m15"><mrow><msubsup><mi>a</mi><mi>i</mi><mo>′</mo></msubsup><mo>=</mo><mn>0</mn></mrow></math> while <math alttext="a_{j}^{\prime}=f_{j}(\theta)" class="ltx_Math" display="inline" id="S3.p8.m16"><mrow><msubsup><mi>a</mi><mi>j</mi><mo>′</mo></msubsup><mo>=</mo><mrow><msub><mi>f</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all <span class="nk-nobr"><math alttext="j\neq i" class="ltx_Math" display="inline" id="S3.p8.m17"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math>,</span>
+where <math alttext="f_{j}(\theta)" class="ltx_Math" display="inline" id="S3.p8.m18"><mrow><msub><mi>f</mi><mi>j</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> denotes player <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S3.p8.m19"><mi>j</mi></math>’</span>s component of the allocation <span class="nk-nobr"><math alttext="f(\theta)" class="ltx_Math" display="inline" id="S3.p8.m20"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+<div class="ltx_para" id="S3.p9">
+<p class="ltx_p">We are now in a position to state the main result.</p>
+</div>
+<div class="ltx_theorem ltx_theorem_theorem" id="Thmtheorem1">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Theorem 1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div class="ltx_para" id="Thmtheorem1.p1">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">Assume separable punishment and fix <math alttext="i" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m1"><mi>i</mi></math> and <math alttext="j" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m2"><mi>j</mi></math> from that
+definition. Suppose further there is a message space <math alttext="(M_{i},M_{j})" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m3"><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mi>i</mi></msub><mo>,</mo><msub><mi>M</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></math> such
+that (i) there is an injective function <span class="nk-nobr"><math alttext="h_{i}:\Theta\rightarrow M_{i}" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m4"><mrow><msub><mi>h</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">→</mo><msub><mi>M</mi><mi>i</mi></msub></mrow></mrow></math>,</span>
+and (ii) player <math alttext="j" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m5"><mi>j</mi></math> has a preference for honesty on <span class="nk-nobr"><math alttext="(M_{i},M_{j})" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m6"><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mi>i</mi></msub><mo>,</mo><msub><mi>M</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></math>.</span> Then
+the SCF <math alttext="f" class="ltx_Math" display="inline" id="Thmtheorem1.p1.m7"><mi>f</mi></math> can be implemented in two rounds of iterated deletion of
+strictly dominated strategies.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div class="ltx_para" id="S3.p10">
+<p class="ltx_p">Fix <math alttext="i,j" class="ltx_Math" display="inline" id="S3.p10.m1"><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></math> and <math alttext="M_{i},M_{j}" class="ltx_Math" display="inline" id="S3.p10.m2"><mrow><msub><mi>M</mi><mi>i</mi></msub><mo>,</mo><msub><mi>M</mi><mi>j</mi></msub></mrow></math> from the theorem’s hypotheses. Pick an arbitrary <math alttext="\theta^{*}\in\Theta" class="ltx_Math" display="inline" id="S3.p10.m3"><mrow><msup><mi>θ</mi><mo>∗</mo></msup><mo>∈</mo><mi mathvariant="normal">Θ</mi></mrow></math> and define the mechanism <math alttext="((M_{i},M_{j}),g)" class="ltx_Math" display="inline" id="S3.p10.m4"><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mi>i</mi></msub><mo>,</mo><msub><mi>M</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></math> where</p>
+<table class="ltx_equation ltx_eqn_table" id="S3.Ex1">
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math alttext="g(m_{i},m_{j})=\begin{cases}f(h^{-1}_{i}(m_{i}))&amp;\text{if $m_{i}\in h_{i}(%
+\Theta)$ and $m_{j}=m^{*}_{j}(h^{-1}_{i}(m_{i}))$}\\
+x(h^{-1}_{i}(m_{i}))&amp;\text{if $m_{i}\in h_{i}(\Theta)$ and $m_{j}\neq m^{*}_{j%
+}(h^{-1}_{i}(m_{i}))$}\\
+x(\theta^{*})&amp;\text{otherwise.}\\
+\end{cases}" class="ltx_Math" display="block" id="S3.Ex1.m1"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo>,</mo><msub><mi>m</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>if </mtext><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>∈</mo><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mtext> and </mtext><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>=</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>if </mtext><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>∈</mo><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mtext> and </mtext><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>≠</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>∗</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mtext>otherwise.</mtext></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Consider any state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p10.m5"><mi>θ</mi></math>.</span> For any given <span class="nk-nobr"><math alttext="m_{i}" class="ltx_Math" display="inline" id="S3.p10.m6"><msub><mi>m</mi><mi>i</mi></msub></math>,</span> <math alttext="j" class="ltx_Math" display="inline" id="S3.p10.m7"><mi>j</mi></math> is indifferent over all the outcomes he can induce, so condition (<a class="ltx_ref" href="#S3.E1"><span class="ltx_text ltx_ref_tag">1</span></a>) is satisfied. Hence, <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="S3.p10.m8"><mi>j</mi></math>’</span>s preference for honesty implies (<a class="ltx_ref" href="#S3.E2"><span class="ltx_text ltx_ref_tag">2</span></a>) and it is strictly dominant for <math alttext="j" class="ltx_Math" display="inline" id="S3.p10.m9"><mi>j</mi></math> to send message <span class="nk-nobr"><math alttext="m^{*}_{j}(\theta)" class="ltx_Math" display="inline" id="S3.p10.m10"><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+<div class="ltx_para" id="S3.p11">
+<p class="ltx_p">Now fix <span class="nk-nobr"><math alttext="m_{j}=m^{*}_{j}(\theta)" class="ltx_Math" display="inline" id="S3.p11.m1"><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>=</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span> It follows from the definition of <math alttext="g(\cdot)" class="ltx_Math" display="inline" id="S3.p11.m2"><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> that if player <math alttext="i" class="ltx_Math" display="inline" id="S3.p11.m3"><mi>i</mi></math> reports <span class="nk-nobr"><math alttext="m_{i}=h_{i}(\theta)" class="ltx_Math" display="inline" id="S3.p11.m4"><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,</span> then because <math alttext="m^{*}_{j}(h^{-1}_{i}(m_{i}))=m^{*}_{j}(\theta)" class="ltx_Math" display="inline" id="S3.p11.m5"><mrow><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> (using the injective property of <span class="nk-nobr"><math alttext="h_{i}(\cdot)" class="ltx_Math" display="inline" id="S3.p11.m6"><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math>),</span> he induces <span class="nk-nobr"><math alttext="f(h_{i}^{-1}(m_{i}))=f(\theta)" class="ltx_Math" display="inline" id="S3.p11.m7"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>h</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span>
+The definition of <math alttext="g(\cdot)" class="ltx_Math" display="inline" id="S3.p11.m8"><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> combined with the injective property of both <math alttext="m^{*}_{j}(\cdot)" class="ltx_Math" display="inline" id="S3.p11.m9"><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> and <math alttext="h_{i}(\cdot)" class="ltx_Math" display="inline" id="S3.p11.m10"><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> further implies that if player <math alttext="i" class="ltx_Math" display="inline" id="S3.p11.m11"><mi>i</mi></math> sends any <span class="nk-nobr"><math alttext="m_{i}\neq h_{i}(\theta)" class="ltx_Math" display="inline" id="S3.p11.m12"><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>≠</mo><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,</span> he will induce <math alttext="x(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p11.m13"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> for some <span class="nk-nobr"><math alttext="\theta^{\prime}" class="ltx_Math" display="inline" id="S3.p11.m14"><msup><mi>θ</mi><mo>′</mo></msup></math>.</span> The separable punishment condition implies that <math alttext="x(\theta^{\prime})" class="ltx_Math" display="inline" id="S3.p11.m15"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>θ</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math> for any <math alttext="\theta^{\prime}" class="ltx_Math" display="inline" id="S3.p11.m16"><msup><mi>θ</mi><mo>′</mo></msup></math> is strictly worse for <math alttext="i" class="ltx_Math" display="inline" id="S3.p11.m17"><mi>i</mi></math> than <math alttext="f(\theta)" class="ltx_Math" display="inline" id="S3.p11.m18"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math> in state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="S3.p11.m19"><mi>θ</mi></math>.</span> It follows that the unique best response for player <math alttext="i" class="ltx_Math" display="inline" id="S3.p11.m20"><mi>i</mi></math> is to send message <span class="nk-nobr"><math alttext="h_{i}(\theta)" class="ltx_Math" display="inline" id="S3.p11.m21"><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+<div class="ltx_para" id="S3.p12">
+<p class="ltx_p">Therefore, the unique strategy profile surviving two rounds of iterative deletion of strictly dominated strategies is <math alttext="m_{j}=m^{*}_{j}(\theta)" class="ltx_Math" display="inline" id="S3.p12.m1"><mrow><msub><mi>m</mi><mi>j</mi></msub><mo>=</mo><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <span class="nk-nobr"><math alttext="m_{i}=h_{i}(\theta)" class="ltx_Math" display="inline" id="S3.p12.m2"><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,</span> which yields the outcome <span class="nk-nobr"><math alttext="f(\theta)" class="ltx_Math" display="inline" id="S3.p12.m3"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></math>,</span> as desired.
+  <span class="ltx_rule" style="width:4.0pt;height:7.5pt;vertical-align:-1.5pt;background:black;display:inline-block;"> </span></p>
+</div>
+</div>
+<div class="ltx_para" id="S3.p13">
+<p class="ltx_p">The logic behind <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> is similar to that presented
+in the example of <a class="ltx_ref ltx_refmacro_autoref" href="#S2"><span class="ltx_text ltx_ref_tag">Section 2</span></a>. Indeed, if we were to assume that
+each <math alttext="M_{i}" class="ltx_Math" display="inline" id="S3.p13.m1"><msub><mi>M</mi><mi>i</mi></msub></math> is the set of states of the world, we could just let <math alttext="h_{i}(\cdot)" class="ltx_Math" display="inline" id="S3.p13.m2"><mrow><msub><mi>h</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> in the proof of <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> be the identity mapping. In
+addition, if we (naturally) assume that the function <math alttext="m_{j}^{\ast}(\cdot)" class="ltx_Math" display="inline" id="S3.p13.m3"><mrow><msubsup><mi>m</mi><mi>j</mi><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math>
+is the identity mapping, the mechanism in the proof simplifies to the
+following: denoting player <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S3.p13.m4"><mi>i</mi></math>’</span>s announcement of the state by <span class="nk-nobr"><math alttext="\theta_{i}" class="ltx_Math" display="inline" id="S3.p13.m5"><msub><mi>θ</mi><mi>i</mi></msub></math>,</span>
+choose outcome <math alttext="f(\theta_{i})" class="ltx_Math" display="inline" id="S3.p13.m6"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>θ</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> if player <math alttext="j" class="ltx_Math" display="inline" id="S3.p13.m7"><mi>j</mi></math> announces the same state;
+otherwise choose <span class="nk-nobr"><math alttext="x(\theta_{i})" class="ltx_Math" display="inline" id="S3.p13.m8"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>θ</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>.</span> By the separable punishment condition,
+player <math alttext="j" class="ltx_Math" display="inline" id="S3.p13.m9"><mi>j</mi></math> is indifferent between all his messages. So it is uniquely
+optimal for player <math alttext="j" class="ltx_Math" display="inline" id="S3.p13.m10"><mi>j</mi></math> to tell the truth; in turn, separable punishment
+further implies that the unique best response for player <math alttext="i" class="ltx_Math" display="inline" id="S3.p13.m11"><mi>i</mi></math> is to also tell
+the truth. As discussed at the end of <a class="ltx_ref ltx_refmacro_autoref" href="#S2"><span class="ltx_text ltx_ref_tag">Section 2</span></a>, this mechanism is robust, direct, and simple: there are only two rounds of elimination of strictly dominated strategies and obviously no use of integer games or related ideas.</p>
+</div>
+</section>
+<section class="ltx_section" id="S4">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>Discussion and Further Connections to the Literature</h2>
+<section class="ltx_subsection" id="S4.SS1">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>Separable punishment</h3>
+<div class="ltx_para" id="S4.SS1.p1">
+<p class="ltx_p"><cite class="ltx_cite ltx_citemacro_citet">Dutta and Sen (<a class="ltx_ref" href="#bib.bib63">2011</a>)</cite> provide a separability condition under which they establish
+that any social choice function can be implemented by a mechanism that does
+not use integer games so long as there are three or more players. Their
+condition is logically incomparable with our separable punishment condition.
+However, separability conditions in the literature generally incorporate
+settings such as public-good environments with transfers and quasi-linear
+preferences,<span class="ltx_note ltx_role_footnote" id="footnote8"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup><span class="ltx_tag ltx_tag_note">8</span>See, for example, <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>. Our condition is also logically
+incomparable with that of <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>, but both conditions hold in the
+pure exchange economy and transferable-utility settings discussed following <a class="ltx_ref ltx_refmacro_autoref" href="#Thmdefinition2"><span class="ltx_text ltx_ref_tag">Definition 2</span></a>.</span></span></span> but Dutta and Sen’s notion excludes this standard
+environment (as they note) while ours does not. This is one reason our
+result applies to a class of economic problems that Theorem 4 in <cite class="ltx_cite ltx_citemacro_citet">Dutta and Sen (<a class="ltx_ref" href="#bib.bib63">2011</a>)</cite>
+does not. Furthermore, our result applies when there are only two players,
+which is important for some applications such as bilateral contracting. In fact, <cite class="ltx_cite ltx_citemacro_citet">Dutta and Sen (<a class="ltx_ref" href="#bib.bib63">2011</a>, page
+166)</cite> discuss whether a strengthening of their separability condition
+would be sufficient for implementation with a small preference for honesty
+when there are only two players. They conjecture that the answer to this
+question must be negative. Our <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> disproves their conjecture
+because their suggested strengthening is stronger than our separable
+punishment condition.<span class="ltx_note ltx_role_footnote" id="footnote9"><sup class="ltx_note_mark">9</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">9</sup><span class="ltx_tag ltx_tag_note">9</span><cite class="ltx_cite ltx_citemacro_citet">Dutta and Sen (<a class="ltx_ref" href="#bib.bib63">2011</a>)</cite> call an environment separable if
+there exists an alternative <math alttext="w\in A" class="ltx_Math" display="inline" id="footnote9.m1"><mrow><mi>w</mi><mo>∈</mo><mi>A</mi></mrow></math> with the following property: for all <math alttext="a\in A" class="ltx_Math" display="inline" id="footnote9.m2"><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow></math> and <span class="nk-nobr"><math alttext="J\subseteq N" class="ltx_Math" display="inline" id="footnote9.m3"><mrow><mi>J</mi><mo>⊆</mo><mi>N</mi></mrow></math>,</span> there exists <math alttext="a^{J}\in A" class="ltx_Math" display="inline" id="footnote9.m4"><mrow><msup><mi>a</mi><mi>J</mi></msup><mo>∈</mo><mi>A</mi></mrow></math> such that for any <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="footnote9.m5"><mi>θ</mi></math>,</span> <math alttext="a^{J}\sim_{\theta,j}^{A}w" class="ltx_Math" display="inline" id="footnote9.m6"><mrow><msup><mi>a</mi><mi>J</mi></msup><msubsup><mo>∼</mo><mrow><mi>θ</mi><mo>,</mo><mi>j</mi></mrow><mi>A</mi></msubsup><mi>w</mi></mrow></math> for all <math alttext="j\in J" class="ltx_Math" display="inline" id="footnote9.m7"><mrow><mi>j</mi><mo>∈</mo><mi>J</mi></mrow></math> and <math alttext="a^{J}\sim_{\theta,i}^{A}a" class="ltx_Math" display="inline" id="footnote9.m8"><mrow><msup><mi>a</mi><mi>J</mi></msup><msubsup><mo>∼</mo><mrow><mi>θ</mi><mo>,</mo><mi>i</mi></mrow><mi>A</mi></msubsup><mi>a</mi></mrow></math> for all <span class="nk-nobr"><math alttext="i\notin J" class="ltx_Math" display="inline" id="footnote9.m9"><mrow><mi>i</mi><mo>∉</mo><mi>J</mi></mrow></math>.</span> The strengthening they propose for
+the two-player case consists in assuming that <math alttext="w" class="ltx_Math" display="inline" id="footnote9.m10"><mi>w</mi></math> is the “worst” outcome relative to outcomes in the range of the
+SCF, i.e., <math alttext="w\prec_{\theta,i}^{A}f(\theta)" class="ltx_Math" display="inline" id="footnote9.m11"><mrow><mi>w</mi><msubsup><mo>≺</mo><mrow><mi>θ</mi><mo>,</mo><mi>i</mi></mrow><mi>A</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for each player <math alttext="i" class="ltx_Math" display="inline" id="footnote9.m12"><mi>i</mi></math> and
+state <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="footnote9.m13"><mi>θ</mi></math>.</span> It is straightforward that this would imply our
+separability condition with the function <math alttext="x(\cdot)" class="ltx_Math" display="inline" id="footnote9.m14"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> defined as <math alttext="x(\theta)=f(\theta)^{\{i\}}" class="ltx_Math" display="inline" id="footnote9.m15"><mrow><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">{</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></msup></mrow></mrow></math> for all <span class="nk-nobr"><math alttext="\theta" class="ltx_Math" display="inline" id="footnote9.m16"><mi>θ</mi></math>.</span></span></span></span></p>
+</div>
+<div class="ltx_para" id="S4.SS1.p2">
+<p class="ltx_p">The message of <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> is related to a result in <cite class="ltx_cite ltx_citemacro_citet">Ben-Porath and Lipman (<a class="ltx_ref" href="#bib.bib12">2012</a>)</cite>. They
+show that in a complete-information setting where any pair of states can be
+distinguished via some player’s hard evidence, a planner who can use large
+off-path fines can implement any SCF in subgame-perfect equilibria of a
+perfect-information mechanism. They note that this conclusion also holds if
+players have a small cost of forging evidence. Preferences for
+honesty are a special case of costly evidence fabrication <cite class="ltx_cite ltx_citemacro_citep">(cf. Kartik and Tercieux, <a class="ltx_ref" href="#bib.bib72">2012</a>)</cite>. Due to the additional structure, <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> derives
+a much simpler mechanism and stronger conclusion than Theorem 1 of
+Ben-Porath and Lipman.<span class="ltx_note ltx_role_footnote" id="footnote10"><sup class="ltx_note_mark">10</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">10</sup><span class="ltx_tag ltx_tag_note">10</span><cite class="ltx_cite ltx_citemacro_citet">Ben-Porath and Lipman (<a class="ltx_ref" href="#bib.bib12">2012</a>)</cite> use a perfect-information mechanism. It is straightforward to see that our <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> can also be proved with a perfect-information mechanism: simply view the game form used in the Theorem’s proof as the normal-form representation of a perfect-information game form where player <math alttext="j" class="ltx_Math" display="inline" id="footnote10.m1"><mi>j</mi></math> moves first followed by player <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="footnote10.m2"><mi>i</mi></math>.</span></span></span></span></p>
+</div>
+</section>
+<section class="ltx_subsection" id="S4.SS2">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>Strict versus weak dominance</h3>
+<div class="ltx_para" id="S4.SS2.p1">
+<p class="ltx_p">Prior literature, notably <cite class="ltx_cite ltx_citemacro_citet">Abreu and Matsushima (<a class="ltx_ref" href="#bib.bib76">1994</a>)</cite>, <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>, and <cite class="ltx_cite ltx_citemacro_citet">Sjöström (<a class="ltx_ref" href="#bib.bib1">1994</a>)</cite>, on implementation using the solution concept of iterative deletion of weakly dominated strategies (IDWDS)
+has established that separable environments allow for permissive results using “bounded” mechanisms, even without preferences for honesty. Specifically, the mechanisms in these papers achieve unique implementation through truth-telling, i.e.,
+in any state of the world, truth-telling is the unique strategy profile surviving IDWDS and yields an outcome that coincides with the social objective.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p2">
+<p class="ltx_p">Implementation using the solution concept of IDWDS suffers from multiple drawbacks that implementation using iterative deletion of strictly dominated strategies (IDSDS) usually does not. First, the order in which weakly dominated strategies are eliminated can affect the final outcome. This is a problem for the mechanisms of both <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite> and <cite class="ltx_cite ltx_citemacro_citet">Sjöström (<a class="ltx_ref" href="#bib.bib1">1994</a>)</cite>: the reason that certain “lies” for a player are weakly dominated by truth-telling in these mechanisms is only because opponents may themselves be playing weakly dominated strategies. If one were to first eliminate these weakly dominated strategies for opponents, then some lies for a player would no longer be weakly dominated, and consequently truth-telling would not obtain as the unique outcome of the deletion process.<span class="ltx_note ltx_role_footnote" id="footnote11"><sup class="ltx_note_mark">11</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">11</sup><span class="ltx_tag ltx_tag_note">11</span>As we were reminded by an Associate Editor, IDSDS can also be sensitive to the order of deletion in an arbitrary infinite game. However, even when the environment is not finite, this is not a concern with the mechanism used to prove <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> because of its property that player <math alttext="j" class="ltx_Math" display="inline" id="footnote11.m1"><mi>j</mi></math> has a unique strictly dominant strategy and player <math alttext="i" class="ltx_Math" display="inline" id="footnote11.m2"><mi>i</mi></math> has a unique best response to this strategy of <span class="nk-nobr"><math alttext="j" class="ltx_Math" display="inline" id="footnote11.m3"><mi>j</mi></math>.</span> Indeed, this pair of strategies is the unique maximal reduction in the sense of <cite class="ltx_cite ltx_citemacro_citet">Dufwenberg and Stegeman (<a class="ltx_ref" href="#bib.bib87">2002</a>)</cite>.</span></span></span></p>
+</div>
+<div class="ltx_para" id="S4.SS2.p3">
+<p class="ltx_p">Second, there are conceptual tensions between the use of IDWDS by players and their knowledge of the implications of this concept. Specifically, there are games in which it is unclear whether players
+who know the set of strategies surviving IDWDS (in some order) would in fact find it compelling to use only these strategies on the basis of weak dominance.<span class="ltx_note ltx_role_footnote" id="footnote12"><sup class="ltx_note_mark">12</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">12</sup><span class="ltx_tag ltx_tag_note">12</span>This is true even when there is a unique strategy profile surviving IDWDS, and it is the same profile no matter the order of deletion. Example 8 in <cite class="ltx_cite ltx_citemacro_citet">Samuelson (<a class="ltx_ref" href="#bib.bib8">1992</a>)</cite> illustrates the point. More generally, <cite class="ltx_cite ltx_citemacro_citet">Samuelson (<a class="ltx_ref" href="#bib.bib8">1992</a>)</cite> discusses various issues that must be resolved regarding the use of IDWDS as a solution concept. See <cite class="ltx_cite ltx_citemacro_citet">Brandenburger<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib85">2008</a>)</cite> and <cite class="ltx_cite ltx_citemacro_citet">Keisler and Lee (<a class="ltx_ref" href="#bib.bib86">2011</a>)</cite>
+for more recent developments.</span></span></span> In the context of implementation theory, we claim that any “permissive result” that achieves unique implementation through IDWDS will be subject to such a critique.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p4">
+<p class="ltx_p">To make our claim precise, fix an arbitrary mechanism, an arbitrary state of the world, and suppose that <math alttext="(s^{*}_{1},\ldots,s^{*}_{n})" class="ltx_Math" display="inline" id="S4.SS2.p4.m1"><mrow><mo stretchy="false">(</mo><msubsup><mi>s</mi><mn>1</mn><mo>∗</mo></msubsup><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msubsup><mi>s</mi><mi>n</mi><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></math> is the unique strategy profile surviving IDWDS (in some order). We will say that
+<math alttext="(s^{*}_{1},\ldots,s^{*}_{n})" class="ltx_Math" display="inline" id="S4.SS2.p4.m2"><mrow><mo stretchy="false">(</mo><msubsup><mi>s</mi><mn>1</mn><mo>∗</mo></msubsup><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msubsup><mi>s</mi><mi>n</mi><mo>∗</mo></msubsup><mo stretchy="false">)</mo></mrow></math> is <em class="ltx_emph ltx_font_italic">consistent</em>
+if for every player <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="S4.SS2.p4.m3"><mi>i</mi></math>,</span> when each player <math alttext="j\neq i" class="ltx_Math" display="inline" id="S4.SS2.p4.m4"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math> is assumed to play
+<span class="nk-nobr"><math alttext="s^{*}_{j}" class="ltx_Math" display="inline" id="S4.SS2.p4.m5"><msubsup><mi>s</mi><mi>j</mi><mo>∗</mo></msubsup></math>,</span> the only weakly undominated strategy for <math alttext="i" class="ltx_Math" display="inline" id="S4.SS2.p4.m6"><mi>i</mi></math> is <span class="nk-nobr"><math alttext="s^{*}_{i}" class="ltx_Math" display="inline" id="S4.SS2.p4.m7"><msubsup><mi>s</mi><mi>i</mi><mo>∗</mo></msubsup></math>.</span><span class="ltx_note ltx_role_footnote" id="footnote13"><sup class="ltx_note_mark">13</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">13</sup><span class="ltx_tag ltx_tag_note">13</span>In other words, if one considers a modified game in which player <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="footnote13.m1"><mi>i</mi></math>’</span>s set of available (pure) strategies is <math alttext="M_{i}" class="ltx_Math" display="inline" id="footnote13.m2"><msub><mi>M</mi><mi>i</mi></msub></math>
+while each player <math alttext="j\neq i" class="ltx_Math" display="inline" id="footnote13.m3"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math> only has available <span class="nk-nobr"><math alttext="s^{*}_{j}" class="ltx_Math" display="inline" id="footnote13.m4"><msubsup><mi>s</mi><mi>j</mi><mo>∗</mo></msubsup></math>,</span> <span class="nk-nobr"><math alttext="i" class="ltx_Math" display="inline" id="footnote13.m5"><mi>i</mi></math>’</span>s set of weakly undominated strategies (pure or mixed) in this modified game should be <span class="nk-nobr"><math alttext="\{s^{*}_{i}\}" class="ltx_Math" display="inline" id="footnote13.m6"><mrow><mo stretchy="false">{</mo><msubsup><mi>s</mi><mi>i</mi><mo>∗</mo></msubsup><mo stretchy="false">}</mo></mrow></math>.</span></span></span></span>
+Consistency in this sense ensures that players’ use of IDWDS is compatible with their
+knowledge of the consequences of IDWDS.<span class="ltx_note ltx_role_footnote" id="footnote14"><sup class="ltx_note_mark">14</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">14</sup><span class="ltx_tag ltx_tag_note">14</span>An implication of Theorem 4 of <cite class="ltx_cite ltx_citemacro_citet">Samuelson (<a class="ltx_ref" href="#bib.bib8">1992</a>)</cite> is that, in his framework of knowledge,
+if there is common knowledge of admissibility (i.e. the deletion of all weakly dominated strategies) and common knowledge of admissibility yields a unique strategy profile, this outcome can be known to players if and only if the strategy profile is consistent in the aforementioned sense.</span></span></span> While an arbitrary game need not possess a consistent strategy profile surviving IDWDS, it is desirable from a mechanism design perspective to design game forms under which IDWDS does yield a
+consistent strategy profile in each state, as this ensures that the planner’s recommendation of what strategy profile to play in each state on the basis of IDWDS is “self-enforcing”.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p5">
+<p class="ltx_p">Accordingly, let us say that a SCF is implementable in IDWDS by truth-telling <em class="ltx_emph ltx_font_italic">in a consistent way</em> if there is a mechanism such that in every state, truth-telling is the unique profile surviving IDWDS (in some order), and it is consistent while also leading to the socially desired objective. It is straightforward that in any state where truth-telling is the unique strategy profile surviving IDWDS and is consistent, truth-telling must be a strict Nash equilibrium.<span class="ltx_note ltx_role_footnote" id="footnote15"><sup class="ltx_note_mark">15</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">15</sup><span class="ltx_tag ltx_tag_note">15</span>If some player <math alttext="i" class="ltx_Math" display="inline" id="footnote15.m1"><mi>i</mi></math> has multiple best responses when every <math alttext="j\neq i" class="ltx_Math" display="inline" id="footnote15.m2"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math> tells the truth, weak dominance does not pin down a unique strategy for <math alttext="i" class="ltx_Math" display="inline" id="footnote15.m3"><mi>i</mi></math> in the modified game in which all <math alttext="j\neq i" class="ltx_Math" display="inline" id="footnote15.m4"><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></math> can only tell the truth while <math alttext="i" class="ltx_Math" display="inline" id="footnote15.m5"><mi>i</mi></math> can choose any of his original strategies.</span></span></span> Thus, if a SCF is implementable in IDWDS by truth-telling in a consistent way, it is also implementable
+when using strict Nash equilibrium as the solution concept. However, <cite class="ltx_cite ltx_citemacro_citet">Cabrales and Serrano (<a class="ltx_ref" href="#bib.bib2">2011</a>, Theorem 3)</cite> have shown that SCFs that are implementable in strict Nash equilibrium satisfy a
+small variation of Maskin-monotonicity that they call “quasi-monotonicity”. It follows that <em class="ltx_emph ltx_font_italic">any</em> mechanism that implements a non-(quasi-)monotonic SCF in IDWDS by truth-telling fails
+to do so in a consistent way. This concern applies, in particular, to the mechanisms of <cite class="ltx_cite ltx_citemacro_citet">Abreu and Matsushima (<a class="ltx_ref" href="#bib.bib76">1994</a>)</cite>, <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>, and <cite class="ltx_cite ltx_citemacro_citet">Sjöström (<a class="ltx_ref" href="#bib.bib1">1994</a>)</cite> whenever these mechanisms are used to implement non-(quasi-)monotonic SCFs through IDWDS.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p6">
+<p class="ltx_p">It is natural to wonder whether one couldn’t just take a mechanism that achieves implementation through IDWDS without a preference for honesty and use it to achieve implementation through IDSDS when there is a preference for honesty. The answer is generally negative with respect to the minimal notion of preference for honesty considered in this paper. In particular, one can check that the mechanisms of <cite class="ltx_cite ltx_citemacro_citet">Abreu and Matsushima (<a class="ltx_ref" href="#bib.bib76">1994</a>)</cite>, <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite>, and <cite class="ltx_cite ltx_citemacro_citet">Sjöström (<a class="ltx_ref" href="#bib.bib1">1994</a>)</cite> would not achieve implementation in IDSDS even if all players had a preference for honesty in the sense of <a class="ltx_ref ltx_refmacro_autoref" href="#Thmdefinition1"><span class="ltx_text ltx_ref_tag">Definition 1</span></a> holding with their message spaces. The point is that while preferences for honesty do transform certain “primitive” indifferences into strict preferences, an implementing mechanism must create the right kinds of primitive indifferences to exploit them. Using the aforementioned authors’ mechanisms to achieve IDSDS with a preference for honesty would require strengthening the notion of a preference for honesty in an appropriate way (that depends on the mechanism); this is illustrated by the approach of <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib65">2008a</a>)</cite> and <cite class="ltx_cite ltx_citemacro_citet">Matsushima (<a class="ltx_ref" href="#bib.bib43">2008c</a>)</cite>.</p>
+</div>
+<div class="ltx_para" id="S4.SS2.p7">
+<p class="ltx_p">We end by reiterating other merits of the mechanism used in <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> besides the solution concept. It is essentially a direct mechanism—unlike those of <cite class="ltx_cite ltx_citemacro_citet">Jackson<span class="ltx_text ltx_bib_etal"> et al.</span> (<a class="ltx_ref" href="#bib.bib66">1994</a>)</cite> and <cite class="ltx_cite ltx_citemacro_citet">Abreu and Matsushima (<a class="ltx_ref" href="#bib.bib76">1994</a>)</cite>—and requires only two players. As already mentioned, the two-player setting is important because of its relevance to bargaining and bilateral contracting, yet it is not accommodated by any of the aforementioned papers that achieve implementation through IDWDS without a preference for honesty. In addition, in some salient cases the mechanism is “detail free” as explained at the end of <a class="ltx_ref ltx_refmacro_autoref" href="#S2"><span class="ltx_text ltx_ref_tag">Section 2</span></a>. Finally, <a class="ltx_ref ltx_refmacro_autoref" href="#Thmtheorem1"><span class="ltx_text ltx_ref_tag">Theorem 1</span></a> applies even when players’ preferences over allocations do not change across states while the socially preferred alternative does. As also highlighted by <cite class="ltx_cite ltx_citemacro_citet">Ben-Porath and Lipman (<a class="ltx_ref" href="#bib.bib12">2012</a>)</cite>, there are interesting problems that have this property;<span class="ltx_note ltx_role_footnote" id="footnote16"><sup class="ltx_note_mark">16</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">16</sup><span class="ltx_tag ltx_tag_note">16</span>To take just one example, consider assigning a settlement that a defendant must pay a plaintiff: a social planner may wish to condition
+the transfer (the allocation) on what damage was actually caused (the state of the world) even though neither player’s preferences varies with the damage level.</span></span></span> for obvious reasons, no result in the literature without a preference for honesty (or related ideas, such as costly signaling or evidence) can accomodate nontrivial SCFs in these cases, and furthermore, simply using those mechanisms without modification would not generally work even when there is a preference for honesty.</p>
+</div>
+</section>
+</section>
+<section class="ltx_bibliography" id="bib">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+<ul class="ltx_biblist" id="bib.L1">
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib77">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Abreu and H. Matsushima (1992)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Virtual implementation in iteratively undominated strategies: complete information</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">60</span> (<span class="ltx_text ltx_bib_number">5</span>), <span class="ltx_text ltx_bib_pages"> pp. 993–1008</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote3"><span class="ltx_text ltx_ref_tag">footnote 3</span></a>,
+<a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib76">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Abreu and H. Matsushima (1994)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Exact implementation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">64</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 1–19</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p1"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p5"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p6"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p7"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib9">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Abreu and A. Sen (1990)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Subgame perfect implementation: a necessary and almost sufficient condition</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">50</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 285–299</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib11">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">D. Abreu and A. Sen (1991)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Virtual implementation in nash equilibrium</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">59</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 997–1021</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote3"><span class="ltx_text ltx_ref_tag">footnote 3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib62">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">P. Aghion, D. Fudenberg, R. Holden, T. Kunimoto, and O. Tercieux (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Subgame-perfect implementation under information perturbations</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Quarterly Journal of Economics</span> <span class="ltx_text ltx_bib_volume">127</span>, <span class="ltx_text ltx_bib_pages"> pp. 1843–1881</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib12">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. Ben-Porath and B. L. Lipman (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation with partial provability</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">147</span> (<span class="ltx_text ltx_bib_number">5</span>), <span class="ltx_text ltx_bib_pages"> pp. 1689–1724</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS1.p2"><span class="ltx_text ltx_ref_tag">§4.1</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p7"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#footnote10"><span class="ltx_text ltx_ref_tag">footnote 10</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib85">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Brandenburger, A. Friedenberg, and H. J. Keisler (2008)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Admissibility in games</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">76</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 307–352</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote12"><span class="ltx_text ltx_ref_tag">footnote 12</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib2">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Cabrales and R. Serrano (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation in adaptive better-response dynamics: towards a general theory of bounded rationality in mechanisms</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Games and Economic Behavior</span> <span class="ltx_text ltx_bib_volume">73</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 360–374</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S4.SS2.p5"><span class="ltx_text ltx_ref_tag">§4.2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib15">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">K. Chung and J. Ely (2003)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation with near-complete information</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">71</span>, <span class="ltx_text ltx_bib_pages"> pp. 857–871</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib10">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. Dekel, D. Fudenberg, and S. Morris (2006)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Topologies on types</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Theoretical Economics</span> <span class="ltx_text ltx_bib_volume">1</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 275–309</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p6"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib87">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Dufwenberg and M. Stegeman (2002)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Existence and uniqueness of maximal reductions under iterated strict dominance</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">70</span> (<span class="ltx_text ltx_bib_number">5</span>), <span class="ltx_text ltx_bib_pages"> pp. 2007–2023</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote11"><span class="ltx_text ltx_ref_tag">footnote 11</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib63">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">B. Dutta and A. Sen (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Nash implementation with partially honest individuals</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Games and Economic Behavior</span> <span class="ltx_text ltx_bib_volume">74</span>, <span class="ltx_text ltx_bib_pages"> pp. 154–169</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p3"><span class="ltx_text ltx_ref_tag">§3</span></a>,
+<a class="ltx_ref" href="#S4.SS1.p1"><span class="ltx_text ltx_ref_tag">§4.1</span></a>,
+<a class="ltx_ref" href="#footnote9"><span class="ltx_text ltx_ref_tag">footnote 9</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib13">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">R. Holden, N. Kartik, and O. Tercieux (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Simple mechanisms and preferences for honesty</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">Columbia University Economics Discussion Paper No. 1213-18</span>
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="http://hdl.handle.net/10022/AC:P:19295">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p8"><span class="ltx_text ltx_ref_tag">§2</span></a>,
+<a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib66">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. O. Jackson, T. R. Palfrey, and S. Srivastava (1994)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Undominated nash implementation in bounded mechanisms</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Games and Economic Behavior</span> <span class="ltx_text ltx_bib_volume">6</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 474–501</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S1.p5"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p6"><span class="ltx_text ltx_ref_tag">§3</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p1"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p2"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p5"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p6"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p7"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#footnote8"><span class="ltx_text ltx_ref_tag">footnote 8</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib32">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. O. Jackson (1992)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation in undominated.strategies: a look at bounded mechanisms</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Review of Economic Studies</span> <span class="ltx_text ltx_bib_volume">59</span> (<span class="ltx_text ltx_bib_number">4</span>), <span class="ltx_text ltx_bib_pages"> pp. 757–75</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib72">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">N. Kartik and O. Tercieux (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation with evidence</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Theoretical Economics</span> <span class="ltx_text ltx_bib_volume">7</span>, <span class="ltx_text ltx_bib_pages"> pp. 323–355</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p3"><span class="ltx_text ltx_ref_tag">§3</span></a>,
+<a class="ltx_ref" href="#S4.SS1.p2"><span class="ltx_text ltx_ref_tag">§4.1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib86">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">H. J. Keisler and B. S. Lee (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Common assumption of rationality</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote12"><span class="ltx_text ltx_ref_tag">footnote 12</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib88">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">V. Korpela (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Bayesian implementation with partially honest individuals</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">Unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib5">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Lombardi and N. Yoshihara (2011)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Partially-honest nash implementation: characterization results</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">unpublished</span>
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><a class="ltx_ref ltx_bib_external" href="http://ssrn.com/abstract=1759924">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib4">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Lombardi and N. Yoshihara (2013)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Natural implementation with partially honest agents</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote5"><span class="ltx_text ltx_ref_tag">footnote 5</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib41">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">E. Maskin (1999)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Nash equilibrium and welfare optimality</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Review of Economic Studies</span> <span class="ltx_text ltx_bib_volume">66</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 23–38</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p1"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib42">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">H. Matsushima (1988)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">A new approach to the implementation problem</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">45</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 128–144</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote3"><span class="ltx_text ltx_ref_tag">footnote 3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib65">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">H. Matsushima (2008a)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Behavioral aspects of implementation theory</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Economics Letters</span> <span class="ltx_text ltx_bib_volume">100</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 161–164</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p6"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib71">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">H. Matsushima (2008b)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Detail-free mechanism design in twice iterative dominance: large economies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">141</span>, <span class="ltx_text ltx_bib_pages"> pp. 134–151</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p6"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib43">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">H. Matsushima (2008c)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Role of honesty in full implementation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">139</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 353–359</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p6"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib45">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Moore and R. Repullo (1988)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Subgame perfect implementation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">56</span> (<span class="ltx_text ltx_bib_number">5</span>), <span class="ltx_text ltx_bib_pages"> pp. 1191–1220</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S3.p7"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib33">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Moore and R. Repullo (1990)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Nash implementation: a full characterization</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">58</span>, <span class="ltx_text ltx_bib_pages"> pp. 1083–1099</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S3.p6"><span class="ltx_text ltx_ref_tag">§3</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_unpublished" id="bib.bib84">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">J. Ortner (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Direct implementation with minimally honest individuals</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note">unpublished</span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p3"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib82">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">M. Oury and O. Tercieux (2012)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Continuous implementation</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">80</span>, <span class="ltx_text ltx_bib_pages"> pp. 1605–1637</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S2.p6"><span class="ltx_text ltx_ref_tag">§2</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib47">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. R. Palfrey and S. Srivastava (1991)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Nash implementation using undominated strategies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">59</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 479–501</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p2"><span class="ltx_text ltx_ref_tag">§1</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib83">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">A. Postlewaite and D. Schmeidler (1986)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation in differential information economies</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">39</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 14–33</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote4"><span class="ltx_text ltx_ref_tag">footnote 4</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib8">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">L. Samuelson (1992)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Dominated strategies and common knowledge</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Games and Economic Behavior</span> <span class="ltx_text ltx_bib_volume">4</span> (<span class="ltx_text ltx_bib_number">2</span>), <span class="ltx_text ltx_bib_pages"> pp. 284–313</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#footnote12"><span class="ltx_text ltx_ref_tag">footnote 12</span></a>,
+<a class="ltx_ref" href="#footnote14"><span class="ltx_text ltx_ref_tag">footnote 14</span></a>.
+</span>
+</li>
+<li class="ltx_bibitem ltx_bib_article" id="bib.bib1">
+<span class="ltx_tag ltx_bib_author-year ltx_role_refnum ltx_tag_bibitem">T. Sjöström (1994)</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Implementation in undominated nash equilibria without integer games</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Games and Economic Behavior</span> <span class="ltx_text ltx_bib_volume">6</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 502–511</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a class="ltx_ref" href="#S1.p5"><span class="ltx_text ltx_ref_tag">§1</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p1"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p2"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p5"><span class="ltx_text ltx_ref_tag">§4.2</span></a>,
+<a class="ltx_ref" href="#S4.SS2.p6"><span class="ltx_text ltx_ref_tag">§4.2</span></a>.
+</span>
+</li>
+</ul>
+</section><div about="" class="ltx_rdf" content="Kartik, Tercieux, and Holden" property="dcterms:creator"></div>
+<div about="" class="ltx_rdf" content="Simple Mechanisms and Preferences for Honesty" property="dcterms:title"></div>
+</article><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/HKT_implementation_honesty.pdf">PDF</a> is more accurate.</div><nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo"></div></footer>
+</div>
+</body>
+</html>
