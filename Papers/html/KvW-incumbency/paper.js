@@ -620,6 +620,31 @@
         clone.querySelectorAll('div, span, p').forEach(function (el) {
           if (el.textContent.match(/Cited\s+by:|External|Links:/i)) el.remove();
         });
+        // Journal articles: show just "Journal." Volume, issue and pages are noise at a
+        // glance, and the year is the link being hovered. Books, chapters and working-paper
+        // notes have no ltx_bib_journal and keep their full block.
+        clone.querySelectorAll('.ltx_bibblock').forEach(function (blk) {
+          const journal = blk.querySelector('.ltx_bib_journal');
+          if (journal) {
+            // some styles end the journal name with its own comma ("Journal of Politics,")
+            journal.innerHTML = journal.innerHTML.replace(/[,\s]+$/, '');
+            blk.innerHTML = journal.outerHTML + '.';
+          }
+        });
+        // Chapters etc.: drop the page range too. LaTeXML puts it in a block of its own
+        // (" pp. 115–141."), after a block ending in a comma ("In Book, Eds. (Eds.), "):
+        // remove the emptied block and end the previous one with a period instead.
+        clone.querySelectorAll('.ltx_bib_pages').forEach(function (p) { p.remove(); });
+        clone.querySelectorAll('.ltx_bibblock').forEach(function (blk) {
+          if (!blk.textContent.replace(/[\s.,]/g, '')) { blk.remove(); return; }
+          // pages removed from mid-block ("Vol. 3, pp. 1–5." → "Vol. 3, .") → "Vol. 3."
+          blk.innerHTML = blk.innerHTML.replace(/,\s*((?:<\/?[a-z][^>]*>\s*)*)\./g, '$1.');
+        });
+        const blocks = clone.querySelectorAll('.ltx_bibblock');
+        const lastBlk = blocks[blocks.length - 1];
+        if (lastBlk) {
+          lastBlk.innerHTML = lastBlk.innerHTML.replace(/,\s*((?:<\/[a-z]+>\s*)*)$/, '.$1');
+        }
         bibMap[id] = clone.innerHTML.trim();
       }
     });
