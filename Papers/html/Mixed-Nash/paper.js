@@ -987,7 +987,16 @@
     }
 
     schedule();
-    window.addEventListener('resize', schedule);
+    // Refit only when the width changes. iOS Safari fires resize whenever its toolbar
+    // collapses or reappears during a scroll; only the height changes then, and a full
+    // refit of a math-heavy paper froze the page for up to ~1 s on each one.
+    var lastWidth = document.documentElement.clientWidth;
+    window.addEventListener('resize', function () {
+      var w = document.documentElement.clientWidth;
+      if (w === lastWidth) return;
+      lastWidth = w;
+      schedule();
+    });
     window.addEventListener('load', schedule);
     // Font swap and MathJax typesetting both change widths after first paint.
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
