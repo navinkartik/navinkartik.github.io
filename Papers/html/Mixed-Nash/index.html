@@ -9,7 +9,7 @@
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
 <meta content="#faf8f6" media="(prefers-color-scheme: light)" name="theme-color"/>
 <meta content="#1c1b19" media="(prefers-color-scheme: dark)" name="theme-color"/>
-<link href="paper.css?v=1794754892" rel="stylesheet" type="text/css"/>
+<link href="paper.css?v=1795198054" rel="stylesheet" type="text/css"/>
 <script>
 MathJax = {
   options: { skipHtmlTags: ["script","noscript","style","textarea","pre"] },
@@ -22,15 +22,15 @@ if (!window.matchMedia || !window.matchMedia("(hover: none)").matches) {
   document.head.appendChild(s);
 }
 </script>
-<script defer="" src="paper.js?v=1794754892"></script>
+<script defer="" src="paper.js?v=1795198054"></script>
 </head>
 <body>
 <div class="ltx_page_main">
 <div class="ltx_page_content">
 <nav class="nk-home-nav"><a href="https://navinkartik.github.io">← Navin Kartik</a></nav><div class="nk-html-banner">HTML from <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML</a>, with custom CSS/JS. The <a href="https://navinkartik.github.io/Papers/Mixed-Nash.pdf">PDF</a> is more accurate.</div><article class="ltx_document ltx_authors_1line">
-<h1 class="ltx_title ltx_title_document">A Note on Mixed-Nash Implementation<span class="ltx_note ltx_role_thanks"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">thanks: </span>This paper grew out of our research on implementation with evidence (Kartik and Tercieux, 2011). In a 2008 version of this paper, we developed a mechanism that we have
-since replaced with Maskin and Sjostrom’s (2002) mechanism. We thank Eric
-Maskin for pointing us to Maskin and Sjostrom (2002).</span></span></span>
+<h1 class="ltx_title ltx_title_document">A Note on Mixed-Nash Implementation<span class="ltx_note ltx_role_thanks"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">thanks: </span>This paper grew out of our research on implementation with evidence (Kartik and Tercieux, <cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib3">2011</a></cite>). In a 2008 version of this paper, we developed a mechanism that we have
+since replaced with Maskin and Sjostrom’s (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib5">2002</a></cite>) mechanism. We thank Eric
+Maskin for pointing us to Maskin and Sjostrom (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib5">2002</a></cite>).</span></span></span>
 </h1>
 <div class="ltx_authors">
 <span class="ltx_creator ltx_role_author">
@@ -57,7 +57,7 @@ works if Bernoulli utilities are bounded.</p>
 <span class="ltx_tag ltx_tag_section">1 </span>Setup</h2>
 <div class="ltx_para" id="S1.p1">
 <p class="ltx_p">Our setup and notation are standard in implementation theory; the reader is
-referred to Maskin (1999) or Maskin and Sjostrom (2002, MS hereafter) for
+referred to Maskin (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite>) or Maskin and Sjostrom (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib5">2002</a></cite>, MS hereafter) for
 details. The environment is a tuple <span class="nk-nobr"><math alttext="(A,N,\Theta)" class="ltx_Math" display="inline" id="S1.p1.m1"><mrow><mo stretchy="false">(</mo><mi>A</mi><mo>,</mo><mi>N</mi><mo>,</mo><mi mathvariant="normal">Θ</mi><mo stretchy="false">)</mo></mrow></math>,</span> where <math alttext="A" class="ltx_Math" display="inline" id="S1.p1.m2"><mi>A</mi></math> is a set of
 outcomes, <math alttext="N:=\{1,\ldots,n\}" class="ltx_Math" display="inline" id="S1.p1.m3"><mrow><mi>N</mi><mo lspace="0.278em" rspace="0.278em">:=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></math> is a finite set of agents/players, and <math alttext="\Theta" class="ltx_Math" display="inline" id="S1.p1.m4"><mi mathvariant="normal">Θ</mi></math> is a set of
 possible states of the world. <math alttext="A" class="ltx_Math" display="inline" id="S1.p1.m5"><mi>A</mi></math> and <math alttext="\Theta" class="ltx_Math" display="inline" id="S1.p1.m6"><mi mathvariant="normal">Θ</mi></math> are arbitrary topological
@@ -92,7 +92,7 @@ exists a pure Nash equilibrium <math alttext="m^{\ast}" class="ltx_Math" display
 (2) in any mixed-Nash equilibrium <span class="nk-nobr"><math alttext="\mu\equiv(\mu_{i})_{i\in N}\in\times_{i\in N}\Delta(M_{i})" class="ltx_math_unparsed" display="inline" id="S1.p4.m9"><mrow><mi>μ</mi><mo>≡</mo><msub><mrow><mo stretchy="false">(</mo><msub><mi>μ</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>∈</mo><mi>N</mi></mrow></msub><mo rspace="0em">∈</mo><msub><mo lspace="0em" rspace="0.222em">×</mo><mrow><mi>i</mi><mo>∈</mo><mi>N</mi></mrow></msub><mi mathvariant="normal">Δ</mi><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>,</span> <span class="nk-nobr"><math alttext="\mu(m)&gt;0\Longrightarrow g(m)\in F(\theta)" class="ltx_Math" display="inline" id="S1.p4.m10"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn><mo stretchy="false">⟹</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span> A
 SCR <math alttext="F" class="ltx_Math" display="inline" id="S1.p4.m11"><mi>F</mi></math> is MSNE-implementable if there exists a mechanism which
 MSNE-implements <span class="nk-nobr"><math alttext="F" class="ltx_Math" display="inline" id="S1.p4.m12"><mi>F</mi></math>.</span> Note that we use a slightly less demanding notion than that of
-Maskin 1999 (p. 25): instead of condition (2) in Maskin, we only
+Maskin <cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite> (p. 25): instead of condition (2) in Maskin, we only
 require that <math alttext="g(m)\in F(\theta)" class="ltx_Math" display="inline" id="S1.p4.m13"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all <math alttext="m" class="ltx_Math" display="inline" id="S1.p4.m14"><mi>m</mi></math> such that <span class="nk-nobr"><math alttext="\mu\mathbf{(}m\mathbf{)}&gt;0" class="ltx_Math" display="inline" id="S1.p4.m15"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>.</span>  In other words, we ignore outcomes that are undesirable but occur with <math alttext="0" class="ltx_Math" display="inline" id="S1.p4.m16"><mn>0</mn></math> probability.  This will make no difference if <math alttext="A" class="ltx_Math" display="inline" id="S1.p4.m17"><mi>A</mi></math> is countable.</p>
 </div>
 </section>
@@ -100,9 +100,9 @@ require that <math alttext="g(m)\in F(\theta)" class="ltx_Math" display="inline"
 <h2 class="ltx_title ltx_title_section">
 <span class="ltx_tag ltx_tag_section">2 </span>A counter-example to MSNE implementation</h2>
 <div class="ltx_para" id="S2.p1">
-<p class="ltx_p">The classic result (Maskin, 1999) on Nash implementation says that a
+<p class="ltx_p">The classic result (Maskin, <cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite>) on Nash implementation says that a
 monotonic SCR is implementable if it satisfies NVP and there are three or
-more players. The mechanism in Maskin 1999 works insofar as one considers
+more players. The mechanism in Maskin <cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite> works insofar as one considers
 pure-strategy implementation. MS provide a canonical mechanism to obtain
 MSNE-implementation.</p>
 </div>
@@ -111,7 +111,7 @@ MSNE-implementation.</p>
 be achieved by the mechanism proposed by MS. The reason we focus on the MS
 mechanism is because we are not aware of any other canonical mechanism in
 the literature that achieves MSNE-implementation when the MS mechanism
-cannot.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>Maskin (1999) offers a different mechanism whose goal was to achieve
+cannot.<span class="ltx_note ltx_role_footnote" id="footnote2"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>Maskin (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite>) offers a different mechanism whose goal was to achieve
 MSNE-implementation under the same conditions as MS. This mechanism also
 fails to work in our example.</span></span></span> The key feature of our example is a failure
 of continuity of preferences over lotteries; more precisely, the Archemedian
@@ -314,9 +314,9 @@ the Archimedean Axiom. Note that this is generally the case in
 implementation theory when the outcome space is augmented with transfers
 that are unbounded and agents have quasi-linear utilities in the transfers.
 As we will show below, unboundedness of the Bernoulli utilities is necessary
-for failure of MSNE-implementation.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>Neither MS nor Maskin (1999) state any assumptions on preferences over
+for failure of MSNE-implementation.<span class="ltx_note ltx_role_footnote" id="footnote4"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>Neither MS nor Maskin (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite>) state any assumptions on preferences over
 lotteries. The only statement we could find about lottery preferences is fn.
-7 in Maskin (1999), which states that the mixed-Nash implementation result
+7 in Maskin (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib4">1999</a></cite>), which states that the mixed-Nash implementation result
 holds for “any risk preferences.”</span></span></span></p>
 </div>
 </div>
@@ -589,7 +589,7 @@ CE may not even be mixed-Nash equilibria.</span></span></span></p>
 <p class="ltx_p">On the other hand, since the set of all action profiles played with positive
 probability by some subjective correlated equilibrium is a superset of the
 set of correlated rationalizable action profiles (Brandenburger and Dekel
-(1987)), the results of Bergemann, Morris, and Tercieux (2011) imply that the
+(<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib2">1987</a></cite>)), the results of Bergemann, Morris, and Tercieux (<cite class="ltx_cite ltx_citemacro_citet"><a class="ltx_ref" href="#bib.bib1">2011</a></cite>) imply that the
 assumptions in Theorem 1 are not enough to ensure implementation in <em class="ltx_emph ltx_font_italic">subjective</em> correlated equilibria.</p>
 </div>
 </div>

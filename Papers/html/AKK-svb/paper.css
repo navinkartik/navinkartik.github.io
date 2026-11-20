@@ -235,6 +235,16 @@ body {
   line-height: 1.3;
   margin: 2.5rem 0 0.75rem;
 }
+/* \title{\textbf{...}} in some sources: keep every title regular weight */
+.ltx_title_document.ltx_font_bold { font-weight: normal; }
+
+/* Publication note above the title (published papers; text from papers.yml) */
+.nk-pub-note {
+  margin: 2.5rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.nk-pub-note + .ltx_title_document { margin-top: 0.5rem; }
 
 /* \thanks inside \title: styled identically to footnotes (margin note / popup / inline).
    Hide the "thanks:" type label — it's a LaTeXML artifact. */
